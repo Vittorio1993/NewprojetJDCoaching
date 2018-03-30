@@ -47,12 +47,17 @@ public class GestionClient extends HttpServlet {
                 users.add(utilisateur);
             }
             for (Utilisateur utilisateur :users) {
-                if ("Abonné".equals(utilisateur.getStatus())) {
-                    abonnes.add(utilisateur);
-                } else if ("En attente".equals(utilisateur.getStatus())) {
-                    enattente.add(utilisateur);
-                } else {
-                    prospects.add(utilisateur);
+                // Test si non admin ou coach
+                if (!"admin".equals(utilisateur.getType())
+                        || !"coach".equals(utilisateur.getType())) {
+                    //Ajout en fonction du status
+                    if ("Abonné".equals(utilisateur.getStatus())) {
+                        abonnes.add(utilisateur);
+                    } else if ("En attente".equals(utilisateur.getStatus())) {
+                        enattente.add(utilisateur);
+                    } else {
+                        prospects.add(utilisateur);
+                    }
                 }
             }
                 request.setAttribute("listeAbonnes", abonnes);
