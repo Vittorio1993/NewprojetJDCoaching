@@ -1935,6 +1935,7 @@ pre code {
   margin-left: auto;
   padding-left: 15px;
   padding-right: 15px;
+  height: auto;
 }
 .container:before, .container:after {
   content: " ";

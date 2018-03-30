@@ -85,20 +85,20 @@
 		<!-- end:fh5co-header -->
 		<div class="fh5co-hero">
 			<div class="fh5co-overlay"></div>
-			<div class="fh5co-cover" data-stellar-background-ratio="0.5">
-				<div class="desc animate-box">
-					<div class="container">
+			<div class="fh5co-cover" data-stellar-background-ratio="0.5" style="background-color: black">
+                            <div class="desc animate-box">		
+                                <div class="container">
 						<div class="row">
 							<div>
                                                                 <div class="table-responsive">
-                                                                    <table border='1'>
+                                                                    <table class="table table-bordered">
                                                                     <%
-                                                                        out.println("<tr><td>Nom</td><td>Prénom</td><td>Date de naissance</td><td>Adresse e-mail</td><td>Numéro de téléphone<td>Objectif</td></td></tr>");
+                                                                        out.println("<tr><td>Nom</td><td>Prénom</td><td>Adresse e-mail</td><td>Numéro de téléphone</td><td>Objectif</td><td>Action</td></tr>");
                                                                         for(Utilisateur u : prospects) {
-                                                                            out.println("<tr><td>" + u.getNomu() + "</td><td>" + u.getPrenomu()+ "</td><td>" + u.getDatenaissanceu()+ "</td><td>" + u.getEmailu()+ "</td><td>" + u.getTelu()+ "</td><td>" + u.getObjectif()+ "</td>");
-                                                                            out.println("<td><a  href=\"GestionClient\" value=" + u.getCodeu() + ">Passer en attente</a></td>");
-                                                                            out.println("<td><a  href=\"GestionClient\" value=" + u.getCodeu() + ">Valider</a></td>");
-                                                                            out.println("<td><a  href=\"GestionClient\" value=" + u.getCodeu() + ">Informations</a></td>");
+                                                                            out.println("<tr><td>" + u.getNomu() + "</td><td>" + u.getPrenomu()+ "</td><td>" + u.getEmailu()+ "</td><td>" + u.getTelu()+ "</td><td>" + u.getObjectif()+ "</td>");
+                                                                            out.println("<td><a  class=\"btn btn-primary\" href=\"GestionClient\" value=" + u.getCodeu() + ">Passer en attente</a>");
+                                                                            out.println("<a  class=\"btn btn-primary\" href=\"GestionClient\" value=" + u.getCodeu() + ">Valider</a>");
+                                                                            out.println("<a  class=\"btn btn-primary\" href=\"GestionClient\" value=" + u.getCodeu() + ">Informations</a></td>");
                                                                             out.println("<tr>");
                                                                         }
                                                                     %>    
@@ -106,12 +106,12 @@
                                                                 </div>
                                                                     <br>
                                                                 <div class="table-responsive">
-                                                                    <table border='1'>
+                                                                    <table class="table table-bordered">
                                                                     <%
-                                                                        out.println("<tr><td>Nom</td><td>Prénom</td><td>Date de naissance</td><td>Adresse e-mail</td><td>Numéro de téléphone<td>Objectif</td></td></tr>");
+                                                                        out.println("<tr><td>Nom</td><td>Prénom</td><td>Adresse e-mail</td><td>Numéro de téléphone</td><td>Objectif</td><td>Action</td></tr>");
                                                                         for(Utilisateur u : enattente) {
-                                                                            out.println("<tr><td>" + u.getNomu() + "</td><td>" + u.getPrenomu()+ "</td><td>" + u.getDatenaissanceu()+ "</td><td>" + u.getEmailu()+ "</td><td>" + u.getTelu()+ "</td><td>" + u.getObjectif()+ "</td>");                
-                                                                            out.println("<td><a  href=\"GestionClient\" value=" + u.getCodeu() + ">Valider</a></td>");
+                                                                            out.println("<tr><td>" + u.getNomu() + "</td><td>" + u.getPrenomu()+ "</td><td>" + u.getEmailu()+ "</td><td>" + u.getTelu()+ "</td><td>" + u.getObjectif()+ "</td>");                
+                                                                            out.println("<td><a  class=\"btn btn-primary\" href=\"GestionClient\" value=" + u.getCodeu() + ">Valider</a></td>");
                                                                             out.println("<tr>");
                                                                         }
                                                                     %>    
@@ -119,17 +119,19 @@
                                                                 </div>
                                                                     <br>
 								<div class="table-responsive">
-                                                                    <table border='1'>
+                                                                    <table class="table table-bordered">
                                                                     <%
-                                                                        out.println("<tr><td>Nom</td><td>Prénom</td><td>Date de naissance</td><td>Adresse e-mail</td><td>Numéro de téléphone<td>Objectif</td></td></tr>");
+                                                                        out.println("<tr><td>Nom</td><td>Prénom</td><td>Adresse e-mail</td><td>Numéro de téléphone</td><td>Objectif</td><td>Action</td></tr>");
                                                                         for(Utilisateur u : abonnes) {
-                                                                            out.println("<tr><td>" + u.getNomu() + "</td><td>" + u.getPrenomu()+ "</td><td>" + u.getDatenaissanceu()+ "</td><td>" + u.getEmailu()+ "</td><td>" + u.getTelu()+ "</td><td>" + u.getObjectif()+ "</td></tr>");
+                                                                            out.println("<tr><td>" + u.getNomu() + "</td><td>" + u.getPrenomu()+ "</td><td>" + u.getEmailu()+ "</td><td>" + u.getTelu()+ "</td><td>" + u.getObjectif()+ "</td>");
+                                                                            out.println("<td><a  class=\"btn btn-primary\" href=\"GestionClient\" value=" + u.getCodeu() + ">Informations</a></td>"); 
+                                                                            out.println("<tr>");
                                                                         }
                                                                     %>    
                                                                     </table>
                                                                 </div>
                                                                     <br>
-                                                                <span><a href="pageadmin.jsp">Retour à la page d'accueil</a></span>
+                                                                <span><a href="pageadmin.jsp">Retour à la page d'administration</a></span>
 							</div>
 						</div>
 					</div>
