@@ -56,7 +56,7 @@
             <![endif]-->
             <title>Gestion des clients</title>
         </head>
-        <body>
+        <body onload="l_prospects()">
             <%  
             ArrayList<Utilisateur> prospects = new ArrayList();
             ArrayList<Utilisateur> enattente = new ArrayList();
@@ -90,6 +90,11 @@
                                 <div class="container">
 						<div class="row">
 							<div>
+                                                            <select id="lprospects" style="color:black;"><option>--</option></select>
+                                                            <input class="btn btn-primary" type="button" value="Passer en attente" onclick="l_attente()"/>
+                                                            <input class="btn btn-primary" type="button" value="Valider" onclick="l_valider()"/>
+                                                            <div id="lcitations"></div>
+                                                        <div>
                                                                 <div class="table-responsive">
                                                                     <table class="table table-bordered">
                                                                     <%
@@ -112,7 +117,6 @@
                                                                         for(Utilisateur u : enattente) {
                                                                             out.println("<tr><td>" + u.getNomu() + "</td><td>" + u.getPrenomu()+ "</td><td>" + u.getEmailu()+ "</td><td>" + u.getTelu()+ "</td><td>" + u.getObjectif()+ "</td>");                
                                                                             out.println("<td><a  class=\"btn btn-primary\" href=\"GestionClient\" value=" + u.getCodeu() + ">Valider</a></td>");
-                                                                            out.println("<td><a  class=\"btn btn-primary\" onclick=" + l_connexion() + " value=" + u.getCodeu() + ">Informations</a></td>");
                                                                             out.println("<tr>");
                                                                         }
                                                                     %>    
