@@ -205,6 +205,243 @@
                                     </div>
                                 </div>
                             </div>
+
+                              <!-- Profil sportif -->
+                        <div id="fh5co-contact">
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col-md-8 col-md-offset-2">
+                                        <div class="heading-section text-center animate-box">
+                                            <h2>Profil sportif</h2>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- 1ere colonne -->
+                                <div class="col-md-6 animate-box">
+                                    <div class="row">
+                                        <!-- Age -->
+                                        <div class="col-md-3">
+                                            <div class="form-group">
+                                                <p>Age :</p>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-9">
+                                            <div class="form-group">
+                                                <input type="text" class="form-control" placeholder="Age">
+                                            </div>
+                                        </div>
+                                        <!-- Poids -->
+                                        <div class="col-md-3">
+                                            <div class="form-group">
+                                                <p>Poids :</p>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-9">
+                                            <div class="form-group">
+                                                <input type="text" class="form-control" placeholder="Poids">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- 2ere colonne -->
+                                <div class="col-md-6 animate-box">
+                                    <div class="row">
+                                        <!-- Fréquence cardiaque au repas -->
+                                        <div class="col-md-7">
+                                            <div class="form-group">
+                                                <p>Fréquence cardiaque au repas :</p>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-5">
+                                            <div class="form-group">
+                                                <input type="text" class="form-control" placeholder="fréquence">
+                                            </div>
+                                        </div>
+                                        <!-- Fréquence cardiaque cible -->
+                                        <div class="col-md-7">
+                                            <div class="form-group">
+                                                <p>Fréquence cardiaque cible :</p>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-5">
+                                            <div class="form-group">
+                                                <input type="text" class="form-control" placeholder="fréquence">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Bilan de performance -->
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-md-8 col-md-offset-2">
+                                    <div class="heading-section text-left animate-box">
+                                        <h3>Bilan de performance</h3>
+                                        <p>Efectuer le maximum de répétitions ou tenir le plus longtemps possibles pour chaque exercice</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- 1ere colonne -->
+                            <div class="col-md-6 animate-box">
+                                <div class="row">
+                                    <!-- Gainage -->
+                                    <div class="col-md-3">
+                                        <div class="form-group">
+                                            <p>Gainage :</p>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-9">
+                                        <div class="form-group">
+                                            <input type="text" class="form-control" placeholder="Gainage">
+                                        </div>
+                                    </div>
+                                    <!-- Fentes avant -->
+                                    <div class="col-md-3">
+                                        <div class="form-group">
+                                            <p>Fentes avant</p>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-9">
+                                        <div class="form-group">
+                                            <input type="text" class="form-control" placeholder="Fentes avant">
+                                        </div>
+                                    </div>
+                                    <!-- Crunch -->
+                                    <div class="col-md-3">
+                                        <div class="form-group">
+                                            <p>Crunch :</p>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-9">
+                                        <div class="form-group">
+                                            <input type="text" class="form-control" placeholder="Crunch">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- 2ere colonne -->
+                            <div class="col-md-6 animate-box">
+                                <div class="row">
+                                    <!-- 1/2 pompes -->
+                                    <div class="col-md-3">
+                                        <div class="form-group">
+                                            <p>1/2 pompes</p>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-9">
+                                        <div class="form-group">
+                                            <input type="text" class="form-control" placeholder="1/2 pompes">
+                                        </div>
+                                    </div>
+                                    <!-- 1/2 squot -->
+                                    <div class="col-md-3">
+                                        <div class="form-group">
+                                            <p>1/2 squot :</p>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-9">
+                                        <div class="form-group">
+                                            <input type="text" class="form-control" placeholder="1/2 squot">
+                                        </div>
+                                    </div>
+                                    <!-- Dips -->
+                                    <div class="col-md-3">
+                                        <div class="form-group">
+                                            <p>Dips :</p>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-9">
+                                        <div class="form-group">
+                                            <input type="text" class="form-control" placeholder="Dips">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Mensuration cote gauche -->
+                        <div id="fh5co-contact">
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col-md-8 col-md-offset-2">
+                                        <div class="heading-section text-left animate-box">
+                                            <h3>Mensuration côté gauche</h3>
+                                            <p>Remplissez que pour l'objectif minceur</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- 1ere colonne -->
+                                <div class="col-md-6 animate-box">
+                                    <div class="row">
+                                        <!-- Bras -->
+                                        <div class="col-md-3">
+                                            <div class="form-group">
+                                                <p>Bras :</p>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-9">
+                                            <div class="form-group">
+                                                <input type="text" class="form-control" placeholder="Bras">
+                                            </div>
+                                        </div>
+                                        <!-- Poitrine -->
+                                        <div class="col-md-3">
+                                            <div class="form-group">
+                                                <p>Poitrine</p>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-9">
+                                            <div class="form-group">
+                                                <input type="text" class="form-control" placeholder="Poitrine">
+                                            </div>
+                                        </div>
+                                        <!-- Taille -->
+                                        <div class="col-md-3">
+                                            <div class="form-group">
+                                                <p>Taille :</p>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-9">
+                                            <div class="form-group">
+                                                <input type="text" class="form-control" placeholder="Taille">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- 2ere colonne -->
+                                <div class="col-md-6 animate-box">
+                                    <div class="row">
+                                        <!-- Hanches -->
+                                        <div class="col-md-3">
+                                            <div class="form-group">
+                                                <p>Hanches</p>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-9">
+                                            <div class="form-group">
+                                                <input type="text" class="form-control" placeholder="Hanches">
+                                            </div>
+                                        </div>
+                                        <!-- Cuisses -->
+                                        <div class="col-md-3">
+                                            <div class="form-group">
+                                                <p>Cuisses :</p>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-9">
+                                            <div class="form-group">
+                                                <input type="text" class="form-control" placeholder="Cuisses">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+
                             <div class="row">
                                 <div class="col-md-12">
                                     <div class="form-group">
