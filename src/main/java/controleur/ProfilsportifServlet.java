@@ -13,8 +13,8 @@ import javax.servlet.http.HttpServlet;
  * @author zhanghuakai
  */
 @WebServlet(
-        name = "InscriptionServlet",
-        urlPatterns = {"/inscription"}
+        name = "profilsportif",
+        urlPatterns = {"/profilsportif"}
 )
 public class ProfilsportifServlet extends HttpServlet {
 
