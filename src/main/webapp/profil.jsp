@@ -1,14 +1,14 @@
+
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@page import="database.Bd"%>
 <%@page import="model.Utilisateur"%>
-
+<%@page import="java.util.Date"%>
+<%@page import="java.text.SimpleDateFormat"%>
 <!DOCTYPE html>
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
 <!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
-<!--[if gt IE 8]><!-->
-
-<html class="no-js"> <!--<![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -68,7 +68,7 @@
                                 <!-- START #fh5co-menu-wrap -->
                                 <nav id="fh5co-menu-wrap" role="navigation">
                                     <ul class="sf-menu" id="fh5co-primary-menu">
-                                        <li><a href="accueilclient.jsp">Home</a></li>
+                                        <li><a href="index.html">Home</a></li>
                                         <li><a href="profil.html">Mon profil</a></li>
                                         <li><a href="schedule.html">Schedule</a></li>
                                         <li><a href="trainer.html">Trainers</a></li>
@@ -95,27 +95,26 @@
                     </div>
                 </div><!-- end: fh5co-parallax -->
                 <!-- end:fh5co-hero -->
-                <div id="fh5co-contact">
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-md-8 col-md-offset-2">
-                                <div class="heading-section text-center animate-box">
-                                    <h2>Profil de base</h2>
+                <form action="#">
+                    <div id="fh5co-contact">
+                        <div class="container">
+                            <!-- Profil de base -->
+                            <div class="row">
+                                <div class="col-md-8 col-md-offset-2">
+                                    <div class="heading-section text-center animate-box">
+                                        <h2>Profil de base</h2>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-
-                        <%
-                            Bd b = new Bd();
-                            String mail = (String)session.getAttribute("mail");
-                            Utilisateur u = b.donneeUtilisateur(mail);
-                            //System.out.println(u.getNomu());
+                            <%
+        Bd b = new Bd();
+        String mail = (String)session.getAttribute("mail");
+        Utilisateur u = b.donneeUtilisateur(mail);
+        //System.out.println(u.getNomu());
                              
-                        %>
+                            %>
 
 
-                        <form action="#">
-                            <!-- Profil de base -->
                             <div class="row">
                                 <!-- 1ere colonne -->
                                 <div class="col-md-6 animate-box">
@@ -128,7 +127,7 @@
                                         </div>
                                         <div class="col-md-9">
                                             <div class="form-group">
-                                               <% out.print("<input type='text' class='form-control' placeholder="+u.getNomu()+">");%>
+                                                <% out.print("<input type='text' class='form-control' placeholder="+u.getNomu()+">");%>
                                             </div>
                                         </div>
                                         <!-- Telephone -->
@@ -150,7 +149,7 @@
                                         </div>
                                         <div class="col-md-9">
                                             <div class="form-group">
-                                                 <% out.print("<input type='text' class='form-control' placeholder="+u.getEmailu()+">");%>
+                                                <% out.print("<input type='text' class='form-control' placeholder="+u.getEmailu()+">");%>
                                             </div>
                                         </div>
                                         <!-- Objectif -->
@@ -161,7 +160,7 @@
                                         </div>
                                         <div class="col-md-9">
                                             <div class="form-group">
-                                                 <% out.print("<input type='text' class='form-control' disabled placeholder="+u.getObjectif()+">");%>
+                                                <% out.print("<input type='text' class='form-control' disabled placeholder="+u.getObjectif()+">");%>
                                             </div>
                                         </div>
                                     </div>
@@ -188,7 +187,7 @@
                                         </div>
                                         <div class="col-md-7">
                                             <div class="form-group">
-                                               <% out.print("<input type='text' class='form-control' placeholder="+u.getDatenaissanceu()+">");%>
+                                                <% out.print("<input type='text' class='form-control' placeholder="+u.getDatenaissanceu()+">");%>
                                             </div>
                                         </div>
                                         <!-- Mot de passe -->
@@ -205,8 +204,10 @@
                                     </div>
                                 </div>
                             </div>
+                        </div>
 
-                              <!-- Profil sportif -->
+
+                        <!-- Profil sportif -->
                         <div id="fh5co-contact">
                             <div class="container">
                                 <div class="row">
@@ -227,7 +228,14 @@
                                         </div>
                                         <div class="col-md-9">
                                             <div class="form-group">
-                                                <input type="text" class="form-control" placeholder="Age">
+                                                <% 
+                                                    String birthday = u.getDatenaissanceu();
+                                                    SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+                                                    String cYear = sdf.format(new Date()).substring(0,4);
+                                                    String birthYear = birthday .substring(0,4);
+                                                    int age = Integer.parseInt(cYear) - Integer.parseInt(birthYear);
+                                                    out.print("<input type='text' class='form-control' disabled placeholder="+age+">");
+                                                %>
                                             </div>
                                         </div>
                                         <!-- Poids -->
@@ -239,6 +247,17 @@
                                         <div class="col-md-9">
                                             <div class="form-group">
                                                 <input type="text" class="form-control" placeholder="Poids">
+                                            </div>
+                                        </div>
+                                        <!-- fc après 30 flexions complètes en 45 sec -->
+                                        <div class="col-md-3">
+                                            <div class="form-group">
+                                                <p>fc après 30 flexions complètes en 45 sec :</p>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-9">
+                                            <div class="form-group">
+                                                <input type="text" class="form-control" placeholder="fc après 30 flexions complètes en 45 sec">
                                             </div>
                                         </div>
                                     </div>
@@ -268,6 +287,17 @@
                                                 <input type="text" class="form-control" placeholder="fréquence">
                                             </div>
                                         </div>
+                                              <!--fc 1 min après exercice allongée -->
+                                        <div class="col-md-3">
+                                            <div class="form-group">
+                                                <p>fc 1 min après exercice allongée :</p>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-9">
+                                            <div class="form-group">
+                                                <input type="text" class="form-control" placeholder="fc 1 min après exercice allongée">
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -287,36 +317,62 @@
                             <div class="col-md-6 animate-box">
                                 <div class="row">
                                     <!-- Gainage -->
-                                    <div class="col-md-3">
-                                        <div class="form-group">
-                                            <p>Gainage :</p>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <img src="images/gainage.png" alt="gainage" style="width: 100%;" />
+                                            </div>
                                         </div>
-                                    </div>
-                                    <div class="col-md-9">
-                                        <div class="form-group">
-                                            <input type="text" class="form-control" placeholder="Gainage">
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <p>Gainage :</p>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-5">
+                                            <div class="form-group">
+                                                <input type="text" class="form-control" placeholder="Gainage">
+                                            </div>
                                         </div>
                                     </div>
                                     <!-- Fentes avant -->
-                                    <div class="col-md-3">
-                                        <div class="form-group">
-                                            <p>Fentes avant</p>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <img src="images/fentes_avant.png" alt="fentes avant" style="width: 100%;" />
+                                            </div>
                                         </div>
-                                    </div>
-                                    <div class="col-md-9">
-                                        <div class="form-group">
-                                            <input type="text" class="form-control" placeholder="Fentes avant">
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <p>Fentes avant :</p>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-5">
+                                            <div class="form-group">
+                                                <input type="text" class="form-control" placeholder="jambe gauche devant">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-5">
+                                            <div class="form-group">
+                                                <input type="text" class="form-control" placeholder="jambe droite devant">
+                                            </div>
                                         </div>
                                     </div>
                                     <!-- Crunch -->
-                                    <div class="col-md-3">
-                                        <div class="form-group">
-                                            <p>Crunch :</p>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <img src="images/crunch.png" alt="crunch" style="width: 100%;" />
+                                            </div>
                                         </div>
-                                    </div>
-                                    <div class="col-md-9">
-                                        <div class="form-group">
-                                            <input type="text" class="form-control" placeholder="Crunch">
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <p>Crunch :</p>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-5">
+                                            <div class="form-group">
+                                                <input type="text" class="form-control" placeholder="Crunch">
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -325,36 +381,57 @@
                             <div class="col-md-6 animate-box">
                                 <div class="row">
                                     <!-- 1/2 pompes -->
-                                    <div class="col-md-3">
-                                        <div class="form-group">
-                                            <p>1/2 pompes</p>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <img src="images/pompes.png" alt="pompes" style="width: 100%;" />
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <p>1/2 pompes :</p>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-5">
+                                            <div class="form-group">
+                                                <input type="text" class="form-control" placeholder="1/2 pompes">
+                                            </div>
                                         </div>
                                     </div>
-                                    <div class="col-md-9">
-                                        <div class="form-group">
-                                            <input type="text" class="form-control" placeholder="1/2 pompes">
+                                    <!-- 1/2 squat -->
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <img src="images/squat.png" alt="squat" style="width: 100%;" />
+                                            </div>
                                         </div>
-                                    </div>
-                                    <!-- 1/2 squot -->
-                                    <div class="col-md-3">
-                                        <div class="form-group">
-                                            <p>1/2 squot :</p>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <p>1/2 squat :</p>
+                                            </div>
                                         </div>
-                                    </div>
-                                    <div class="col-md-9">
-                                        <div class="form-group">
-                                            <input type="text" class="form-control" placeholder="1/2 squot">
+                                        <div class="col-md-5">
+                                            <div class="form-group">
+                                                <input type="text" class="form-control" placeholder="1/2 squat">
+                                            </div>
                                         </div>
                                     </div>
                                     <!-- Dips -->
-                                    <div class="col-md-3">
-                                        <div class="form-group">
-                                            <p>Dips :</p>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <img src="images/dips.png" alt="dips" style="width: 100%;" />
+                                            </div>
                                         </div>
-                                    </div>
-                                    <div class="col-md-9">
-                                        <div class="form-group">
-                                            <input type="text" class="form-control" placeholder="Dips">
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <p>Dips :</p>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-5">
+                                            <div class="form-group">
+                                                <input type="text" class="form-control" placeholder="Dips">
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -389,7 +466,7 @@
                                         <!-- Poitrine -->
                                         <div class="col-md-3">
                                             <div class="form-group">
-                                                <p>Poitrine</p>
+                                                <p>Poitrine :</p>
                                             </div>
                                         </div>
                                         <div class="col-md-9">
@@ -416,7 +493,7 @@
                                         <!-- Hanches -->
                                         <div class="col-md-3">
                                             <div class="form-group">
-                                                <p>Hanches</p>
+                                                <p>Hanches :</p>
                                             </div>
                                         </div>
                                         <div class="col-md-9">
@@ -440,18 +517,27 @@
                             </div>
                         </div>
 
-
-
-                            <div class="row">
-                                <div class="col-md-12">
-                                    <div class="form-group">
-                                        <input type="submit" value="Enregistrer" class="btn btn-primary">
+                        <!-- Bouton enregistrer -->
+                        <div class="container">
+                            <div class="col-md-12 animate-box">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <p style="text-align: center;">
+                                                <input type="submit" value="Enregistrer" class="btn btn-primary">
+                                            </p>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        </form>
+                        </div>
+
+
+
                     </div>
-                </div>
+                </form>
+
+
                 <!-- END Profil de base -->
                 <footer>
                     <div id="footer">
@@ -501,7 +587,7 @@
                                         <a href="#"><i class="icon-dribbble2"></i></a>
                                         <a href="#"><i class="icon-youtube"></i></a>
                                     </p>
-                                    <p>Copyright 2016 Free Html5 <a href="#">Fitness</a>. All Rights Reserved. <br>Made with <i class="icon-heart3"></i> by <a href="#/" target="_blank">Freehtml5</a> / More Templates <a href="http://www.cssmoban.com/" target="_blank" title="æ¨¡æ¿ä¹å®¶">æ¨¡æ¿ä¹å®¶</a> - Collect from <a href="http://www.cssmoban.com/" title="ç½é¡µæ¨¡æ¿" target="_blank">ç½é¡µæ¨¡æ¿</a></p>
+                                    <p>Copyright 2016 Free Html5 <a href="#">Fitness</a>. All Rights Reserved. <br>Made with <i class="icon-heart3"></i> by <a href="#/" target="_blank">Freehtml5</a> / More Templates <a href="http://www.cssmoban.com/" target="_blank" title="模板之家">模板之家</a> - Collect from <a href="http://www.cssmoban.com/" title="网页模板" target="_blank">网页模板</a></p>
                                 </div>
                             </div>
                         </div>
