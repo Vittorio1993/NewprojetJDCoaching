@@ -8,9 +8,6 @@ package controleur;
 import database.Bd;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.Map;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -59,7 +56,7 @@ public class GestionClient extends HttpServlet {
                         prospects.add(utilisateur);
                     }
                 }
-            }           
+            }
                 request.setAttribute("listeAbonnes", abonnes);
                 request.setAttribute("listeProspects", prospects);
                 request.setAttribute("listeEnAttente", enattente);
