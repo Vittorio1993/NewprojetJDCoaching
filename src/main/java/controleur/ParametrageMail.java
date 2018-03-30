@@ -32,30 +32,39 @@ public class ParametrageMail extends HttpServlet {
             final HttpServletResponse response)
             throws ServletException, IOException {
         request.setCharacterEncoding("UTF-8");
-        String mail = request.getParameter("mail");
-        boolean changementMail = false;
+        String mailadmin = request.getParameter("mailadmin");
+        String mailcoaching = request.getParameter("coaching");
+        boolean changementMailadmin = false;
         boolean error = false;
 
         //Test sur les champs de mail et de password
-        if (mail == null || mail.length() == 0) {
+        if (mailadmin == null || mailadmin.length() == 0
+                ||mailcoaching == null || mailcoaching.length() == 0) {
             error = true;
         }
 
         //Renvoi page de paramétrage
         if (error) {
-            request.setAttribute("mail", mail);
-            if ("".equals(mail)) {
+            request.setAttribute("mailadmin", mailadmin);
+            request.setAttribute("mailcoaching", mailcoaching);
+            if ("".equals(mailadmin)) {
             request.setAttribute("erreur",
-                    "<p class=\"alert alert-danger\">Le mail doit être renseigné.</p>");
+                    "<p class=\"alert alert-danger\">Le mail admin doit être renseigné.</p>");
             RequestDispatcher rd = request
                         .getRequestDispatcher("parametragemail.jsp");
             rd.forward(request, response);
+            } else if ("".equals(mailcoaching)) {
+                    request.setAttribute("erreur",
+                            "<p class=\"alert alert-danger\">Le mail coaching doit être renseigné.</p>");
+                    RequestDispatcher rd = request
+                                .getRequestDispatcher("parametragemail.jsp");
+                    rd.forward(request, response);
             }
         } else {
             try {
                 //Test Changement Mail Admin
-                changementMail = Bd.changementMailAdmin(mail);
-                if (changementMail) {
+                changementMailadmin = Bd.changementMailAdmin(mailadmin);
+                if (changementMailadmin) {
                     request.setAttribute("changementMail",
                             "<p>Le changement d'adresse mail a été effectué.</p>");
                     RequestDispatcher rd = request
