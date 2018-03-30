@@ -252,7 +252,7 @@ public class Bd {
         }
 
         /* Requête ajout des abonnés */
-        String sqlabonne = "Select CODEU, NOMU, PRENOMU, DATENAISSANCEU, EMAILU, TELU, STATUTS, PASSWORD, TYPE, OBJECTIF FROM UTILISATEUR";
+        String sqlabonne = "Select CODEU, NOMU, PRENOMU, DATEDENAISSANCEU, EMAILU, TELU, STATUTS, PASSWORD, TYPE, OBJECTIF FROM UTILISATEUR";
 
         try {
             Statement st = cx.createStatement();
@@ -266,7 +266,7 @@ public class Bd {
                             rs.getInt("CODEU"),
                             rs.getString("NOMU"),
                             rs.getString("PRENOMU"),
-                            rs.getString("DATENAISSANCEU"),
+                            rs.getString("DATEDENAISSANCEU"),
                             rs.getString("EMAILU"),
                             rs.getString("TELU"),
                             rs.getString("STATUTS"),
