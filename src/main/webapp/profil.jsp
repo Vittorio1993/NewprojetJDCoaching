@@ -149,7 +149,7 @@
                                         </div>
                                         <div class="col-md-9">
                                             <div class="form-group">
-                                                <% out.print("<input type='text' class='form-control' name='mail' placeholder="+u.getEmailu()+">");%>
+                                                <% out.print("<input type='text'  class='form-control' name='mail' disabled placeholder="+u.getEmailu()+">");%>
                                             </div>
                                         </div>
                                         <!-- Objectif -->
