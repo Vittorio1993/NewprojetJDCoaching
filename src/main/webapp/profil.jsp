@@ -2,6 +2,8 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@page import="database.Bd"%>
 <%@page import="model.Utilisateur"%>
+<%@page import="java.util.Date"%>
+<%@page import="java.text.SimpleDateFormat"%>
 <!DOCTYPE html>
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
@@ -226,7 +228,14 @@
                                         </div>
                                         <div class="col-md-9">
                                             <div class="form-group">
-                                                <input type="text" class="form-control" placeholder="Age">
+                                                <% 
+                                                    String birthday = u.getDatenaissanceu();
+                                                    SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+                                                    String cYear = sdf.format(new Date()).substring(0,4);
+                                                    String birthYear = birthday .substring(0,4);
+                                                    int age = Integer.parseInt(cYear) - Integer.parseInt(birthYear);
+                                                    out.print("<input type='text' class='form-control' disabled placeholder="+age+">");
+                                                %>
                                             </div>
                                         </div>
                                         <!-- Poids -->
@@ -238,6 +247,17 @@
                                         <div class="col-md-9">
                                             <div class="form-group">
                                                 <input type="text" class="form-control" placeholder="Poids">
+                                            </div>
+                                        </div>
+                                        <!-- fc après 30 flexions complètes en 45 sec -->
+                                        <div class="col-md-3">
+                                            <div class="form-group">
+                                                <p>fc après 30 flexions complètes en 45 sec :</p>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-9">
+                                            <div class="form-group">
+                                                <input type="text" class="form-control" placeholder="fc après 30 flexions complètes en 45 sec">
                                             </div>
                                         </div>
                                     </div>
@@ -265,6 +285,17 @@
                                         <div class="col-md-5">
                                             <div class="form-group">
                                                 <input type="text" class="form-control" placeholder="fréquence">
+                                            </div>
+                                        </div>
+                                              <!--fc 1 min après exercice allongée -->
+                                        <div class="col-md-3">
+                                            <div class="form-group">
+                                                <p>fc 1 min après exercice allongée :</p>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-9">
+                                            <div class="form-group">
+                                                <input type="text" class="form-control" placeholder="fc 1 min après exercice allongée">
                                             </div>
                                         </div>
                                     </div>
