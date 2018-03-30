@@ -7,12 +7,14 @@ package controleur;
 
 import database.Bd;
 import java.io.IOException;
+import java.util.ArrayList;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import model.Utilisateur;
 /**
  *
  * @author RHAW
@@ -34,12 +36,14 @@ public class ParametrageMail extends HttpServlet {
         request.setCharacterEncoding("UTF-8");
         String mailadmin = request.getParameter("mailadmin");
         String mailcoaching = request.getParameter("coaching");
+        ArrayList<Utilisateur> coachs = new ArrayList();
         boolean changementMailadmin = false;
+        boolean changementMailcoach = false;
         boolean error = false;
 
         //Test sur les champs de mail et de password
         if (mailadmin == null || mailadmin.length() == 0
-                ||mailcoaching == null || mailcoaching.length() == 0) {
+                || mailcoaching == null || mailcoaching.length() == 0) {
             error = true;
         }
 
@@ -61,10 +65,12 @@ public class ParametrageMail extends HttpServlet {
                     rd.forward(request, response);
             }
         } else {
+            request.setAttribute("ListeCoachs", coachs);
             try {
                 //Test Changement Mail Admin
                 changementMailadmin = Bd.changementMailAdmin(mailadmin);
-                if (changementMailadmin) {
+                changementMailcoach = Bd.changementMailCoach(mailcoaching);
+                if (changementMailadmin || changementMailcoach) {
                     request.setAttribute("changementMail",
                             "<p>Le changement d'adresse mail a été effectué.</p>");
                     RequestDispatcher rd = request

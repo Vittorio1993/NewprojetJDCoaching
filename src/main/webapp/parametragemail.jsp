@@ -5,7 +5,9 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="windows-1252"%>
-
+<%@page import="java.util.ArrayList"%>
+<%@page import="model.Utilisateur"%>
+<%@page import="database.Bd"%>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
     "http://www.w3.org/TR/html4/loose.dtd">
 
@@ -60,6 +62,23 @@
             if(session.getAttribute("mail") != null) { 
                 mail = (String) session.getAttribute("mail");
             }
+            ArrayList<Utilisateur> coachs = new ArrayList();
+            if(request.getAttribute("ListeCoachs") != null) { 
+                coachs = (ArrayList<Utilisateur>) request.getAttribute("ListeCoachs");
+            }
+            
+            // Ajout de la liste des coachs
+            try {
+                for (Utilisateur utilisateur :Bd.getUtilisateurs()) {
+                    if ("coach".equals(utilisateur.getType())) {
+                    coachs.add(utilisateur);
+                    }
+                }
+            } catch (Exception e) {
+                RequestDispatcher rd = request
+                        .getRequestDispatcher("parametragemail.jsp");
+                rd.forward(request, response);
+            }
             %>
             <div id="fh5co-wrapper">
 		<div id="fh5co-page">
@@ -80,11 +99,26 @@
 					<div class="container">
 						<div class="row">
 							<div class="col-md-7">
-								<h2>Veuillez paramétrer votre adresse mail</h2>                                                            
-								 <form method="post" action="ParametrageMail">
-                                                                    Email Admin: <input type="email" name="mailadmin" style="color:black;" value="<%=mail%>">
+								<h2>Paramétrage des adresses mail</h2>     
+                                                                <br>
+								<form method="post" action="ParametrageMail">
+                                                                    Email Administrateur: <input type="email" name="mailadmin" style="color:black;" value="<%=mail%>">
                                                                     <br>
-                                                                    Email Coaching: <input type="email" name="mailcoaching" style="color:black;" value="<%=mail%>">
+                                                                    <br>
+                                                                    Informations du coach :
+                                                                    <br>
+                                                                    <div class="table-responsive">
+                                                                        <table class="table table-bordered">     
+                                                                            <%
+                                                                                out.println("<tr><td>Nom</td><td>Prénom</td><td>Adresse e-mail</td><td>Action</td></tr>");
+                                                                                for(Utilisateur u : coachs) {
+                                                                                    out.println("<tr><td>" + u.getNomu() + "</td><td>" + u.getPrenomu()+ "</td><td>" + u.getEmailu()+ "</td>");
+                                                                                    out.println("<td><input type=\"email\" name=\"mailcoaching\" style=\"color:black;\" value="+ u.getEmailu() +"></td>");
+                                                                                    out.println("</tr>");
+                                                                                }
+                                                                            %>
+                                                                        </table>
+                                                                    </div>
                                                                     <br>
                                                                     <input class="btn btn-primary" type="submit" value="Changer">
                                                                 </form>
