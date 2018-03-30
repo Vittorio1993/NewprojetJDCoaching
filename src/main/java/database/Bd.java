@@ -198,7 +198,7 @@ public class Bd {
         boolean requestOK = false;
 
         /* Requête */
-        String sqlupdate = "UPDATE UTILISATEUR SET EMAILU = '"
+        String sqlupdateadmin = "UPDATE UTILISATEUR SET EMAILU = '"
                 + newmailadmin
                 + "' "
                 + "WHERE TYPE='admin'";
@@ -207,7 +207,7 @@ public class Bd {
             Statement st = cx.createStatement();
             /* Execution de la requête */
             try {
-                st.executeUpdate(sqlupdate);
+                st.executeUpdate(sqlupdateadmin);
                 requestOK = true;
                 st.close();
                 cx.close();
@@ -252,7 +252,7 @@ public class Bd {
         }
 
         /* Requête ajout des abonnés */
-        String sqlabonne = "Select CODEU, NOMU, PRENOMU, DATEDENAISSANCEU, EMAILU, TELU, STATUTS, PASSWORD, TYPE, OBJECTIF FROM UTILISATEUR";
+        String sqlabonne = "Select CODEU, NOMU, PRENOMU, DATEDENAISSANCEU, EMAILU, TELU, STATUTS, PASSWORD, TYPE, OBJECTIF FROM UTILISATEUR ORDER BY NOMU ASC";
 
         try {
             Statement st = cx.createStatement();
@@ -342,7 +342,8 @@ public class Bd {
     /*
     *pour récupérer les données d'un utilisateur
      */
-    public static Utilisateur donneeUtilisateur(String mail) throws Exception {
+    public static Utilisateur donneeUtilisateur(final String mail) 
+            throws Exception {
         Utilisateur u = new Utilisateur(-1, "", "", "", "", "", "", "", "", "");
         if (Bd.cx == null) {
             Bd.connexion();
@@ -392,7 +393,7 @@ public class Bd {
     /*
     *pour vérifier le mail n'exist pas dans BD quand faire inscription
      */
-    public static Integer verifierMail(String mail) throws Exception {
+    public static Integer verifierMail(final String mail) throws Exception {
         Integer num = null;
         if (Bd.cx == null) {
             Bd.connexion();

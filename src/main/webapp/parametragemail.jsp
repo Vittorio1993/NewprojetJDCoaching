@@ -82,8 +82,9 @@
 							<div class="col-md-7">
 								<h2>Veuillez paramétrer votre adresse mail</h2>                                                            
 								 <form method="post" action="ParametrageMail">
-                                                                    Email: <input type="email" name="mail" style="color:black;" value="<%=mail%>">
+                                                                    Email Admin: <input type="email" name="mailadmin" style="color:black;" value="<%=mail%>">
                                                                     <br>
+                                                                    Email Coaching: <input type="email" name="mailcoaching" style="color:black;" value="<%=mail%>">
                                                                     <br>
                                                                     <input class="btn btn-primary" type="submit" value="Changer">
                                                                 </form>
