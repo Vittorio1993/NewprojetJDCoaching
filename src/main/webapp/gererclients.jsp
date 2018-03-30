@@ -98,7 +98,7 @@
                                                                             out.println("<tr><td>" + u.getNomu() + "</td><td>" + u.getPrenomu()+ "</td><td>" + u.getEmailu()+ "</td><td>" + u.getTelu()+ "</td><td>" + u.getObjectif()+ "</td>");
                                                                             out.println("<td><a  class=\"btn btn-primary\" href=\"GestionClient\" value=" + u.getCodeu() + ">Passer en attente</a>");
                                                                             out.println("<a  class=\"btn btn-primary\" href=\"GestionClient\" value=" + u.getCodeu() + ">Valider</a>");
-                                                                            out.println("<a  class=\"btn btn-primary\" href=\"GestionClient\" value=" + u.getCodeu() + ">Informations</a></td>");
+                                                                            out.println("<a  class=\"btn btn-primary\" href=\"InformationsClient\" value=" + u.getCodeu() + ">Informations</a></td>");
                                                                             out.println("<tr>");
                                                                         }
                                                                     %>    
@@ -112,6 +112,7 @@
                                                                         for(Utilisateur u : enattente) {
                                                                             out.println("<tr><td>" + u.getNomu() + "</td><td>" + u.getPrenomu()+ "</td><td>" + u.getEmailu()+ "</td><td>" + u.getTelu()+ "</td><td>" + u.getObjectif()+ "</td>");                
                                                                             out.println("<td><a  class=\"btn btn-primary\" href=\"GestionClient\" value=" + u.getCodeu() + ">Valider</a></td>");
+                                                                            out.println("<td><a  class=\"btn btn-primary\" onclick=" + l_connexion() + " value=" + u.getCodeu() + ">Informations</a></td>");
                                                                             out.println("<tr>");
                                                                         }
                                                                     %>    
@@ -124,7 +125,7 @@
                                                                         out.println("<tr><td>Nom</td><td>Prénom</td><td>Adresse e-mail</td><td>Numéro de téléphone</td><td>Objectif</td><td>Action</td></tr>");
                                                                         for(Utilisateur u : abonnes) {
                                                                             out.println("<tr><td>" + u.getNomu() + "</td><td>" + u.getPrenomu()+ "</td><td>" + u.getEmailu()+ "</td><td>" + u.getTelu()+ "</td><td>" + u.getObjectif()+ "</td>");
-                                                                            out.println("<td><a  class=\"btn btn-primary\" href=\"GestionClient\" value=" + u.getCodeu() + ">Informations</a></td>"); 
+                                                                            out.println("<td><a  class=\"btn btn-primary\" href=\"InformationsClient\" value=" + u.getCodeu() + ">Informations</a></td>"); 
                                                                             out.println("<tr>");
                                                                         }
                                                                     %>    
@@ -152,7 +153,8 @@
 	<script src="js/superfish.js"></script>
 
 	<!-- Main JS (Do not remove) -->
-	<script src="js/main.js"></script>  
+	<script src="js/main.js"></script> 
+        <script type="text/JavaScript" src="/js/fctclient.js"></script>
         </body>
     </html>
 </f:view>
