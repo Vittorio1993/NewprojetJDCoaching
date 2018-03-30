@@ -127,7 +127,7 @@
                                         </div>
                                         <div class="col-md-9">
                                             <div class="form-group">
-                                                <% out.print("<input type='text' class='form-control' name='nom' placeholder="+u.getNomu()+">");%>
+                                                <% out.print("<input type='text' class='form-control' name='nom' value="+u.getNomu()+">");%>
                                             </div>
                                         </div>
                                         <!-- Telephone -->
@@ -138,7 +138,7 @@
                                         </div>
                                         <div class="col-md-9">
                                             <div class="form-group">
-                                                <% out.print("<input type='text' class='form-control' name='tel' placeholder="+u.getTelu()+">");%>
+                                                <% out.print("<input type='text' class='form-control' name='tel' value="+u.getTelu()+">");%>
                                             </div>
                                         </div>
                                         <!-- Email -->
@@ -149,7 +149,7 @@
                                         </div>
                                         <div class="col-md-9">
                                             <div class="form-group">
-                                                <% out.print("<input type='text'  class='form-control' name='mail' disabled placeholder="+u.getEmailu()+">");%>
+                                                <% out.print("<input type='text'  class='form-control' name='mail' disabled value="+u.getEmailu()+">");%>
                                             </div>
                                         </div>
                                         <!-- Objectif -->
@@ -160,7 +160,7 @@
                                         </div>
                                         <div class="col-md-9">
                                             <div class="form-group">
-                                                <% out.print("<input type='text' class='form-control' disabled placeholder="+u.getObjectif()+">");%>
+                                                <% out.print("<input type='text' class='form-control' disabled value="+u.getObjectif()+">");%>
                                             </div>
                                         </div>
                                     </div>
@@ -176,7 +176,7 @@
                                         </div>
                                         <div class="col-md-9">
                                             <div class="form-group">
-                                                <% out.print("<input type='text' class='form-control' name='prenom' placeholder="+u.getPrenomu()+">");%>
+                                                <% out.print("<input type='text' class='form-control' name='prenom' value="+u.getPrenomu()+">");%>
                                             </div>
                                         </div>
                                         <!-- Date de naissance -->
@@ -187,7 +187,7 @@
                                         </div>
                                         <div class="col-md-7">
                                             <div class="form-group">
-                                                <% out.print("<input type='text' class='form-control' name='date' placeholder="+u.getDatenaissanceu()+">");%>
+                                                <% out.print("<input type='date' class='form-control' name='date' value="+u.getDatenaissanceu()+">");%>
                                             </div>
                                         </div>
                                         <!-- Mot de passe -->
@@ -198,14 +198,16 @@
                                         </div>
                                         <div class="col-md-8">
                                             <div class="form-group">
-                                                <% out.print("<input type='text' class='form-control' name='password' placeholder="+u.getPassword()+">");%>
+                                                <% out.print("<input type='text' class='form-control' name='password' value="+u.getPassword()+">");%>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-
+                      <!--测试用--></div>
+ <input type="submit" value="Enregistrer" class="btn btn-primary">
+</form><!--测试用-->
 
                         <!-- Profil sportif -->
                         <div id="fh5co-contact">

@@ -137,8 +137,8 @@ public class Bd {
                     + error.getMessage());
         }
        
-        String sqlsaisir = "update utilisateur set NOMU = '" + nom + "', PRENOM= '" + prenom + "', "
-                + "DATEDENAISSANCE='" + date + "', TELU='" + tel + "' PASSWORD='" + password + "' where EMAILU='" + mail + "'";
+        String sqlsaisir = "update utilisateur set NOMU = '" + nom + "', PRENOMU= '" + prenom + "', "
+                + "DATEDENAISSANCEU='" + date + "', TELU='" + tel + "' ,PASSWORD='" + password + "' where EMAILU='" + mail + "'";
         try {
             statement.executeUpdate(sqlsaisir);
             statement.close();
