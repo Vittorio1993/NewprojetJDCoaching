@@ -32,47 +32,38 @@ function getXMLHttpRequest()
 }
 
 /**
- * Cette méthode "Ajax" permet l'affichage des informations clients
+ * Cette méthode "Ajax" permet l'affichage des prospects
  */
-function l_information()
+function l_prospects()
 
 {
-    var v1 = document.getElementById("mail").value;
-    var v2 = document.getElementById("password").value;
     var xhr = getXMLHttpRequest();
-
+    
     xhr.onreadystatechange = function ()
     {
-
         // Si l'on a tout reçu et que la requête http s'est bien passée.
-        if (xhr.readyState === 4 && xhr.status === 200)
-        {
-
+        if (xhr.readyState === 4 && xhr.status === 200) {
+            var l_prospect = document.getElementById("lprospects");
+            l_prospect.innerHTML="";
             var xml = xhr.responseXML;
-            var noeudNom = xml.getElementsByTagName("message");
-            var elt = document.getElementById("messageconnexion");
-            var texte = noeudNom[0].firstChild.nodeValue;
-          
-            if (texte === "yes") {
-                
-                window.location.href = "accueilclient.jsp";
-            }else if(texte === "non"){
-                
-                window.location.href = "pageadmin.jsp";
-            }else if(texte === "yn"){
-                
-                window.location.href = "#";
-            }else {
-                elt.innerHTML = texte;
+            var users = xml.getElementsByTagName("NomU");         
+            if (!(l_prospect.children.length > 1)) {
+                for (var i = 0; i < users.length; i++) {
+                    l_prospect.innerHTML=l_prospect.innerHTML
+                            + "<option value="+xhr.responseXML.getElementsByTagName("CodeU")[i].firstChild.nodeValue+">"
+                            + xhr.responseXML.getElementsByTagName("NomU")[i].firstChild.nodeValue
+                            + "--"
+                            + xhr.responseXML.getElementsByTagName("PrenomU")[i].firstChild.nodeValue
+                            + "--"
+                            + xhr.responseXML.getElementsByTagName("MailU")[i].firstChild.nodeValue
+                            +"</option> ";
+                }
             }
-
-
-
         }
     };
 
     // Requête au serveur avec les paramètres éventuels.
-    xhr.open("GET", "/connexion?mail=" + v1 + "&password=" + v2, true);
+    xhr.open("GET", "GestionProspects", true);
     xhr.send(null);
 
 }

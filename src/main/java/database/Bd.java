@@ -491,9 +491,10 @@ public class Bd {
 // Request test
 /*public static void main(String[] args)
         throws ClassNotFoundException, SQLException, Exception {
-
-        Bd unebd = new Bd();
-        boolean admin = unebd.getAdmin("admin@admin.com", "123");
-        System.out.println(admin);
-    }*/
+        
+        ArrayList<Utilisateur> admin = new ArrayList();
+        admin = Bd.getUtilisateurs();
+        for(Utilisateur u : admin)
+        System.out.println(u.getCodeu());
+}*/
 }
