@@ -209,6 +209,67 @@ public class Bd {
     }
 
     /**
+     * Recupération d'un utilisateur.
+     * @param codeu Code utilisateur
+     * @return un utilisateur
+     * @throws Exception 
+     */
+    public static Utilisateur getUser(final String codeu)
+            throws Exception {
+
+        Utilisateur user=null;
+        
+        if (Bd.cx == null) {
+            Bd.connexion();
+        }
+        // Statement to handle query
+        Statement statement;
+        //Ouverture de la connexion
+        try {
+            cx = DriverManager.getConnection(url);
+        } catch (SQLException ex) {
+            System.out.println("Erreur ouverture connexion" + ex.getMessage());
+        }
+        try {
+            statement = cx.createStatement();
+        } catch (SQLException error) {
+            throw new Exception("Problème avec création du statement : "
+                    + error.getMessage());
+        }
+        String query = "SELECT * "
+                + "FROM UTILISATEUR "
+                + "WHERE CODEU='"
+                + codeu
+                + "' "
+                + ";";
+
+        /* Execution de la requête */
+        try {
+            ResultSet rs = statement.executeQuery(query);
+            while (rs.next()) {
+                user = new Utilisateur(
+                        rs.getInt("CODEU"),
+                        rs.getString("NOMU"),
+                        rs.getString("PRENOMU"),
+                        rs.getString("DATEDENAISSANCEU"),
+                        rs.getString("EMAILU"),
+                        rs.getString("TELU"),
+                        rs.getString("STATUTS"),
+                        rs.getString("PASSWORD"),
+                        rs.getString("TYPE"),
+                        rs.getString("OBJECTIF"));
+            }
+            rs.close();
+            statement.close();
+            cx.close();
+        } catch (SQLException ex) {
+            System.out.println("Problème avec récupération de la requête : "
+                    + ex.getMessage());
+        }
+        return user;
+    }
+
+    /**
      * Changement de mail Admin.
      *
      * @param newmailadmin new mail
@@ -531,9 +592,10 @@ public class Bd {
 // Request test
 /*public static void main(String[] args)
         throws ClassNotFoundException, SQLException, Exception {
-
-        Bd unebd = new Bd();
-        boolean admin = unebd.getAdmin("admin@admin.com", "123");
-        System.out.println(admin);
-    }*/
+        
+        ArrayList<Utilisateur> admin = new ArrayList();
+        admin = Bd.getUtilisateurs();
+        for(Utilisateur u : admin)
+        System.out.println(u.getCodeu());
+}*/
 }

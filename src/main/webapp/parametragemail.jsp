@@ -110,7 +110,7 @@
                                                                     <div class="table-responsive">
                                                                         <table class="table table-bordered">     
                                                                             <%
-                                                                                out.println("<tr><td>Nom</td><td>Prénom</td><td>Adresse e-mail</td><td>Action</td></tr>");
+                                                                                out.println("<tr><td>Nom</td><td>Prénom</td><td>Adresse e-mail</td><td>Nouvelle adresse</td></tr>");
                                                                                 for(Utilisateur u : coachs) {
                                                                                     out.println("<tr><td>" + u.getNomu() + "</td><td>" + u.getPrenomu()+ "</td><td>" + u.getEmailu()+ "</td>");
                                                                                     out.println("<td><input type=\"email\" name=\"mailcoaching\" style=\"color:black;\" value="+ u.getEmailu() +"></td>");
@@ -122,6 +122,7 @@
                                                                     <br>
                                                                     <input class="btn btn-primary" type="submit" value="Changer">
                                                                 </form>
+                                                                <br>        
                                                                 <span><a href="pageadmin.jsp">Retour à la page d'administration</a></span>
 							</div>
 						</div>
