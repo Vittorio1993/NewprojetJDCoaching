@@ -91,7 +91,7 @@
 						<div class="row">
 							<div>
                                                                 <div class="table-responsive">
-                                                                    <table border='1'>
+                                                                    <table class="table table-bordered">
                                                                     <%
                                                                         out.println("<tr><td>Nom</td><td>Prénom</td><td>Date de naissance</td><td>Adresse e-mail</td><td>Numéro de téléphone<td>Objectif</td></td></tr>");
                                                                         for(Utilisateur u : prospects) {
@@ -106,7 +106,7 @@
                                                                 </div>
                                                                     <br>
                                                                 <div class="table-responsive">
-                                                                    <table border='1'>
+                                                                    <table class="table table-bordered">
                                                                     <%
                                                                         out.println("<tr><td>Nom</td><td>Prénom</td><td>Date de naissance</td><td>Adresse e-mail</td><td>Numéro de téléphone<td>Objectif</td></td></tr>");
                                                                         for(Utilisateur u : enattente) {
@@ -119,7 +119,7 @@
                                                                 </div>
                                                                     <br>
 								<div class="table-responsive">
-                                                                    <table border='1'>
+                                                                    <table class="table table-bordered">
                                                                     <%
                                                                         out.println("<tr><td>Nom</td><td>Prénom</td><td>Date de naissance</td><td>Adresse e-mail</td><td>Numéro de téléphone<td>Objectif</td></td></tr>");
                                                                         for(Utilisateur u : abonnes) {
