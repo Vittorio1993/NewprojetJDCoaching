@@ -49,7 +49,7 @@ public class GestionClient extends HttpServlet {
             for (Utilisateur utilisateur :users) {
                 // Test si non admin ou coach
                 if (!"admin".equals(utilisateur.getType())
-                        || !"coach".equals(utilisateur.getType())) {
+                        && !"coach".equals(utilisateur.getType())) {
                     //Ajout en fonction du status
                     if ("Abonné".equals(utilisateur.getStatus())) {
                         abonnes.add(utilisateur);
