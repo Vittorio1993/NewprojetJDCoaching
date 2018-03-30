@@ -16,6 +16,7 @@ import java.util.HashMap;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+
 /**
  *
  * @author RHAW
@@ -99,6 +100,45 @@ public class Bd {
                 + "','"
                 + u.getType()
                 + "')";
+        try {
+            statement.executeUpdate(sqlsaisir);
+            statement.close();
+            cx.close();
+        } catch (SQLException ex) {
+            System.out.println("Problème avec récupération de la requête : "
+                    + ex.getMessage());
+        }
+
+    }
+
+    /**
+     * Saisir un utilisateur.
+     *
+     * @param u utilisateur
+     * @throws Exception Exception
+     */
+    public static void updateUtilisateur(final String nom, String prenom, String date, String mail, String tel, String password) throws Exception {
+
+        if (Bd.cx == null) {
+            Bd.connexion();
+        }
+        // Statement to handle query
+        Statement statement;
+        //Ouverture de la connexion
+        try {
+            cx = DriverManager.getConnection(url);
+        } catch (SQLException ex) {
+            System.out.println("Erreur ouverture connexion" + ex.getMessage());
+        }
+        try {
+            statement = cx.createStatement();
+        } catch (SQLException error) {
+            throw new Exception("Problème avec création du statement : "
+                    + error.getMessage());
+        }
+       
+        String sqlsaisir = "update utilisateur set NOMU = '" + nom + "', PRENOMU= '" + prenom + "', "
+                + "DATEDENAISSANCEU='" + date + "', TELU='" + tel + "' ,PASSWORD='" + password + "' where EMAILU='" + mail + "'";
         try {
             statement.executeUpdate(sqlsaisir);
             statement.close();
@@ -451,7 +491,7 @@ public class Bd {
     /*
     *pour récupérer les données d'un utilisateur
      */
-    public static Utilisateur donneeUtilisateur(final String mail) 
+    public static Utilisateur donneeUtilisateur(final String mail)
             throws Exception {
         Utilisateur u = new Utilisateur(-1, "", "", "", "", "", "", "", "", "");
         if (Bd.cx == null) {
