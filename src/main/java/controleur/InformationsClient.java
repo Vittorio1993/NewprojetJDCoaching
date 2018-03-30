@@ -7,6 +7,7 @@ package controleur;
 
 import database.Bd;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -21,108 +22,44 @@ import model.Utilisateur;
  */
 @WebServlet(name = "InformationsClient", urlPatterns = {"/InformationsClient"})
 public class InformationsClient extends HttpServlet {
-    /**
-     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
-     * methods.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
-    protected void processRequest(final HttpServletRequest request,
-            final HttpServletResponse response)
+    @Override
+    protected void doGet(HttpServletRequest request,
+            HttpServletResponse response)
             throws ServletException, IOException {
+        Utilisateur utilisateur = null;
+        //Lecture de la requête en UTF-8
         request.setCharacterEncoding("UTF-8");
-        String mailadmin = request.getParameter("mailadmin");
-        String mailcoaching = request.getParameter("coaching");
-        ArrayList<Utilisateur> coachs = new ArrayList();
-        boolean changementMailadmin = false;
-        boolean changementMailcoach = false;
-        boolean error = false;
+        //Type de la réponse
+        response.setContentType("application/xml;charset=UTF-8");
+        response.setCharacterEncoding("UTF-8");
 
-        //Test sur les champs de mail et de password
-        if (mailadmin == null || mailadmin.length() == 0
-                || mailcoaching == null || mailcoaching.length() == 0) {
-            error = true;
+        String codeu = request.getParameter("codeu");
+        PrintWriter out = response.getWriter();
+        //Ecriture de la page XML
+        out.println("<?xml version=\"1.0\"?>");
+        out.println("<liste_informations>");
+
+        //Récupération des utilisateurs en attente
+        try {
+            utilisateur = Bd.getUser(codeu);
+            out.println("<CodeU>" + utilisateur.getCodeu() + "</CodeU>");
+            out.println("<NomU>" + utilisateur.getNomu() + "</NomU>");
+            out.println("<PrenomU>" + utilisateur.getPrenomu() + "</PrenomU>");                  
+            out.println("<MailU>" + utilisateur.getEmailu() + "</MailU>");
+            out.println("<TelU>" + utilisateur.getTelu() + "</TelU>");
+            out.println("<DatedeNaissanceU>" + utilisateur.getDatenaissanceu() + "</DatedeNaissanceU>");
+            out.println("<ObjectifU>" + utilisateur.getObjectif() + "</ObjectifU>");
+        } catch (Exception ex) {
+            out.println("<erreur>Erreur - "
+                    + ex.getMessage() + "</erreur>");
         }
-
-        //Renvoi page de paramétrage
-        if (error) {
-            request.setAttribute("mailadmin", mailadmin);
-            request.setAttribute("mailcoaching", mailcoaching);
-            if ("".equals(mailadmin)) {
-            request.setAttribute("erreur",
-                    "<p class=\"alert alert-danger\">Le mail admin doit être renseigné.</p>");
-            RequestDispatcher rd = request
-                        .getRequestDispatcher("parametragemail.jsp");
-            rd.forward(request, response);
-            } else if ("".equals(mailcoaching)) {
-                    request.setAttribute("erreur",
-                            "<p class=\"alert alert-danger\">Le mail coaching doit être renseigné.</p>");
-                    RequestDispatcher rd = request
-                                .getRequestDispatcher("parametragemail.jsp");
-                    rd.forward(request, response);
-            }
-        } else {
-            request.setAttribute("ListeCoachs", coachs);
-            try {
-                //Test Changement Mail Admin
-                changementMailadmin = Bd.changementMailAdmin(mailadmin);
-                changementMailcoach = Bd.changementMailCoach(mailcoaching);
-                if (changementMailadmin || changementMailcoach) {
-                    request.setAttribute("changementMail",
-                            "<p>Le changement d'adresse mail a été effectué.</p>");
-                    RequestDispatcher rd = request
-                            .getRequestDispatcher("pageadmin.jsp");
-                    rd.forward(request, response);
-                }
-            } catch (Exception e) {
-                RequestDispatcher rd = request
-                        .getRequestDispatcher("parametragemail.jsp");
-                rd.forward(request, response);
-            }
-        }
-    }
-    // <editor-fold defaultstate="collapsed" desc="HttpServlet methods.
-    // Click on the + sign on the left to edit the code.">
-    /**
-     * Handles the HTTP <code>GET</code> method.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
-    @Override
-    protected void doGet(final HttpServletRequest request,
-            final HttpServletResponse response)
-            throws ServletException, IOException {
-        processRequest(request, response);
+        out.println("</liste_informations>");
     }
 
-    /**
-     * Handles the HTTP <code>POST</code> method.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
     @Override
-    protected void doPost(final HttpServletRequest request,
-            final HttpServletResponse response)
-            throws ServletException, IOException {
-        processRequest(request, response);
-    }
-
-    /**
-     * Returns a short description of the servlet.
-     *
-     * @return a String containing servlet description
-     */
-    @Override
-    public String getServletInfo() {
-        return "Paramétrage Mail";
+    protected void doPost(HttpServletRequest request,
+            HttpServletResponse response) throws ServletException,
+            IOException {
+                doGet(request, response);
     }
 }
