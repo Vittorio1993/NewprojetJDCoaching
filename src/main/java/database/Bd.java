@@ -222,6 +222,54 @@ public class Bd {
         return requestOK;
     }
 
+    public static boolean changementMailCoach(final String newmailcoach)
+            throws Exception {
+
+        if (Bd.cx == null) {
+            Bd.connexion();
+        }
+
+        // Statement pour effectuer la requête
+        Statement statement;
+        //Ouverture de la connexion
+        try {
+            cx = DriverManager.getConnection(url);
+        } catch (SQLException ex) {
+            System.out.println("Erreur ouverture connexion" + ex.getMessage());
+        }
+        try {
+            statement = cx.createStatement();
+        } catch (SQLException error) {
+            throw new Exception("Problème avec création du statement : "
+                    + error.getMessage());
+        }
+        boolean requestOK = false;
+
+        /* Requête */
+        String sqlupdateadmin = "UPDATE UTILISATEUR SET EMAILU = '"
+                + newmailcoach
+                + "' "
+                + "WHERE TYPE='coach'";
+
+        try {
+            Statement st = cx.createStatement();
+            /* Execution de la requête */
+            try {
+                st.executeUpdate(sqlupdateadmin);
+                requestOK = true;
+                st.close();
+                cx.close();
+            } catch (SQLException ex) {
+                System.out.println("Erreur execution requête "
+                        + ex.getMessage());
+            }
+        } catch (SQLException ex) {
+            System.out.println("Erreur de SQL statement "
+                    + ex.getMessage());
+        }
+        return requestOK;
+    }
+
     /**
      * Retour des utilisateurs de la BD.
      *

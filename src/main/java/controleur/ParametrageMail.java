@@ -38,20 +38,8 @@ public class ParametrageMail extends HttpServlet {
         String mailcoaching = request.getParameter("coaching");
         ArrayList<Utilisateur> coachs = new ArrayList();
         boolean changementMailadmin = false;
+        boolean changementMailcoach = false;
         boolean error = false;
-
-        // Ajout de la liste des coachs
-        try {
-            for (Utilisateur utilisateur :Bd.getUtilisateurs()) {
-                if ("coach".equals(utilisateur.getType())) {
-                coachs.add(utilisateur);
-                }
-            }
-        } catch (Exception e) {
-            RequestDispatcher rd = request
-                    .getRequestDispatcher("parametragemail.jsp");
-            rd.forward(request, response);
-        }
 
         //Test sur les champs de mail et de password
         if (mailadmin == null || mailadmin.length() == 0
@@ -78,10 +66,11 @@ public class ParametrageMail extends HttpServlet {
             }
         } else {
             request.setAttribute("ListeCoachs", coachs);
-            try {            
+            try {
                 //Test Changement Mail Admin
                 changementMailadmin = Bd.changementMailAdmin(mailadmin);
-                if (changementMailadmin) {
+                changementMailcoach = Bd.changementMailCoach(mailcoaching);
+                if (changementMailadmin || changementMailcoach) {
                     request.setAttribute("changementMail",
                             "<p>Le changement d'adresse mail a été effectué.</p>");
                     RequestDispatcher rd = request
