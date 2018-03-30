@@ -90,53 +90,12 @@
                                 <div class="container">
 						<div class="row">
 							<div>
-                                                            <select id="lprospects" style="color:black;"><option>--</option></select>
+                                                            <select id="lprospects" style="color:black;" onchange="l_informations()"><option>--</option></select>
                                                             <input class="btn btn-primary" type="button" value="Passer en attente" onclick="l_attente()"/>
                                                             <input class="btn btn-primary" type="button" value="Valider" onclick="l_valider()"/>
-                                                            <div id="lcitations"></div>
-                                                        <div>
-                                                                <div class="table-responsive">
-                                                                    <table class="table table-bordered">
-                                                                    <%
-                                                                        out.println("<tr><td>Nom</td><td>Prénom</td><td>Adresse e-mail</td><td>Numéro de téléphone</td><td>Objectif</td><td>Action</td></tr>");
-                                                                        for(Utilisateur u : prospects) {
-                                                                            out.println("<tr><td>" + u.getNomu() + "</td><td>" + u.getPrenomu()+ "</td><td>" + u.getEmailu()+ "</td><td>" + u.getTelu()+ "</td><td>" + u.getObjectif()+ "</td>");
-                                                                            out.println("<td><a  class=\"btn btn-primary\" href=\"GestionClient\" value=" + u.getCodeu() + ">Passer en attente</a>");
-                                                                            out.println("<a  class=\"btn btn-primary\" href=\"GestionClient\" value=" + u.getCodeu() + ">Valider</a>");
-                                                                            out.println("<a  class=\"btn btn-primary\" href=\"InformationsClient\" value=" + u.getCodeu() + ">Informations</a></td>");
-                                                                            out.println("<tr>");
-                                                                        }
-                                                                    %>    
-                                                                    </table>
-                                                                </div>
-                                                                    <br>
-                                                                <div class="table-responsive">
-                                                                    <table class="table table-bordered">
-                                                                    <%
-                                                                        out.println("<tr><td>Nom</td><td>Prénom</td><td>Adresse e-mail</td><td>Numéro de téléphone</td><td>Objectif</td><td>Action</td></tr>");
-                                                                        for(Utilisateur u : enattente) {
-                                                                            out.println("<tr><td>" + u.getNomu() + "</td><td>" + u.getPrenomu()+ "</td><td>" + u.getEmailu()+ "</td><td>" + u.getTelu()+ "</td><td>" + u.getObjectif()+ "</td>");                
-                                                                            out.println("<td><a  class=\"btn btn-primary\" href=\"GestionClient\" value=" + u.getCodeu() + ">Valider</a></td>");
-                                                                            out.println("<tr>");
-                                                                        }
-                                                                    %>    
-                                                                    </table>
-                                                                </div>
-                                                                    <br>
-								<div class="table-responsive">
-                                                                    <table class="table table-bordered">
-                                                                    <%
-                                                                        out.println("<tr><td>Nom</td><td>Prénom</td><td>Adresse e-mail</td><td>Numéro de téléphone</td><td>Objectif</td><td>Action</td></tr>");
-                                                                        for(Utilisateur u : abonnes) {
-                                                                            out.println("<tr><td>" + u.getNomu() + "</td><td>" + u.getPrenomu()+ "</td><td>" + u.getEmailu()+ "</td><td>" + u.getTelu()+ "</td><td>" + u.getObjectif()+ "</td>");
-                                                                            out.println("<td><a  class=\"btn btn-primary\" href=\"InformationsClient\" value=" + u.getCodeu() + ">Informations</a></td>"); 
-                                                                            out.println("<tr>");
-                                                                        }
-                                                                    %>    
-                                                                    </table>
-                                                                </div>
-                                                                    <br>
-                                                                <span><a href="pageadmin.jsp">Retour à la page d'administration</a></span>
+                                                            <div id="linformations"></div>
+                                                            <br>
+                                                            <span><a href="pageadmin.jsp">Retour à la page d'administration</a></span>
 							</div>
 						</div>
 					</div>

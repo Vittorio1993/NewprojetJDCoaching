@@ -30,7 +30,6 @@ public class GestionProspects extends HttpServlet {
         ArrayList<Utilisateur> lutilisateurs = new ArrayList();
         //Lecture de la requête en UTF-8
         request.setCharacterEncoding("UTF-8");
-        System.out.println("test");
         //Type de la réponse
         response.setContentType("application/xml;charset=UTF-8");
         response.setCharacterEncoding("UTF-8");
