@@ -8,7 +8,6 @@ package controleur;
 import database.Bd;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.sql.SQLException;
 import java.util.ArrayList;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -44,10 +43,10 @@ public class GestionProspects extends HttpServlet {
             lutilisateurs = Bd.getUtilisateurs();
             //Ajout des prospects dans l'ArrayList
             for (Utilisateur u : lutilisateurs) {
-                if ("En attente".equals(u.getStatus())) {
+                if ("Prospects".equals(u.getStatus())) {
                     out.println("<CodeU>" + u.getCodeu() + "</CodeU>");
                     out.println("<NomU>" + u.getNomu() + "</NomU>");
-                    out.println("<PrenomU>" + u.getPrenomu() + "</PrenomU>");                  
+                    out.println("<PrenomU>" + u.getPrenomu() + "</PrenomU>");
                     out.println("<MailU>" + u.getEmailu() + "</MailU>");
                 }
             }

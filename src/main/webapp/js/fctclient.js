@@ -98,3 +98,41 @@ function l_informations() {
     xhr.send(null);
 
 }
+
+/**
+ * Cette méthode "Ajax" permet de passer un prospect en attente
+ */
+function l_attente() {
+    var xhr = getXMLHttpRequest();
+    xhr.onreadystatechange = function ()
+    {
+        // Si l'on a tout reçu et que la requête http s'est bien passée.
+        if (xhr.readyState === 4 && xhr.status === 200) {
+           
+        }
+    };
+
+    // Requête au serveur avec les paramètres éventuels.
+    xhr.open("GET", "InformationsClient?codeu=" + codeu, true);
+    xhr.send(null);
+
+}
+
+/**
+ * Cette méthode "Ajax" permet de valider 
+ */
+function l_valider() {
+    var xhr = getXMLHttpRequest();
+    xhr.onreadystatechange = function ()
+    {
+        // Si l'on a tout reçu et que la requête http s'est bien passée.
+        if (xhr.readyState === 4 && xhr.status === 200) {
+           
+        }
+    };
+
+    // Requête au serveur avec les paramètres éventuels.
+    xhr.open("GET", "InformationsClient?codeu=" + codeu, true);
+    xhr.send(null);
+
+}
