@@ -45,6 +45,7 @@ public class ProfilsportifServlet extends HttpServlet {
             datenaissance = requete.getParameter("date");
             tel = requete.getParameter("tel");
             password = requete.getParameter("password");
+            mail = (String) requete.getSession().getAttribute("mail");
 //            fcrepos = requete.getParameter("fcrepos");
 //            fcflexions = requete.getParameter("fcflexions");
 //            fcallogee = requete.getParameter("fcallogee");
@@ -55,23 +56,23 @@ public class ProfilsportifServlet extends HttpServlet {
 //            pompes = requete.getParameter("pompes");
 //            squat = requete.getParameter("squat");
 //            dips = requete.getParameter("dips");
-//            poids = requete.getParameter("poids");
-//            bras = requete.getParameter("bras");
-//            hanches = requete.getParameter("hanches");
-//            poitrine = requete.getParameter("poitrine");
-//            cuisses = requete.getParameter("cuisses");
-//            taille = requete.getParameter("taille");
-            mail = (String) requete.getSession().getAttribute("mail");
-            System.out.println(mail);
-            System.out.println(nom);
-            System.out.println(prenom);
-            System.out.println(datenaissance);
-            System.out.println(mail);
-            System.out.println(tel);
-            System.out.println(password);
-            Bd b = new Bd();
-            b.updateUtilisateur(nom, prenom, datenaissance, mail, tel, password);
+            poids = requete.getParameter("poids");
+            bras = requete.getParameter("bras");
+            hanches = requete.getParameter("hanches");
+            poitrine = requete.getParameter("poitrine");
+            cuisses = requete.getParameter("cuisses");
+            taille = requete.getParameter("taille");
 
+//            System.out.println(mail);
+//            System.out.println(nom);
+//            System.out.println(prenom);
+//            System.out.println(datenaissance);
+//            System.out.println(mail);
+//            System.out.println(tel);
+//            System.out.println(password);
+            Bd b = new Bd();
+//?????            b.updateUtilisateur(nom, prenom, datenaissance, mail, tel, password);
+            b.insererMesuration(poids, bras, poitrine, taille, hanches, cuisses);
             out.println("<message>yes</message>");
 
         } catch (Exception ex) {

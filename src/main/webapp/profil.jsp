@@ -240,17 +240,7 @@
                                                 %>
                                             </div>
                                         </div>
-                                        <!-- Poids -->
-                                        <div class="col-md-3">
-                                            <div class="form-group">
-                                                <p>Poids :</p>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-9">
-                                            <div class="form-group">
-                                                <input type="text" class="form-control" name="poids" placeholder="Poids">
-                                            </div>
-                                        </div>
+                   
                                         <!-- fc après 30 flexions complètes en 45 sec -->
                                         <div class="col-md-3">
                                             <div class="form-group">
@@ -440,13 +430,14 @@
                             </div>
                         </div>
 
-                        <!-- Mensuration cote gauche -->
+                        <!-- Mensuration -->
+                     <form action="profilsportif"><!--- 测试用-->
                         <div id="fh5co-contact">
                             <div class="container">
                                 <div class="row">
                                     <div class="col-md-8 col-md-offset-2">
                                         <div class="heading-section text-left animate-box">
-                                            <h3>Mensuration côté gauche</h3>
+                                            <h3>Mensuration</h3>
                                             <p>Remplissez que pour l'objectif minceur</p>
                                         </div>
                                     </div>
@@ -512,6 +503,17 @@
                                         <div class="col-md-9">
                                             <div class="form-group">
                                                 <input type="text" class="form-control" name="cuisses" placeholder="Cuisses">
+                                            </div>
+                                        </div>
+                                        <!-- Poids -->
+                                        <div class="col-md-3">
+                                            <div class="form-group">
+                                                <p>Poids :</p>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-9">
+                                            <div class="form-group">
+                                                <input type="text" class="form-control" name="poids" placeholder="Poids">
                                             </div>
                                         </div>
                                     </div>
