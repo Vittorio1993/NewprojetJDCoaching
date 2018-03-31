@@ -69,7 +69,7 @@ function l_prospects() {
 /**
  * Cette méthode "Ajax" permet l'affichage des informations des prospects
  */
-function l_informations() {
+function l_informations_prospects() {
     var xhr = getXMLHttpRequest();
     var codeu = document.getElementById("lprospects").value;
     xhr.onreadystatechange = function ()
