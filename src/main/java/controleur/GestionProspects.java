@@ -43,7 +43,7 @@ public class GestionProspects extends HttpServlet {
             lutilisateurs = Bd.getUtilisateurs();
             //Ajout des prospects dans l'ArrayList
             for (Utilisateur u : lutilisateurs) {
-                if ("Prospects".equals(u.getStatus())) {
+                if ("Prospect".equals(u.getStatus())) {
                     out.println("<CodeU>" + u.getCodeu() + "</CodeU>");
                     out.println("<NomU>" + u.getNomu() + "</NomU>");
                     out.println("<PrenomU>" + u.getPrenomu() + "</PrenomU>");

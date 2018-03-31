@@ -34,7 +34,7 @@ function getXMLHttpRequest()
 /**
  * Cette méthode "Ajax" permet l'affichage des prospects
  */
-function l_informations_prospects() {
+function l_prospects() {
     var xhr = getXMLHttpRequest();
     
     xhr.onreadystatechange = function ()
