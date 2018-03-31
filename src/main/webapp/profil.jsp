@@ -440,13 +440,14 @@
                             </div>
                         </div>
 
-                        <!-- Mensuration cote gauche -->
+                        <!-- Mensuration -->
+                     <form action="profilsportif"><!--- 测试用-->
                         <div id="fh5co-contact">
                             <div class="container">
                                 <div class="row">
                                     <div class="col-md-8 col-md-offset-2">
                                         <div class="heading-section text-left animate-box">
-                                            <h3>Mensuration côté gauche</h3>
+                                            <h3>Mensuration</h3>
                                             <p>Remplissez que pour l'objectif minceur</p>
                                         </div>
                                     </div>
