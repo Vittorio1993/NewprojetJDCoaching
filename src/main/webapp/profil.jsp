@@ -240,17 +240,7 @@
                                                 %>
                                             </div>
                                         </div>
-                                        <!-- Poids -->
-                                        <div class="col-md-3">
-                                            <div class="form-group">
-                                                <p>Poids :</p>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-9">
-                                            <div class="form-group">
-                                                <input type="text" class="form-control" name="poids" placeholder="Poids">
-                                            </div>
-                                        </div>
+                   
                                         <!-- fc après 30 flexions complètes en 45 sec -->
                                         <div class="col-md-3">
                                             <div class="form-group">
@@ -513,6 +503,17 @@
                                         <div class="col-md-9">
                                             <div class="form-group">
                                                 <input type="text" class="form-control" name="cuisses" placeholder="Cuisses">
+                                            </div>
+                                        </div>
+                                        <!-- Poids -->
+                                        <div class="col-md-3">
+                                            <div class="form-group">
+                                                <p>Poids :</p>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-9">
+                                            <div class="form-group">
+                                                <input type="text" class="form-control" name="poids" placeholder="Poids">
                                             </div>
                                         </div>
                                     </div>

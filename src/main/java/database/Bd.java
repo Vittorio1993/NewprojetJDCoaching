@@ -11,6 +11,7 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
@@ -156,7 +157,8 @@ public class Bd {
      * @param u utilisateur
      * @throws Exception Exception
      */
-    public static void insererMesuration(final String poids, final String bras, final String poitrine, final String taille, final String hanches, final String cuisses) throws Exception {
+    public static void insererMesuration(final String poids, final String bras,
+            final String poitrine, final String taille, final String hanches, final String cuisses) throws Exception {
 
         if (Bd.cx == null) {
             Bd.connexion();
@@ -165,7 +167,7 @@ public class Bd {
         Statement statement;
         //Ouverture de la connexion
         try {
-            cx = DriverManager.getConnection(url);
+            cx = DriverManager.getConnection(url);  
         } catch (SQLException ex) {
             System.out.println("Erreur ouverture connexion" + ex.getMessage());
         }
@@ -175,8 +177,10 @@ public class Bd {
             throw new Exception("Problème avec création du statement : "
                     + error.getMessage());
         }
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss ");//
+        System.out.println(dateFormat.format(new Date()));
 
-        String sqlmesuration = "insert into mesuration values('0'," + new Date() + ",'mesuration','"
+        String sqlmesuration = "insert into mesuration(DATEMESURE,LIBELLEM,POIDS,BRAS,POITRINE,TAILLE,HANCHES,CUISSES) values ( NOW(),'mesuration','"
                 + poids + "','" + bras + "','" + poitrine + "','" + taille + "','" + hanches + "','" + cuisses + "')";
         try {
             statement.executeUpdate(sqlmesuration);
