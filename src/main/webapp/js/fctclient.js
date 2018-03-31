@@ -77,23 +77,19 @@ function l_informations() {
         // Si l'on a tout reçu et que la requête http s'est bien passée.
         if (xhr.readyState === 4 && xhr.status === 200) {
             var informations = document.getElementById("linformations");
-            informations.innerHTML="testt";
-            //informations.innerHTML="<table class='table table-bordered'><tr><td>Nom</td><td>Prénom</td><td>Adresse e-mail</td><td>Numéro de téléphone</td><td>Date de naissance</td><td>Objectif</td></tr>";
+            informations.innerHTML="";   
             var xml = xhr.responseXML;
-            var users = xml.getElementsByTagName("CodeU");         
-            if (!(informations.children.length > 1)) {
-                for (var i = 0; i < users.length; i++) {
-                    informations.innerHTML=informations.innerHTML                          
-                            + "<tr><td>" + xhr.responseXML.getElementsByTagName("NomU")[i].firstChild.nodeValue
+            var users = xml.getElementsByTagName("CodeU");
+                for (var i = 0; i < users.length; i++) {                   
+                    informations.innerHTML="<table class='table table-bordered'><tr><td>Nom</td><td>Prénom</td><td>Adresse e-mail</td><td>Numéro de téléphone</td><td>Date de naissance</td><td>Objectif</td></tr><tr>"                                    
+                            + "<td>" + xhr.responseXML.getElementsByTagName("NomU")[i].firstChild.nodeValue
                             + "</td><td>" + xhr.responseXML.getElementsByTagName("PrenomU")[i].firstChild.nodeValue
                             + "</td><td>" + xhr.responseXML.getElementsByTagName("MailU")[i].firstChild.nodeValue
                             + "</td><td>" + xhr.responseXML.getElementsByTagName("TelU")[i].firstChild.nodeValue
                             + "</td><td>" + xhr.responseXML.getElementsByTagName("DatedeNaissanceU")[i].firstChild.nodeValue
                             + "</td><td>" + xhr.responseXML.getElementsByTagName("ObjectifU")[i].firstChild.nodeValue
-                            + "</td></tr>";
+                            + "</td></tr></table>";
                 }
-            }
-            informations.innerHTML="</table>";
         }
     };
 

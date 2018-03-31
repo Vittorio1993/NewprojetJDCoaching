@@ -90,14 +90,16 @@
                                 <div class="container">
 						<div class="row">
 							<div>
+                                                            <p>Liste des clients en attente :</p>
                                                             <select id="lprospects" style="color:black;" onchange="l_informations()"><option>--</option></select>
                                                             <input class="btn btn-primary" type="button" value="Passer en attente" onclick="l_attente()"/>
-                                                            <input class="btn btn-primary" type="button" value="Valider" onclick="l_valider()"/>
-                                                            <div id="linformations"></div>
-                                                            <br>
-                                                            <span><a href="pageadmin.jsp">Retour à la page d'administration</a></span>
+                                                            <input class="btn btn-primary" type="button" value="Valider" onclick="l_valider()"/>                                                          
 							</div>
+                                                        <br>
+                                                        <div id="linformations" ></div>
+                                                        <br>
 						</div>
+                                                <span><a href="pageadmin.jsp">Retour à la page d'administration</a></span>
 					</div>
 				</div>
 			</div>
