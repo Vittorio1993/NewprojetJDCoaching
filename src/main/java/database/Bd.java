@@ -167,7 +167,7 @@ public class Bd {
         Statement statement;
         //Ouverture de la connexion
         try {
-            cx = DriverManager.getConnection(url);  
+            cx = DriverManager.getConnection(url);
         } catch (SQLException ex) {
             System.out.println("Erreur ouverture connexion" + ex.getMessage());
         }
@@ -177,8 +177,6 @@ public class Bd {
             throw new Exception("Problème avec création du statement : "
                     + error.getMessage());
         }
-        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss ");//
-        System.out.println(dateFormat.format(new Date()));
 
         String sqlmesuration = "insert into mesuration(DATEMESURE,LIBELLEM,POIDS,BRAS,POITRINE,TAILLE,HANCHES,CUISSES) values ( NOW(),'mesuration','"
                 + poids + "','" + bras + "','" + poitrine + "','" + taille + "','" + hanches + "','" + cuisses + "')";
