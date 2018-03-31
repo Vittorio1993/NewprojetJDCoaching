@@ -20,8 +20,8 @@ import model.Utilisateur;
  *
  * @author RHAW
  */
-@WebServlet(name = "GestionProspects", urlPatterns = {"/GestionProspects"})
-public class GestionProspects extends HttpServlet {
+@WebServlet(name = "GestionValides", urlPatterns = {"/GestionValides"})
+public class GestionValides extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request,
             HttpServletResponse response)
@@ -36,14 +36,14 @@ public class GestionProspects extends HttpServlet {
         PrintWriter out = response.getWriter();
         //Ecriture de la page XML
         out.println("<?xml version=\"1.0\"?>");
-        out.println("<liste_prospects>");
+        out.println("<liste_valides>");
 
-        //Récupération des prospects
+        //Récupération des utilisateurs en attente
         try {
             lutilisateurs = Bd.getUtilisateurs();
-            //Ajout des prospects dans l'ArrayList
+            //Ajout des utilisateurs en attente dans l'ArrayList
             for (Utilisateur u : lutilisateurs) {
-                if ("Prospects".equals(u.getStatus())) {
+                if ("Validé".equals(u.getStatus())) {
                     out.println("<CodeU>" + u.getCodeu() + "</CodeU>");
                     out.println("<NomU>" + u.getNomu() + "</NomU>");
                     out.println("<PrenomU>" + u.getPrenomu() + "</PrenomU>");
@@ -54,7 +54,7 @@ public class GestionProspects extends HttpServlet {
             out.println("<erreur>Erreur - "
                     + ex.getMessage() + "</erreur>");
         }
-        out.println("</liste_prospects>");
+        out.println("</liste_valides>");
     }
 
     @Override
@@ -64,3 +64,4 @@ public class GestionProspects extends HttpServlet {
                 doGet(request, response);
     }
 }
+
