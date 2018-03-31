@@ -36,7 +36,6 @@ public class ParametrageMail extends HttpServlet {
         request.setCharacterEncoding("UTF-8");
         String mailadmin = request.getParameter("mailadmin");
         String mailcoaching = request.getParameter("coaching");
-        ArrayList<Utilisateur> coachs = new ArrayList();
         boolean changementMailadmin = false;
         boolean changementMailcoach = false;
         boolean error = false;
@@ -65,7 +64,6 @@ public class ParametrageMail extends HttpServlet {
                     rd.forward(request, response);
             }
         } else {
-            request.setAttribute("ListeCoachs", coachs);
             try {
                 //Test Changement Mail Admin
                 changementMailadmin = Bd.changementMailAdmin(mailadmin);
@@ -74,7 +72,7 @@ public class ParametrageMail extends HttpServlet {
                     request.setAttribute("changementMail",
                             "<p>Le changement d'adresse mail a été effectué.</p>");
                     RequestDispatcher rd = request
-                            .getRequestDispatcher("pageadmin.jsp");
+                            .getRequestDispatcher("parametragemail.jsp");
                     rd.forward(request, response);
                 }
             } catch (Exception e) {

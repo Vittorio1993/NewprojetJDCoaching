@@ -56,7 +56,7 @@
             <![endif]-->
             <title>Gestion des clients</title>
         </head>
-        <body onload="l_prospects()">
+        <body onload="l_prospects();l_enattente();l_valides()">
             <%  
             ArrayList<Utilisateur> prospects = new ArrayList();
             ArrayList<Utilisateur> enattente = new ArrayList();
@@ -90,14 +90,31 @@
                                 <div class="container">
 						<div class="row">
 							<div>
-                                                            <select id="lprospects" style="color:black;" onchange="l_informations()"><option>--</option></select>
+                                                            <p>Liste des clients prospects :</p>
+                                                            <select id="lprospects" style="color:black;" onchange="l_informations_prospects()"><option>--</option></select>
                                                             <input class="btn btn-primary" type="button" value="Passer en attente" onclick="l_attente()"/>
-                                                            <input class="btn btn-primary" type="button" value="Valider" onclick="l_valider()"/>
-                                                            <div id="linformations"></div>
-                                                            <br>
-                                                            <span><a href="pageadmin.jsp">Retour à la page d'administration</a></span>
+                                                            <input class="btn btn-primary" type="button" value="Valider" onclick="l_valider_prospects()"/>                                                          
 							</div>
+                                                        <br>
+                                                        <div id="linformations" ></div>
+                                                        <br>
+                                                        <div>
+                                                            <p>Liste des clients en attente :</p>
+                                                            <select id="lenattente" style="color:black;" onchange="l_informations_attente()"><option>--</option></select>
+                                                            <input class="btn btn-primary" type="button" value="Valider" onclick="l_valider()"/>                                                          
+							</div>
+                                                        <br>
+                                                        <div id="linformationsattente" ></div>
+                                                        <br>
+                                                        <div>
+                                                            <p>Liste des clients validés :</p>
+                                                            <select id="lvalides" style="color:black;" onchange="l_informations_valides()"><option>--</option></select>                                                     
+							</div>
+                                                        <br>
+                                                        <div id="linformationsvalides" ></div>
+                                                        <br>
 						</div>
+                                                <span><a href="pageadmin.jsp">Retour à la page d'administration</a></span>
 					</div>
 				</div>
 			</div>
