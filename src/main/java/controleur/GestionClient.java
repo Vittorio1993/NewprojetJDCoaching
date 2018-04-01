@@ -35,6 +35,7 @@ public class GestionClient extends HttpServlet {
             final HttpServletResponse response)
             throws ServletException, IOException {
 
+        request.setCharacterEncoding("UTF-8");
         ArrayList<Utilisateur> users = new ArrayList();
         ArrayList<Utilisateur> prospects = new ArrayList();
         ArrayList<Utilisateur> enattente = new ArrayList();

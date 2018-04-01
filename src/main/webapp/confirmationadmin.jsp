@@ -74,13 +74,7 @@
                         <div class="desc animate-box">		
                             <div class="container">
                                 <div class="row">
-                                    <%
-                                    String changement="";
-                                    if(request.getAttribute("ChangementOK") != null) { 
-                                        changement = (String) request.getAttribute("ChangementOK");
-                                    }
-                                    %>
-                                    <h1>Le changement de statut du client à <%=changement%> a été pris en compte.</h1>
+                                    <h1>Le changement de statut du client a été pris en compte.</h1>
                                     <span><a href="GestionClient">Retour à la gestion des clients</a></span>
                                 </div>
                             </div>

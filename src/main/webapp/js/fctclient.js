@@ -82,7 +82,7 @@ function l_enattente() {
         // Si l'on a tout reçu et que la requête http s'est bien passée.
         if (xhr.readyState === 4 && xhr.status === 200)
         {
-            
+            window.location.href = "confirmationadmin.jsp";
         };
         
     };
@@ -108,7 +108,7 @@ function l_valider(value) {
         // Si l'on a tout reçu et que la requête http s'est bien passée.
         if (xhr.readyState === 4 && xhr.status === 200)
         {
-            
+            window.location.href = "confirmationadmin.jsp";
         };
         
     };

@@ -91,7 +91,7 @@
 						<div class="row">
                                                     <div>
                                                         <div>
-                                                        <p>Nombre de clients prospects :<%=prospects.size()%></p>
+                                                        <p>Nombre de clients prospects : <%=prospects.size()%></p>
                                                         <p>Liste des clients prospects :</p>
                                                         <select id="lprospects" style="color:black;" onclick="l_informations(this.id);">
                                                         <%
@@ -107,7 +107,7 @@
                                                         <div id="linformationsprospects" ></div>
                                                         <br>
                                                         <div>
-                                                            <p>Nombre de clients en attente :<%=enattente.size()%></p>
+                                                            <p>Nombre de clients en attente : <%=enattente.size()%></p>
                                                             <p>Liste des clients en attente :</p>
                                                             <select id="lenattente" style="color:black;" onclick="l_informations(this.id)">
                                                             <%
@@ -121,7 +121,7 @@
                                                         <br>
                                                         <div id="linformationsattente" ></div>
                                                         <div>
-                                                            <p>Nombre de clients validés :<%=valides.size()%></p>
+                                                            <p>Nombre de clients validés : <%=valides.size()%></p>
                                                             <p>Liste des clients validés :</p>
                                                             <select id="lvalides" style="color:black;" onclick="l_informations(this.id)">
                                                             <%

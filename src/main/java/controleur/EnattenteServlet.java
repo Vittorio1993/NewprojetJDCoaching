@@ -33,12 +33,11 @@ public class EnattenteServlet extends HttpServlet {
     protected void processRequest(final HttpServletRequest request,
             final HttpServletResponse response)
             throws ServletException, IOException {
-
+        request.setCharacterEncoding("UTF-8");
         String codeu = request.getParameter("codeu");
 
         try {
             Bd.enAttente(codeu);
-            request.setAttribute("ChangementOK", "En Attente");
             RequestDispatcher rd = request.getRequestDispatcher("confirmationadmin.jsp");
             rd.forward(request, response);
         } catch (Exception e) {
