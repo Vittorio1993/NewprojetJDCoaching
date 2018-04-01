@@ -76,16 +76,9 @@ function l_informations(value) {
  */
 function l_attente() {
     var xhr = getXMLHttpRequest();
-    xhr.onreadystatechange = function ()
-    {
-        // Si l'on a tout reçu et que la requête http s'est bien passée.
-        if (xhr.readyState === 4 && xhr.status === 200) {
-           
-        }
-    };
-
+    var codeu = document.getElementById("lprospects").value;
     // Requête au serveur avec les paramètres éventuels.
-    xhr.open("GET", "InformationsClient?codeu=" + codeu, true);
+    xhr.open("GET", "EnattenteServlet?codeu=" + codeu, true);
     xhr.send(null);
 
 }
@@ -93,7 +86,7 @@ function l_attente() {
 /**
  * Cette méthode "Ajax" permet de valider 
  */
-function l_valider() {
+function l_valider(value) {
     var xhr = getXMLHttpRequest();
     xhr.onreadystatechange = function ()
     {

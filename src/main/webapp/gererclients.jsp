@@ -99,6 +99,8 @@
                                                                 }
                                                             %>
                                                             </select>
+                                                            <input class="btn btn-primary" type="submit" value="Passer en attente" onclick="l_enattente()">
+                                                            <input class="btn btn-primary"  id ="prospect" type="submit" value="Valider" onclick="l_valider(this.id)">
                                                             </div>
                                                             <br>
                                                             <div id="linformationsprospects" ></div>
@@ -111,6 +113,7 @@
                                                                         out.println("<option value=" + u.getCodeu() + ">" + u.getNomu() + "--" + u.getPrenomu() + "--" + u.getEmailu() + "</option>");
                                                                     }
                                                                 %>
+                                                                <input class="btn btn-primary"  id ="enattente" type="submit" value="Valider" onclick="l_valider(this.id)">
                                                                 </select>
                                                             </div>
                                                             <br>
@@ -120,7 +123,11 @@
                                                                 <select id="lvalides" style="color:black;" onclick="l_informations(this.id)">
                                                                 <%
                                                                     for(Utilisateur u : valides) {
-                                                                        out.println("<option value=" + u.getCodeu() + ">" + u.getNomu() + "--" + u.getPrenomu() + "--" + u.getEmailu() + "</option>");
+                                                                        if("Validé".equals(u.getStatus())) {
+                                                                            out.println("<option value=" + u.getCodeu() + " style=\"background-color:red;\">" + u.getNomu() + "--" + u.getPrenomu() + "--" + u.getEmailu() + "</option>");
+                                                                        } else {
+                                                                            out.println("<option value=" + u.getCodeu() + " style=\"background-color:green;\">" + u.getNomu() + "--" + u.getPrenomu() + "--" + u.getEmailu() + "</option>");
+                                                                        }
                                                                     }
                                                                 %>
                                                                 </select>
