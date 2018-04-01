@@ -65,7 +65,7 @@ public class GestionClient extends HttpServlet {
                 rd.forward(request, response);
         } catch (Exception e) {
             RequestDispatcher rd = request
-                    .getRequestDispatcher("parametragemail.jsp");
+                    .getRequestDispatcher("pageadmin.jsp");
             rd.forward(request, response);
         }
     }

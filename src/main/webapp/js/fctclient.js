@@ -218,9 +218,57 @@ function l_valides() {
  * Cette méthode "Ajax" permet de charger la gestion client
  */
 function gestion_client() {
-
-    l_prospects();
-    l_enattente();
-    l_valides();
+    var xhr = getXMLHttpRequest();
     
+    xhr.onreadystatechange = function ()
+    {
+        // Si l'on a tout reçu et que la requête http s'est bien passée.
+        if (xhr.readyState === 4 && xhr.status === 200) {
+            var l_prospect = document.getElementById("lprospects");
+            l_prospect.innerHTML="";
+            var xml = xhr.responseXML;
+            var prospects = xml.getElementsByTagName("NomU");
+            for (var i = 0; i < prospects.length; i++) {
+                l_prospect.innerHTML=l_prospect.innerHTML
+                        + "<option value="+xhr.responseXML.getElementsByTagName("CodeU")[i].firstChild.nodeValue+">"
+                        + xhr.responseXML.getElementsByTagName("NomU")[i].firstChild.nodeValue
+                        + "--"
+                        + xhr.responseXML.getElementsByTagName("PrenomU")[i].firstChild.nodeValue
+                        + "--"
+                        + xhr.responseXML.getElementsByTagName("MailU")[i].firstChild.nodeValue
+                        +"</option> ";
+            }
+            var l_attente = document.getElementById("lenattente");
+            l_attente.innerHTML="";
+            var attente = xml.getElementsByTagName("NomU");
+            for (var i = 0; i < attente.length; i++) {
+                l_attente.innerHTML=l_attente.innerHTML
+                        + "<option value="+xhr.responseXML.getElementsByTagName("CodeU")[i].firstChild.nodeValue+">"
+                        + xhr.responseXML.getElementsByTagName("NomU")[i].firstChild.nodeValue
+                        + "--"
+                        + xhr.responseXML.getElementsByTagName("PrenomU")[i].firstChild.nodeValue
+                        + "--"
+                        + xhr.responseXML.getElementsByTagName("MailU")[i].firstChild.nodeValue
+                        +"</option> ";
+            }
+            var l_valide = document.getElementById("lvalides");
+            l_valide.innerHTML="";
+            var valides = xml.getElementsByTagName("NomU");
+            for (var i = 0; i < valides.length; i++) {
+                l_valide.innerHTML=l_valide.innerHTML
+                        + "<option value="+xhr.responseXML.getElementsByTagName("CodeU")[i].firstChild.nodeValue+">"
+                        + xhr.responseXML.getElementsByTagName("NomU")[i].firstChild.nodeValue
+                        + "--"
+                        + xhr.responseXML.getElementsByTagName("PrenomU")[i].firstChild.nodeValue
+                        + "--"
+                        + xhr.responseXML.getElementsByTagName("MailU")[i].firstChild.nodeValue
+                        +"</option> ";
+            }
+        }
+    };
+
+    // Requête au serveur avec les paramètres éventuels.
+    xhr.open("GET", "GestionClient", true);
+    xhr.send(null);
+
 }

@@ -92,25 +92,40 @@
 							<div>
                                                             <div>
                                                             <p>Liste des clients prospects :</p>
-                                                            <select id="lprospects" style="color:black;" onclick="l_informations(this.id);l_prospects();"><option>--</option></select>                                                     
-							</div>
-                                                        <br>
-                                                        <div id="linformationsprospects" ></div>
-                                                        <br>
-                                                        <div>
-                                                            <p>Liste des clients en attente :</p>
-                                                            <select id="lenattente" style="color:black;" onclick="l_informations(this.id)"><option>--</option></select>                                                     
-							</div>
-                                                        <br>
-                                                        <div id="linformationsattente" ></div>
-                                                        <div>
-                                                            <p>Liste des clients validés :</p>
-                                                            <select id="lvalides" style="color:black;" onclick="l_informations(this.id)"><option>--</option></select>                                                     
-							</div>
-                                                        <br>
-                                                        <div id="linformationsvalides" ></div>
-                                                        <br>
-						</div>
+                                                            <select id="lprospects" style="color:black;" onclick="l_informations(this.id);"><option>--</option></select>
+                                                            <%
+                                                                for(Utilisateur u : prospects) {
+                                                                    out.println("<option>" + u.getNomu() + "--" + u.getPrenomu()+ "--" + u.getEmailu()+ "</option>");
+                                                                }
+                                                            %>
+                                                            </div>
+                                                            <br>
+                                                            <div id="linformationsprospects" ></div>
+                                                            <br>
+                                                            <div>
+                                                                <p>Liste des clients en attente :</p>
+                                                                <select id="lenattente" style="color:black;" onclick="l_informations(this.id)"><option>--</option></select>
+                                                                <%
+                                                                    for(Utilisateur u : enattente) {
+                                                                        out.println("<option>" + u.getNomu() + "--" + u.getPrenomu()+ "--" + u.getEmailu()+ "</option>");
+                                                                    }
+                                                                %>
+                                                            </div>
+                                                            <br>
+                                                            <div id="linformationsattente" ></div>
+                                                            <div>
+                                                                <p>Liste des clients validés :</p>
+                                                                <select id="lvalides" style="color:black;" onclick="l_informations(this.id)"><option>--</option></select>
+                                                                <%
+                                                                    for(Utilisateur u : abonnes) {
+                                                                        out.println("<option>" + u.getNomu() + "--" + u.getPrenomu()+ "--" + u.getEmailu()+ "</option>");
+                                                                    }
+                                                                %>
+                                                            </div>
+                                                            <br>
+                                                            <div id="linformationsvalides" ></div>
+                                                            <br>
+                                                        </div>
                                                 <span><a href="pageadmin.jsp">Retour à la page d'administration</a></span>
 					</div>
 				</div>
