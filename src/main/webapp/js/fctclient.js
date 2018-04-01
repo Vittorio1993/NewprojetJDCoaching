@@ -154,13 +154,13 @@ function l_enattente() {
     {
         // Si l'on a tout reçu et que la requête http s'est bien passée.
         if (xhr.readyState === 4 && xhr.status === 200) {
-            var l_prospect = document.getElementById("lenattente");
-            l_prospect.innerHTML="";
+            var l_attente = document.getElementById("lenattente");
+            l_attente.innerHTML="";
             var xml = xhr.responseXML;
             var users = xml.getElementsByTagName("NomU");         
-            if (!(l_prospect.children.length > 1)) {
+            if (!(l_attente.children.length > 1)) {
                 for (var i = 0; i < users.length; i++) {
-                    l_prospect.innerHTML=l_prospect.innerHTML
+                    l_attente.innerHTML=l_attente.innerHTML
                             + "<option value="+xhr.responseXML.getElementsByTagName("CodeU")[i].firstChild.nodeValue+">"
                             + xhr.responseXML.getElementsByTagName("NomU")[i].firstChild.nodeValue
                             + "--"
@@ -189,13 +189,13 @@ function l_valides() {
     {
         // Si l'on a tout reçu et que la requête http s'est bien passée.
         if (xhr.readyState === 4 && xhr.status === 200) {
-            var l_prospect = document.getElementById("lvalides");
-            l_prospect.innerHTML="";
+            var l_valide = document.getElementById("lvalides");
+            l_valide.innerHTML="";
             var xml = xhr.responseXML;
             var users = xml.getElementsByTagName("NomU");         
-            if (!(l_prospect.children.length > 1)) {
+            if (!(l_valide.children.length > 1)) {
                 for (var i = 0; i < users.length; i++) {
-                    l_prospect.innerHTML=l_prospect.innerHTML
+                    l_valide.innerHTML=l_valide.innerHTML
                             + "<option value="+xhr.responseXML.getElementsByTagName("CodeU")[i].firstChild.nodeValue+">"
                             + xhr.responseXML.getElementsByTagName("NomU")[i].firstChild.nodeValue
                             + "--"

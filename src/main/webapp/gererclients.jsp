@@ -92,7 +92,7 @@
 							<div>
                                                             <div>
                                                             <p>Liste des clients prospects :</p>
-                                                            <select id="lprospects" style="color:black;" onclick="l_informations(this.id)"><option>--</option></select>                                                     
+                                                            <select id="lprospects" style="color:black;" onclick="l_informations(this.id);l_prospects();"><option>--</option></select>                                                     
 							</div>
                                                         <br>
                                                         <div id="linformationsprospects" ></div>

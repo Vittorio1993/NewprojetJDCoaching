@@ -42,7 +42,7 @@ public class InformationsClient extends HttpServlet {
             utilisateur = Bd.getUser(codeu);
             out.println("<CodeU>" + utilisateur.getCodeu() + "</CodeU>");
             out.println("<NomU>" + utilisateur.getNomu() + "</NomU>");
-            out.println("<PrenomU>" + utilisateur.getPrenomu() + "</PrenomU>");                  
+            out.println("<PrenomU>" + utilisateur.getPrenomu() + "</PrenomU>");
             out.println("<MailU>" + utilisateur.getEmailu() + "</MailU>");
             out.println("<TelU>" + utilisateur.getTelu() + "</TelU>");
             out.println("<DatedeNaissanceU>" + utilisateur.getDatenaissanceu() + "</DatedeNaissanceU>");
