@@ -77,10 +77,18 @@ function l_informations(value) {
 function l_enattente() {
     var xhr = getXMLHttpRequest();
     var codeu = document.getElementById("lprospects").value;
-    // Requête au serveur avec les paramètres éventuels.
-    xhr.open("GET", "EnattenteServlet?codeu=" + codeu, true);
-    xhr.send(null);
-
+    xhr.onreadystatechange = function ()
+    {
+        // Si l'on a tout reçu et que la requête http s'est bien passée.
+        if (xhr.readyState === 4 && xhr.status === 200)
+        {
+            
+        };
+        
+    };
+        // Requête au serveur avec les paramètres éventuels.
+        xhr.open("GET", "EnattenteServlet?codeu=" + codeu, true);
+        xhr.send(null);
 }
 
 /**
@@ -91,10 +99,19 @@ function l_valider(value) {
     var boutonvalue = document.getElementById(value);
     var codeu;
     if ("prospect"===boutonvalue) {
-        codeu=document.getElementById("lprospects").value;
-    } else {
-        codeu=document.getElementById("lenattente").value;
-    }
+            codeu=document.getElementById("lprospects").value;
+            } else {
+                codeu=document.getElementById("lenattente").value;
+            }
+    xhr.onreadystatechange = function ()
+    {
+        // Si l'on a tout reçu et que la requête http s'est bien passée.
+        if (xhr.readyState === 4 && xhr.status === 200)
+        {
+            
+        };
+        
+    };
     // Requête au serveur avec les paramètres éventuels.
     xhr.open("GET", "ValideServlet?codeu=" + codeu, true);
     xhr.send(null);

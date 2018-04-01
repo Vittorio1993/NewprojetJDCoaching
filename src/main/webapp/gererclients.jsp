@@ -89,61 +89,64 @@
                             <div class="desc animate-box">		
                                 <div class="container">
 						<div class="row">
-							<div>
-                                                            <div>
-                                                            <p>Nombre de clients prospects :<%=prospects.size()%></p>
-                                                            <p>Liste des clients prospects :</p>
-                                                            <select id="lprospects" style="color:black;" onclick="l_informations(this.id);">
+                                                    <div>
+                                                        <div>
+                                                        <p>Nombre de clients prospects :<%=prospects.size()%></p>
+                                                        <p>Liste des clients prospects :</p>
+                                                        <select id="lprospects" style="color:black;" onclick="l_informations(this.id);">
+                                                        <%
+                                                            for(Utilisateur u : prospects) {
+                                                                out.println("<option value=" + u.getCodeu() + ">" + u.getNomu() + "--" + u.getPrenomu() + "--" + u.getEmailu() + "</option>");
+                                                            }
+                                                        %>
+                                                        </select>
+                                                        <input class="btn btn-primary" type="submit" value="Passer en attente" onclick="l_enattente()">
+                                                        <input class="btn btn-primary"  id ="prospect" type="submit" value="Valider" onclick="l_valider(this.id)">
+                                                        </div>
+                                                        <br>
+                                                        <div id="linformationsprospects" ></div>
+                                                        <br>
+                                                        <div>
+                                                            <p>Nombre de clients en attente :<%=enattente.size()%></p>
+                                                            <p>Liste des clients en attente :</p>
+                                                            <select id="lenattente" style="color:black;" onclick="l_informations(this.id)">
                                                             <%
-                                                                for(Utilisateur u : prospects) {
+                                                                for(Utilisateur u : enattente) {
                                                                     out.println("<option value=" + u.getCodeu() + ">" + u.getNomu() + "--" + u.getPrenomu() + "--" + u.getEmailu() + "</option>");
                                                                 }
                                                             %>
+                                                            <input class="btn btn-primary"  id ="enattente" type="submit" value="Valider" onclick="l_valider(this.id)">
                                                             </select>
-                                                            <input class="btn btn-primary" type="submit" value="Passer en attente" onclick="l_enattente()">
-                                                            <input class="btn btn-primary"  id ="prospect" type="submit" value="Valider" onclick="l_valider(this.id)">
-                                                            </div>
-                                                            <br>
-                                                            <div id="linformationsprospects" ></div>
-                                                            <br>
-                                                            <div>
-                                                                <p>Nombre de clients en attente :<%=enattente.size()%></p>
-                                                                <p>Liste des clients en attente :</p>
-                                                                <select id="lenattente" style="color:black;" onclick="l_informations(this.id)">
-                                                                <%
-                                                                    for(Utilisateur u : enattente) {
-                                                                        out.println("<option value=" + u.getCodeu() + ">" + u.getNomu() + "--" + u.getPrenomu() + "--" + u.getEmailu() + "</option>");
-                                                                    }
-                                                                %>
-                                                                <input class="btn btn-primary"  id ="enattente" type="submit" value="Valider" onclick="l_valider(this.id)">
-                                                                </select>
-                                                            </div>
-                                                            <br>
-                                                            <div id="linformationsattente" ></div>
-                                                            <div>
-                                                                <p>Nombre de clients validés :<%=valides.size()%></p>
-                                                                <p>Liste des clients validés :</p>
-                                                                <select id="lvalides" style="color:black;" onclick="l_informations(this.id)">
-                                                                <%
-                                                                    for(Utilisateur u : valides) {
-                                                                        if("Validé".equals(u.getStatus())) {
-                                                                            out.println("<option value=" + u.getCodeu() + " style=\"background-color:red;\">" + u.getNomu() + "--" + u.getPrenomu() + "--" + u.getEmailu() + "</option>");
-                                                                        } else {
-                                                                            out.println("<option value=" + u.getCodeu() + " style=\"background-color:green;\">" + u.getNomu() + "--" + u.getPrenomu() + "--" + u.getEmailu() + "</option>");
-                                                                        }
-                                                                    }
-                                                                %>
-                                                                </select>
-                                                            </div>
-                                                            <br>
-                                                            <div id="linformationsvalides" ></div>
-                                                            <br>
                                                         </div>
+                                                        <br>
+                                                        <div id="linformationsattente" ></div>
+                                                        <div>
+                                                            <p>Nombre de clients validés :<%=valides.size()%></p>
+                                                            <p>Liste des clients validés :</p>
+                                                            <select id="lvalides" style="color:black;" onclick="l_informations(this.id)">
+                                                            <%
+                                                                for(Utilisateur u : valides) {
+                                                                    if("Validé".equals(u.getStatus())) {
+                                                                        out.println("<option value=" + u.getCodeu() + " style=\"background-color:red;\">" + u.getNomu() + "--" + u.getPrenomu() + "--" + u.getEmailu() + "</option>");
+                                                                    } else {
+                                                                        out.println("<option value=" + u.getCodeu() + " style=\"background-color:green;\">" + u.getNomu() + "--" + u.getPrenomu() + "--" + u.getEmailu() + "</option>");
+                                                                    }
+                                                                }
+                                                            %>
+                                                            </select>
+                                                        </div>
+                                                        <br>
+                                                        <div id="linformationsvalides" ></div>
+                                                        <br>
+                                                    </div>
                                                 <span><a href="pageadmin.jsp">Retour à la page d'administration</a></span>
-					</div>
-				</div>
-			</div>
-		</div>
+                                                </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         <script src="js/jquery.min.js"></script>
 	<!-- jQuery Easing -->
 	<script src="js/jquery.easing.1.3.js"></script>

@@ -42,7 +42,7 @@ public class ValideServlet extends HttpServlet {
             RequestDispatcher rd = request.getRequestDispatcher("confirmationadmin.jsp");
             rd.forward(request, response);
         } catch (Exception e) {
-            RequestDispatcher rd = request.getRequestDispatcher("/GestionClient");
+            RequestDispatcher rd = request.getRequestDispatcher("pageadmin.jsp");
             rd.forward(request, response);
         }
     }
