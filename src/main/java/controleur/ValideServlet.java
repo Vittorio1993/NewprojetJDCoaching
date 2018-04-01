@@ -19,8 +19,8 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author RHAW
  */
-@WebServlet(name = "EnattenteServlet", urlPatterns = {"/EnattenteServlet"})
-public class EnattenteServlet extends HttpServlet {
+@WebServlet(name = "ValideServlet", urlPatterns = {"/ValideServlet"})
+public class ValideServlet extends HttpServlet {
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -37,7 +37,7 @@ public class EnattenteServlet extends HttpServlet {
         String codeu = request.getParameter("codeu");
 
         try {
-            Bd.enAttente(codeu);
+            Bd.passageValide(codeu);
             RequestDispatcher rd = request.getRequestDispatcher("confirmationadmin.jsp");
             rd.forward(request, response);
         } catch (Exception e) {
@@ -84,6 +84,6 @@ public class EnattenteServlet extends HttpServlet {
      */
     @Override
     public String getServletInfo() {
-        return "Passage en attente";
+        return "Passage en statut validé";
     }
 }

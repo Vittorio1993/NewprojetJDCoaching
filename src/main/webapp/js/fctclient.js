@@ -74,7 +74,7 @@ function l_informations(value) {
 /**
  * Cette méthode "Ajax" permet de passer un prospect en attente
  */
-function l_attente() {
+function l_enattente() {
     var xhr = getXMLHttpRequest();
     var codeu = document.getElementById("lprospects").value;
     // Requête au serveur avec les paramètres éventuels.
@@ -84,20 +84,19 @@ function l_attente() {
 }
 
 /**
- * Cette méthode "Ajax" permet de valider 
+ * Cette méthode "Ajax" permet de valider un client
  */
 function l_valider(value) {
     var xhr = getXMLHttpRequest();
-    xhr.onreadystatechange = function ()
-    {
-        // Si l'on a tout reçu et que la requête http s'est bien passée.
-        if (xhr.readyState === 4 && xhr.status === 200) {
-           
-        }
-    };
-
+    var boutonvalue = document.getElementById(value);
+    var codeu;
+    if ("prospect"===boutonvalue) {
+        codeu=document.getElementById("lprospects").value;
+    } else {
+        codeu=document.getElementById("lenattente").value;
+    }
     // Requête au serveur avec les paramètres éventuels.
-    xhr.open("GET", "InformationsClient?codeu=" + codeu, true);
+    xhr.open("GET", "ValideServlet?codeu=" + codeu, true);
     xhr.send(null);
 
 }

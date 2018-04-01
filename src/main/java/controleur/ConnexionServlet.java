@@ -15,12 +15,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /*
- * @author zhanghuakai
+ * @author RHAW
  */
-@WebServlet(
-        name = "ConnexionServlet",
-        urlPatterns = {"/connexion"}
-)
+@WebServlet(name = "ConnexionServlet", urlPatterns = {"/connexion"})
 //le servlet est pour vérifier le compte et récupérer des donées des utilisateurs
 public class ConnexionServlet extends HttpServlet {
 
@@ -36,28 +33,20 @@ public class ConnexionServlet extends HttpServlet {
             requete.getSession().setAttribute("mail", mail);
             password = requete.getParameter("password");
             Bd b = new Bd();
-            // System.out.println("aaa");
-            //System.out.println(password);
-            //System.out.println(b.consulterUtilisateur(mail));
-            String[] pa=null;
+            String[] pa = null;
             pa = b.consulterUtilisateur(mail);
-            //int a = 1;
-            if (password.equals(pa[0])&&pa[1].equals("client")) {
+            if (password.equals(pa[0]) && pa[1].equals("client")) {
                 out.println("<message>yes</message>");
-                System.out.println(pa[1]);
-            } else if (password.equals(pa[0])&&pa[1].equals("admin")){
+            } else if (password.equals(pa[0]) && pa[1].equals("admin")) {
                 out.println("<message>non</message>");
-                System.out.println(pa[1]);
-            }else if (password.equals(pa[0])&&pa[1].equals("coach")){
+            } else if (password.equals(pa[0]) && pa[1].equals("coach")) {
                 out.println("<message>yn</message>");
-                System.out.println(pa[1]);
-            }else {
+            } else {
                 out.println("<message>Le mail ou mot de passe n'est pas correct</message>");
             }
         } catch (Exception ex) {
-            Logger.getLogger(ConnexionServlet.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ConnexionServlet.class.getName())
+                    .log(Level.SEVERE, null, ex);
         }
     }
-;
-
 }
