@@ -56,7 +56,7 @@
             <![endif]-->
             <title>Gestion des clients</title>
         </head>
-        <body onload="gestion_client();">
+        <body>
             <%  
             ArrayList<Utilisateur> prospects = new ArrayList();
             ArrayList<Utilisateur> enattente = new ArrayList();
@@ -67,8 +67,8 @@
             if(request.getAttribute("listeEnAttente") != null) { 
                 enattente = (ArrayList<Utilisateur>) request.getAttribute("listeEnAttente");
             }
-            if(request.getAttribute("listeAbonnes") != null) { 
-                abonnes = (ArrayList<Utilisateur>) request.getAttribute("listeAbonnes");
+            if(request.getAttribute("listeValides") != null) { 
+                valides = (ArrayList<Utilisateur>) request.getAttribute("listeValides");
             }
             %>
             <div id="fh5co-wrapper">
@@ -92,35 +92,38 @@
 							<div>
                                                             <div>
                                                             <p>Liste des clients prospects :</p>
-                                                            <select id="lprospects" style="color:black;" onclick="l_informations(this.id);"><option>--</option></select>
+                                                            <select id="lprospects" style="color:black;" onclick="l_informations(this.id);">
                                                             <%
                                                                 for(Utilisateur u : prospects) {
                                                                     out.println("<option>" + u.getNomu() + "--" + u.getPrenomu()+ "--" + u.getEmailu()+ "</option>");
                                                                 }
                                                             %>
+                                                            </select>
                                                             </div>
                                                             <br>
                                                             <div id="linformationsprospects" ></div>
                                                             <br>
                                                             <div>
                                                                 <p>Liste des clients en attente :</p>
-                                                                <select id="lenattente" style="color:black;" onclick="l_informations(this.id)"><option>--</option></select>
+                                                                <select id="lenattente" style="color:black;" onclick="l_informations(this.id)">
                                                                 <%
                                                                     for(Utilisateur u : enattente) {
                                                                         out.println("<option>" + u.getNomu() + "--" + u.getPrenomu()+ "--" + u.getEmailu()+ "</option>");
                                                                     }
                                                                 %>
+                                                                </select>
                                                             </div>
                                                             <br>
                                                             <div id="linformationsattente" ></div>
                                                             <div>
                                                                 <p>Liste des clients validés :</p>
-                                                                <select id="lvalides" style="color:black;" onclick="l_informations(this.id)"><option>--</option></select>
+                                                                <select id="lvalides" style="color:black;" onclick="l_informations(this.id)">
                                                                 <%
-                                                                    for(Utilisateur u : abonnes) {
+                                                                    for(Utilisateur u : valides) {
                                                                         out.println("<option>" + u.getNomu() + "--" + u.getPrenomu()+ "--" + u.getEmailu()+ "</option>");
                                                                     }
                                                                 %>
+                                                                </select>
                                                             </div>
                                                             <br>
                                                             <div id="linformationsvalides" ></div>

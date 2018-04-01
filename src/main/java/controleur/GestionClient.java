@@ -38,7 +38,7 @@ public class GestionClient extends HttpServlet {
         ArrayList<Utilisateur> users = new ArrayList();
         ArrayList<Utilisateur> prospects = new ArrayList();
         ArrayList<Utilisateur> enattente = new ArrayList();
-        ArrayList<Utilisateur> abonnes = new ArrayList();
+        ArrayList<Utilisateur> valides = new ArrayList();
         try {
             for (Utilisateur utilisateur :Bd.getUtilisateurs()) {
                 users.add(utilisateur);
@@ -48,8 +48,9 @@ public class GestionClient extends HttpServlet {
                 if (!"admin".equals(utilisateur.getType())
                         && !"coach".equals(utilisateur.getType())) {
                     //Ajout en fonction du status
-                    if ("Abonné".equals(utilisateur.getStatus())) {
-                        abonnes.add(utilisateur);
+                    if ("Abonné".equals(utilisateur.getStatus())
+                            || "Validé".equals(utilisateur.getStatus())) {
+                        valides.add(utilisateur);
                     } else if ("En attente".equals(utilisateur.getStatus())) {
                         enattente.add(utilisateur);
                     } else {
@@ -57,7 +58,7 @@ public class GestionClient extends HttpServlet {
                     }
                 }
             }
-                request.setAttribute("listeAbonnes", abonnes);
+                request.setAttribute("listeValides", valides);
                 request.setAttribute("listeProspects", prospects);
                 request.setAttribute("listeEnAttente", enattente);
                 RequestDispatcher rd = request
