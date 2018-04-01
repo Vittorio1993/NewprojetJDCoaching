@@ -11,7 +11,9 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -111,6 +113,87 @@ public class Bd {
     }
 
     /**
+     * mise à jour un utilisateur.
+     *
+     * @param u utilisateur
+     * @throws Exception Exception
+     */
+    public static void updateUtilisateur(final String nom, final String prenom, final String date, final String mail, final String tel, final String password) throws Exception {
+
+        if (Bd.cx == null) {
+            Bd.connexion();
+        }
+        // Statement to handle query
+        Statement statement;
+        //Ouverture de la connexion
+        try {
+            cx = DriverManager.getConnection(url);
+        } catch (SQLException ex) {
+            System.out.println("Erreur ouverture connexion" + ex.getMessage());
+        }
+        try {
+            statement = cx.createStatement();
+        } catch (SQLException error) {
+            throw new Exception("Problème avec création du statement : "
+                    + error.getMessage());
+        }
+
+        String sqlsaisir = "update utilisateur set NOMU = '" + nom + "', PRENOMU= '" + prenom + "', "
+                + "DATEDENAISSANCEU='" + date + "', TELU='" + tel + "' ,PASSWORD='" + password + "' where EMAILU='" + mail + "'";
+        try {
+            statement.executeUpdate(sqlsaisir);
+            statement.close();
+            cx.close();
+        } catch (SQLException ex) {
+            System.out.println("Problème avec récupération de la requête : "
+                    + ex.getMessage());
+        }
+
+    }
+
+    /**
+     * mise à jour un utilisateur.
+     *
+     * @param u utilisateur
+     * @throws Exception Exception
+     */
+    public static void insererMesuration(final String poids, final String bras,
+            final String poitrine, final String taille, final String hanches, final String cuisses) throws Exception {
+
+        if (Bd.cx == null) {
+            Bd.connexion();
+        }
+        // Statement to handle query
+        Statement statement;
+        //Ouverture de la connexion
+        try {
+            cx = DriverManager.getConnection(url);  
+        } catch (SQLException ex) {
+            System.out.println("Erreur ouverture connexion" + ex.getMessage());
+        }
+        try {
+            statement = cx.createStatement();
+        } catch (SQLException error) {
+            throw new Exception("Problème avec création du statement : "
+                    + error.getMessage());
+        }
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss ");//
+        System.out.println(dateFormat.format(new Date()));
+
+        String sqlmesuration = "insert into mesuration(DATEMESURE,LIBELLEM,POIDS,BRAS,POITRINE,TAILLE,HANCHES,CUISSES) values ( NOW(),'mesuration','"
+                + poids + "','" + bras + "','" + poitrine + "','" + taille + "','" + hanches + "','" + cuisses + "')";
+        try {
+            statement.executeUpdate(sqlmesuration);
+            statement.close();
+            cx.close();
+        } catch (SQLException ex) {
+            System.out.println("Problème avec récupération de la requête : "
+                    + ex.getMessage());
+        }
+
+    }
+
+    /**
      * Retour d'un admin.
      *
      * @param mail mail du user
@@ -170,15 +253,16 @@ public class Bd {
 
     /**
      * Recupération d'un utilisateur.
+     *
      * @param codeu Code utilisateur
      * @return un utilisateur
-     * @throws Exception 
+     * @throws Exception
      */
     public static Utilisateur getUser(final String codeu)
             throws Exception {
 
-        Utilisateur user=null;
-        
+        Utilisateur user = null;
+
         if (Bd.cx == null) {
             Bd.connexion();
         }
@@ -451,7 +535,7 @@ public class Bd {
     /*
     *pour récupérer les données d'un utilisateur
      */
-    public static Utilisateur donneeUtilisateur(final String mail) 
+    public static Utilisateur donneeUtilisateur(final String mail)
             throws Exception {
         Utilisateur u = new Utilisateur(-1, "", "", "", "", "", "", "", "", "");
         if (Bd.cx == null) {

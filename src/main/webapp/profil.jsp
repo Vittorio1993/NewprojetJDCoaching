@@ -95,7 +95,7 @@
                     </div>
                 </div><!-- end: fh5co-parallax -->
                 <!-- end:fh5co-hero -->
-                <form action="#">
+                <form action="profilsportif">
                     <div id="fh5co-contact">
                         <div class="container">
                             <!-- Profil de base -->
@@ -127,7 +127,7 @@
                                         </div>
                                         <div class="col-md-9">
                                             <div class="form-group">
-                                                <% out.print("<input type='text' class='form-control' placeholder="+u.getNomu()+">");%>
+                                                <% out.print("<input type='text' class='form-control' name='nom' value="+u.getNomu()+">");%>
                                             </div>
                                         </div>
                                         <!-- Telephone -->
@@ -138,7 +138,7 @@
                                         </div>
                                         <div class="col-md-9">
                                             <div class="form-group">
-                                                <% out.print("<input type='text' class='form-control' placeholder="+u.getTelu()+">");%>
+                                                <% out.print("<input type='text' class='form-control' name='tel' value="+u.getTelu()+">");%>
                                             </div>
                                         </div>
                                         <!-- Email -->
@@ -149,7 +149,7 @@
                                         </div>
                                         <div class="col-md-9">
                                             <div class="form-group">
-                                                <% out.print("<input type='text' class='form-control' placeholder="+u.getEmailu()+">");%>
+                                                <% out.print("<input type='text'  class='form-control' name='mail' disabled value="+u.getEmailu()+">");%>
                                             </div>
                                         </div>
                                         <!-- Objectif -->
@@ -160,7 +160,7 @@
                                         </div>
                                         <div class="col-md-9">
                                             <div class="form-group">
-                                                <% out.print("<input type='text' class='form-control' disabled placeholder="+u.getObjectif()+">");%>
+                                                <% out.print("<input type='text' class='form-control' disabled value="+u.getObjectif()+">");%>
                                             </div>
                                         </div>
                                     </div>
@@ -176,7 +176,7 @@
                                         </div>
                                         <div class="col-md-9">
                                             <div class="form-group">
-                                                <% out.print("<input type='text' class='form-control' placeholder="+u.getPrenomu()+">");%>
+                                                <% out.print("<input type='text' class='form-control' name='prenom' value="+u.getPrenomu()+">");%>
                                             </div>
                                         </div>
                                         <!-- Date de naissance -->
@@ -187,7 +187,7 @@
                                         </div>
                                         <div class="col-md-7">
                                             <div class="form-group">
-                                                <% out.print("<input type='text' class='form-control' placeholder="+u.getDatenaissanceu()+">");%>
+                                                <% out.print("<input type='date' class='form-control' name='date' value="+u.getDatenaissanceu()+">");%>
                                             </div>
                                         </div>
                                         <!-- Mot de passe -->
@@ -198,14 +198,16 @@
                                         </div>
                                         <div class="col-md-8">
                                             <div class="form-group">
-                                                <% out.print("<input type='text' class='form-control' placeholder="+u.getPassword()+">");%>
+                                                <% out.print("<input type='text' class='form-control' name='password' value="+u.getPassword()+">");%>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-
+                      <!--测试用--></div>
+ <input type="submit" value="Enregistrer" class="btn btn-primary">
+</form><!--测试用-->
 
                         <!-- Profil sportif -->
                         <div id="fh5co-contact">
@@ -238,17 +240,7 @@
                                                 %>
                                             </div>
                                         </div>
-                                        <!-- Poids -->
-                                        <div class="col-md-3">
-                                            <div class="form-group">
-                                                <p>Poids :</p>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-9">
-                                            <div class="form-group">
-                                                <input type="text" class="form-control" placeholder="Poids">
-                                            </div>
-                                        </div>
+                   
                                         <!-- fc après 30 flexions complètes en 45 sec -->
                                         <div class="col-md-3">
                                             <div class="form-group">
@@ -257,7 +249,7 @@
                                         </div>
                                         <div class="col-md-9">
                                             <div class="form-group">
-                                                <input type="text" class="form-control" placeholder="fc après 30 flexions complètes en 45 sec">
+                                                <input type="text" class="form-control" name="fcflexions" placeholder="fc après 30 flexions complètes en 45 sec">
                                             </div>
                                         </div>
                                     </div>
@@ -268,12 +260,12 @@
                                         <!-- Fréquence cardiaque au repas -->
                                         <div class="col-md-7">
                                             <div class="form-group">
-                                                <p>Fréquence cardiaque au repas :</p>
+                                                <p>Fréquence cardiaque au repos :</p>
                                             </div>
                                         </div>
                                         <div class="col-md-5">
                                             <div class="form-group">
-                                                <input type="text" class="form-control" placeholder="fréquence">
+                                                <input type="text" class="form-control" name="fcrepos" placeholder="fréquence">
                                             </div>
                                         </div>
                                         <!-- Fréquence cardiaque cible -->
@@ -284,7 +276,7 @@
                                         </div>
                                         <div class="col-md-5">
                                             <div class="form-group">
-                                                <input type="text" class="form-control" placeholder="fréquence">
+                                                <input type="text" class="form-control" disabled placeholder="fréquence">
                                             </div>
                                         </div>
                                               <!--fc 1 min après exercice allongée -->
@@ -295,7 +287,7 @@
                                         </div>
                                         <div class="col-md-9">
                                             <div class="form-group">
-                                                <input type="text" class="form-control" placeholder="fc 1 min après exercice allongée">
+                                                <input type="text" class="form-control" name="fcallogee" placeholder="fc après 30 flexions complètes en 45 sec">
                                             </div>
                                         </div>
                                     </div>
@@ -330,7 +322,7 @@
                                         </div>
                                         <div class="col-md-5">
                                             <div class="form-group">
-                                                <input type="text" class="form-control" placeholder="Gainage">
+                                                <input type="text" class="form-control" name="gainage" placeholder="Gainage">
                                             </div>
                                         </div>
                                     </div>
@@ -348,12 +340,12 @@
                                         </div>
                                         <div class="col-md-5">
                                             <div class="form-group">
-                                                <input type="text" class="form-control" placeholder="jambe gauche devant">
+                                                <input type="text" class="form-control" name="jambegauche" placeholder="jambe gauche devant">
                                             </div>
                                         </div>
                                         <div class="col-md-5">
                                             <div class="form-group">
-                                                <input type="text" class="form-control" placeholder="jambe droite devant">
+                                                <input type="text" class="form-control" name="jambedroite" placeholder="jambe droite devant">
                                             </div>
                                         </div>
                                     </div>
@@ -371,7 +363,7 @@
                                         </div>
                                         <div class="col-md-5">
                                             <div class="form-group">
-                                                <input type="text" class="form-control" placeholder="Crunch">
+                                                <input type="text" class="form-control" name="crunch" placeholder="Crunch">
                                             </div>
                                         </div>
                                     </div>
@@ -394,7 +386,7 @@
                                         </div>
                                         <div class="col-md-5">
                                             <div class="form-group">
-                                                <input type="text" class="form-control" placeholder="1/2 pompes">
+                                                <input type="text" class="form-control" name="pompes" placeholder="1/2 pompes">
                                             </div>
                                         </div>
                                     </div>
@@ -412,7 +404,7 @@
                                         </div>
                                         <div class="col-md-5">
                                             <div class="form-group">
-                                                <input type="text" class="form-control" placeholder="1/2 squat">
+                                                <input type="text" class="form-control" name="squat" placeholder="1/2 squat">
                                             </div>
                                         </div>
                                     </div>
@@ -430,7 +422,7 @@
                                         </div>
                                         <div class="col-md-5">
                                             <div class="form-group">
-                                                <input type="text" class="form-control" placeholder="Dips">
+                                                <input type="text" class="form-control" name="dips" placeholder="Dips">
                                             </div>
                                         </div>
                                     </div>
@@ -438,13 +430,14 @@
                             </div>
                         </div>
 
-                        <!-- Mensuration cote gauche -->
+                        <!-- Mensuration -->
+                     <form action="profilsportif"><!--- 测试用-->
                         <div id="fh5co-contact">
                             <div class="container">
                                 <div class="row">
                                     <div class="col-md-8 col-md-offset-2">
                                         <div class="heading-section text-left animate-box">
-                                            <h3>Mensuration côté gauche</h3>
+                                            <h3>Mensuration</h3>
                                             <p>Remplissez que pour l'objectif minceur</p>
                                         </div>
                                     </div>
@@ -460,7 +453,7 @@
                                         </div>
                                         <div class="col-md-9">
                                             <div class="form-group">
-                                                <input type="text" class="form-control" placeholder="Bras">
+                                                <input type="text" name="bras" class="form-control" placeholder="Bras">
                                             </div>
                                         </div>
                                         <!-- Poitrine -->
@@ -471,7 +464,7 @@
                                         </div>
                                         <div class="col-md-9">
                                             <div class="form-group">
-                                                <input type="text" class="form-control" placeholder="Poitrine">
+                                                <input type="text" class="form-control" name="poitrine" placeholder="Poitrine">
                                             </div>
                                         </div>
                                         <!-- Taille -->
@@ -482,7 +475,7 @@
                                         </div>
                                         <div class="col-md-9">
                                             <div class="form-group">
-                                                <input type="text" class="form-control" placeholder="Taille">
+                                                <input type="text" class="form-control" name="taille" placeholder="Taille">
                                             </div>
                                         </div>
                                     </div>
@@ -498,7 +491,7 @@
                                         </div>
                                         <div class="col-md-9">
                                             <div class="form-group">
-                                                <input type="text" class="form-control" placeholder="Hanches">
+                                                <input type="text" class="form-control" name="hanches" placeholder="Hanches">
                                             </div>
                                         </div>
                                         <!-- Cuisses -->
@@ -509,7 +502,18 @@
                                         </div>
                                         <div class="col-md-9">
                                             <div class="form-group">
-                                                <input type="text" class="form-control" placeholder="Cuisses">
+                                                <input type="text" class="form-control" name="cuisses" placeholder="Cuisses">
+                                            </div>
+                                        </div>
+                                        <!-- Poids -->
+                                        <div class="col-md-3">
+                                            <div class="form-group">
+                                                <p>Poids :</p>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-9">
+                                            <div class="form-group">
+                                                <input type="text" class="form-control" name="poids" placeholder="Poids">
                                             </div>
                                         </div>
                                     </div>

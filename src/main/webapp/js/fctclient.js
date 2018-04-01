@@ -67,16 +67,24 @@ function l_prospects() {
 }
 
 /**
- * Cette méthode "Ajax" permet l'affichage des informations des prospects
+ * Cette méthode "Ajax" permet l'affichage des informations des clients
  */
-function l_informations_prospects() {
+function l_informations(value) {
     var xhr = getXMLHttpRequest();
-    var codeu = document.getElementById("lprospects").value;
+    var codeu = document.getElementById(value).value;
     xhr.onreadystatechange = function ()
     {
         // Si l'on a tout reçu et que la requête http s'est bien passée.
         if (xhr.readyState === 4 && xhr.status === 200) {
-            var informations = document.getElementById("linformations");
+            alert(value);
+            if ("lprospects"===value){
+                var informations = document.getElementById("linformationsprospects");
+            } else if ("lenattente"===value){
+                var informations = document.getElementById("linformationsattente");
+            } else if ("lvalides"===value) {
+                var informations = document.getElementById("linformationsvalides");
+            }
+            
             informations.innerHTML="";   
             var xml = xhr.responseXML;
             var users = xml.getElementsByTagName("CodeU");
@@ -205,4 +213,15 @@ function l_valides() {
     xhr.open("GET", "GestionValides", true);
     xhr.send(null);
 
+}
+
+/**
+ * Cette méthode "Ajax" permet de charger la gestion client
+ */
+function gestion_client() {
+
+    //l_prospects();
+    //l_enattente();
+    l_valides();
+    
 }
