@@ -38,6 +38,7 @@ public class EnattenteServlet extends HttpServlet {
 
         try {
             Bd.enAttente(codeu);
+            request.setAttribute("ChangementOK", "En Attente");
             RequestDispatcher rd = request.getRequestDispatcher("confirmationadmin.jsp");
             rd.forward(request, response);
         } catch (Exception e) {

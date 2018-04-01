@@ -38,6 +38,7 @@ public class ValideServlet extends HttpServlet {
 
         try {
             Bd.passageValide(codeu);
+            request.setAttribute("ChangementOK", "Validé");
             RequestDispatcher rd = request.getRequestDispatcher("confirmationadmin.jsp");
             rd.forward(request, response);
         } catch (Exception e) {
