@@ -60,7 +60,7 @@
             <%  
             ArrayList<Utilisateur> prospects = new ArrayList();
             ArrayList<Utilisateur> enattente = new ArrayList();
-            ArrayList<Utilisateur> abonnes = new ArrayList();
+            ArrayList<Utilisateur> valides = new ArrayList();
             if(request.getAttribute("listeProspects") != null) { 
                 prospects = (ArrayList<Utilisateur>) request.getAttribute("listeProspects");
             }
