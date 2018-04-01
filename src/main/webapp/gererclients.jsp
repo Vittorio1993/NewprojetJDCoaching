@@ -95,7 +95,7 @@
                                                             <select id="lprospects" style="color:black;" onclick="l_informations(this.id);">
                                                             <%
                                                                 for(Utilisateur u : prospects) {
-                                                                    out.println("<option>" + u.getNomu() + "--" + u.getPrenomu()+ "--" + u.getEmailu()+ "</option>");
+                                                                    out.println("<option value=" + u.getCodeu() + ">" + u.getNomu() + "--" + u.getPrenomu() + "--" + u.getEmailu() + "</option>");
                                                                 }
                                                             %>
                                                             </select>
@@ -108,7 +108,7 @@
                                                                 <select id="lenattente" style="color:black;" onclick="l_informations(this.id)">
                                                                 <%
                                                                     for(Utilisateur u : enattente) {
-                                                                        out.println("<option>" + u.getNomu() + "--" + u.getPrenomu()+ "--" + u.getEmailu()+ "</option>");
+                                                                        out.println("<option value=" + u.getCodeu() + ">" + u.getNomu() + "--" + u.getPrenomu() + "--" + u.getEmailu() + "</option>");
                                                                     }
                                                                 %>
                                                                 </select>
@@ -120,7 +120,7 @@
                                                                 <select id="lvalides" style="color:black;" onclick="l_informations(this.id)">
                                                                 <%
                                                                     for(Utilisateur u : valides) {
-                                                                        out.println("<option>" + u.getNomu() + "--" + u.getPrenomu()+ "--" + u.getEmailu()+ "</option>");
+                                                                        out.println("<option value=" + u.getCodeu() + ">" + u.getNomu() + "--" + u.getPrenomu() + "--" + u.getEmailu() + "</option>");
                                                                     }
                                                                 %>
                                                                 </select>
