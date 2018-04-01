@@ -76,7 +76,6 @@ function l_informations(value) {
     {
         // Si l'on a tout reçu et que la requête http s'est bien passée.
         if (xhr.readyState === 4 && xhr.status === 200) {
-            alert(value);
             if ("lprospects"===value){
                 var informations = document.getElementById("linformationsprospects");
             } else if ("lenattente"===value){
@@ -220,8 +219,8 @@ function l_valides() {
  */
 function gestion_client() {
 
-    //l_prospects();
-    //l_enattente();
+    l_prospects();
+    l_enattente();
     l_valides();
     
 }

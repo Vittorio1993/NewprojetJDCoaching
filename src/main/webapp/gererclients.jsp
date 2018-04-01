@@ -90,8 +90,19 @@
                                 <div class="container">
 						<div class="row">
 							<div>
-                                                            
+                                                            <div>
+                                                            <p>Liste des clients prospects :</p>
+                                                            <select id="lprospects" style="color:black;" onclick="l_informations(this.id)"><option>--</option></select>                                                     
+							</div>
                                                         <br>
+                                                        <div id="linformationsprospects" ></div>
+                                                        <br>
+                                                        <div>
+                                                            <p>Liste des clients en attente :</p>
+                                                            <select id="lenattente" style="color:black;" onclick="l_informations(this.id)"><option>--</option></select>                                                     
+							</div>
+                                                        <br>
+                                                        <div id="linformationsattente" ></div>
                                                         <div>
                                                             <p>Liste des clients validés :</p>
                                                             <select id="lvalides" style="color:black;" onclick="l_informations(this.id)"><option>--</option></select>                                                     
