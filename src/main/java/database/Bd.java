@@ -82,7 +82,7 @@ public class Bd {
             throw new Exception("Problème avec création du statement : "
                     + error.getMessage());
         }
-        String sqlsaisir = "insert into utilisateur(CODEU,NOMU,PRENOMU,DATEDENAISSANCEU,EMAILU,TELU,STATUTS,PASSWORD,TYPE) values('"
+        String sqlsaisir = "insert into utilisateur(CODEU,NOMU,PRENOMU,DATEDENAISSANCEU,EMAILU,TELU,STATUTS,PASSWORD,TYPE,OBJECTIF) values('"
                 + u.getCodeu()
                 + "','"
                 + u.getNomu()
@@ -100,6 +100,8 @@ public class Bd {
                 + u.getPassword()
                 + "','"
                 + u.getType()
+                + "','"
+                + u.getObjectif()
                 + "')";
         try {
             statement.executeUpdate(sqlsaisir);
