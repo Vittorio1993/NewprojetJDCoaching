@@ -7,20 +7,19 @@ package controleur;
 
 import database.Bd;
 import java.io.IOException;
-import java.util.ArrayList;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import model.Utilisateur;
 /**
  *
  * @author RHAW
  */
-@WebServlet(name = "ParametrageMail", urlPatterns = {"/ParametrageMail"})
-public class ParametrageMail extends HttpServlet {
+@WebServlet(name = "ParametrageMailAdmin",
+        urlPatterns = {"/ParametrageMailAdmin"})
+public class ParametrageMailAdmin extends HttpServlet {
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -35,48 +34,18 @@ public class ParametrageMail extends HttpServlet {
             throws ServletException, IOException {
         request.setCharacterEncoding("UTF-8");
         String mailadmin = request.getParameter("emailadmin");
-        String mailcoaching = request.getParameter("emailcoaching");
-        boolean changementMailadmin = false;
-        boolean changementMailcoach = false;
-        boolean error = false;
 
-        //Test sur les champs de mail et de password
-        if (mailadmin == null || mailadmin.length() == 0
-                || mailcoaching == null || mailcoaching.length() == 0) {
-            error = true;
-        }
-
-        //Renvoi page de paramétrage
-        if (error) {
-            request.setAttribute("emailadmin", mailadmin);
-            request.setAttribute("emailcoaching", mailcoaching);
-            if ("".equals(mailadmin)) {
-            request.setAttribute("erreur",
-                    "<p class=\"alert alert-danger\">Le mail admin doit être renseigné.</p>");
-            RequestDispatcher rd = request
-                        .getRequestDispatcher("parametragemail.jsp");
-            rd.forward(request, response);
-            } else if ("".equals(mailcoaching)) {
-                    request.setAttribute("erreur",
-                            "<p class=\"alert alert-danger\">Le mail coaching doit être renseigné.</p>");
-                    RequestDispatcher rd = request
-                                .getRequestDispatcher("parametragemail.jsp");
-                    rd.forward(request, response);
-            }
-        } else {
             try {
                 //Test Changement Mail
-                changementMailadmin = Bd.changementMailAdmin(mailadmin);
-                changementMailcoach = Bd.changementMailCoach(mailcoaching);
+                Bd.changementMailAdmin(mailadmin);
                 RequestDispatcher rd = request
-                        .getRequestDispatcher("parametragemail.jsp");
+                        .getRequestDispatcher("confirmationMailAdmin.jsp");
                 rd.forward(request, response);
             } catch (Exception e) {
                 RequestDispatcher rd = request
                         .getRequestDispatcher("parametragemail.jsp");
                 rd.forward(request, response);
             }
-        }
     }
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods.
     // Click on the + sign on the left to edit the code.">
@@ -117,6 +86,6 @@ public class ParametrageMail extends HttpServlet {
      */
     @Override
     public String getServletInfo() {
-        return "Paramétrage Mail";
+        return "Paramétrage Mail Admin";
     }
 }

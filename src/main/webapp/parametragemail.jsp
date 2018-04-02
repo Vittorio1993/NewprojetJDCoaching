@@ -59,16 +59,15 @@
         <body>
             <%    
             String mail = "";
-            if(session.getAttribute("mail") != null) { 
+            if(request.getAttribute("emailadmin") == null) { 
                 mail = (String) session.getAttribute("mail");
+            } else {
+                mail = (String) request.getAttribute("emailadmin");
+                session.setAttribute("mail",mail);
             }
             ArrayList<Utilisateur> coachs = new ArrayList();
             if(request.getAttribute("ListeCoachs") != null) { 
                 coachs = (ArrayList<Utilisateur>) request.getAttribute("ListeCoachs");
-            }
-
-            if(request.getAttribute("emailadmin") != null) { 
-                mail = (String) request.getAttribute("emailadmin");
             }
 
             for (Utilisateur utilisateur :Bd.getUtilisateurs()) {
@@ -108,24 +107,24 @@
 						<div class="row">
 							<div class="col-md-7">
                                                                 <br>
-                                                                Email Administrateur: <input type="email" id ="mailadmin" name="mailadmin" style="color:black;" value="<%=mail%>">
+                                                                Email Administrateur : <input type="email" id ="mailadmin" name="mailadmin" style="color:black;" value="<%=mail%>">
                                                                 <input class="btn btn-primary" type="submit" value="Changer" onclick="changement_mail_admin()">
                                                                 <br>
                                                                 <br>
                                                                 Informations du coach :
                                                                 <br>
-                                                                <div class="table-responsive">
-                                                                    <table class="table table-bordered">     
+                                                                <div class="table-responsive">                                                                     
                                                                         <%
-                                                                            out.println("<tr><td>Nom</td><td>Prénom</td><td>Adresse e-mail</td><td>Nouvelle adresse</td></tr>");
+                                                                            out.println("<table class='table table-bordered'>");
+                                                                            out.println("<tr><td>Nom</td><td>Prénom</td><td>Adresse e-mail</td><td>Nouvelle adresse</td><td>Option</td></tr>");
                                                                             for(Utilisateur u : coachs) {
                                                                                 out.println("<tr><td>" + u.getNomu() + "</td><td>" + u.getPrenomu()+ "</td><td>" + u.getEmailu()+ "</td>");
-                                                                                out.println("<td><input type=\"email\" name=\"mailcoaching\" style=\"color:black;\" value="+ u.getEmailu() +"></td>");
+                                                                                out.println("<td><input type=\"email\" id =\"mailcoaching\" name=\"mailcoaching\" style=\"color:black;\" value="+ u.getEmailu() +"></td>");                                                                    
+                                                                                out.println("<td><input class=\"btn btn-primary\" type=\"submit\" value=\"Changer\" onclick=\"changement_mail_coach()\"></td>");
                                                                                 out.println("</tr>");
-                                                                                out.println("<input class=\"btn btn-primary\" type=\"submit\" value=\"Changer\" onclick=\"changement_mail_coach()\">");
                                                                             }
+                                                                            out.println("</table>");
                                                                         %>
-                                                                    </table>
                                                                 </div>
                                                                 <br>        
                                                                 <span><a href="pageadmin.jsp">Retour à la page d'administration</a></span>

@@ -1,5 +1,5 @@
 <%-- 
-    Document   : confirmationadmin.jsp
+    Document   : confirmationMailAdmin.jsp
     Created on : 1 avr. 2018, 21:22:54
     Author     : RHAW
 --%>
@@ -53,7 +53,7 @@
             <!--[if lt IE 9]>
             <script src="js/respond.min.js"></script>
             <![endif]-->
-            <title>Confirmation Changement Statut</title>
+            <title>Confirmation Changement Mail Admin</title>
         </head>
         <body>
             <div id="fh5co-wrapper">
@@ -82,11 +82,12 @@
                         </div>
 			<div class="fh5co-contact">
                             <div class="desc animate-box">
+                            <div class="container">
                                 <div class="row">
                                     <div class="col-md-8 col-md-offset-2 col-sm-12 col-sm-offset-0 col-xs-12 col-xs-offset-0 text-center fh5co-table">
                                         <div class="fh5co-intro fh5co-table-cell animate-box">
-                                            <h1>Le changement de statut du client a été pris en compte.</h1>
-                                            <span><a href="GestionClient">Retour à la gestion des clients</a></span>
+                                            <h1>Le changement de d'adresse mail administrateur a été pris en compte.</h1>
+                                            <span><a href="pageadmin.jsp">Retour à la page d'administration</a></span>
                                             </div>
                                     </div>
                                 </div>
@@ -94,7 +95,8 @@
                         </div>
                     </div>
                 </div>
-            </div>                        
+            </div>
+        </div>         
         <script src="js/jquery.min.js"></script>
 	<!-- jQuery Easing -->
 	<script src="js/jquery.easing.1.3.js"></script>

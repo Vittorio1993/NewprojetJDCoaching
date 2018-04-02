@@ -348,22 +348,15 @@ public class Bd {
                 + "' "
                 + "WHERE TYPE='admin'";
 
-        try {
-            Statement st = cx.createStatement();
-            /* Execution de la requête */
             try {
-                st.executeUpdate(sqlupdateadmin);
+                statement.executeUpdate(sqlupdateadmin);
                 requestOK = true;
-                st.close();
+                statement.close();
                 cx.close();
             } catch (SQLException ex) {
                 System.out.println("Erreur execution requête "
                         + ex.getMessage());
             }
-        } catch (SQLException ex) {
-            System.out.println("Erreur de SQL statement "
-                    + ex.getMessage());
-        }
         return requestOK;
     }
 
@@ -402,22 +395,16 @@ public class Bd {
                 + "' "
                 + "WHERE TYPE='coach'";
 
-        try {
-            Statement st = cx.createStatement();
             /* Execution de la requête */
             try {
-                st.executeUpdate(sqlupdateadmin);
+                statement.executeUpdate(sqlupdateadmin);
                 requestOK = true;
-                st.close();
+                statement.close();
                 cx.close();
             } catch (SQLException ex) {
                 System.out.println("Erreur execution requête "
                         + ex.getMessage());
             }
-        } catch (SQLException ex) {
-            System.out.println("Erreur de SQL statement "
-                    + ex.getMessage());
-        }
         return requestOK;
     }
 
@@ -908,6 +895,6 @@ public static String[] getInformations(final String codeu)
 /*public static void main(String[] args)
         throws ClassNotFoundException, SQLException, Exception {
         
-        Bd.changementMailCoach("coach@coach.c");
+        Bd.changementMailCoach("coach@coach.com");
 }*/
 }

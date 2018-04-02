@@ -129,12 +129,33 @@ function changement_mail_admin() {
         // Si l'on a tout reçu et que la requête http s'est bien passée.
         if (xhr.readyState === 4 && xhr.status === 200)
         {
-            //window.location.href = "parametragemail.jsp";
+            window.location.href = "confirmationMailAdmin.jsp";
         };
-        
+
     };
     // Requête au serveur avec les paramètres éventuels.
-    xhr.open("GET", "ParametrageMail?emailadmin=" + emailadmin, true);
+    xhr.open("GET", "ParametrageMailAdmin?emailadmin=" + emailadmin, true);
+    xhr.send(null);
+
+}
+
+/**
+ * Méthode "Ajax" permettant de changer le mail du coach
+ */
+function changement_mail_coach() {
+    var xhr = getXMLHttpRequest();
+    var emailcoach = document.getElementById("mailcoaching").value;
+    xhr.onreadystatechange = function ()
+    {
+        // Si l'on a tout reçu et que la requête http s'est bien passée.
+        if (xhr.readyState === 4 && xhr.status === 200)
+        {
+            window.location.href = "confirmationMailCoach.jsp";
+        };
+
+    };
+    // Requête au serveur avec les paramètres éventuels.
+    xhr.open("GET", "ParametrageMailCoach?emailcoach=" + emailcoach, true);
     xhr.send(null);
 
 }

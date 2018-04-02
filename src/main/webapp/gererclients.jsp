@@ -151,9 +151,9 @@
                                                 <%
                                                     for(Utilisateur u : valides) {
                                                         if("Validé".equals(u.getStatus())) {
-                                                            out.println("<option value=" + u.getCodeu() + " style=\"background-color:red;\">" + u.getNomu() + "--" + u.getPrenomu() + "--" + u.getEmailu() + "</option>");
+                                                            out.println("<option value=" + u.getCodeu() + " style=\"background-color: green;\">" + u.getNomu() + "--" + u.getPrenomu() + "--" + u.getEmailu() + "</option>");
                                                         } else {
-                                                            out.println("<option value=" + u.getCodeu() + " style=\"background-color:green;\">" + u.getNomu() + "--" + u.getPrenomu() + "--" + u.getEmailu() + "</option>");
+                                                            out.println("<option value=" + u.getCodeu() + " style=\"background-color: grey;\">" + u.getNomu() + "--" + u.getPrenomu() + "--" + u.getEmailu() + "</option>");
                                                         }
                                                     }
                                                 %>
