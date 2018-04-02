@@ -154,6 +154,51 @@ public class Bd {
     }
 
     /**
+     * chercher le code d'exercise
+     *
+     * @param nome nom d'exercises
+     * @throws Exception Exception
+     */
+    public static int cherchecodeexercise(final String nome) throws Exception {
+        int codee = 0;
+
+        if (Bd.cx == null) {
+            Bd.connexion();
+        }
+        // Statement to handle query
+        Statement statement;
+        //Ouverture de la connexion
+        try {
+            cx = DriverManager.getConnection(url);
+        } catch (SQLException ex) {
+            System.out.println("Erreur ouverture connexion" + ex.getMessage());
+        }
+        try {
+            statement = cx.createStatement();
+        } catch (SQLException error) {
+            throw new Exception("Problème avec création du statement : "
+                    + error.getMessage());
+        }
+
+        String sqlcode = "SELECT CODEE " + "FROM exercice " + "WHERE CODEU='" + nome + "'";
+        try {
+            ResultSet rs = statement.executeQuery(sqlcode);
+            while (rs.next()) {
+                codee = rs.getInt("CODEE");
+
+            }
+            rs.close();
+            statement.close();
+            cx.close();
+        } catch (SQLException ex) {
+            System.out.println("Problème avec récupération de la requête : "
+                    + ex.getMessage());
+        }
+        return codee;
+
+    }
+
+    /**
      * mise à jour un utilisateur.
      *
      * @param u utilisateur
@@ -513,9 +558,9 @@ public class Bd {
                 /* Adding messages to the ArrayList */
                 while (rs.next()) {
                     info[0] = rs.getString("PASSWORD");
-                    System.out.println(info[0]);
+                    //System.out.println(info[0]);
                     info[1] = rs.getString("TYPE");
-                    System.out.println(info[1]);
+                    //System.out.println(info[1]);
                 }
                 rs.close();
                 st.close();
