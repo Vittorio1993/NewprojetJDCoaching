@@ -117,3 +117,24 @@ function l_valider(value) {
     xhr.send(null);
 
 }
+
+/**
+ * Méthode "Ajax" permettant de changer le mail administrateur
+ */
+function changement_mail_admin() {
+    var xhr = getXMLHttpRequest();
+    var emailadmin = document.getElementById("mailadmin").value;
+    xhr.onreadystatechange = function ()
+    {
+        // Si l'on a tout reçu et que la requête http s'est bien passée.
+        if (xhr.readyState === 4 && xhr.status === 200)
+        {
+            //window.location.href = "parametragemail.jsp";
+        };
+        
+    };
+    // Requête au serveur avec les paramètres éventuels.
+    xhr.open("GET", "ParametrageMail?emailadmin=" + emailadmin, true);
+    xhr.send(null);
+
+}

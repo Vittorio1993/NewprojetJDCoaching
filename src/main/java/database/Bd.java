@@ -343,7 +343,7 @@ public class Bd {
         boolean requestOK = false;
 
         /* Requête */
-        String sqlupdateadmin = "UPDATE UTILISATEUR SET EMAILU = '"
+        String sqlupdateadmin = "UPDATE UTILISATEUR SET EMAILU ='"
                 + newmailadmin
                 + "' "
                 + "WHERE TYPE='admin'";
@@ -539,7 +539,7 @@ public class Bd {
         return requestOK;
     }
 
-    /**
+/**
  * Passage à un statut validé.
  * @param codeu code utilisateur
  * @return boolean
@@ -590,6 +590,166 @@ public class Bd {
                     + ex.getMessage());
         }
         return requestOK;
+    }
+
+    /**
+     * Ajout d'informations sur un utilisateur.
+     * @param codeu code utilisateur
+     * @param info informations personnelles
+     * @return Boolean
+     * @throws Exception Exception
+     */
+    public static boolean addInformation(final String codeu, final String info)
+            throws Exception {
+
+        if (Bd.cx == null) {
+            Bd.connexion();
+        }
+        // Statement pour effectuer la requête
+        Statement statement;
+        //Ouverture de la connexion
+        try {
+            cx = DriverManager.getConnection(url);
+        } catch (SQLException ex) {
+            System.out.println("Erreur ouverture connexion" + ex.getMessage());
+        }
+        try {
+            statement = cx.createStatement();
+        } catch (SQLException error) {
+            throw new Exception("Problème avec création du statement : "
+                    + error.getMessage());
+        }
+        boolean requestOK = false;
+
+        /* Requête */
+        String sqlajoutinfopersos = "INSERT INTO ENVOYER(CODEU, CODEU_1, DATEENVOIE, CONTENU, ETAT) values ()";
+
+        try {
+            Statement st = cx.createStatement();
+            /* Execution de la requête */
+            try {
+                st.executeQuery(sqlajoutinfopersos);
+                requestOK = true;
+                st.close();
+                cx.close();
+            } catch (SQLException ex) {
+                System.out.println("Erreur execution requête "
+                        + ex.getMessage());
+            }
+        } catch (SQLException ex) {
+            System.out.println("Erreur de SQL statement "
+                    + ex.getMessage());
+        }
+        return requestOK;
+    }
+    /**
+     * Suppression d'informations personnelles sur un utilisateur.
+     * @param codeu code utilisateur
+     * @param info infos personnelles
+     * @return Boolean
+     * @throws Exception Exception
+     */
+    public static boolean supprimerInformation(final String codeu, final String info)
+            throws Exception {
+
+        if (Bd.cx == null) {
+            Bd.connexion();
+        }
+        // Statement pour effectuer la requête
+        Statement statement;
+        //Ouverture de la connexion
+        try {
+            cx = DriverManager.getConnection(url);
+        } catch (SQLException ex) {
+            System.out.println("Erreur ouverture connexion" + ex.getMessage());
+        }
+        try {
+            statement = cx.createStatement();
+        } catch (SQLException error) {
+            throw new Exception("Problème avec création du statement : "
+                    + error.getMessage());
+        }
+        boolean requestOK = false;
+
+        /* Requête */
+        String sqlajoutinfopersos = "INSERT INTO ENVOYER(CODEU, CODEU_1, DATEENVOIE, CONTENU, ETAT) values ()";
+
+        try {
+            Statement st = cx.createStatement();
+            /* Execution de la requête */
+            try {
+                st.executeQuery(sqlajoutinfopersos);
+                requestOK = true;
+                st.close();
+                cx.close();
+            } catch (SQLException ex) {
+                System.out.println("Erreur execution requête "
+                        + ex.getMessage());
+            }
+        } catch (SQLException ex) {
+            System.out.println("Erreur de SQL statement "
+                    + ex.getMessage());
+        }
+        return requestOK;
+    }
+
+    /**
+     * Retourne toutes les informations d'un utilisateur.
+     * @param codeu code utilisateur
+     * @return ArrayList
+     * @throws Exception Zxception
+     */
+public static String[] getInformations(final String codeu)
+            throws Exception {
+
+        if (Bd.cx == null) {
+            Bd.connexion();
+        }
+
+       String[] infospersos = new String[2];
+
+        // Statement pour effectuer la requête
+        Statement statement;
+        //Ouverture de la connexion
+        try {
+            cx = DriverManager.getConnection(url);
+        } catch (SQLException ex) {
+            System.out.println("Erreur ouverture connexion" + ex.getMessage());
+        }
+        try {
+            statement = cx.createStatement();
+        } catch (SQLException error) {
+            throw new Exception("Problème avec création du statement : "
+                    + error.getMessage());
+        }
+
+        /* Requête */
+        String sqlgetinfopersos =
+                    "SELECT * FROM ENVOYER WHERE CODEU='"
+                    + codeu
+                    + "' "
+                    + "AND ETAT=null";
+
+        try {
+
+            Statement st = cx.createStatement();
+            /* Execution de la requête */
+            try {
+                ResultSet rs = st.executeQuery(sqlgetinfopersos);
+                /* Adding messages to the String[] */
+                while (rs.next()) {
+                    infospersos[0] = rs.getString("CONTENU");
+                    infospersos[1] = rs.getString("DATEENVOIE");
+                }
+            } catch (SQLException ex) {
+                System.out.println("Erreur execution requête "
+                        + ex.getMessage());
+            }
+        } catch (SQLException ex) {
+            System.out.println("Erreur de SQL statement "
+                    + ex.getMessage());
+        }
+        return infospersos;
     }
 
     /*
@@ -748,9 +908,6 @@ public class Bd {
 /*public static void main(String[] args)
         throws ClassNotFoundException, SQLException, Exception {
         
-        ArrayList<Utilisateur> admin = new ArrayList();
-        admin = Bd.getUtilisateurs();
-        for(Utilisateur u : admin)
-        System.out.println(u.getCodeu());
+        Bd.changementMailCoach("coach@coach.c");
 }*/
 }

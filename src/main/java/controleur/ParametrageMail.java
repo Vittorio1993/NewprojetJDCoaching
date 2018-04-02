@@ -34,8 +34,8 @@ public class ParametrageMail extends HttpServlet {
             final HttpServletResponse response)
             throws ServletException, IOException {
         request.setCharacterEncoding("UTF-8");
-        String mailadmin = request.getParameter("mailadmin");
-        String mailcoaching = request.getParameter("coaching");
+        String mailadmin = request.getParameter("emailadmin");
+        String mailcoaching = request.getParameter("emailcoaching");
         boolean changementMailadmin = false;
         boolean changementMailcoach = false;
         boolean error = false;
@@ -48,8 +48,8 @@ public class ParametrageMail extends HttpServlet {
 
         //Renvoi page de paramétrage
         if (error) {
-            request.setAttribute("mailadmin", mailadmin);
-            request.setAttribute("mailcoaching", mailcoaching);
+            request.setAttribute("emailadmin", mailadmin);
+            request.setAttribute("emailcoaching", mailcoaching);
             if ("".equals(mailadmin)) {
             request.setAttribute("erreur",
                     "<p class=\"alert alert-danger\">Le mail admin doit être renseigné.</p>");
@@ -65,16 +65,12 @@ public class ParametrageMail extends HttpServlet {
             }
         } else {
             try {
-                //Test Changement Mail Admin
+                //Test Changement Mail
                 changementMailadmin = Bd.changementMailAdmin(mailadmin);
                 changementMailcoach = Bd.changementMailCoach(mailcoaching);
-                if (changementMailadmin || changementMailcoach) {
-                    request.setAttribute("changementMail",
-                            "<p>Le changement d'adresse mail a été effectué.</p>");
-                    RequestDispatcher rd = request
-                            .getRequestDispatcher("parametragemail.jsp");
-                    rd.forward(request, response);
-                }
+                RequestDispatcher rd = request
+                        .getRequestDispatcher("parametragemail.jsp");
+                rd.forward(request, response);
             } catch (Exception e) {
                 RequestDispatcher rd = request
                         .getRequestDispatcher("parametragemail.jsp");

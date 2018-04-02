@@ -66,18 +66,15 @@
             if(request.getAttribute("ListeCoachs") != null) { 
                 coachs = (ArrayList<Utilisateur>) request.getAttribute("ListeCoachs");
             }
-            
-            // Ajout de la liste des coachs
-            try {
-                for (Utilisateur utilisateur :Bd.getUtilisateurs()) {
-                    if ("coach".equals(utilisateur.getType())) {
-                    coachs.add(utilisateur);
-                    }
+
+            if(request.getAttribute("emailadmin") != null) { 
+                mail = (String) request.getAttribute("emailadmin");
+            }
+
+            for (Utilisateur utilisateur :Bd.getUtilisateurs()) {
+                if ("coach".equals(utilisateur.getType())) {
+                coachs.add(utilisateur);
                 }
-            } catch (Exception e) {
-                RequestDispatcher rd = request
-                        .getRequestDispatcher("parametragemail.jsp");
-                rd.forward(request, response);
             }
             %>
             <div id="fh5co-wrapper">
@@ -111,27 +108,25 @@
 						<div class="row">
 							<div class="col-md-7">
                                                                 <br>
-								<form method="post" action="ParametrageMail">
-                                                                    Email Administrateur: <input type="email" name="mailadmin" style="color:black;" value="<%=mail%>">
-                                                                    <br>
-                                                                    <br>
-                                                                    Informations du coach :
-                                                                    <br>
-                                                                    <div class="table-responsive">
-                                                                        <table class="table table-bordered">     
-                                                                            <%
-                                                                                out.println("<tr><td>Nom</td><td>Prénom</td><td>Adresse e-mail</td><td>Nouvelle adresse</td></tr>");
-                                                                                for(Utilisateur u : coachs) {
-                                                                                    out.println("<tr><td>" + u.getNomu() + "</td><td>" + u.getPrenomu()+ "</td><td>" + u.getEmailu()+ "</td>");
-                                                                                    out.println("<td><input type=\"email\" name=\"mailcoaching\" style=\"color:black;\" value="+ u.getEmailu() +"></td>");
-                                                                                    out.println("</tr>");
-                                                                                }
-                                                                            %>
-                                                                        </table>
-                                                                    </div>
-                                                                    <br>
-                                                                    <input class="btn btn-primary" type="submit" value="Changer">
-                                                                </form>
+                                                                Email Administrateur: <input type="email" id ="mailadmin" name="mailadmin" style="color:black;" value="<%=mail%>">
+                                                                <input class="btn btn-primary" type="submit" value="Changer" onclick="changement_mail_admin()">
+                                                                <br>
+                                                                <br>
+                                                                Informations du coach :
+                                                                <br>
+                                                                <div class="table-responsive">
+                                                                    <table class="table table-bordered">     
+                                                                        <%
+                                                                            out.println("<tr><td>Nom</td><td>Prénom</td><td>Adresse e-mail</td><td>Nouvelle adresse</td></tr>");
+                                                                            for(Utilisateur u : coachs) {
+                                                                                out.println("<tr><td>" + u.getNomu() + "</td><td>" + u.getPrenomu()+ "</td><td>" + u.getEmailu()+ "</td>");
+                                                                                out.println("<td><input type=\"email\" name=\"mailcoaching\" style=\"color:black;\" value="+ u.getEmailu() +"></td>");
+                                                                                out.println("</tr>");
+                                                                                out.println("<input class=\"btn btn-primary\" type=\"submit\" value=\"Changer\" onclick=\"changement_mail_coach()\">");
+                                                                            }
+                                                                        %>
+                                                                    </table>
+                                                                </div>
                                                                 <br>        
                                                                 <span><a href="pageadmin.jsp">Retour à la page d'administration</a></span>
 							</div>
@@ -156,7 +151,8 @@
 	<script src="js/superfish.js"></script>
 
 	<!-- Main JS (Do not remove) -->
-	<script src="js/main.js"></script>  
+	<script src="js/main.js"></script>
+        <script type="text/JavaScript" src="/js/fctclient.js"></script>
         </body>
     </html>
 </f:view>
