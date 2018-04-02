@@ -17,6 +17,7 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import model.Bilan;
 
 /**
  *
@@ -157,6 +158,7 @@ public class Bd {
      * chercher le code d'exercise
      *
      * @param nome nom d'exercises
+     * @return
      * @throws Exception Exception
      */
     public static int cherchecodeexercise(final String nome) throws Exception {
@@ -196,6 +198,52 @@ public class Bd {
         }
         return codee;
 
+    }
+
+    /**
+     * chercher le code d'exercise
+     *
+     * @param bi
+     * @throws Exception Exception
+     */
+    public static void insererBilan(Bilan bi) throws Exception {
+
+        if (Bd.cx == null) {
+            Bd.connexion();
+        }
+        // Statement to handle query
+        Statement statement;
+        //Ouverture de la connexion
+        try {
+            cx = DriverManager.getConnection(url);
+        } catch (SQLException ex) {
+            System.out.println("Erreur ouverture connexion" + ex.getMessage());
+        }
+        try {
+            statement = cx.createStatement();
+        } catch (SQLException error) {
+            throw new Exception("Problème avec création du statement : "
+                    + error.getMessage());
+        }
+
+        String sqlbilan = "insert into bilan values (" + bi.getCODEB() + "," 
+                + bi.getCODEU() + ","
+                + bi.getCODEP() + ",'"
+                + bi.getLIBELLEB() + "','"
+                + bi.getNUMSEMAINEB() + "','"
+                + bi.getCOMMENTAIRECOACHB() + "','"
+                + bi.getFCALLONGEE() + "','"
+                + bi.getFCFLEXIONS() + "','"
+                + bi.getFCREPOS() + "',"
+                + bi.getDateB() + ")";
+        try {
+            statement.executeUpdate(sqlbilan);
+            statement.close();
+            cx.close();
+        } catch (SQLException ex) {
+            System.out.println("Problème avec récupération de la requête : "
+                    + ex.getMessage());
+        }
     }
 
     /**
@@ -530,7 +578,7 @@ public class Bd {
     *pour vérifier le mot de passe correspondant à mail et récupérer statuts
      */
     public static String[] consulterUtilisateur(String mail) throws Exception {
-        String[] info = new String[2];
+        String[] info = new String[3];
         if (Bd.cx == null) {
             Bd.connexion();
         }
@@ -549,7 +597,7 @@ public class Bd {
                     + error.getMessage());
         }
 
-        String sqlpassword = "select PASSWORD,TYPE from utilisateur where EMAILU ='" + mail + "'";
+        String sqlpassword = "select PASSWORD,TYPE, CODEU from utilisateur where EMAILU ='" + mail + "'";
         try {
             Statement st = cx.createStatement();
             /* Execution de la requête */
@@ -560,6 +608,7 @@ public class Bd {
                     info[0] = rs.getString("PASSWORD");
                     //System.out.println(info[0]);
                     info[1] = rs.getString("TYPE");
+                    info[2] = String.valueOf(rs.getInt("CODEU"));
                     //System.out.println(info[1]);
                 }
                 rs.close();

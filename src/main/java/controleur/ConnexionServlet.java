@@ -41,6 +41,7 @@ public class ConnexionServlet extends HttpServlet {
             //System.out.println(b.consulterUtilisateur(mail));
             String[] pa=null;
             pa = b.consulterUtilisateur(mail);
+            requete.getSession().setAttribute("codeu", pa[2]);
             //int a = 1;
             if (password.equals(pa[0])&&pa[1].equals("client")) {
                 out.println("<message>yes</message>");
