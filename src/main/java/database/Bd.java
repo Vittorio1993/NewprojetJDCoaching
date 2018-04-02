@@ -256,7 +256,7 @@ public class Bd {
      *
      * @param codeu Code utilisateur
      * @return un utilisateur
-     * @throws Exception
+     * @throws Exception Exception
      */
     public static Utilisateur getUser(final String codeu)
             throws Exception {
@@ -367,6 +367,12 @@ public class Bd {
         return requestOK;
     }
 
+    /**
+     * Changement de mail de coaching.
+     * @param newmailcoach
+     * @return booléen
+     * @throws Exception Exception
+     */
     public static boolean changementMailCoach(final String newmailcoach)
             throws Exception {
 

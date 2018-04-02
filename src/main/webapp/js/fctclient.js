@@ -53,7 +53,7 @@ function l_informations(value) {
             var xml = xhr.responseXML;
             var users = xml.getElementsByTagName("CodeU");
                 for (var i = 0; i < users.length; i++) {                   
-                    informations.innerHTML="<table class='table table-bordered'><tr><td>Nom</td><td>Prénom</td><td>Adresse e-mail</td><td>Numéro de téléphone</td><td>Date de naissance</td><td>Objectif</td></tr><tr>"                                    
+                    informations.innerHTML="<table class='table table-bordered' style='color:black;'><tr><td>Nom</td><td>Prénom</td><td>Adresse e-mail</td><td>Numéro de téléphone</td><td>Date de naissance</td><td>Objectif</td></tr><tr>"                                    
                             + "<td>" + xhr.responseXML.getElementsByTagName("NomU")[i].firstChild.nodeValue
                             + "</td><td>" + xhr.responseXML.getElementsByTagName("PrenomU")[i].firstChild.nodeValue
                             + "</td><td>" + xhr.responseXML.getElementsByTagName("MailU")[i].firstChild.nodeValue

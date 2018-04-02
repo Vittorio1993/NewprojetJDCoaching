@@ -67,32 +67,48 @@
 		<div id="fh5co-header">
 			<header id="fh5co-header-section">
 				<div class="container">
-					<div class="nav-header">
-						<h1 id="fh5co-logo"><a href="pageadmin.jsp">JD<span>Coaching</span></a></h1>
-					</div>
-				</div>
+                            <div class="nav-header">
+                                <a href="#" class="js-fh5co-nav-toggle fh5co-nav-toggle"><i></i></a>
+                                <h1 id="fh5co-logo"><a href="index.html">JD<span>Coaching</span></a></h1>
+                                <!-- START #fh5co-menu-wrap -->
+                                <nav id="fh5co-menu-wrap" role="navigation">
+                                    <ul class="sf-menu" id="fh5co-primary-menu">
+                                        <li><a class="btn btn-primary" href="parametragemail.jsp">Paramétrage des mails</a></li>
+                                        <li><a class="btn btn-primary" href="GestionClient">Gérer Clients</a></li>
+                                    </ul>
+                                </nav>
+                            </div>
+                        </div>
 			</header>		
 		</div>
 		<!-- end:fh5co-header -->
 		<div class="fh5co-hero">
-			<div class="fh5co-overlay"></div>
-			<div class="fh5co-cover" data-stellar-background-ratio="0.5" style="background-image: url(images/home-image.jpg);">
-				<div class="desc animate-box">
+                        <div class="fh5co-parallax" style="background-image: url(images/home-image-3.jpg);" data-stellar-background-ratio="0.5">
+                            <div class="overlay"></div>
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col-md-8 col-md-offset-2 col-sm-12 col-sm-offset-0 col-xs-12 col-xs-offset-0 text-center fh5co-table">
+                                        <div class="fh5co-intro fh5co-table-cell animate-box">
+                                            <h1 class="text-center">Administration</h1>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+			<div class="fh5co-contact">
+                            <div class="desc animate-box">
 					<div class="container">
 						<div class="row">
 							<div class="col-md-7">
-								<h2>Administration</h2>
-                                                                <br>
-                                                                <span><a><%=changementmail%></a></span>
-								<span><a class="btn btn-primary" href="parametragemail.jsp">Paramétrage des mails</a></span>
-                                                                <span><a class="btn btn-primary" href="GestionClient">Gérer Clients</a></span>
-                                                                <span><a href="pageadmin.jsp">Retour à la page d'accueil</a></span>
+                                                            <span><a><%=changementmail%></a></span>
 							</div>
 						</div>
 					</div>
 				</div>
 			</div>
 		</div>
+            </div>
+        </div>
         <script src="js/jquery.min.js"></script>
 	<!-- jQuery Easing -->
 	<script src="js/jquery.easing.1.3.js"></script>

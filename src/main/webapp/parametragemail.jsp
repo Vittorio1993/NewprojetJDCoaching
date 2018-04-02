@@ -93,13 +93,23 @@
 		</div>
 		<!-- end:fh5co-header -->
 		<div class="fh5co-hero">
-			<div class="fh5co-overlay"></div>
-			<div class="fh5co-cover" data-stellar-background-ratio="0.5" style="background-image: url(images/home-image.jpg);">
-				<div class="desc animate-box">
+                        <div class="fh5co-parallax" style="background-image: url(images/home-image-3.jpg);" data-stellar-background-ratio="0.5">
+                            <div class="overlay"></div>
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col-md-8 col-md-offset-2 col-sm-12 col-sm-offset-0 col-xs-12 col-xs-offset-0 text-center fh5co-table">
+                                        <div class="fh5co-intro fh5co-table-cell animate-box">
+                                            <h1 class="text-center">Paramétrage des adresses mail</h1>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+			<div class="fh5co-contact">
+                            <div class="desc animate-box">
 					<div class="container">
 						<div class="row">
 							<div class="col-md-7">
-								<h2>Paramétrage des adresses mail</h2>     
                                                                 <br>
 								<form method="post" action="ParametrageMail">
                                                                     Email Administrateur: <input type="email" name="mailadmin" style="color:black;" value="<%=mail%>">
@@ -130,6 +140,8 @@
 				</div>
 			</div>
 		</div>
+            </div>
+         </div>
         <script src="js/jquery.min.js"></script>
 	<!-- jQuery Easing -->
 	<script src="js/jquery.easing.1.3.js"></script>

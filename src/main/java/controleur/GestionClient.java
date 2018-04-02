@@ -40,9 +40,13 @@ public class GestionClient extends HttpServlet {
         ArrayList<Utilisateur> prospects = new ArrayList();
         ArrayList<Utilisateur> enattente = new ArrayList();
         ArrayList<Utilisateur> valides = new ArrayList();
+        int codemax = 0;
         try {
             for (Utilisateur utilisateur :Bd.getUtilisateurs()) {
                 users.add(utilisateur);
+                if (utilisateur.getCodeu() > codemax) {
+                    codemax = utilisateur.getCodeu();
+                }
             }
             for (Utilisateur utilisateur :users) {
                 // Test si non admin ou coach
@@ -62,6 +66,7 @@ public class GestionClient extends HttpServlet {
                 request.setAttribute("listeValides", valides);
                 request.setAttribute("listeProspects", prospects);
                 request.setAttribute("listeEnAttente", enattente);
+                request.setAttribute("LastUser", codemax);
                 RequestDispatcher rd = request
                         .getRequestDispatcher("gererclients.jsp");
                 rd.forward(request, response);
