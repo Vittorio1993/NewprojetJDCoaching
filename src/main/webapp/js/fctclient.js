@@ -72,6 +72,44 @@ function l_informations(value) {
 }
 
 /**
+ * Cette méthode "Ajax" permet l'affichage des commentaires sur les clients
+ */
+function l_commentaires(value) {
+    var xhr = getXMLHttpRequest();
+    var codeu = document.getElementById(value).value;
+    xhr.onreadystatechange = function ()
+    {
+        // Si l'on a tout reçu et que la requête http s'est bien passée.
+        if (xhr.readyState === 4 && xhr.status === 200) {
+            if ("lprospects"===value){
+                var commentaires = document.getElementById("linformationspersonnellesprospects");
+            } else if ("lenattente"===value){
+                var commentaires = document.getElementById("linformationspersonnellesattente");
+            } else if ("lvalides"===value) {
+                var commentaires = document.getElementById("linformationspersonnellesvalides");
+            }
+            
+            commentaires.innerHTML="";   
+            var xml = xhr.responseXML;
+            var coms = xml.getElementsByTagName("CodeCom");
+                for (var i = 0; i < coms.length; i++) {                   
+                    commentaires.innerHTML="<table class='table table-bordered' style='color:black;'><tr><td>Contenu du commentaire</td><td>Date</td></tr>"
+                            + "<tr>"
+                            + "<td>" + xhr.responseXML.getElementsByTagName("ContenuCom")[i].firstChild.nodeValue
+                            + "</td><td>" + xhr.responseXML.getElementsByTagName("DateCom")[i].firstChild.nodeValue
+                            + "<tr>"
+                            + "</table>";
+                }
+        }
+    };
+
+    // Requête au serveur avec les paramètres éventuels.
+    xhr.open("GET", "CommentairesClient?codeu=" + codeu, true);
+    xhr.send(null);
+
+}
+
+/**
  * Cette méthode "Ajax" permet de passer un prospect en attente
  */
 function l_enattente() {
@@ -158,4 +196,13 @@ function changement_mail_coach() {
     xhr.open("GET", "ParametrageMailCoach?emailcoach=" + emailcoach, true);
     xhr.send(null);
 
+}
+
+/**
+ * Affichage des informations clients
+ */
+function affichage_infos(value) {
+    
+    l_informations(value);
+    l_commentaires(value);
 }

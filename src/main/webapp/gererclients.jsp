@@ -109,7 +109,7 @@
                                                 <br>    
                                                 <p>Nombre de clients prospects : <%=prospects.size()%></p>
                                                 <p>Liste des clients prospects :</p>
-                                                <select id="lprospects" style="color:black;" onclick="l_informations(this.id);">
+                                                <select id="lprospects" style="color:black;" onclick="affichage_infos(this.id);">
                                                 <%
                                                     for(Utilisateur u : prospects) {
                                                         if (u.getCodeu()!=lastuser){
@@ -124,12 +124,13 @@
                                                 <input class="btn btn-primary"  id ="prospect" type="submit" value="Valider" onclick="l_valider(this.id)">
                                             </div>
                                             <br>
-                                            <div id="linformationsprospects" ></div>
+                                            <div id="linformationsprospects" ></div>                                     
                                             <br>
+                                            <div id="linformationspersonnellesprospects" ></div>
                                             <div>
                                                 <p>Nombre de clients en attente : <%=enattente.size()%></p>
                                                 <p>Liste des clients en attente :</p>
-                                                <select id="lenattente" style="color:black;" onclick="l_informations(this.id)">
+                                                <select id="lenattente" style="color:black;" onclick="affichage_infos(this.id)">
                                                 <%
                                                     for(Utilisateur u : enattente) {
                                                         if (u.getCodeu()!=lastuser){
@@ -144,10 +145,12 @@
                                             </div>
                                             <br>
                                             <div id="linformationsattente" ></div>
+                                            <br>
+                                            <div id="linformationspersonnellesattente" ></div>
                                             <div>
                                                 <p>Nombre de clients validés : <%=valides.size()%></p>
                                                 <p>Liste des clients validés :</p>
-                                                <select id="lvalides" style="color:black;" onclick="l_informations(this.id)">
+                                                <select id="lvalides" style="color:black;" onclick="affichage_infos(this.id)">
                                                 <%
                                                     for(Utilisateur u : valides) {
                                                         if("Validé".equals(u.getStatus())) {
@@ -161,6 +164,8 @@
                                             </div>
                                             <br>
                                             <div id="linformationsvalides" ></div>
+                                            <br>
+                                            <div id="linformationspersonnellesvalides" ></div>
                                             <br>
                                         </div>
                                     <span><a href="pageadmin.jsp">Retour à la page d'administration</a></span>

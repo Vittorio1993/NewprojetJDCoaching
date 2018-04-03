@@ -17,6 +17,7 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import model.Commentaire;
 
 /**
  *
@@ -580,13 +581,13 @@ public class Bd {
     }
 
     /**
-     * Ajout d'informations sur un utilisateur.
+     * Ajout d'un commentaire sur un utilisateur.
      * @param codeu code utilisateur
-     * @param info informations personnelles
+     * @param com contenu du commentaire
      * @return Boolean
      * @throws Exception Exception
      */
-    public static boolean addInformation(final String codeu, final String info)
+    public static boolean addCommentaire(final String codeu, final String com)
             throws Exception {
 
         if (Bd.cx == null) {
@@ -609,7 +610,18 @@ public class Bd {
         boolean requestOK = false;
 
         /* Requête */
-        String sqlajoutinfopersos = "INSERT INTO ENVOYER(CODEU, CODEU_1, DATEENVOIE, CONTENU, ETAT) values ()";
+        SimpleDateFormat dateCom = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss ");
+        String sqlajoutinfopersos = "INSERT INTO COMMENTAIRE(CODECOM, "
+                + "CONTENUCOM, DATECOM, CODEU)"
+                + "values ('"
+                + com
+                + "', "
+                + "'"
+                + dateCom
+                + "', "
+                + "'"
+                + codeu
+                + "'";
 
         try {
             Statement st = cx.createStatement();
@@ -630,13 +642,12 @@ public class Bd {
         return requestOK;
     }
     /**
-     * Suppression d'informations personnelles sur un utilisateur.
-     * @param codeu code utilisateur
-     * @param info infos personnelles
+     * Suppression d'un commentaire sur un utilisateur.
+     * @param codecom code utilisateur
      * @return Boolean
      * @throws Exception Exception
      */
-    public static boolean supprimerInformation(final String codeu, final String info)
+    public static boolean supprimerCommentaire(final String codecom)
             throws Exception {
 
         if (Bd.cx == null) {
@@ -659,13 +670,13 @@ public class Bd {
         boolean requestOK = false;
 
         /* Requête */
-        String sqlajoutinfopersos = "INSERT INTO ENVOYER(CODEU, CODEU_1, DATEENVOIE, CONTENU, ETAT) values ()";
+        String sqlsupprimcoms = "";
 
         try {
             Statement st = cx.createStatement();
             /* Execution de la requête */
             try {
-                st.executeQuery(sqlajoutinfopersos);
+                st.executeQuery(sqlsupprimcoms);
                 requestOK = true;
                 st.close();
                 cx.close();
@@ -681,19 +692,19 @@ public class Bd {
     }
 
     /**
-     * Retourne toutes les informations d'un utilisateur.
+     * Retourne tous les commentaires d'un utilisateur.
      * @param codeu code utilisateur
      * @return ArrayList
      * @throws Exception Zxception
      */
-public static String[] getInformations(final String codeu)
+public static ArrayList<Commentaire> getCommentaires(final String codeu)
             throws Exception {
 
         if (Bd.cx == null) {
             Bd.connexion();
         }
 
-       String[] infospersos = new String[2];
+       ArrayList<Commentaire> commentaires = new ArrayList();
 
         // Statement pour effectuer la requête
         Statement statement;
@@ -712,10 +723,9 @@ public static String[] getInformations(final String codeu)
 
         /* Requête */
         String sqlgetinfopersos =
-                    "SELECT * FROM ENVOYER WHERE CODEU='"
+                    "SELECT * FROM COMMENTAIRE WHERE CODEU='"
                     + codeu
-                    + "' "
-                    + "AND ETAT=null";
+                    + "' ";
 
         try {
 
@@ -725,8 +735,10 @@ public static String[] getInformations(final String codeu)
                 ResultSet rs = st.executeQuery(sqlgetinfopersos);
                 /* Adding messages to the String[] */
                 while (rs.next()) {
-                    infospersos[0] = rs.getString("CONTENU");
-                    infospersos[1] = rs.getString("DATEENVOIE");
+                    commentaires.add(new Commentaire((Integer) rs.getInt(1),
+                            rs.getString(2),
+                            rs.getDate(3),
+                            (Integer) rs.getInt(4)));
                 }
             } catch (SQLException ex) {
                 System.out.println("Erreur execution requête "
@@ -736,7 +748,7 @@ public static String[] getInformations(final String codeu)
             System.out.println("Erreur de SQL statement "
                     + ex.getMessage());
         }
-        return infospersos;
+        return commentaires;
     }
 
     /*
