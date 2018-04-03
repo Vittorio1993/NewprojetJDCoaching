@@ -36,6 +36,7 @@ public class AjoutCommentaireClient extends HttpServlet {
         String contenucom = request.getParameter("contenucom");
         String codeu = request.getParameter("codeu");
 
+        if (!"".equals(contenucom)) {
             try {
                 //Suppression commentaire
                 Bd.addCommentaire(codeu, contenucom);
@@ -47,6 +48,11 @@ public class AjoutCommentaireClient extends HttpServlet {
                         .getRequestDispatcher("pageadmin.jsp");
                 rd.forward(request, response);
             }
+        } else {
+            RequestDispatcher rd = request
+                        .getRequestDispatcher("pageadmin.jsp");
+            rd.forward(request, response);
+        }
     }
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods.
     // Click on the + sign on the left to edit the code.">
