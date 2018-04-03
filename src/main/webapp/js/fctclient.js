@@ -279,7 +279,11 @@ function ajout_com(value,input){
         // Si l'on a tout reçu et que la requête http s'est bien passée.
         if (xhr.readyState === 4 && xhr.status === 200)
         {
-            window.location.href = "confirmationAjoutCommentaire.jsp";
+            if(com!==""){
+                window.location.href = "confirmationAjoutCommentaire.jsp";
+            }else {
+                window.location.href = "GestionClient";
+            };
         };
     };
     // Requête au serveur avec les paramètres éventuels.
