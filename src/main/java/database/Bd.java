@@ -17,6 +17,7 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import model.Commentaire;
 
 /**
  *
@@ -256,7 +257,7 @@ public class Bd {
      *
      * @param codeu Code utilisateur
      * @return un utilisateur
-     * @throws Exception
+     * @throws Exception Exception
      */
     public static Utilisateur getUser(final String codeu)
             throws Exception {
@@ -343,30 +344,29 @@ public class Bd {
         boolean requestOK = false;
 
         /* Requête */
-        String sqlupdateadmin = "UPDATE UTILISATEUR SET EMAILU = '"
+        String sqlupdateadmin = "UPDATE UTILISATEUR SET EMAILU ='"
                 + newmailadmin
                 + "' "
                 + "WHERE TYPE='admin'";
 
-        try {
-            Statement st = cx.createStatement();
-            /* Execution de la requête */
             try {
-                st.executeUpdate(sqlupdateadmin);
+                statement.executeUpdate(sqlupdateadmin);
                 requestOK = true;
-                st.close();
+                statement.close();
                 cx.close();
             } catch (SQLException ex) {
                 System.out.println("Erreur execution requête "
                         + ex.getMessage());
             }
-        } catch (SQLException ex) {
-            System.out.println("Erreur de SQL statement "
-                    + ex.getMessage());
-        }
         return requestOK;
     }
 
+    /**
+     * Changement de mail de coaching.
+     * @param newmailcoach
+     * @return booléen
+     * @throws Exception Exception
+     */
     public static boolean changementMailCoach(final String newmailcoach)
             throws Exception {
 
@@ -396,22 +396,16 @@ public class Bd {
                 + "' "
                 + "WHERE TYPE='coach'";
 
-        try {
-            Statement st = cx.createStatement();
             /* Execution de la requête */
             try {
-                st.executeUpdate(sqlupdateadmin);
+                statement.executeUpdate(sqlupdateadmin);
                 requestOK = true;
-                st.close();
+                statement.close();
                 cx.close();
             } catch (SQLException ex) {
                 System.out.println("Erreur execution requête "
                         + ex.getMessage());
             }
-        } catch (SQLException ex) {
-            System.out.println("Erreur de SQL statement "
-                    + ex.getMessage());
-        }
         return requestOK;
     }
 
@@ -479,6 +473,282 @@ public class Bd {
                     + ex.getMessage());
         }
         return users;
+    }
+/**
+ * Passage d'un prospect en attente.
+ * @param codeu code utilisateur
+ * @return boolean
+ * @throws Exception Exception
+ */
+    public static boolean enAttente(final String codeu)
+            throws Exception {
+
+        if (Bd.cx == null) {
+            Bd.connexion();
+        }
+        // Statement pour effectuer la requête
+        Statement statement;
+        //Ouverture de la connexion
+        try {
+            cx = DriverManager.getConnection(url);
+        } catch (SQLException ex) {
+            System.out.println("Erreur ouverture connexion" + ex.getMessage());
+        }
+        try {
+            statement = cx.createStatement();
+        } catch (SQLException error) {
+            throw new Exception("Problème avec création du statement : "
+                    + error.getMessage());
+        }
+        boolean requestOK = false;
+
+        /* Requête */
+        String sqlupdateEnAttente = "UPDATE UTILISATEUR SET STATUTS ='En attente'"
+                + "WHERE CODEU='"
+                + codeu
+                + "' ";
+
+        try {
+            Statement st = cx.createStatement();
+            /* Execution de la requête */
+            try {
+                st.executeUpdate(sqlupdateEnAttente);
+                requestOK = true;
+                st.close();
+                cx.close();
+            } catch (SQLException ex) {
+                System.out.println("Erreur execution requête "
+                        + ex.getMessage());
+            }
+        } catch (SQLException ex) {
+            System.out.println("Erreur de SQL statement "
+                    + ex.getMessage());
+        }
+        return requestOK;
+    }
+
+/**
+ * Passage à un statut validé.
+ * @param codeu code utilisateur
+ * @return boolean
+ * @throws Exception Exception
+ */
+    public static boolean passageValide(final String codeu)
+            throws Exception {
+
+        if (Bd.cx == null) {
+            Bd.connexion();
+        }
+        // Statement pour effectuer la requête
+        Statement statement;
+        //Ouverture de la connexion
+        try {
+            cx = DriverManager.getConnection(url);
+        } catch (SQLException ex) {
+            System.out.println("Erreur ouverture connexion" + ex.getMessage());
+        }
+        try {
+            statement = cx.createStatement();
+        } catch (SQLException error) {
+            throw new Exception("Problème avec création du statement : "
+                    + error.getMessage());
+        }
+        boolean requestOK = false;
+
+        /* Requête */
+        String sqlupdateValide = "UPDATE UTILISATEUR SET STATUTS ='Validé'"
+                + "WHERE CODEU='"
+                + codeu
+                + "' ";
+
+        try {
+            Statement st = cx.createStatement();
+            /* Execution de la requête */
+            try {
+                st.executeUpdate(sqlupdateValide);
+                requestOK = true;
+                st.close();
+                cx.close();
+            } catch (SQLException ex) {
+                System.out.println("Erreur execution requête "
+                        + ex.getMessage());
+            }
+        } catch (SQLException ex) {
+            System.out.println("Erreur de SQL statement "
+                    + ex.getMessage());
+        }
+        return requestOK;
+    }
+
+    /**
+     * Ajout d'un commentaire sur un utilisateur.
+     * @param codeu code utilisateur
+     * @param com contenu du commentaire
+     * @return Boolean
+     * @throws Exception Exception
+     */
+    public static boolean addCommentaire(final String codeu, final String com)
+            throws Exception {
+
+        if (Bd.cx == null) {
+            Bd.connexion();
+        }
+        // Statement pour effectuer la requête
+        Statement statement;
+        //Ouverture de la connexion
+        try {
+            cx = DriverManager.getConnection(url);
+        } catch (SQLException ex) {
+            System.out.println("Erreur ouverture connexion" + ex.getMessage());
+        }
+        try {
+            statement = cx.createStatement();
+        } catch (SQLException error) {
+            throw new Exception("Problème avec création du statement : "
+                    + error.getMessage());
+        }
+        boolean requestOK = false;
+
+        /* Requête */
+        SimpleDateFormat dateCom = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss ");
+        String sqlajoutinfopersos = "INSERT INTO COMMENTAIRE(CODECOM, "
+                + "CONTENUCOM, DATECOM, CODEU)"
+                + "values ('"
+                + com
+                + "', "
+                + "'"
+                + dateCom
+                + "', "
+                + "'"
+                + codeu
+                + "'";
+
+        try {
+            Statement st = cx.createStatement();
+            /* Execution de la requête */
+            try {
+                st.executeQuery(sqlajoutinfopersos);
+                requestOK = true;
+                st.close();
+                cx.close();
+            } catch (SQLException ex) {
+                System.out.println("Erreur execution requête "
+                        + ex.getMessage());
+            }
+        } catch (SQLException ex) {
+            System.out.println("Erreur de SQL statement "
+                    + ex.getMessage());
+        }
+        return requestOK;
+    }
+    /**
+     * Suppression d'un commentaire sur un utilisateur.
+     * @param codecom code utilisateur
+     * @return Boolean
+     * @throws Exception Exception
+     */
+    public static boolean supprimerCommentaire(final String codecom)
+            throws Exception {
+
+        if (Bd.cx == null) {
+            Bd.connexion();
+        }
+        // Statement pour effectuer la requête
+        Statement statement;
+        //Ouverture de la connexion
+        try {
+            cx = DriverManager.getConnection(url);
+        } catch (SQLException ex) {
+            System.out.println("Erreur ouverture connexion" + ex.getMessage());
+        }
+        try {
+            statement = cx.createStatement();
+        } catch (SQLException error) {
+            throw new Exception("Problème avec création du statement : "
+                    + error.getMessage());
+        }
+        boolean requestOK = false;
+
+        /* Requête */
+        String sqlsupprimcoms = "";
+
+        try {
+            Statement st = cx.createStatement();
+            /* Execution de la requête */
+            try {
+                st.executeQuery(sqlsupprimcoms);
+                requestOK = true;
+                st.close();
+                cx.close();
+            } catch (SQLException ex) {
+                System.out.println("Erreur execution requête "
+                        + ex.getMessage());
+            }
+        } catch (SQLException ex) {
+            System.out.println("Erreur de SQL statement "
+                    + ex.getMessage());
+        }
+        return requestOK;
+    }
+
+    /**
+     * Retourne tous les commentaires d'un utilisateur.
+     * @param codeu code utilisateur
+     * @return ArrayList
+     * @throws Exception Zxception
+     */
+public static ArrayList<Commentaire> getCommentaires(final String codeu)
+            throws Exception {
+
+        if (Bd.cx == null) {
+            Bd.connexion();
+        }
+
+       ArrayList<Commentaire> commentaires = new ArrayList();
+
+        // Statement pour effectuer la requête
+        Statement statement;
+        //Ouverture de la connexion
+        try {
+            cx = DriverManager.getConnection(url);
+        } catch (SQLException ex) {
+            System.out.println("Erreur ouverture connexion" + ex.getMessage());
+        }
+        try {
+            statement = cx.createStatement();
+        } catch (SQLException error) {
+            throw new Exception("Problème avec création du statement : "
+                    + error.getMessage());
+        }
+
+        /* Requête */
+        String sqlgetinfopersos =
+                    "SELECT * FROM COMMENTAIRE WHERE CODEU='"
+                    + codeu
+                    + "' ";
+
+        try {
+
+            Statement st = cx.createStatement();
+            /* Execution de la requête */
+            try {
+                ResultSet rs = st.executeQuery(sqlgetinfopersos);
+                /* Adding messages to the String[] */
+                while (rs.next()) {
+                    commentaires.add(new Commentaire((Integer) rs.getInt(1),
+                            rs.getString(2),
+                            rs.getDate(3),
+                            (Integer) rs.getInt(4)));
+                }
+            } catch (SQLException ex) {
+                System.out.println("Erreur execution requête "
+                        + ex.getMessage());
+            }
+        } catch (SQLException ex) {
+            System.out.println("Erreur de SQL statement "
+                    + ex.getMessage());
+        }
+        return commentaires;
     }
 
     /*
@@ -637,9 +907,6 @@ public class Bd {
 /*public static void main(String[] args)
         throws ClassNotFoundException, SQLException, Exception {
         
-        ArrayList<Utilisateur> admin = new ArrayList();
-        admin = Bd.getUtilisateurs();
-        for(Utilisateur u : admin)
-        System.out.println(u.getCodeu());
+        Bd.changementMailCoach("coach@coach.com");
 }*/
 }

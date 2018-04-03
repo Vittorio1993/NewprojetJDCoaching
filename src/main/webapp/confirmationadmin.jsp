@@ -1,6 +1,6 @@
 <%-- 
-    Document   : pageadmin
-    Created on : 29 mars 2018, 09:08:59
+    Document   : confirmationadmin.jsp
+    Created on : 1 avr. 2018, 21:22:54
     Author     : RHAW
 --%>
 
@@ -53,32 +53,18 @@
             <!--[if lt IE 9]>
             <script src="js/respond.min.js"></script>
             <![endif]-->
-            <title>Page d'accueil</title>
+            <title>Confirmation Changement Statut</title>
         </head>
         <body>
-            <%  
-            String changementmail = "";
-            if(request.getAttribute("changementMail") != null) { 
-                changementmail = (String) request.getAttribute("changementMail");
-            }
-            %>
             <div id="fh5co-wrapper">
 		<div id="fh5co-page">
 		<div id="fh5co-header">
 			<header id="fh5co-header-section">
 				<div class="container">
-                            <div class="nav-header">
-                                <a href="#" class="js-fh5co-nav-toggle fh5co-nav-toggle"><i></i></a>
-                                <h1 id="fh5co-logo"><a href="index.html">JD<span>Coaching</span></a></h1>
-                                <!-- START #fh5co-menu-wrap -->
-                                <nav id="fh5co-menu-wrap" role="navigation">
-                                    <ul class="sf-menu" id="fh5co-primary-menu">
-                                        <li><a class="btn btn-primary" href="parametragemail.jsp">Paramétrage des mails</a></li>
-                                        <li><a class="btn btn-primary" href="GestionClient">Gérer Clients</a></li>
-                                    </ul>
-                                </nav>
-                            </div>
-                        </div>
+					<div class="nav-header">
+						<h1 id="fh5co-logo"><a href="pageadmin.jsp">JD<span>Coaching</span></a></h1>
+					</div>
+				</div>
 			</header>		
 		</div>
 		<!-- end:fh5co-header -->
@@ -89,7 +75,6 @@
                                 <div class="row">
                                     <div class="col-md-8 col-md-offset-2 col-sm-12 col-sm-offset-0 col-xs-12 col-xs-offset-0 text-center fh5co-table">
                                         <div class="fh5co-intro fh5co-table-cell animate-box">
-                                            <h1 class="text-center">Administration</h1>
                                         </div>
                                     </div>
                                 </div>
@@ -97,18 +82,19 @@
                         </div>
 			<div class="fh5co-contact">
                             <div class="desc animate-box">
-					<div class="container">
-						<div class="row">
-							<div class="col-md-7">
-                                                            <span><a><%=changementmail%></a></span>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-            </div>
-        </div>
+                                <div class="row">
+                                    <div class="col-md-8 col-md-offset-2 col-sm-12 col-sm-offset-0 col-xs-12 col-xs-offset-0 text-center fh5co-table">
+                                        <div class="fh5co-intro fh5co-table-cell animate-box">
+                                            <h1>Le changement de statut du client a été pris en compte.</h1>
+                                            <span><a href="GestionClient">Retour à la gestion des clients</a></span>
+                                            </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>                        
         <script src="js/jquery.min.js"></script>
 	<!-- jQuery Easing -->
 	<script src="js/jquery.easing.1.3.js"></script>
@@ -123,7 +109,8 @@
 	<script src="js/superfish.js"></script>
 
 	<!-- Main JS (Do not remove) -->
-	<script src="js/main.js"></script>  
+	<script src="js/main.js"></script> 
+        <script type="text/JavaScript" src="/js/fctclient.js"></script>
         </body>
     </html>
 </f:view>

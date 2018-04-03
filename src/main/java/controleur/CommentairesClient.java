@@ -14,47 +14,43 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import model.Utilisateur;
-
+import model.Commentaire;
 /**
  *
  * @author RHAW
  */
-@WebServlet(name = "GestionEnAttente", urlPatterns = {"/GestionEnAttente"})
-public class GestionEnAttente extends HttpServlet {
+@WebServlet(name = "CommentairesClient", urlPatterns = {"/CommentairesClient"})
+public class CommentairesClient extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request,
             HttpServletResponse response)
             throws ServletException, IOException {
-        ArrayList<Utilisateur> lutilisateurs = new ArrayList();
+        ArrayList<Commentaire> coms = new ArrayList();
         //Lecture de la requête en UTF-8
         request.setCharacterEncoding("UTF-8");
         //Type de la réponse
         response.setContentType("application/xml;charset=UTF-8");
         response.setCharacterEncoding("UTF-8");
 
+        String codeu = request.getParameter("codeu");
         PrintWriter out = response.getWriter();
         //Ecriture de la page XML
         out.println("<?xml version=\"1.0\"?>");
-        out.println("<liste_attente>");
+        out.println("<liste_commentaires>");
 
-        //Récupération des utilisateurs en attente
+        //Récupération des commentaires sur les utilisateurs
         try {
-            lutilisateurs = Bd.getUtilisateurs();
-            //Ajout des utilisateurs en attente dans l'ArrayList
-            for (Utilisateur u : lutilisateurs) {
-                if ("En attente".equals(u.getStatus())) {
-                    out.println("<CodeU>" + u.getCodeu() + "</CodeU>");
-                    out.println("<NomU>" + u.getNomu() + "</NomU>");
-                    out.println("<PrenomU>" + u.getPrenomu() + "</PrenomU>");
-                    out.println("<MailU>" + u.getEmailu() + "</MailU>");
-                }
+            coms = Bd.getCommentaires(codeu);
+            for (Commentaire com : coms) {
+                out.println("<CodeCom>" + com.getCodecom() + "</CodeCom>");
+                out.println("<ContenuCom>" + com.getContenucom() + "</ContenuCom>");
+                out.println("<DateCom>" + com.getDatecom() + "</DateCom>");
             }
         } catch (Exception ex) {
             out.println("<erreur>Erreur - "
                     + ex.getMessage() + "</erreur>");
         }
-        out.println("</liste_attente>");
+        out.println("</liste_commentaires>");
     }
 
     @Override
@@ -64,4 +60,3 @@ public class GestionEnAttente extends HttpServlet {
                 doGet(request, response);
     }
 }
-

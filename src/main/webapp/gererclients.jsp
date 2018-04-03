@@ -56,19 +56,23 @@
             <![endif]-->
             <title>Gestion des clients</title>
         </head>
-        <body onload="gestion_client();">
+        <body>
             <%  
             ArrayList<Utilisateur> prospects = new ArrayList();
             ArrayList<Utilisateur> enattente = new ArrayList();
-            ArrayList<Utilisateur> abonnes = new ArrayList();
+            ArrayList<Utilisateur> valides = new ArrayList();
+            int lastuser=0;
             if(request.getAttribute("listeProspects") != null) { 
                 prospects = (ArrayList<Utilisateur>) request.getAttribute("listeProspects");
             }
             if(request.getAttribute("listeEnAttente") != null) { 
                 enattente = (ArrayList<Utilisateur>) request.getAttribute("listeEnAttente");
             }
-            if(request.getAttribute("listeAbonnes") != null) { 
-                abonnes = (ArrayList<Utilisateur>) request.getAttribute("listeAbonnes");
+            if(request.getAttribute("listeValides") != null) { 
+                valides = (ArrayList<Utilisateur>) request.getAttribute("listeValides");
+            }
+            if(request.getAttribute("LastUser") != null) { 
+                            lastuser = (int) request.getAttribute("LastUser");
             }
             %>
             <div id="fh5co-wrapper">
@@ -84,27 +88,94 @@
 		</div>
 		<!-- end:fh5co-header -->
 		<div class="fh5co-hero">
-			<div class="fh5co-overlay"></div>
-			<div class="fh5co-cover" data-stellar-background-ratio="0.5" style="background-color: black">
+                        <div class="fh5co-parallax" style="background-image: url(images/home-image-3.jpg);" data-stellar-background-ratio="0.5">
+                            <div class="overlay"></div>
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col-md-8 col-md-offset-2 col-sm-12 col-sm-offset-0 col-xs-12 col-xs-offset-0 text-center fh5co-table">
+                                        <div class="fh5co-intro fh5co-table-cell animate-box">
+                                            <h1 class="text-center">Gestion des clients</h1>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+			<div class="fh5co-contact">
                             <div class="desc animate-box">		
                                 <div class="container">
-						<div class="row">
-							<div>
-                                                            
-                                                        <br>
-                                                        <div>
-                                                            <p>Liste des clients validés :</p>
-                                                            <select id="lvalides" style="color:black;" onclick="l_informations(this.id)"><option>--</option></select>                                                     
-							</div>
-                                                        <br>
-                                                        <div id="linformationsvalides" ></div>
-                                                        <br>
-						</div>
-                                                <span><a href="pageadmin.jsp">Retour à la page d'administration</a></span>
-					</div>
-				</div>
-			</div>
-		</div>
+                                    <div class="row">
+                                        <div>
+                                            <div>
+                                                <br>    
+                                                <p>Nombre de clients prospects : <%=prospects.size()%></p>
+                                                <p>Liste des clients prospects :</p>
+                                                <select id="lprospects" style="color:black;" onclick="affichage_infos(this.id);">
+                                                <%
+                                                    for(Utilisateur u : prospects) {
+                                                        if (u.getCodeu()!=lastuser){
+                                                            out.println("<option value=" + u.getCodeu() + ">" + u.getNomu() + "--" + u.getPrenomu() + "--" + u.getEmailu() + "</option>");                                        
+                                                        } else {
+                                                            out.println("<option  style=\"background-color:yellow;\" value=" + u.getCodeu() + ">" + u.getNomu() + "--" + u.getPrenomu() + "--" + u.getEmailu() + "</option>");
+                                                        }
+                                                    }
+                                                %>
+                                                </select>
+                                                <input class="btn btn-primary" type="submit" value="Passer en attente" onclick="l_enattente()">
+                                                <input class="btn btn-primary"  id ="prospect" type="submit" value="Valider" onclick="l_valider(this.id)">
+                                            </div>
+                                            <br>
+                                            <div id="linformationsprospects" ></div>                                     
+                                            <br>
+                                            <div id="linformationspersonnellesprospects" ></div>
+                                            <div>
+                                                <p>Nombre de clients en attente : <%=enattente.size()%></p>
+                                                <p>Liste des clients en attente :</p>
+                                                <select id="lenattente" style="color:black;" onclick="affichage_infos(this.id)">
+                                                <%
+                                                    for(Utilisateur u : enattente) {
+                                                        if (u.getCodeu()!=lastuser){
+                                                            out.println("<option value=" + u.getCodeu() + ">" + u.getNomu() + "--" + u.getPrenomu() + "--" + u.getEmailu() + "</option>");
+                                                        } else {
+                                                            out.println("<option  style=\"background-color:yellow;\" value=" + u.getCodeu() + ">" + u.getNomu() + "--" + u.getPrenomu() + "--" + u.getEmailu() + "</option>");
+                                                        }                                                                
+                                                    }
+                                                %>
+                                                </select>
+                                                <input class="btn btn-primary"  id ="enattente" type="submit" value="Valider" onclick="l_valider(this.id)">
+                                            </div>
+                                            <br>
+                                            <div id="linformationsattente" ></div>
+                                            <br>
+                                            <div id="linformationspersonnellesattente" ></div>
+                                            <div>
+                                                <p>Nombre de clients validés : <%=valides.size()%></p>
+                                                <p>Liste des clients validés :</p>
+                                                <select id="lvalides" style="color:black;" onclick="affichage_infos(this.id)">
+                                                <%
+                                                    for(Utilisateur u : valides) {
+                                                        if("Validé".equals(u.getStatus())) {
+                                                            out.println("<option value=" + u.getCodeu() + " style=\"background-color: green;\">" + u.getNomu() + "--" + u.getPrenomu() + "--" + u.getEmailu() + "</option>");
+                                                        } else {
+                                                            out.println("<option value=" + u.getCodeu() + " style=\"background-color: grey;\">" + u.getNomu() + "--" + u.getPrenomu() + "--" + u.getEmailu() + "</option>");
+                                                        }
+                                                    }
+                                                %>
+                                                </select>
+                                            </div>
+                                            <br>
+                                            <div id="linformationsvalides" ></div>
+                                            <br>
+                                            <div id="linformationspersonnellesvalides" ></div>
+                                            <br>
+                                        </div>
+                                    <span><a href="pageadmin.jsp">Retour à la page d'administration</a></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         <script src="js/jquery.min.js"></script>
 	<!-- jQuery Easing -->
 	<script src="js/jquery.easing.1.3.js"></script>

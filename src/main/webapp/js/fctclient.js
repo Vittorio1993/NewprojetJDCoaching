@@ -32,41 +32,6 @@ function getXMLHttpRequest()
 }
 
 /**
- * Cette méthode "Ajax" permet l'affichage des prospects
- */
-function l_prospects() {
-    var xhr = getXMLHttpRequest();
-    
-    xhr.onreadystatechange = function ()
-    {
-        // Si l'on a tout reçu et que la requête http s'est bien passée.
-        if (xhr.readyState === 4 && xhr.status === 200) {
-            var l_prospect = document.getElementById("lprospects");
-            l_prospect.innerHTML="";
-            var xml = xhr.responseXML;
-            var users = xml.getElementsByTagName("NomU");         
-            if (!(l_prospect.children.length > 1)) {
-                for (var i = 0; i < users.length; i++) {
-                    l_prospect.innerHTML=l_prospect.innerHTML
-                            + "<option value="+xhr.responseXML.getElementsByTagName("CodeU")[i].firstChild.nodeValue+">"
-                            + xhr.responseXML.getElementsByTagName("NomU")[i].firstChild.nodeValue
-                            + "--"
-                            + xhr.responseXML.getElementsByTagName("PrenomU")[i].firstChild.nodeValue
-                            + "--"
-                            + xhr.responseXML.getElementsByTagName("MailU")[i].firstChild.nodeValue
-                            +"</option> ";
-                }
-            }
-        }
-    };
-
-    // Requête au serveur avec les paramètres éventuels.
-    xhr.open("GET", "GestionProspects", true);
-    xhr.send(null);
-
-}
-
-/**
  * Cette méthode "Ajax" permet l'affichage des informations des clients
  */
 function l_informations(value) {
@@ -76,7 +41,6 @@ function l_informations(value) {
     {
         // Si l'on a tout reçu et que la requête http s'est bien passée.
         if (xhr.readyState === 4 && xhr.status === 200) {
-            alert(value);
             if ("lprospects"===value){
                 var informations = document.getElementById("linformationsprospects");
             } else if ("lenattente"===value){
@@ -89,7 +53,7 @@ function l_informations(value) {
             var xml = xhr.responseXML;
             var users = xml.getElementsByTagName("CodeU");
                 for (var i = 0; i < users.length; i++) {                   
-                    informations.innerHTML="<table class='table table-bordered'><tr><td>Nom</td><td>Prénom</td><td>Adresse e-mail</td><td>Numéro de téléphone</td><td>Date de naissance</td><td>Objectif</td></tr><tr>"                                    
+                    informations.innerHTML="<table class='table table-bordered' style='color:black;'><tr><td>Nom</td><td>Prénom</td><td>Adresse e-mail</td><td>Numéro de téléphone</td><td>Date de naissance</td><td>Objectif</td></tr><tr>"                                    
                             + "<td>" + xhr.responseXML.getElementsByTagName("NomU")[i].firstChild.nodeValue
                             + "</td><td>" + xhr.responseXML.getElementsByTagName("PrenomU")[i].firstChild.nodeValue
                             + "</td><td>" + xhr.responseXML.getElementsByTagName("MailU")[i].firstChild.nodeValue
@@ -108,120 +72,137 @@ function l_informations(value) {
 }
 
 /**
+ * Cette méthode "Ajax" permet l'affichage des commentaires sur les clients
+ */
+function l_commentaires(value) {
+    var xhr = getXMLHttpRequest();
+    var codeu = document.getElementById(value).value;
+    xhr.onreadystatechange = function ()
+    {
+        // Si l'on a tout reçu et que la requête http s'est bien passée.
+        if (xhr.readyState === 4 && xhr.status === 200) {
+            if ("lprospects"===value){
+                var commentaires = document.getElementById("linformationspersonnellesprospects");
+            } else if ("lenattente"===value){
+                var commentaires = document.getElementById("linformationspersonnellesattente");
+            } else if ("lvalides"===value) {
+                var commentaires = document.getElementById("linformationspersonnellesvalides");
+            }
+            
+            commentaires.innerHTML="";   
+            var xml = xhr.responseXML;
+            var coms = xml.getElementsByTagName("CodeCom");
+                for (var i = 0; i < coms.length; i++) {                   
+                    commentaires.innerHTML="<table class='table table-bordered' style='color:black;'><tr><td>Contenu du commentaire</td><td>Date</td></tr>"
+                            + "<tr>"
+                            + "<td>" + xhr.responseXML.getElementsByTagName("ContenuCom")[i].firstChild.nodeValue
+                            + "</td><td>" + xhr.responseXML.getElementsByTagName("DateCom")[i].firstChild.nodeValue
+                            + "<tr>"
+                            + "</table>";
+                }
+        }
+    };
+
+    // Requête au serveur avec les paramètres éventuels.
+    xhr.open("GET", "CommentairesClient?codeu=" + codeu, true);
+    xhr.send(null);
+
+}
+
+/**
  * Cette méthode "Ajax" permet de passer un prospect en attente
- */
-function l_attente() {
-    var xhr = getXMLHttpRequest();
-    xhr.onreadystatechange = function ()
-    {
-        // Si l'on a tout reçu et que la requête http s'est bien passée.
-        if (xhr.readyState === 4 && xhr.status === 200) {
-           
-        }
-    };
-
-    // Requête au serveur avec les paramètres éventuels.
-    xhr.open("GET", "InformationsClient?codeu=" + codeu, true);
-    xhr.send(null);
-
-}
-
-/**
- * Cette méthode "Ajax" permet de valider 
- */
-function l_valider() {
-    var xhr = getXMLHttpRequest();
-    xhr.onreadystatechange = function ()
-    {
-        // Si l'on a tout reçu et que la requête http s'est bien passée.
-        if (xhr.readyState === 4 && xhr.status === 200) {
-           
-        }
-    };
-
-    // Requête au serveur avec les paramètres éventuels.
-    xhr.open("GET", "InformationsClient?codeu=" + codeu, true);
-    xhr.send(null);
-
-}
-
-/**
- * Cette méthode "Ajax" permet l'affichage des clients en attente
  */
 function l_enattente() {
     var xhr = getXMLHttpRequest();
-    
+    var codeu = document.getElementById("lprospects").value;
     xhr.onreadystatechange = function ()
     {
         // Si l'on a tout reçu et que la requête http s'est bien passée.
-        if (xhr.readyState === 4 && xhr.status === 200) {
-            var l_prospect = document.getElementById("lenattente");
-            l_prospect.innerHTML="";
-            var xml = xhr.responseXML;
-            var users = xml.getElementsByTagName("NomU");         
-            if (!(l_prospect.children.length > 1)) {
-                for (var i = 0; i < users.length; i++) {
-                    l_prospect.innerHTML=l_prospect.innerHTML
-                            + "<option value="+xhr.responseXML.getElementsByTagName("CodeU")[i].firstChild.nodeValue+">"
-                            + xhr.responseXML.getElementsByTagName("NomU")[i].firstChild.nodeValue
-                            + "--"
-                            + xhr.responseXML.getElementsByTagName("PrenomU")[i].firstChild.nodeValue
-                            + "--"
-                            + xhr.responseXML.getElementsByTagName("MailU")[i].firstChild.nodeValue
-                            +"</option> ";
-                }
-            }
-        }
+        if (xhr.readyState === 4 && xhr.status === 200)
+        {
+            window.location.href = "confirmationadmin.jsp";
+        };
+        
     };
-
-    // Requête au serveur avec les paramètres éventuels.
-    xhr.open("GET", "GestionEnAttente", true);
-    xhr.send(null);
-
+        // Requête au serveur avec les paramètres éventuels.
+        xhr.open("GET", "EnattenteServlet?codeu=" + codeu, true);
+        xhr.send(null);
 }
 
 /**
- * Cette méthode "Ajax" permet l'affichage des clients validés
+ * Cette méthode "Ajax" permet de valider un client
  */
-function l_valides() {
+function l_valider(value) {
     var xhr = getXMLHttpRequest();
-    
+    var boutonvalue = document.getElementById(value);
+    var codeu;
+    if ("prospect"===boutonvalue) {
+            codeu=document.getElementById("lprospects").value;
+            } else {
+                codeu=document.getElementById("lenattente").value;
+            }
     xhr.onreadystatechange = function ()
     {
         // Si l'on a tout reçu et que la requête http s'est bien passée.
-        if (xhr.readyState === 4 && xhr.status === 200) {
-            var l_prospect = document.getElementById("lvalides");
-            l_prospect.innerHTML="";
-            var xml = xhr.responseXML;
-            var users = xml.getElementsByTagName("NomU");         
-            if (!(l_prospect.children.length > 1)) {
-                for (var i = 0; i < users.length; i++) {
-                    l_prospect.innerHTML=l_prospect.innerHTML
-                            + "<option value="+xhr.responseXML.getElementsByTagName("CodeU")[i].firstChild.nodeValue+">"
-                            + xhr.responseXML.getElementsByTagName("NomU")[i].firstChild.nodeValue
-                            + "--"
-                            + xhr.responseXML.getElementsByTagName("PrenomU")[i].firstChild.nodeValue
-                            + "--"
-                            + xhr.responseXML.getElementsByTagName("MailU")[i].firstChild.nodeValue
-                            +"</option> ";
-                }
-            }
-        }
+        if (xhr.readyState === 4 && xhr.status === 200)
+        {
+            window.location.href = "confirmationadmin.jsp";
+        };
+        
     };
-
     // Requête au serveur avec les paramètres éventuels.
-    xhr.open("GET", "GestionValides", true);
+    xhr.open("GET", "ValideServlet?codeu=" + codeu, true);
     xhr.send(null);
 
 }
 
 /**
- * Cette méthode "Ajax" permet de charger la gestion client
+ * Méthode "Ajax" permettant de changer le mail administrateur
  */
-function gestion_client() {
+function changement_mail_admin() {
+    var xhr = getXMLHttpRequest();
+    var emailadmin = document.getElementById("mailadmin").value;
+    xhr.onreadystatechange = function ()
+    {
+        // Si l'on a tout reçu et que la requête http s'est bien passée.
+        if (xhr.readyState === 4 && xhr.status === 200)
+        {
+            window.location.href = "confirmationMailAdmin.jsp";
+        };
 
-    //l_prospects();
-    //l_enattente();
-    l_valides();
+    };
+    // Requête au serveur avec les paramètres éventuels.
+    xhr.open("GET", "ParametrageMailAdmin?emailadmin=" + emailadmin, true);
+    xhr.send(null);
+
+}
+
+/**
+ * Méthode "Ajax" permettant de changer le mail du coach
+ */
+function changement_mail_coach() {
+    var xhr = getXMLHttpRequest();
+    var emailcoach = document.getElementById("mailcoaching").value;
+    xhr.onreadystatechange = function ()
+    {
+        // Si l'on a tout reçu et que la requête http s'est bien passée.
+        if (xhr.readyState === 4 && xhr.status === 200)
+        {
+            window.location.href = "confirmationMailCoach.jsp";
+        };
+
+    };
+    // Requête au serveur avec les paramètres éventuels.
+    xhr.open("GET", "ParametrageMailCoach?emailcoach=" + emailcoach, true);
+    xhr.send(null);
+
+}
+
+/**
+ * Affichage des informations clients
+ */
+function affichage_infos(value) {
     
+    l_informations(value);
+    l_commentaires(value);
 }
