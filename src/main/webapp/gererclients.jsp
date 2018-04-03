@@ -108,7 +108,7 @@
                                             <div>
                                                 <br>    
                                                 <p>Nombre de clients prospects : <%=prospects.size()%></p>
-                                                <p>Liste des clients prospects :</p>
+                                                <h2>Liste des clients prospects :</h2>
                                                 <select id="lprospects" style="color:black;" onclick="affichage_infos(this.id);">
                                                 <%
                                                     for(Utilisateur u : prospects) {
@@ -129,7 +129,7 @@
                                             <div id="linformationspersonnellesprospects" ></div>
                                             <div>
                                                 <p>Nombre de clients en attente : <%=enattente.size()%></p>
-                                                <p>Liste des clients en attente :</p>
+                                                <h2>Liste des clients en attente :</h2>
                                                 <select id="lenattente" style="color:black;" onclick="affichage_infos(this.id)">
                                                 <%
                                                     for(Utilisateur u : enattente) {
@@ -149,7 +149,7 @@
                                             <div id="linformationspersonnellesattente" ></div>
                                             <div>
                                                 <p>Nombre de clients validés : <%=valides.size()%></p>
-                                                <p>Liste des clients validés :</p>
+                                                <h2>Liste des clients validés :</h2>
                                                 <select id="lvalides" style="color:black;" onclick="affichage_infos(this.id)">
                                                 <%
                                                     for(Utilisateur u : valides) {
