@@ -5,6 +5,7 @@
 <%@page import="java.util.Date"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="java.text.SimpleDateFormat"%>
+<%@ page import="java.io.*,java.util.*" %>
 <!DOCTYPE html>
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
@@ -97,186 +98,191 @@
                     </div>
                 </div><!-- end: fh5co-parallax -->
                 <!-- end:fh5co-hero -->
-                <form action="profilsportif">
-                    <div id="fh5co-contact">
-                        <div class="container">
-                            <!-- Profil de base -->
-                            <div class="row">
-                                <div class="col-md-8 col-md-offset-2">
-                                    <div class="heading-section text-center animate-box">
-                                        <h2>Créer ou modifier l'exercice</h2>
+
+                <div id="fh5co-contact">
+                    <div class="container">
+                        <!-- Profil de base -->
+                        <form action="/updateexercice" method="GET"> 
+                            
+                                <div class="row">
+                                    <div class="col-md-8 col-md-offset-2">
+                                        <div class="heading-section text-center animate-box">
+                                            <h2>Créer ou modifier l'exercice</h2>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
 
 
-                            <div class="row">
-                                <!-- 1ere colonne -->
-                                <div class="col-md-6 animate-box">
-                                    <div class="row">
-                                        <table>
+                                <div class="row">
+                                    <!-- 1ere colonne -->
+                                    <div class="col-md-6 animate-box">
+                                        <div class="row">
+                                            <table>
 
-                                        </table>
+                                            </table>
 
-                                        <%
-        Bd b = new Bd();
-        ArrayList<String> arrayex = new ArrayList<String>();
-        arrayex = b.nomexercise();
+                                            <%
+            Bd b = new Bd();
+            ArrayList<String> arrayex = new ArrayList<String>();
+            arrayex = b.nomexercise();
         
-        for (String nom:arrayex){
-        out.print("<input type='radio' name='exercice' value='"+nom+"'onclick ='l_afficherexercice()'>"+"&nbsp;&nbsp"+nom+"<br>");
-    }
+            for (String nom:arrayex){
+            out.print("<input type='radio' name='exercice' value='"+nom+"'onclick ='l_afficherexercice()'>"+"&nbsp;&nbsp"+nom+"<br>");
+        }
     
-        //System.out.println(u.getNomu());
+            //System.out.println(u.getNomu());
                              
-                                        %>
+                                            %>
 
-                                      
-                                    </div>
-                                </div>
-                                <!-- 2ere colonne -->
-                                <div class="col-md-6 animate-box">
-                                    <div class="row">
-                                        <!-- Nom Exercice -->
-                                        <div class="col-md-3">
-                                            <div class="form-group">
-                                                <p>Nom Exercice :</p>
-                                            </div>
+
                                         </div>
-                                        <div class="col-md-9">
-                                            <div class="form-group">
-                                                <input type="text" id ="nome" class="form-control" name="nome" disabled="disabled" value="">
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <!-- Description -->
-                                        <div class="col-md-5">
-                                            <div class="form-group">
-                                                <p>Description :</p>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-7">
-                                            <div class="form-group">
-                                                <input type="text" id="description" class="form-control" name="description" value="">
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <!-- Temps de répetition -->
-                                        <div class="col-md-4">
-                                            <div class="form-group">
-                                                <p>Temps de répetition :</p>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-8">
-                                            <div class="form-group">
-                                                <input type="text" id="tempsrepetition" class="form-control" name="tempsrepetition" value="">
-                                            </div>
-                                        </div>
+                                            <input type="submit" value="Supprimer" class="btn btn-primary" onclick="l_deleteexercice()">
                                     </div>
 
-                                    <div class="row">
-                                        <!-- Nombre de répetition  -->
-                                        <div class="col-md-4">
-                                            <div class="form-group">
-                                                <p>Nombre de répetition :</p>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-8">
-                                            <div class="form-group">
-                                                <input type="text" id="nbrepetition" class="form-control" name="nbrepetition" value="">
-                                            </div>
+
+                            <!-- 2ere colonne -->
+                            <div class="col-md-6 animate-box">
+                                <div class="row">
+                                    <!-- Nom Exercice -->
+                                    <div class="col-md-3">
+                                        <div class="form-group">
+                                            <p>Nom Exercice :</p>
                                         </div>
                                     </div>
-                                    <div class="row">
-                                        <!-- Nombre de répetition  -->
-                                        <div class="col-md-4">
-                                            <div class="form-group">
-                                                <p>Lien image :</p>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-8">
-                                            <div class="form-group">
-                                                <input type="text" id="lienimage" class="form-control" name="lienimage" value="">
-                                            </div>
+                                    <div class="col-md-9">
+                                        <div class="form-group">
+                                            <input type="text" id ="nome" class="form-control" name="nome" disabled="disabled" >
                                         </div>
                                     </div>
-                                    <input type="submit" value="Modifier" class="btn btn-primary">
-                                    <input type="submit" value="Supprimer" class="btn btn-primary">
                                 </div>
+                                <div class="row">
+                                    <!-- Description -->
+                                    <div class="col-md-5">
+                                        <div class="form-group">
+                                            <p>Description :</p>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-7">
+                                        <div class="form-group">
+                                            <input type="text" id="description" class="form-control" name="description" >
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <!-- Temps de répetition -->
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <p>Temps de répetition :</p>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-8">
+                                        <div class="form-group">
+                                            <input type="text" id="tempsrepetition" class="form-control" name="tempsrepetition" >
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <!-- Nombre de répetition  -->
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <p>Nombre de répetition :</p>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-8">
+                                        <div class="form-group">
+                                            <input type="text" id="nbrepetition" class="form-control" name="nbrepetition" >
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <!-- Nombre de répetition  -->
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <p>Lien image :</p>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-8">
+                                        <div class="form-group">
+                                            <input type="text" id="lienimage" class="form-control" name="lienimage" >
+                                        </div>
+                                    </div>
+                                </div>
+                                <input type="submit" value="Modifier" class="btn btn-primary">
+
                             </div>
-                        </div>
-                    </div>
-                    <!--测试用--></div>
-
-        </form><!--测试用-->
-
-
-
-
-
-
-
-        <!-- END Profil de base -->
-        <footer>
-            <div id="footer">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-md-4 animate-box">
-                            <h3 class="section-title">About Us</h3>
-                            <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics.</p>
-                        </div>
-
-                        <div class="col-md-4 animate-box">
-                            <h3 class="section-title">Our Address</h3>
-                            <ul class="contact-info">
-                                <li><i class="icon-map-marker"></i>198 West 21th Street, Suite 721 New York NY 10016</li>
-                                <li><i class="icon-phone"></i>+ 1235 2355 98</li>
-                                <li><i class="icon-envelope"></i><a href="#">info@yoursite.com</a></li>
-                                <li><i class="icon-globe2"></i><a href="#">www.yoursite.com</a></li>
-                            </ul>
-                        </div>
-                        <div class="col-md-4 animate-box">
-                            <h3 class="section-title">Drop us a line</h3>
-                            <form class="contact-form">
-                                <div class="form-group">
-                                    <label for="name" class="sr-only">Name</label>
-                                    <input type="name" class="form-control" id="name" placeholder="Name">
-                                </div>
-                                <div class="form-group">
-                                    <label for="email" class="sr-only">Email</label>
-                                    <input type="email" class="form-control" id="email" placeholder="Email">
-                                </div>
-                                <div class="form-group">
-                                    <label for="message" class="sr-only">Message</label>
-                                    <textarea class="form-control" id="message" rows="7" placeholder="Message"></textarea>
-                                </div>
-                                <div class="form-group">
-                                    <input type="submit" id="btn-submit" class="btn btn-send-message btn-md" value="Send Message">
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-                    <div class="row copy-right">
-                        <div class="col-md-6 col-md-offset-3 text-center">
-                            <p class="fh5co-social-icons">
-                                <a href="#"><i class="icon-twitter2"></i></a>
-                                <a href="#"><i class="icon-facebook2"></i></a>
-                                <a href="#"><i class="icon-instagram"></i></a>
-                                <a href="#"><i class="icon-dribbble2"></i></a>
-                                <a href="#"><i class="icon-youtube"></i></a>
-                            </p>
-                            <p>Copyright 2016 Free Html5 <a href="#">Fitness</a>. All Rights Reserved. <br>Made with <i class="icon-heart3"></i> by <a href="#/" target="_blank">Freehtml5</a> / More Templates <a href="http://www.cssmoban.com/" target="_blank" title="模板之家">模板之家</a> - Collect from <a href="http://www.cssmoban.com/" title="网页模板" target="_blank">网页模板</a></p>
-                        </div>
                     </div>
                 </div>
             </div>
-        </footer>
+        </div>
+
+    </form>
 
 
-    </div>
-    <!-- END fh5co-page -->
+
+
+
+
+
+    <!-- END Profil de base -->
+    <footer>
+        <div id="footer">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-4 animate-box">
+                        <h3 class="section-title">About Us</h3>
+                        <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics.</p>
+                    </div>
+
+                    <div class="col-md-4 animate-box">
+                        <h3 class="section-title">Our Address</h3>
+                        <ul class="contact-info">
+                            <li><i class="icon-map-marker"></i>198 West 21th Street, Suite 721 New York NY 10016</li>
+                            <li><i class="icon-phone"></i>+ 1235 2355 98</li>
+                            <li><i class="icon-envelope"></i><a href="#">info@yoursite.com</a></li>
+                            <li><i class="icon-globe2"></i><a href="#">www.yoursite.com</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-md-4 animate-box">
+                        <h3 class="section-title">Drop us a line</h3>
+                        <form class="contact-form">
+                            <div class="form-group">
+                                <label for="name" class="sr-only">Name</label>
+                                <input type="name" class="form-control" id="name" placeholder="Name">
+                            </div>
+                            <div class="form-group">
+                                <label for="email" class="sr-only">Email</label>
+                                <input type="email" class="form-control" id="email" placeholder="Email">
+                            </div>
+                            <div class="form-group">
+                                <label for="message" class="sr-only">Message</label>
+                                <textarea class="form-control" id="message" rows="7" placeholder="Message"></textarea>
+                            </div>
+                            <div class="form-group">
+                                <input type="submit" id="btn-submit" class="btn btn-send-message btn-md" value="Send Message">
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <div class="row copy-right">
+                    <div class="col-md-6 col-md-offset-3 text-center">
+                        <p class="fh5co-social-icons">
+                            <a href="#"><i class="icon-twitter2"></i></a>
+                            <a href="#"><i class="icon-facebook2"></i></a>
+                            <a href="#"><i class="icon-instagram"></i></a>
+                            <a href="#"><i class="icon-dribbble2"></i></a>
+                            <a href="#"><i class="icon-youtube"></i></a>
+                        </p>
+                        <p>Copyright 2016 Free Html5 <a href="#">Fitness</a>. All Rights Reserved. <br>Made with <i class="icon-heart3"></i> by <a href="#/" target="_blank">Freehtml5</a> / More Templates <a href="http://www.cssmoban.com/" target="_blank" title="模板之家">模板之家</a> - Collect from <a href="http://www.cssmoban.com/" title="网页模板" target="_blank">网页模板</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+
+</div>
+<!-- END fh5co-page -->
 
 </div>
 <!-- END fh5co-wrapper -->

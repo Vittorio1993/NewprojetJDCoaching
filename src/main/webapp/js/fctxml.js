@@ -191,5 +191,28 @@ function l_afficherexercice() {
 
 
 
+function l_deleteexercice() {
+    var radio = document.getElementsByName("exercice");
+
+    var selectvalue = null;   //  selectvalue?radio?????
+
+    for (var i = 0; i < radio.length; i++) {
+
+        if (radio[i].checked === true) {
+
+            selectvalue = radio[i].value;
+
+            break;
+
+        }
+
+    }
+    var xhr = getXMLHttpRequest();
+    xhr.open("GET", "/deleteexercice?nome=" + selectvalue, true);
+    xhr.send(null);
+}
+
+
+
 
 

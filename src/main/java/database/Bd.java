@@ -157,6 +157,87 @@ public class Bd {
         }
 
     }
+    
+    /**
+     * mise à jour une exercice.
+     *
+     * @param u utilisateur
+     * @throws Exception Exception
+     */
+    public static void updateExercice(final String nome, final String description, final String tempsrepetition, final String nbrepetition, final String lienimage) throws Exception {
+
+        if (Bd.cx == null) {
+            Bd.connexion();
+        }
+        // Statement to handle query
+        Statement statement;
+        //Ouverture de la connexion
+        try {
+            cx = DriverManager.getConnection(url);
+        } catch (SQLException ex) {
+            System.out.println("Erreur ouverture connexion" + ex.getMessage());
+        }
+        try {
+            statement = cx.createStatement();
+        } catch (SQLException error) {
+            throw new Exception("Problème avec création du statement : "
+                    + error.getMessage());
+        }
+
+        String sqlupdate = "update exercice set DUREEE = '" + tempsrepetition + "', LIENIMAGE= '" + lienimage + "', "
+                + "REPETE='" + nbrepetition + "', DESCRIPTIONE='" + description + "' where LIBELLEE='" + nome + "'";
+        try {
+            statement.executeUpdate(sqlupdate);
+            statement.close();
+            cx.close();
+        } catch (SQLException ex) {
+            System.out.println("Problème avec récupération de la requête : "
+                    + ex.getMessage());
+        }
+
+    }
+    
+    
+    /**
+     * mise à jour une exercice.
+     *
+     * @param u utilisateur
+     * @throws Exception Exception
+     */
+    public static void deleteExercice(final String nome) throws Exception {
+
+        if (Bd.cx == null) {
+            Bd.connexion();
+        }
+        // Statement to handle query
+        Statement statement;
+        //Ouverture de la connexion
+        try {
+            cx = DriverManager.getConnection(url);
+        } catch (SQLException ex) {
+            System.out.println("Erreur ouverture connexion" + ex.getMessage());
+        }
+        try {
+            statement = cx.createStatement();
+        } catch (SQLException error) {
+            throw new Exception("Problème avec création du statement : "
+                    + error.getMessage());
+        }
+
+        String sqldelete = "delete from exercice where LIBELLEE='" + nome + "'"  ;
+        try {
+            statement.executeUpdate(sqldelete);
+            statement.close();
+            cx.close();
+        } catch (SQLException ex) {
+            System.out.println("Problème avec récupération de la requête : "
+                    + ex.getMessage());
+        }
+
+    }
+
+    
+    
 
     /**
      * chercher le code d'exercise

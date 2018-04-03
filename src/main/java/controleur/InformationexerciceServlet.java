@@ -46,7 +46,7 @@ public class InformationexerciceServlet extends HttpServlet {
         String nomexercice;
         //RequestDispatcher rd;
         nomexercice = requete.getParameter("nome");
-        System.out.println(nomexercice + "AAAA");
+        //System.out.println(nomexercice + "AAAA");
 
         Bd b = new Bd();
         Exercice e;
