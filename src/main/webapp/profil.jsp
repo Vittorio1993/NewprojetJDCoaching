@@ -209,94 +209,99 @@
                     <input type="submit" value="Enregistrer" class="btn btn-primary">
                 </form><!--测试用-->
 
-                <!-- Profil sportif -->
-                <div id="fh5co-contact">
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-md-8 col-md-offset-2">
-                                <div class="heading-section text-center animate-box">
-                                    <h2>Profil sportif</h2>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- 1ere colonne -->
-                        <div class="col-md-6 animate-box">
-                            <div class="row">
-                                <!-- Age -->
-                                <div class="col-md-3">
-                                    <div class="form-group">
-                                        <p>Age :</p>
-                                    </div>
-                                </div>
-                                <div class="col-md-9">
-                                    <div class="form-group">
-                                        <% 
-                                            String birthday = u.getDatenaissanceu();
-                                            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-                                            String cYear = sdf.format(new Date()).substring(0,4);
-                                            String birthYear = birthday .substring(0,4);
-                                            int age = Integer.parseInt(cYear) - Integer.parseInt(birthYear);
-                                            out.print("<input type='text' class='form-control' disabled placeholder="+age+">");
-                                        %>
-                                    </div>
-                                </div>
 
-                                <!-- fc après 30 flexions complètes en 45 sec -->
-                                <div class="col-md-3">
-                                    <div class="form-group">
-                                        <p>fc après 30 flexions complètes en 45 sec :</p>
-                                    </div>
-                                </div>
-                                <div class="col-md-9">
-                                    <div class="form-group">
-                                        <input type="text" class="form-control" name="fcflexions" placeholder="fc après 30 flexions complètes en 45 sec">
+
+
+
+                <form action="profilsportif"><!--- 测试用-->
+                    <!-- Profil sportif -->
+                    <div id="fh5co-contact">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-md-8 col-md-offset-2">
+                                    <div class="heading-section text-center animate-box">
+                                        <h2>Profil sportif</h2>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        <!-- 2ere colonne -->
-                        <div class="col-md-6 animate-box">
-                            <div class="row">
-                                <!-- Fréquence cardiaque au repos -->
-                                <div class="col-md-7">
-                                    <div class="form-group">
-                                        <p>Fréquence cardiaque au repos :</p>
+                            <!-- 1ere colonne -->
+                            <div class="col-md-6 animate-box">
+                                <div class="row">
+                                    <!-- Age -->
+                                    <div class="col-md-3">
+                                        <div class="form-group">
+                                            <p>Age :</p>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-9">
+                                        <div class="form-group">
+                                            <% 
+                                                String birthday = u.getDatenaissanceu();
+                                                SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+                                                String cYear = sdf.format(new Date()).substring(0,4);
+                                                String birthYear = birthday .substring(0,4);
+                                                int age = Integer.parseInt(cYear) - Integer.parseInt(birthYear);
+                                                out.print("<input type='text' class='form-control' disabled placeholder="+age+">");
+                                            %>
+                                        </div>
+                                    </div>
+
+                                    <!-- fc après 30 flexions complètes en 45 sec -->
+                                    <div class="col-md-3">
+                                        <div class="form-group">
+                                            <p>fc après 30 flexions complètes en 45 sec :</p>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-9">
+                                        <div class="form-group">
+                                            <input type="text" class="form-control" name="fcflexions" placeholder="fc après 30 flexions complètes en 45 sec">
+                                        </div>
                                     </div>
                                 </div>
-                                <div class="col-md-5">
-                                    <div class="form-group">
-                                        <input type="text" class="form-control" name="fcrepos" placeholder="fréquence">
+                            </div>
+                            <!-- 2ere colonne -->
+                            <div class="col-md-6 animate-box">
+                                <div class="row">
+                                    <!-- Fréquence cardiaque au repos -->
+                                    <div class="col-md-7">
+                                        <div class="form-group">
+                                            <p>Fréquence cardiaque au repos :</p>
+                                        </div>
                                     </div>
-                                </div>
-                                <!-- Fréquence cardiaque cible -->
-                                <div class="col-md-7">
-                                    <div class="form-group">
-                                        <p>Fréquence cardiaque cible :</p>
+                                    <div class="col-md-5">
+                                        <div class="form-group">
+                                            <input type="text" class="form-control" name="fcrepos" placeholder="fréquence">
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="col-md-5">
-                                    <div class="form-group">
-                                        <input type="text" class="form-control" disabled placeholder="fréquence">
+                                    <!-- Fréquence cardiaque cible -->
+                                    <div class="col-md-7">
+                                        <div class="form-group">
+                                            <p>Fréquence cardiaque cible :</p>
+                                        </div>
                                     </div>
-                                </div>
-                                <!--fc 1 min après exercice allongée -->
-                                <div class="col-md-3">
-                                    <div class="form-group">
-                                        <p>fc 1 min après exercice allongée :</p>
+                                    <div class="col-md-5">
+                                        <div class="form-group">
+                                            <input type="text" class="form-control" disabled placeholder="fréquence">
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="col-md-9">
-                                    <div class="form-group">
-                                        <input type="text" class="form-control" name="fcallogee" placeholder="fc après 30 flexions complètes en 45 sec">
+                                    <!--fc 1 min après exercice allongée -->
+                                    <div class="col-md-3">
+                                        <div class="form-group">
+                                            <p>fc 1 min après exercice allongée :</p>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-9">
+                                        <div class="form-group">
+                                            <input type="text" class="form-control" name="fcallogee" placeholder="fc après 30 flexions complètes en 45 sec">
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
 
-                <!-- Bilan de performance -->
-                <form action="profilsportif"><!--- 测试用-->
+                    <!-- Bilan de performance -->
+
                     <div class="container">
                         <div class="row">
                             <div class="col-md-8 col-md-offset-2">

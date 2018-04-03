@@ -226,7 +226,7 @@ public class Bd {
                     + error.getMessage());
         }
 
-        String sqlbilan = "insert into bilan values (" + bi.getCODEB() + "," 
+        String sqlbilan = "insert into bilan values (" + bi.getCODEB() + ","
                 + bi.getCODEU() + ","
                 + bi.getCODEP() + ",'"
                 + bi.getLIBELLEB() + "','"
@@ -244,6 +244,138 @@ public class Bd {
             System.out.println("Problème avec récupération de la requête : "
                     + ex.getMessage());
         }
+    }
+
+    /**
+     * chercher le code de bilan
+     *
+     * @param codeu
+     * @return
+     * @throws Exception Exception
+     */
+    public static int consulterBilan(String codeu) throws Exception {
+        int codeb = 0;
+
+        if (Bd.cx == null) {
+            Bd.connexion();
+        }
+        // Statement to handle query
+        Statement statement;
+        //Ouverture de la connexion
+        try {
+            cx = DriverManager.getConnection(url);
+        } catch (SQLException ex) {
+            System.out.println("Erreur ouverture connexion" + ex.getMessage());
+        }
+        try {
+            statement = cx.createStatement();
+        } catch (SQLException error) {
+            throw new Exception("Problème avec création du statement : "
+                    + error.getMessage());
+        }
+
+        String sqlbilan = "select CODEB from bilan where CODEU='" + codeu + "' and NUMSEMANIE = 0";
+        try {
+            ResultSet rs = statement.executeQuery(sqlbilan);
+            while (rs.next()) {
+                codeb = rs.getInt("CODEB");
+            }
+            rs.close();
+            statement.close();
+            cx.close();
+        } catch (SQLException ex) {
+            System.out.println("Problème avec récupération de la requête : "
+                    + ex.getMessage());
+        }
+        return codeb;
+    }
+
+    /**
+     * chercher le code de bilan
+     *
+     * @param libellee
+     * @return
+     * @throws Exception Exception
+     */
+    public static int consulterexercice(String libellee) throws Exception {
+        int codee = 0;
+
+        if (Bd.cx == null) {
+            Bd.connexion();
+        }
+        // Statement to handle query
+        Statement statement;
+        //Ouverture de la connexion
+        try {
+            cx = DriverManager.getConnection(url);
+        } catch (SQLException ex) {
+            System.out.println("Erreur ouverture connexion" + ex.getMessage());
+        }
+        try {
+            statement = cx.createStatement();
+        } catch (SQLException error) {
+            throw new Exception("Problème avec création du statement : "
+                    + error.getMessage());
+        }
+
+        String sqlbilan = "select CODEE from bilan where LIBELLEE='" + libellee + "'";
+        try {
+            ResultSet rs = statement.executeQuery(sqlbilan);
+            while (rs.next()) {
+                codee = rs.getInt("CODEE");
+            }
+            rs.close();
+            statement.close();
+            cx.close();
+        } catch (SQLException ex) {
+            System.out.println("Problème avec récupération de la requête : "
+                    + ex.getMessage());
+        }
+        return codee;
+    }
+
+    /**
+     * chercher le code de bilan
+     *
+     * @param libellee
+     * @return
+     * @throws Exception Exception
+     */
+    public static int insererATTACHER(String libellee) throws Exception {
+        int codee = 0;
+
+        if (Bd.cx == null) {
+            Bd.connexion();
+        }
+        // Statement to handle query
+        Statement statement;
+        //Ouverture de la connexion
+        try {
+            cx = DriverManager.getConnection(url);
+        } catch (SQLException ex) {
+            System.out.println("Erreur ouverture connexion" + ex.getMessage());
+        }
+        try {
+            statement = cx.createStatement();
+        } catch (SQLException error) {
+            throw new Exception("Problème avec création du statement : "
+                    + error.getMessage());
+        }
+
+        String sqlbilan = "select CODEE from bilan where LIBELLEE='" + libellee + "'";
+        try {
+            ResultSet rs = statement.executeQuery(sqlbilan);
+            while (rs.next()) {
+                codee = rs.getInt("CODEE");
+            }
+            rs.close();
+            statement.close();
+            cx.close();
+        } catch (SQLException ex) {
+            System.out.println("Problème avec récupération de la requête : "
+                    + ex.getMessage());
+        }
+        return codee;
     }
 
     /**
