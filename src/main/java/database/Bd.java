@@ -11,6 +11,7 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -610,24 +611,22 @@ public class Bd {
         boolean requestOK = false;
 
         /* Requête */
-        SimpleDateFormat dateCom = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss ");
-        String sqlajoutinfopersos = "INSERT INTO COMMENTAIRE(CODECOM, "
-                + "CONTENUCOM, DATECOM, CODEU)"
+        DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+        Date date = new Date();
+        String sqlajoutinfopersos = "INSERT INTO COMMENTAIRE(CONTENUCOM, DATECOM, CODEU) "
                 + "values ('"
                 + com
-                + "', "
-                + "'"
-                + dateCom
-                + "', "
-                + "'"
+                + "', '"
+                + dateFormat.format(date)
+                + "', '"
                 + codeu
-                + "'";
+                + "')";
 
         try {
             Statement st = cx.createStatement();
             /* Execution de la requête */
             try {
-                st.executeQuery(sqlajoutinfopersos);
+                st.executeUpdate(sqlajoutinfopersos);
                 requestOK = true;
                 st.close();
                 cx.close();
@@ -647,7 +646,7 @@ public class Bd {
      * @return Boolean
      * @throws Exception Exception
      */
-    public static boolean supprimerCommentaire(final String codecom)
+    public static boolean supprimerCommentaire(final int codecom)
             throws Exception {
 
         if (Bd.cx == null) {
@@ -670,13 +669,15 @@ public class Bd {
         boolean requestOK = false;
 
         /* Requête */
-        String sqlsupprimcoms = "";
+        String sqlsupprimcoms = "DELETE FROM COMMENTAIRE WHERE CODECOM='"
+                + codecom
+                + "'";
 
         try {
             Statement st = cx.createStatement();
             /* Execution de la requête */
             try {
-                st.executeQuery(sqlsupprimcoms);
+                st.executeUpdate(sqlsupprimcoms);
                 requestOK = true;
                 st.close();
                 cx.close();
@@ -903,10 +904,10 @@ public static ArrayList<Commentaire> getCommentaires(final String codeu)
 
     }
 
-// Request test
-/*public static void main(String[] args)
+// Request testing
+public static void main(String[] args)
         throws ClassNotFoundException, SQLException, Exception {
         
-        Bd.changementMailCoach("coach@coach.com");
-}*/
+        Bd.supprimerCommentaire(2);
+}
 }

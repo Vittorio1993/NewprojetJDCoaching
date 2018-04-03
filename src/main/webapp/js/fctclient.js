@@ -88,25 +88,62 @@ function l_commentaires(value) {
             } else if ("lvalides"===value) {
                 var commentaires = document.getElementById("linformationspersonnellesvalides");
             }
-            
-            commentaires.innerHTML="";   
+              
             var xml = xhr.responseXML;
-            var coms = xml.getElementsByTagName("CodeCom");
-                for (var i = 0; i < coms.length; i++) {                   
-                    commentaires.innerHTML="<table class='table table-bordered' style='color:black;'><tr><td>Contenu du commentaire</td><td>Date</td></tr>"
-                            + "<tr>"
-                            + "<td>" + xhr.responseXML.getElementsByTagName("ContenuCom")[i].firstChild.nodeValue
-                            + "</td><td>" + xhr.responseXML.getElementsByTagName("DateCom")[i].firstChild.nodeValue
-                            + "<tr>"
-                            + "</table>";
-                }
+            var coms = xml.getElementsByTagName("nuplet");
+            commentaires.innerHTML ="";
+            
+            for (var i = 0; i < coms.length; i++) {
+                commentaires.innerHTML = commentaires.innerHTML + "<table class='table table-bordered' style='color:black;'><tr><td>Commentaire</td><td>Date</td><td>Action</td></tr>"
+                    + "<tr>"
+                    + "<td>"
+                    + xhr.responseXML.getElementsByTagName("ContenuCom")[i].firstChild.nodeValue
+                    + "</td><td>"
+                    + xhr.responseXML.getElementsByTagName("DateCom")[i].firstChild.nodeValue
+                    + "</td>"
+                    + "<td>"
+                    + "<input class=\"btn btn-primary\"  id =\""
+                    + xhr.responseXML.getElementsByTagName("CodeCom")[i].firstChild.nodeValue
+                    + "\" type=\"submit\" value=\"Supprimer\" onclick=\"supprimer_com(this.id)\">"
+                    + "</td>"
+                    + "</tr>"
+                    + "</table>"
+                   
+            }
+            commentaires.innerHTML = commentaires.innerHTML
+                    + "<br>"
+                    + "<table style='border-collapse:separate;'>"
+                        + "<tr>"
+                            + "<td>"
+                                + "Ajouter nouveau commentaire : "
+                            + "</td>"
+                            + "<td>"
+                                + "<input id=\"ajoutcom"
+                                + value
+                                +"\""
+                                + " type=\"text\" name=\"ajoutcom\""
+                                + " style=\"color:black;\">"
+                            + "</td>"
+                        + "</tr>"
+                        + "<tr>"
+                            + "<td>"
+                                + "<input class=\"btn btn-primary\" type=\"submit\" id=\"ajoutbtn"
+                                + value
+                                + "\""
+                                +" value=\"Ajouter\" onclick=\"ajout_com("
+                                + codeu
+                                + ","
+                                + "this.id)\">"
+                            + "</td>"
+                        + "</tr>"
+                    + "</table>"
+                    + "<br>";
         }
     };
 
     // Requête au serveur avec les paramètres éventuels.
     xhr.open("GET", "CommentairesClient?codeu=" + codeu, true);
     xhr.send(null);
-
 }
 
 /**
@@ -147,8 +184,7 @@ function l_valider(value) {
         if (xhr.readyState === 4 && xhr.status === 200)
         {
             window.location.href = "confirmationadmin.jsp";
-        };
-        
+        };       
     };
     // Requête au serveur avec les paramètres éventuels.
     xhr.open("GET", "ValideServlet?codeu=" + codeu, true);
@@ -169,7 +205,6 @@ function changement_mail_admin() {
         {
             window.location.href = "confirmationMailAdmin.jsp";
         };
-
     };
     // Requête au serveur avec les paramètres éventuels.
     xhr.open("GET", "ParametrageMailAdmin?emailadmin=" + emailadmin, true);
@@ -190,7 +225,6 @@ function changement_mail_coach() {
         {
             window.location.href = "confirmationMailCoach.jsp";
         };
-
     };
     // Requête au serveur avec les paramètres éventuels.
     xhr.open("GET", "ParametrageMailCoach?emailcoach=" + emailcoach, true);
@@ -205,4 +239,51 @@ function affichage_infos(value) {
     
     l_informations(value);
     l_commentaires(value);
-}
+};
+
+/**
+ * Suppression d'un commentaire sur un client
+ */
+function supprimer_com(value){
+    var xhr = getXMLHttpRequest();
+    var codecom = value;
+    xhr.onreadystatechange = function ()
+    {
+        // Si l'on a tout reçu et que la requête http s'est bien passée.
+        if (xhr.readyState === 4 && xhr.status === 200)
+        {
+            window.location.href = "confirmationSuppressionCommentaire.jsp";
+        };
+    };
+    // Requête au serveur avec les paramètres éventuels.
+    xhr.open("GET", "SuppressionCommentaireClient?codecom=" + codecom, true);
+    xhr.send(null);
+
+};
+
+/**
+ * Ajout d'un commentaire sur un client
+ */
+function ajout_com(value,input){
+    var xhr = getXMLHttpRequest();
+    var com;
+    if ("ajoutbtnlprospects"===input) {
+        com=document.getElementById("ajoutcomlprospects").value;
+    } else if ("ajoutbtnlenattente"===input) {
+        com=document.getElementById("ajoutcomlenattente").value;
+    } else if ("ajoutbtnlvalides"===input) {
+        com=document.getElementById("ajoutcomlvalides").value;
+    }
+    xhr.onreadystatechange = function ()  
+    {
+        // Si l'on a tout reçu et que la requête http s'est bien passée.
+        if (xhr.readyState === 4 && xhr.status === 200)
+        {
+            window.location.href = "confirmationAjoutCommentaire.jsp";
+        };
+    };
+    // Requête au serveur avec les paramètres éventuels.
+    xhr.open("GET", "AjoutCommentaireClient?contenucom=" + com + "&codeu=" + value, true);
+    xhr.send(null);
+
+};

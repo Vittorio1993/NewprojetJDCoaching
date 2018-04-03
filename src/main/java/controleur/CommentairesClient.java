@@ -42,9 +42,11 @@ public class CommentairesClient extends HttpServlet {
         try {
             coms = Bd.getCommentaires(codeu);
             for (Commentaire com : coms) {
+                out.println("<nuplet>");
                 out.println("<CodeCom>" + com.getCodecom() + "</CodeCom>");
                 out.println("<ContenuCom>" + com.getContenucom() + "</ContenuCom>");
                 out.println("<DateCom>" + com.getDatecom() + "</DateCom>");
+                out.println("</nuplet>");
             }
         } catch (Exception ex) {
             out.println("<erreur>Erreur - "
