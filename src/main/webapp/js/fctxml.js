@@ -59,7 +59,7 @@ function l_inscription()
             var noeudNom = xml.getElementsByTagName("message");
             var elt = document.getElementById("messageinscription");
             var texte = noeudNom[0].firstChild.nodeValue;
-          
+
 
             //alert(v7);
             if (texte === "yes") {
@@ -71,7 +71,7 @@ function l_inscription()
     };
 
     // Requête au serveur avec les paramètres éventuels.
-    xhr.open("GET", "/inscription?nom=" + v1 + "&prenom=" + v2 + "&date=" + v3 + "&mail=" + v4 + "&tel=" + v5 + "&password=" + v6+ "&objectif=" + v7, true);
+    xhr.open("GET", "/inscription?nom=" + v1 + "&prenom=" + v2 + "&date=" + v3 + "&mail=" + v4 + "&tel=" + v5 + "&password=" + v6 + "&objectif=" + v7, true);
     xhr.send(null);
 
 }
@@ -100,17 +100,17 @@ function l_connexion()
             var noeudNom = xml.getElementsByTagName("message");
             var elt = document.getElementById("messageconnexion");
             var texte = noeudNom[0].firstChild.nodeValue;
-          
+
             if (texte === "yes") {
-                
+
                 window.location.href = "accueilclient.jsp";
-            }else if(texte === "non"){
-                
+            } else if (texte === "non") {
+
                 window.location.href = "pageadmin.jsp";
-            }else if(texte === "yn"){
-                
+            } else if (texte === "yn") {
+
                 window.location.href = "#";
-            }else {
+            } else {
                 elt.innerHTML = texte;
             }
 
@@ -124,3 +124,32 @@ function l_connexion()
     xhr.send(null);
 
 }
+
+/**
+ * Cette méthode "Ajax" affiche le message de connexion
+ */
+function l_afficherexercice() {
+
+    var radio = document.getElementsByName("exercice");
+
+    var selectvalue = null;   //  selectvalue?radio?????
+
+    for (var i = 0; i < radio.length; i++) {
+
+        if (radio[i].checked === true) {
+
+            selectvalue = radio[i].value;
+
+            break;
+
+        }
+
+    }
+   xhr.open("GET", "/informationexercice?=nome" + v1, true);
+    xhr.send(null);
+}
+
+
+
+
+
