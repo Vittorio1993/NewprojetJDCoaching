@@ -9,7 +9,6 @@ package controleur;
  *
  * @author zhanghuakai
  */
-
 import database.Bd;
 import model.Utilisateur;
 import java.io.IOException;
@@ -24,6 +23,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import model.Exercice;
 
 
 /*le servlet est pour transferer les donnee de la base*/
@@ -43,22 +43,29 @@ public class InformationexerciceServlet extends HttpServlet {
             String nomexercice;
             //RequestDispatcher rd;
             nomexercice = requete.getParameter("nome");
+
+            Bd b = new Bd();
+            Exercice e = b.donneeExercice(nomexercice);
+            requete.getSession().setAttribute("libellee", e.getLIBELLEE());
+            requete.getSession().setAttribute("duree", e.getDUREEE());
+            requete.getSession().setAttribute("lienimage", e.getLIENIMAGE());
+            requete.getSession().setAttribute("lienvedio", e.getLIENVEDIO());
+            requete.getSession().setAttribute("repete", e.getREPETE());
+            requete.getSession().setAttribute("description", e.getDESCRIPTION());
+
             
-            Bd b = new Bd(); 
-            b.donneeExercice(nomexercice);
+            out.println("<libellee>"+e.getLIBELLEE()+"</libellee>");
+            out.println("<duree>"+e.getDUREEE()+"</duree>");
+            out.println("<lienimage>"+e.getLIENIMAGE()+"</lienimage>");
+            out.println("<lienvedio>"+e.getLIENVEDIO()+"</lienvedio>");
+            out.println("<repete>"+e.getREPETE()+"</repete>");
+            out.println("<description>"+e.getDESCRIPTION()+"</description>");
             
             
-            
-            if (b.verifierMail(nomexercice) == 0) {
-                Utilisateur m = new Utilisateur(0, nom, prenom, datenaissance, mail, tel, "En attente", password, "client",objectif);
-                b.saisirUtilisateur(m);
-                out.println("<message>yes</message>");
-            }else{
-                out.println("<message>Le mail déjà exist</message>");
-            }
+
         } catch (Exception ex) {
             Logger.getLogger(InscriptionServlet.class.getName()).log(Level.SEVERE, null, ex);
         }
-        } 
+    }
 
 }

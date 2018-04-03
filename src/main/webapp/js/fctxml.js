@@ -113,9 +113,6 @@ function l_connexion()
             } else {
                 elt.innerHTML = texte;
             }
-
-
-
         }
     };
 
@@ -144,9 +141,52 @@ function l_afficherexercice() {
 
         }
 
+    };
+
+
+    var nome1 = document.getElementById("nome");
+    var description1 = document.getElementById("description");
+    var tempsrepetition1 = document.getElementById("tempsrepetition");
+    var nbrepetition1 = document.getElementById("nbrepetition");
+    var lienimage1 = document.getElementById("lienimage");
+
+    var xhr = getXMLHttpRequest();
+
+    xhr.onreadystatechange = function ()
+    {
+
+        // Si l'on a tout reçu et que la requête http s'est bien passée.
+        if (xhr.readyState === 4 && xhr.status === 200)
+        {
+
+            var xml = xhr.responseXML;
+            var noeudNom1 = xml.getElementsByTagName("libellee")
+            var libellee = noeudNom1[0].firstChild.nodeValue;
+
+            var noeudNom2 = xml.getElementsByTagName("description");
+            var description = noeudNom2[0].firstChild.nodeValue;
+
+            var noeudNom3 = xml.getElementsByTagName("tempsrepetition");
+            var tempsrepetition = noeudNom3[0].firstChild.nodeValue;
+
+            var noeudNom4 = xml.getElementsByTagName("nbrepetition");
+            var nbrepetition = noeudNom4[0].firstChild.nodeValue;
+
+            var noeudNom5 = xml.getElementsByTagName("lienimage");
+            var lienimage = noeudNom5[0].firstChild.nodeValue;
+            
+            nome1.value = libellee;
+            description1.value = description;
+            tempsrepetition1.value = tempsrepetition;
+            nbrepetition1.value = nbrepetition;
+            lienimage1.value = lienimage;
+        }
     }
-   xhr.open("GET", "/informationexercice?=nome" + v1, true);
-    xhr.send(null);
+}
+;
+
+xhr.open("GET", "/informationexercice?=nome" + selectvalue, true);
+xhr.send(null);
 }
 
 

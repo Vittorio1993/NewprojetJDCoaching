@@ -131,7 +131,7 @@
                              
                                         %>
 
-                                        <input type='radio' name='exercice' value='"+nom+"'onclick ="l_afficherexercice()">nom
+                                      
                                     </div>
                                 </div>
                                 <!-- 2ere colonne -->
@@ -145,7 +145,7 @@
                                         </div>
                                         <div class="col-md-9">
                                             <div class="form-group">
-                                                <input type="text" id ="name" class="form-control" name="nome" value="">
+                                                <input type="text" id ="nome" class="form-control" name="nome" value="">
                                             </div>
                                         </div>
                                     </div>
