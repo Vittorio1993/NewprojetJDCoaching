@@ -45,9 +45,6 @@ function l_inscription()
     var v5 = document.getElementById("tel").value;
     var v6 = document.getElementById("password").value;
     var v7 = document.getElementById("objectif").options[document.getElementById("objectif").selectedIndex].value;
-   
-    
-
 
     var xhr = getXMLHttpRequest();
 

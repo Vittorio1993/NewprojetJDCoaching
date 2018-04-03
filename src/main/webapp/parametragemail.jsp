@@ -59,25 +59,21 @@
         <body>
             <%    
             String mail = "";
-            if(session.getAttribute("mail") != null) { 
+            if(request.getAttribute("emailadmin") == null) { 
                 mail = (String) session.getAttribute("mail");
+            } else {
+                mail = (String) request.getAttribute("emailadmin");
+                session.setAttribute("mail",mail);
             }
             ArrayList<Utilisateur> coachs = new ArrayList();
             if(request.getAttribute("ListeCoachs") != null) { 
                 coachs = (ArrayList<Utilisateur>) request.getAttribute("ListeCoachs");
             }
-            
-            // Ajout de la liste des coachs
-            try {
-                for (Utilisateur utilisateur :Bd.getUtilisateurs()) {
-                    if ("coach".equals(utilisateur.getType())) {
-                    coachs.add(utilisateur);
-                    }
+
+            for (Utilisateur utilisateur :Bd.getUtilisateurs()) {
+                if ("coach".equals(utilisateur.getType())) {
+                coachs.add(utilisateur);
                 }
-            } catch (Exception e) {
-                RequestDispatcher rd = request
-                        .getRequestDispatcher("parametragemail.jsp");
-                rd.forward(request, response);
             }
             %>
             <div id="fh5co-wrapper">
@@ -93,35 +89,43 @@
 		</div>
 		<!-- end:fh5co-header -->
 		<div class="fh5co-hero">
-			<div class="fh5co-overlay"></div>
-			<div class="fh5co-cover" data-stellar-background-ratio="0.5" style="background-image: url(images/home-image.jpg);">
-				<div class="desc animate-box">
+                        <div class="fh5co-parallax" style="background-image: url(images/home-image-3.jpg);" data-stellar-background-ratio="0.5">
+                            <div class="overlay"></div>
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col-md-8 col-md-offset-2 col-sm-12 col-sm-offset-0 col-xs-12 col-xs-offset-0 text-center fh5co-table">
+                                        <div class="fh5co-intro fh5co-table-cell animate-box">
+                                            <h1 class="text-center">Paramétrage des adresses mail</h1>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+			<div class="fh5co-contact">
+                            <div class="desc animate-box">
 					<div class="container">
 						<div class="row">
 							<div class="col-md-7">
-								<h2>Paramétrage des adresses mail</h2>     
                                                                 <br>
-								<form method="post" action="ParametrageMail">
-                                                                    Email Administrateur: <input type="email" name="mailadmin" style="color:black;" value="<%=mail%>">
-                                                                    <br>
-                                                                    <br>
-                                                                    Informations du coach :
-                                                                    <br>
-                                                                    <div class="table-responsive">
-                                                                        <table class="table table-bordered">     
-                                                                            <%
-                                                                                out.println("<tr><td>Nom</td><td>Prénom</td><td>Adresse e-mail</td><td>Nouvelle adresse</td></tr>");
-                                                                                for(Utilisateur u : coachs) {
-                                                                                    out.println("<tr><td>" + u.getNomu() + "</td><td>" + u.getPrenomu()+ "</td><td>" + u.getEmailu()+ "</td>");
-                                                                                    out.println("<td><input type=\"email\" name=\"mailcoaching\" style=\"color:black;\" value="+ u.getEmailu() +"></td>");
-                                                                                    out.println("</tr>");
-                                                                                }
-                                                                            %>
-                                                                        </table>
-                                                                    </div>
-                                                                    <br>
-                                                                    <input class="btn btn-primary" type="submit" value="Changer">
-                                                                </form>
+                                                                Email Administrateur : <input type="email" id ="mailadmin" name="mailadmin" style="color:black;" value="<%=mail%>">
+                                                                <input class="btn btn-primary" type="submit" value="Changer" onclick="changement_mail_admin()">
+                                                                <br>
+                                                                <br>
+                                                                Informations du coach :
+                                                                <br>
+                                                                <div class="table-responsive">                                                                     
+                                                                        <%
+                                                                            out.println("<table class='table table-bordered'>");
+                                                                            out.println("<tr><td>Nom</td><td>Prénom</td><td>Adresse e-mail</td><td>Nouvelle adresse</td><td>Option</td></tr>");
+                                                                            for(Utilisateur u : coachs) {
+                                                                                out.println("<tr><td>" + u.getNomu() + "</td><td>" + u.getPrenomu()+ "</td><td>" + u.getEmailu()+ "</td>");
+                                                                                out.println("<td><input type=\"email\" id =\"mailcoaching\" name=\"mailcoaching\" style=\"color:black;\" value="+ u.getEmailu() +"></td>");                                                                    
+                                                                                out.println("<td><input class=\"btn btn-primary\" type=\"submit\" value=\"Changer\" onclick=\"changement_mail_coach()\"></td>");
+                                                                                out.println("</tr>");
+                                                                            }
+                                                                            out.println("</table>");
+                                                                        %>
+                                                                </div>
                                                                 <br>        
                                                                 <span><a href="pageadmin.jsp">Retour à la page d'administration</a></span>
 							</div>
@@ -130,6 +134,8 @@
 				</div>
 			</div>
 		</div>
+            </div>
+         </div>
         <script src="js/jquery.min.js"></script>
 	<!-- jQuery Easing -->
 	<script src="js/jquery.easing.1.3.js"></script>
@@ -144,7 +150,8 @@
 	<script src="js/superfish.js"></script>
 
 	<!-- Main JS (Do not remove) -->
-	<script src="js/main.js"></script>  
+	<script src="js/main.js"></script>
+        <script type="text/JavaScript" src="/js/fctclient.js"></script>
         </body>
     </html>
 </f:view>

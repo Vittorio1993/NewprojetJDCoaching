@@ -37,12 +37,12 @@ public class InformationsClient extends HttpServlet {
         out.println("<?xml version=\"1.0\"?>");
         out.println("<liste_informations>");
 
-        //Récupération des utilisateurs en attente
+        //Récupération des informations utilisateurs en attente
         try {
             utilisateur = Bd.getUser(codeu);
             out.println("<CodeU>" + utilisateur.getCodeu() + "</CodeU>");
             out.println("<NomU>" + utilisateur.getNomu() + "</NomU>");
-            out.println("<PrenomU>" + utilisateur.getPrenomu() + "</PrenomU>");                  
+            out.println("<PrenomU>" + utilisateur.getPrenomu() + "</PrenomU>");
             out.println("<MailU>" + utilisateur.getEmailu() + "</MailU>");
             out.println("<TelU>" + utilisateur.getTelu() + "</TelU>");
             out.println("<DatedeNaissanceU>" + utilisateur.getDatenaissanceu() + "</DatedeNaissanceU>");

@@ -7,21 +7,20 @@ package controleur;
 
 import database.Bd;
 import java.io.IOException;
-import java.util.ArrayList;
 import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import model.Utilisateur;
 
 /**
  *
  * @author RHAW
  */
-@WebServlet(name = "GestionClient", urlPatterns = {"/GestionClient"})
-public class GestionClient extends HttpServlet {
+@WebServlet(name = "EnattenteServlet", urlPatterns = {"/EnattenteServlet"})
+public class EnattenteServlet extends HttpServlet {
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -34,45 +33,15 @@ public class GestionClient extends HttpServlet {
     protected void processRequest(final HttpServletRequest request,
             final HttpServletResponse response)
             throws ServletException, IOException {
-
         request.setCharacterEncoding("UTF-8");
-        ArrayList<Utilisateur> users = new ArrayList();
-        ArrayList<Utilisateur> prospects = new ArrayList();
-        ArrayList<Utilisateur> enattente = new ArrayList();
-        ArrayList<Utilisateur> valides = new ArrayList();
-        int codemax = 0;
+        String codeu = request.getParameter("codeu");
+
         try {
-            for (Utilisateur utilisateur :Bd.getUtilisateurs()) {
-                users.add(utilisateur);
-                if (utilisateur.getCodeu() > codemax) {
-                    codemax = utilisateur.getCodeu();
-                }
-            }
-            for (Utilisateur utilisateur :users) {
-                // Test si non admin ou coach
-                if (!"admin".equals(utilisateur.getType())
-                        && !"coach".equals(utilisateur.getType())) {
-                    //Ajout en fonction du status
-                    if ("Abonné".equals(utilisateur.getStatus())
-                            || "Validé".equals(utilisateur.getStatus())) {
-                        valides.add(utilisateur);
-                    } else if ("En attente".equals(utilisateur.getStatus())) {
-                        enattente.add(utilisateur);
-                    } else {
-                        prospects.add(utilisateur);
-                    }
-                }
-            }
-                request.setAttribute("listeValides", valides);
-                request.setAttribute("listeProspects", prospects);
-                request.setAttribute("listeEnAttente", enattente);
-                request.setAttribute("LastUser", codemax);
-                RequestDispatcher rd = request
-                        .getRequestDispatcher("gererclients.jsp");
-                rd.forward(request, response);
+            Bd.enAttente(codeu);
+            RequestDispatcher rd = request.getRequestDispatcher("confirmationadmin.jsp");
+            rd.forward(request, response);
         } catch (Exception e) {
-            RequestDispatcher rd = request
-                    .getRequestDispatcher("pageadmin.jsp");
+            RequestDispatcher rd = request.getRequestDispatcher("pageadmin.jsp");
             rd.forward(request, response);
         }
     }
@@ -115,6 +84,6 @@ public class GestionClient extends HttpServlet {
      */
     @Override
     public String getServletInfo() {
-        return "Gestion Client";
+        return "Passage en attente";
     }
 }
