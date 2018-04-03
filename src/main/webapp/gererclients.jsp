@@ -61,6 +61,7 @@
             ArrayList<Utilisateur> prospects = new ArrayList();
             ArrayList<Utilisateur> enattente = new ArrayList();
             ArrayList<Utilisateur> valides = new ArrayList();
+            ArrayList<Utilisateur> users = new ArrayList();
             int lastuser=0;
             if(request.getAttribute("listeProspects") != null) { 
                 prospects = (ArrayList<Utilisateur>) request.getAttribute("listeProspects");
@@ -73,6 +74,9 @@
             }
             if(request.getAttribute("LastUser") != null) { 
                             lastuser = (int) request.getAttribute("LastUser");
+            }
+            if(request.getAttribute("listeUsers") != null) { 
+                users = (ArrayList<Utilisateur>) request.getAttribute("listeUsers");
             }
             %>
             <div id="fh5co-wrapper">
@@ -167,6 +171,17 @@
                                             <br>
                                             <div id="linformationspersonnellesvalides" ></div>
                                             <br>
+                                            <div>
+                                                <h2>Suppression d'un client :</h2>
+                                                <select id="lsuppression" style="color:black;">
+                                                <%
+                                                    for(Utilisateur u : users) {
+                                                            out.println("<option value=" + u.getCodeu() + ">" + u.getNomu() + "--" + u.getPrenomu() + "--" + u.getEmailu() + "</option>");
+                                                    }
+                                                %>
+                                                </select>
+                                                <input class="btn btn-primary"  id ="supress" type="submit" value="Supprimer" onclick="suppress_client()">
+                                            </div>
                                         </div>
                                     <span><a href="pageadmin.jsp">Retour à la page d'administration</a></span>
                                     </div>

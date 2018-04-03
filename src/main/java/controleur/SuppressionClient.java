@@ -20,8 +20,8 @@ import model.Utilisateur;
  *
  * @author RHAW
  */
-@WebServlet(name = "GestionClient", urlPatterns = {"/GestionClient"})
-public class GestionClient extends HttpServlet {
+@WebServlet(name = "SuppressionClient", urlPatterns = {"/SuppressionClient"})
+public class SuppressionClient extends HttpServlet {
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -36,45 +36,18 @@ public class GestionClient extends HttpServlet {
             throws ServletException, IOException {
 
         request.setCharacterEncoding("UTF-8");
-        ArrayList<Utilisateur> users = new ArrayList();
-        ArrayList<Utilisateur> prospects = new ArrayList();
-        ArrayList<Utilisateur> enattente = new ArrayList();
-        ArrayList<Utilisateur> valides = new ArrayList();
-        int codemax = 0;
-        try {
-            for (Utilisateur utilisateur :Bd.getUtilisateurs()) {
-                if (!"admin".equals(utilisateur.getType())
-                        && !"coach".equals(utilisateur.getType())) {
-                            users.add(utilisateur);
-                            if (utilisateur.getCodeu() > codemax) {
-                                codemax = utilisateur.getCodeu();
-                            }
-                }
-            }
-            for (Utilisateur utilisateur :users) {
-                    //Ajout en fonction du status
-                    if ("Abonné".equals(utilisateur.getStatus())
-                            || "Validé".equals(utilisateur.getStatus())) {
-                        valides.add(utilisateur);
-                    } else if ("En attente".equals(utilisateur.getStatus())) {
-                        enattente.add(utilisateur);
-                    } else {
-                        prospects.add(utilisateur);
-                    }
-            }
-                request.setAttribute("listeValides", valides);
-                request.setAttribute("listeProspects", prospects);
-                request.setAttribute("listeEnAttente", enattente);
-                request.setAttribute("LastUser", codemax);
-                request.setAttribute("listeUsers", users);
+        String codeu = request.getParameter("codeu");
+            try {
+                //Suppression commentaire
+                Bd.supprimerClient(Integer.parseInt(codeu));
                 RequestDispatcher rd = request
-                        .getRequestDispatcher("gererclients.jsp");
+                        .getRequestDispatcher("confirmationSuppressionClient.jsp");
                 rd.forward(request, response);
-        } catch (Exception e) {
-            RequestDispatcher rd = request
-                    .getRequestDispatcher("pageadmin.jsp");
-            rd.forward(request, response);
-        }
+            } catch (Exception e) {
+                RequestDispatcher rd = request
+                        .getRequestDispatcher("pageadmin.jsp");
+                rd.forward(request, response);
+            }
     }
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods.
     // Click on the + sign on the left to edit the code.">
@@ -115,6 +88,7 @@ public class GestionClient extends HttpServlet {
      */
     @Override
     public String getServletInfo() {
-        return "Gestion Client";
+        return "Suppression Client";
     }
 }
+

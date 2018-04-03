@@ -291,3 +291,27 @@ function ajout_com(value,input){
     xhr.send(null);
 
 };
+
+/**
+ * Suppression d'un client
+ */
+function suppress_client(){
+    var xhr = getXMLHttpRequest();
+    var codeu=document.getElementById("lsuppression").value;
+    xhr.onreadystatechange = function ()  
+    {
+        // Si l'on a tout reçu et que la requête http s'est bien passée.
+        if (xhr.readyState === 4 && xhr.status === 200)
+        {
+            if(codeu!==""){
+                window.location.href = "confirmationSuppressionClient.jsp";
+            }else {
+                window.location.href = "GestionClient";
+            };
+        };
+    };
+    // Requête au serveur avec les paramètres éventuels.
+    xhr.open("GET", "SuppressionClient?codeu=" + codeu, true);
+    xhr.send(null);
+
+};
