@@ -75,6 +75,7 @@
                                     <ul class="sf-menu" id="fh5co-primary-menu">
                                         <li><a class="btn btn-primary" href="parametragemail.jsp">Paramétrage des mails</a></li>
                                         <li><a class="btn btn-primary" href="GestionClient">Gérer Clients</a></li>
+                                        <li><a class="btn btn-primary" href="inscriptionrapide.jsp">Inscrire Client</a></li>
                                     </ul>
                                 </nav>
                             </div>
