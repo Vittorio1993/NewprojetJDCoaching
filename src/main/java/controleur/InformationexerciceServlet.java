@@ -13,6 +13,8 @@ import database.Bd;
 import model.Utilisateur;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.RequestDispatcher;
@@ -35,37 +37,33 @@ public class InformationexerciceServlet extends HttpServlet {
 
     @Override
     public void doGet(HttpServletRequest requete, HttpServletResponse reponse) throws ServletException, IOException {
+
+        reponse.setContentType("application/xml;charset=UTF-8");
+        reponse.setCharacterEncoding("UTF-8");
+        PrintWriter out = reponse.getWriter();
+        out.println("<?xml version=\"1.0\"?>");
+        out.println("<liste_exercices>");
+        String nomexercice;
+        //RequestDispatcher rd;
+        nomexercice = requete.getParameter("nome");
+        System.out.println(nomexercice + "AAAA");
+
+        Bd b = new Bd();
+        Exercice e;
         try {
-            reponse.setContentType("application/xml;charset=UTF-8");
-            reponse.setCharacterEncoding("UTF-8");
-            PrintWriter out = reponse.getWriter();
-            out.println("<?xml version=\"1.0\"?>");
-            String nomexercice;
-            //RequestDispatcher rd;
-            nomexercice = requete.getParameter("nome");
-
-            Bd b = new Bd();
-            Exercice e = b.donneeExercice(nomexercice);
-            requete.getSession().setAttribute("libellee", e.getLIBELLEE());
-            requete.getSession().setAttribute("duree", e.getDUREEE());
-            requete.getSession().setAttribute("lienimage", e.getLIENIMAGE());
-            requete.getSession().setAttribute("lienvedio", e.getLIENVEDIO());
-            requete.getSession().setAttribute("repete", e.getREPETE());
-            requete.getSession().setAttribute("description", e.getDESCRIPTION());
-
-            
+            e = b.donneeExercice(nomexercice);
             out.println("<libellee>"+e.getLIBELLEE()+"</libellee>");
-            out.println("<duree>"+e.getDUREEE()+"</duree>");
-            out.println("<lienimage>"+e.getLIENIMAGE()+"</lienimage>");
-            out.println("<lienvedio>"+e.getLIENVEDIO()+"</lienvedio>");
-            out.println("<repete>"+e.getREPETE()+"</repete>");
-            out.println("<description>"+e.getDESCRIPTION()+"</description>");
-            
-            
-
+            out.println("<tempsrepetition>"+e.getDUREEE()+"</tempsrepetition>");
+            out.println("<lienimage>" + e.getLIENIMAGE() + "</lienimage>");
+            out.println("<lienvedio>" + e.getLIENVEDIO() + "</lienvedio>");
+            out.println("<repete>" + e.getREPETE() + "</repete>");
+            out.println("<description>" + e.getDESCRIPTION() + "</description>");
         } catch (Exception ex) {
-            Logger.getLogger(InscriptionServlet.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(InformationexerciceServlet.class.getName()).log(Level.SEVERE, null, ex);
         }
+
+        out.println("</liste_exercices>");
+
     }
 
 }

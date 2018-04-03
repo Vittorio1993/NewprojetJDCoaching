@@ -141,16 +141,12 @@ function l_afficherexercice() {
 
         }
 
-    };
-
-
-    var nome1 = document.getElementById("nome");
-    var description1 = document.getElementById("description");
-    var tempsrepetition1 = document.getElementById("tempsrepetition");
-    var nbrepetition1 = document.getElementById("nbrepetition");
-    var lienimage1 = document.getElementById("lienimage");
+    }
 
     var xhr = getXMLHttpRequest();
+    xhr.open("GET", "/informationexercice?nome=" + selectvalue, true);
+    xhr.send(null);
+
 
     xhr.onreadystatechange = function ()
     {
@@ -160,7 +156,7 @@ function l_afficherexercice() {
         {
 
             var xml = xhr.responseXML;
-            var noeudNom1 = xml.getElementsByTagName("libellee")
+            var noeudNom1 = xml.getElementsByTagName("libellee");
             var libellee = noeudNom1[0].firstChild.nodeValue;
 
             var noeudNom2 = xml.getElementsByTagName("description");
@@ -169,24 +165,28 @@ function l_afficherexercice() {
             var noeudNom3 = xml.getElementsByTagName("tempsrepetition");
             var tempsrepetition = noeudNom3[0].firstChild.nodeValue;
 
-            var noeudNom4 = xml.getElementsByTagName("nbrepetition");
+            var noeudNom4 = xml.getElementsByTagName("repete");
             var nbrepetition = noeudNom4[0].firstChild.nodeValue;
 
             var noeudNom5 = xml.getElementsByTagName("lienimage");
             var lienimage = noeudNom5[0].firstChild.nodeValue;
-            
+
+
+            var nome1 = document.getElementById("nome");
+            var description1 = document.getElementById("description");
+            var tempsrepetition1 = document.getElementById("tempsrepetition");
+            var nbrepetition1 = document.getElementById("nbrepetition");
+            var lienimage1 = document.getElementById("lienimage");
+
             nome1.value = libellee;
             description1.value = description;
             tempsrepetition1.value = tempsrepetition;
             nbrepetition1.value = nbrepetition;
             lienimage1.value = lienimage;
         }
-    }
-}
-;
+    };
 
-xhr.open("GET", "/informationexercice?=nome" + selectvalue, true);
-xhr.send(null);
+
 }
 
 

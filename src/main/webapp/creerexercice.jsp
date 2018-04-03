@@ -124,7 +124,7 @@
         arrayex = b.nomexercise();
         
         for (String nom:arrayex){
-        out.print("<input type='radio' name='exercice' value='"+nom+"'onclick ='l_afficherexercice()'>"+"&nbsp&nbsp"+nom+"<br>");
+        out.print("<input type='radio' name='exercice' value='"+nom+"'onclick ='l_afficherexercice()'>"+"&nbsp;&nbsp"+nom+"<br>");
     }
     
         //System.out.println(u.getNomu());
@@ -145,7 +145,7 @@
                                         </div>
                                         <div class="col-md-9">
                                             <div class="form-group">
-                                                <input type="text" id ="nome" class="form-control" name="nome" value="">
+                                                <input type="text" id ="nome" class="form-control" name="nome" disabled="disabled" value="">
                                             </div>
                                         </div>
                                     </div>
@@ -158,7 +158,7 @@
                                         </div>
                                         <div class="col-md-7">
                                             <div class="form-group">
-                                                <input type="text" id="descripition" class="form-control" name="description" value="">
+                                                <input type="text" id="description" class="form-control" name="description" value="">
                                             </div>
                                         </div>
                                     </div>
@@ -202,7 +202,8 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <input type="submit" value="Enregistrer" class="btn btn-primary">
+                                    <input type="submit" value="Modifier" class="btn btn-primary">
+                                    <input type="submit" value="Supprimer" class="btn btn-primary">
                                 </div>
                             </div>
                         </div>
