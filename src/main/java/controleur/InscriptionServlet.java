@@ -39,6 +39,7 @@ public class InscriptionServlet extends HttpServlet {
             tel = requete.getParameter("tel");
             password = requete.getParameter("password");
             objectif= requete.getParameter("objectif");
+            //System.out.println(objectif);
             Bd b = new Bd(); 
             if (b.verifierMail(mail) == 0) {
                 Utilisateur m = new Utilisateur(0, nom, prenom, datenaissance, mail, tel, "En attente", password, "client",objectif);

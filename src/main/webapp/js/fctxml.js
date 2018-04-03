@@ -45,6 +45,7 @@ function l_inscription()
     var v5 = document.getElementById("tel").value;
     var v6 = document.getElementById("password").value;
     var v7 = document.getElementById("objectif").options[document.getElementById("objectif").selectedIndex].value;
+
     var xhr = getXMLHttpRequest();
 
     xhr.onreadystatechange = function ()
@@ -60,7 +61,7 @@ function l_inscription()
             var texte = noeudNom[0].firstChild.nodeValue;
           
 
-            //alert(texte);
+            //alert(v7);
             if (texte === "yes") {
                 window.location.href = "connexion.html";
             } else {
