@@ -693,6 +693,58 @@ public class Bd {
     }
 
     /**
+     * Suppression d'un utilisateur.
+     * @param codeu code utilisateur
+     * @return Boolean
+     * @throws Exception Exception
+     */
+    public static boolean supprimerClient(final int codeu)
+            throws Exception {
+
+        if (Bd.cx == null) {
+            Bd.connexion();
+        }
+        // Statement pour effectuer la requête
+        Statement statement;
+        //Ouverture de la connexion
+        try {
+            cx = DriverManager.getConnection(url);
+        } catch (SQLException ex) {
+            System.out.println("Erreur ouverture connexion" + ex.getMessage());
+        }
+        try {
+            statement = cx.createStatement();
+        } catch (SQLException error) {
+            throw new Exception("Problème avec création du statement : "
+                    + error.getMessage());
+        }
+        boolean requestOK = false;
+
+        /* Requête */
+        String sqlsupprimerclient = "DELETE FROM UTILISATEUR WHERE CODEU='"
+                + codeu
+                + "'";
+
+        try {
+            Statement st = cx.createStatement();
+            /* Execution de la requête */
+            try {
+                st.executeUpdate(sqlsupprimerclient);
+                requestOK = true;
+                st.close();
+                cx.close();
+            } catch (SQLException ex) {
+                System.out.println("Erreur execution requête "
+                        + ex.getMessage());
+            }
+        } catch (SQLException ex) {
+            System.out.println("Erreur de SQL statement "
+                    + ex.getMessage());
+        }
+        return requestOK;
+    }
+
+    /**
      * Retourne tous les commentaires d'un utilisateur.
      * @param codeu code utilisateur
      * @return ArrayList
