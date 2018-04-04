@@ -70,27 +70,25 @@ public class ProfilsportifServlet extends HttpServlet {
             Bd b = new Bd();
 //?????            b.updateUtilisateur(nom, prenom, datenaissance, mail, tel, password);??
 ///?????           b.insererMesuration(poids, bras, poitrine, taille, hanches, cuisses);
-            Integer i = null;
+            //Integer i = null;
             Integer codeu = Integer.parseInt(requete.getSession().getAttribute("codeu").toString());
-            System.out.println("AAA"+codeu);
-            Bilan bi = new Bilan(0, codeu, i, "firstbilan", 0, "", fcallogee, fcflexions, fcrepos, new Date());
-            b.insererBilan(bi);
-            
-//            int codegainage=b.cherchecodeexercise("gainage");
-//            int codepompes=b.cherchecodeexercise("pompes");
-//            int codejambegauchedevant= b.cherchecodeexercise("jambe gauche devant");
-//            int codejambedroitedevant=b.cherchecodeexercise("jambe droite devant");
-//            int codesquat=b.cherchecodeexercise("squat");
-//            int codecrunch=b.cherchecodeexercise("crunch");
-//            int codedips=b.cherchecodeexercise("dips");
-//            
-//            b.insererAttacher(0, 0, bras, hanches, jambedroite);
-            
-            
-            
-            
-            
+            //System.out.println("AAA" + codeu);
 
+            //???? b.insererBilan(codeu, "firstbilan", "0", " ", fcallogee, fcflexions, fcrepos);
+            int codegainage = b.cherchecodeexercise("gainage");
+            int codepompes = b.cherchecodeexercise("pompes");
+            int codejambegauchedevant = b.cherchecodeexercise("jambe gauche devant");
+            int codejambedroitedevant = b.cherchecodeexercise("jambe droite devant");
+            int codesquat = b.cherchecodeexercise("squat");
+            int codecrunch = b.cherchecodeexercise("crunch");
+            int codedips = b.cherchecodeexercise("dips");
+
+            int codeb = b.consulterBilan(codeu);
+            System.out.println(codeb + "AA");
+            int codeb1 = b.chercherfirstbilan(codeu);
+            System.out.println(codeb1 + "BB");
+
+            b.insererAttacher(codeb, codegainage, "1", gainage, null);
             out.println("<message>yes</message>");
 
         } catch (Exception ex) {
