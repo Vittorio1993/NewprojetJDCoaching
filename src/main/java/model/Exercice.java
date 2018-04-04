@@ -14,17 +14,15 @@ public class Exercice {
     private String LIBELLEE;
     private String DUREEE;
     private String LIENIMAGE;
-    private String LIENVEDIO;
     private String REPETE;
     private String DESCRIPTION;
 
-    public Exercice(String LIBELLEE, String DUREEE, String LIENIMAGE, String LIENVEDIO, String REPETE, String DESCRIPTIO) {
+    public Exercice(String LIBELLEE, String DUREEE, String LIENIMAGE, String REPETE, String DESCRIPTION) {
         this.LIBELLEE = LIBELLEE;
         this.DUREEE = DUREEE;
         this.LIENIMAGE = LIENIMAGE;
-        this.LIENVEDIO = LIENVEDIO;
         this.REPETE = REPETE;
-        this.DESCRIPTION = DESCRIPTIO;
+        this.DESCRIPTION = DESCRIPTION;
     }
 
     public int getCODEE() {
@@ -43,9 +41,6 @@ public class Exercice {
         return LIENIMAGE;
     }
 
-    public String getLIENVEDIO() {
-        return LIENVEDIO;
-    }
 
     public String getREPETE() {
         return REPETE;
@@ -71,16 +66,12 @@ public class Exercice {
         this.LIENIMAGE = LIENIMAGE;
     }
 
-    public void setLIENVEDIO(String LIENVEDIO) {
-        this.LIENVEDIO = LIENVEDIO;
-    }
-
     public void setREPETE(String REPETE) {
         this.REPETE = REPETE;
     }
 
-    public void setDESCRIPTION(String DESCRIPTIO) {
-        this.DESCRIPTION = DESCRIPTIO;
+    public void setDESCRIPTION(String DESCRIPTION) {
+        this.DESCRIPTION = DESCRIPTION;
     }
 
    

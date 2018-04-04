@@ -46,16 +46,17 @@ public class InformationexerciceServlet extends HttpServlet {
         String nomexercice;
         //RequestDispatcher rd;
         nomexercice = requete.getParameter("nome");
-        //System.out.println(nomexercice + "AAAA");
+        
 
         Bd b = new Bd();
+        
         Exercice e;
         try {
             e = b.donneeExercice(nomexercice);
+            System.out.println(e.getLIBELLEE()+"AAABBB");
             out.println("<libellee>"+e.getLIBELLEE()+"</libellee>");
             out.println("<tempsrepetition>"+e.getDUREEE()+"</tempsrepetition>");
-            out.println("<lienimage>" + e.getLIENIMAGE() + "</lienimage>");
-            out.println("<lienvedio>" + e.getLIENVEDIO() + "</lienvedio>");
+            out.println("<lienimage>" + e.getLIENIMAGE() + "</lienimage>");           
             out.println("<repete>" + e.getREPETE() + "</repete>");
             out.println("<description>" + e.getDESCRIPTION() + "</description>");
         } catch (Exception ex) {
