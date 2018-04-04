@@ -157,7 +157,7 @@ public class Bd {
         }
 
     }
-    
+
     /**
      * mise à jour une exercice.
      *
@@ -196,10 +196,48 @@ public class Bd {
         }
 
     }
-    
-    
+
     /**
-     * mise à jour une exercice.
+     * ajouter une exercice.
+     *
+     * @param u utilisateur
+     * @throws Exception Exception
+     */
+    public static void insererExercice(final String nome, final String description, final String tempsrepetition, final String nbrepetition, final String lienimage) throws Exception {
+
+        if (Bd.cx == null) {
+            Bd.connexion();
+        }
+        // Statement to handle query
+        Statement statement;
+        //Ouverture de la connexion
+        try {
+            cx = DriverManager.getConnection(url);
+        } catch (SQLException ex) {
+            System.out.println("Erreur ouverture connexion" + ex.getMessage());
+        }
+        try {
+            statement = cx.createStatement();
+        } catch (SQLException error) {
+            throw new Exception("Problème avec création du statement : "
+                    + error.getMessage());
+        }
+
+        String sqlinserer = "insert into exercice (LIBELLEE,DUREEE,LIENIMAGE,REPETE,DESCRIPTIONE) "
+                + "values('" + nome + "','" + tempsrepetition+"','"+lienimage + "','" + nbrepetition + "','" + description + "')";
+        try {
+            statement.executeUpdate(sqlinserer);
+            statement.close();
+            cx.close();
+        } catch (SQLException ex) {
+            System.out.println("Problème avec récupération de la requête : "
+                    + ex.getMessage());
+        }
+
+    }
+
+    /**
+     * supprimer une exercice.
      *
      * @param u utilisateur
      * @throws Exception Exception
@@ -224,7 +262,7 @@ public class Bd {
                     + error.getMessage());
         }
 
-        String sqldelete = "delete from exercice where LIBELLEE='" + nome + "'"  ;
+        String sqldelete = "delete from exercice where LIBELLEE='" + nome + "'";
         try {
             statement.executeUpdate(sqldelete);
             statement.close();
@@ -235,9 +273,6 @@ public class Bd {
         }
 
     }
-
-    
-    
 
     /**
      * chercher le code d'exercise
@@ -1222,7 +1257,7 @@ public class Bd {
      */
     public static Exercice donneeExercice(final String nomexercice)
             throws Exception {
-        Exercice e = new Exercice("", "", "", "", "", "");
+        Exercice e = new Exercice("", "", "", "", "");
         if (Bd.cx == null) {
             Bd.connexion();
         }
@@ -1251,7 +1286,7 @@ public class Bd {
                 /* Adding messages to the ArrayList */
                 while (rs.next()) {
 
-                    e = new Exercice(rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6), rs.getString(7));
+                    e = new Exercice(rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6));
                 }
                 rs.close();
                 st.close();
