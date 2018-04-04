@@ -71,12 +71,7 @@
                                 <!-- START #fh5co-menu-wrap -->
                                 <nav id="fh5co-menu-wrap" role="navigation">
                                     <ul class="sf-menu" id="fh5co-primary-menu">
-                                        <li><a href="index.html">Home</a></li>
-                                        <li><a href="profil.html">Mon profil</a></li>
-                                        <li><a href="schedule.html">Schedule</a></li>
-                                        <li><a href="trainer.html">Trainers</a></li>
-                                        <li><a href="about.html">About</a></li>
-                                        <li class="active"><a href="contact.html">Contact</a></li>
+                                        <li><a href="accueilcoach.jsp">Home</a></li>                                     
                                     </ul>
                                 </nav>
                             </div>
@@ -90,7 +85,7 @@
                         <div class="row">
                             <div class="col-md-8 col-md-offset-2 col-sm-12 col-sm-offset-0 col-xs-12 col-xs-offset-0 text-center fh5co-table">
                                 <div class="fh5co-intro fh5co-table-cell animate-box">
-                                    <h1 class="text-center">Mon profil</h1>
+                                    <h1 class="text-center">Gestion Exercice</h1>
                                     <p>Gagner en forme, gagner du temps...</p>
                                 </div>
                             </div>
@@ -127,7 +122,7 @@
         arrayex = b.nomexercise();
         
         for (String nom:arrayex){
-        out.print("<input type='radio' name='exercice' value='"+nom+"'onclick ='l_afficherexercice()'>"+"&nbsp;&nbsp"+nom+"<br>");
+        out.print("<input type='radio' name='exercice' value='"+nom+"'onclick ='l_afficherexercice()'>"+"&nbsp;&nbsp"+nom+"<br><br>");
     }
     
         //System.out.println(u.getNomu());
@@ -204,6 +199,9 @@
                                         </div>
                                         <div class="col-md-8">
                                             <div class="form-group">
+                                                <img id="preview" />
+                                                <br />
+                                                <!--<input type="texet" id="lienimage" name="lienimage" onchange="imgPreview(this)" />-->
                                                 <input type="text" id="lienimage" class="form-control" name="lienimage" >
                                             </div>
                                         </div>
@@ -300,23 +298,24 @@
 
 
 
-            <!-- END Profil de base -->
+            <!-- fh5co-blog-section -->
             <footer>
                 <div id="footer">
                     <div class="container">
                         <div class="row">
                             <div class="col-md-4 animate-box">
                                 <h3 class="section-title">About Us</h3>
-                                <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics.</p>
+                                <p>RHAW</p>
                             </div>
 
                             <div class="col-md-4 animate-box">
                                 <h3 class="section-title">Our Address</h3>
                                 <ul class="contact-info">
-                                    <li><i class="icon-map-marker"></i>198 West 21th Street, Suite 721 New York NY 10016</li>
+                                    <li><i class="icon-map-marker"></i>2 Rue du Doyen-Gabriel-Marty 
+                                        31042 Toulouse Cedex 9</li>
                                     <li><i class="icon-phone"></i>+ 1235 2355 98</li>
-                                    <li><i class="icon-envelope"></i><a href="#">info@yoursite.com</a></li>
-                                    <li><i class="icon-globe2"></i><a href="#">www.yoursite.com</a></li>
+                                    <li><i class="icon-envelope"></i><a href="#">rhaw@rhaw.com</a></li>
+                                    <li><i class="icon-globe2"></i><a href="#">https://jdcoaching.herokuapp.com/</a></li>
                                 </ul>
                             </div>
                             <div class="col-md-4 animate-box">
@@ -349,14 +348,12 @@
                                     <a href="#"><i class="icon-dribbble2"></i></a>
                                     <a href="#"><i class="icon-youtube"></i></a>
                                 </p>
-                                <p>Copyright 2016 Free Html5 <a href="#">Fitness</a>. All Rights Reserved. <br>Made with <i class="icon-heart3"></i> by <a href="#/" target="_blank">Freehtml5</a> / More Templates <a href="http://www.cssmoban.com/" target="_blank" title="模板之家">模板之家</a> - Collect from <a href="http://www.cssmoban.com/" title="网页模板" target="_blank">网页模板</a></p>
+                                <p>Copyright RHAW</p>
                             </div>
                         </div>
                     </div>
                 </div>
             </footer>
-
-
         </div>
         <!-- END fh5co-page -->
 
