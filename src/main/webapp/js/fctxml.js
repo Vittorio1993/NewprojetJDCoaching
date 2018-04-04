@@ -109,7 +109,7 @@ function l_connexion()
                 window.location.href = "pageadmin.jsp";
             } else if (texte === "yn") {
 
-                window.location.href = "#";
+                window.location.href = "accueilcoach.jsp";
             } else {
                 elt.innerHTML = texte;
             }

@@ -79,6 +79,7 @@
                                             <a href="#programme">Programme</a>
                                         </li>
                                         <li><a href="#seance">Séance</a></li>
+                                        <li><a href="gestionexercice.jsp">Exercice</a></li>
                                     </ul>
                                 </nav>
                             </div>
