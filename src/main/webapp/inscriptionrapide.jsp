@@ -88,49 +88,47 @@
                             <div class="desc animate-box">
 					<div class="container">
 						<div class="row">
-							<div class="col-md-7">
-                                                                <br>
-                                                                <p>Formulaire d'inscription : </p>
-                                                                <form method="GET" action="InscriptionRapide">
-                                                                <table style="border-collapse:separate; border-spacing:0px 10px;">
-                                                                    <tr>
-                                                                        <th>Nom : </th>
-                                                                        <th><input id="nom" type="text" name="nom"  style="color:black;" required="required"></th>
-                                                                    </tr>
-                                                                    <tr>
-                                                                        <th>Prenom : </th>
-                                                                        <th><input id="prenom" type="text" name="prenom" style="color:black;" required="required"></th>
-                                                                    </tr>
-                                                                    <tr>
-                                                                        <th>Date de naissance : </th>
-                                                                        <th><input id="date" type="date" name="date" style="color:black;" required="required"></th>
-                                                                    </tr>
-                                                                    <tr>
-                                                                        <th>Email : </th>
-                                                                        <th><input id="mail" type="mail" name="mail" style="color:black;" required="required"></th>
-                                                                    </tr>
-                                                                    <tr>
-                                                                        <th>Téléphone : </th>
-                                                                        <th><input id="tel" type="text" name="tel" style="color:black;" required="required"></th>
-                                                                    </tr>
-                                                                    <tr>
-                                                                        <th>Password : </th>
-                                                                        <th><input id="password" type="password" name="password" style="color:black;" required="required"></th>
-                                                                    </tr>
-                                                                    <tr>
-                                                                        <th>Objectif : </th>
-                                                                        <th><select id="objectif" style="color:black;" required="required">
-                                                                                <option value ="Sportif" style="color:black;">Sportif</option>
-                                                                                <option value ="Minceur" style="color:black;">Minceur</option>
-                                                                            </select></th>
-                                                                    </tr>
-                                                                </table>
-                                                                <br>
-                                                                <p><input class="btn btn-primary" type="submit" value="Inscrire"></p>                                                                                       
-                                                                </form>  
-                                                                <br>        
-                                                                <span><a href="pageadmin.jsp">Retour à la page d'administration</a></span>
-							</div>
+                                                    <br>
+                                                    <p>Formulaire d'inscription : </p>
+                                                    <form method="GET">
+                                                    <table style="border-collapse:separate; border-spacing:0px 10px;">
+                                                        <tr>
+                                                            <th>Nom : </th>
+                                                            <th><input id="nom" type="text" name="nom"  style="color:black;" required="required"></th>
+                                                        </tr>
+                                                        <tr>
+                                                            <th>Prenom : </th>
+                                                            <th><input id="prenom" type="text" name="prenom" style="color:black;" required="required"></th>
+                                                        </tr>
+                                                        <tr>
+                                                            <th>Date de naissance : </th>
+                                                            <th><input id="date" type="date" name="date" style="color:black;" required="required"></th>
+                                                        </tr>
+                                                        <tr>
+                                                            <th>Email : </th>
+                                                            <th><input id="mail" type="mail" name="mail" style="color:black;" required="required"></th>
+                                                        </tr>
+                                                        <tr>
+                                                            <th>Téléphone : </th>
+                                                            <th><input id="tel" type="text" name="tel" style="color:black;" required="required"></th>
+                                                        </tr>
+                                                        <tr>
+                                                            <th>Password : </th>
+                                                            <th><input id="password" type="password" name="password" style="color:black;" required="required"></th>
+                                                        </tr>
+                                                        <tr>
+                                                            <th>Objectif : </th>
+                                                            <th><select id="objectif" style="color:black;" required="required">
+                                                                    <option value ="Sportif" style="color:black;">Sportif</option>
+                                                                    <option value ="Minceur" style="color:black;">Minceur</option>
+                                                                </select></th>
+                                                        </tr>
+                                                    </table>
+                                                    <br>
+                                                    <p><input class="btn btn-primary" type="submit" value="Inscrire" onclick="l_inscription_rapide()"></p>                                                                                       
+                                                    </form>  
+                                                    <br>        
+                                                    <span><a href="pageadmin.jsp">Retour à la page d'administration</a></span>
 						</div>
 					</div>
 				</div>
