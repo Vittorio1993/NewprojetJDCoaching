@@ -71,9 +71,25 @@ public class ProfilsportifServlet extends HttpServlet {
 //?????            b.updateUtilisateur(nom, prenom, datenaissance, mail, tel, password);??
 ///?????           b.insererMesuration(poids, bras, poitrine, taille, hanches, cuisses);
             Integer i = null;
-            Integer codeu = (Integer) requete.getSession().getAttribute("codeu");
-            Bilan bi = new Bilan(0, codeu, i, "bilansportif", 0, "", fcallogee, fcflexions, fcrepos, new Date());
+            Integer codeu = Integer.parseInt(requete.getSession().getAttribute("codeu").toString());
+            System.out.println("AAA"+codeu);
+            Bilan bi = new Bilan(0, codeu, i, "firstbilan", 0, "", fcallogee, fcflexions, fcrepos, new Date());
             b.insererBilan(bi);
+            
+//            int codegainage=b.cherchecodeexercise("gainage");
+//            int codepompes=b.cherchecodeexercise("pompes");
+//            int codejambegauchedevant= b.cherchecodeexercise("jambe gauche devant");
+//            int codejambedroitedevant=b.cherchecodeexercise("jambe droite devant");
+//            int codesquat=b.cherchecodeexercise("squat");
+//            int codecrunch=b.cherchecodeexercise("crunch");
+//            int codedips=b.cherchecodeexercise("dips");
+//            
+//            b.insererAttacher(0, 0, bras, hanches, jambedroite);
+            
+            
+            
+            
+            
 
             out.println("<message>yes</message>");
 

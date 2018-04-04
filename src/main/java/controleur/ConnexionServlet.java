@@ -37,6 +37,8 @@ public class ConnexionServlet extends HttpServlet {
             pa = b.consulterUtilisateur(mail);
 
             requete.getSession().setAttribute("codeu", pa[2]);
+            System.out.println(pa[2]);
+                    
             
        
 

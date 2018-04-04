@@ -294,6 +294,8 @@
                             </div>
                         </div>
                     </div>
+                    <input type="submit" value="Enregistrer" class="btn btn-primary">
+                    </from>
 
                     <!-- Bilan de performance -->
 
@@ -427,207 +429,208 @@
                                         </div>
                                     </div>
                                 </div>
+
                             </div>
                         </div>
                     </div>
-                </form>
 
 
-                <!-- Mensuration -->
-                <form action="profilsportif"><!--- 测试用-->
-                    <div id="fh5co-contact">
+
+                    <!-- Mensuration -->
+                    <form action="profilsportif"><!--- 测试用-->
+                        <div id="fh5co-contact">
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col-md-8 col-md-offset-2">
+                                        <div class="heading-section text-left animate-box">
+                                            <h3>Mensuration</h3>
+                                            <p>Remplissez que pour l'objectif minceur</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- 1ere colonne -->
+                                <div class="col-md-6 animate-box">
+                                    <div class="row">
+                                        <!-- Bras -->
+                                        <div class="col-md-3">
+                                            <div class="form-group">
+                                                <p>Bras :</p>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-9">
+                                            <div class="form-group">
+                                                <input type="text" name="bras" class="form-control" placeholder="Bras">
+                                            </div>
+                                        </div>
+                                        <!-- Poitrine -->
+                                        <div class="col-md-3">
+                                            <div class="form-group">
+                                                <p>Poitrine :</p>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-9">
+                                            <div class="form-group">
+                                                <input type="text" class="form-control" name="poitrine" placeholder="Poitrine">
+                                            </div>
+                                        </div>
+                                        <!-- Taille -->
+                                        <div class="col-md-3">
+                                            <div class="form-group">
+                                                <p>Taille :</p>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-9">
+                                            <div class="form-group">
+                                                <input type="text" class="form-control" name="taille" placeholder="Taille">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- 2ere colonne -->
+                                <div class="col-md-6 animate-box">
+                                    <div class="row">
+                                        <!-- Hanches -->
+                                        <div class="col-md-3">
+                                            <div class="form-group">
+                                                <p>Hanches :</p>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-9">
+                                            <div class="form-group">
+                                                <input type="text" class="form-control" name="hanches" placeholder="Hanches">
+                                            </div>
+                                        </div>
+                                        <!-- Cuisses -->
+                                        <div class="col-md-3">
+                                            <div class="form-group">
+                                                <p>Cuisses :</p>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-9">
+                                            <div class="form-group">
+                                                <input type="text" class="form-control" name="cuisses" placeholder="Cuisses">
+                                            </div>
+                                        </div>
+                                        <!-- Poids -->
+                                        <div class="col-md-3">
+                                            <div class="form-group">
+                                                <p>Poids :</p>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-9">
+                                            <div class="form-group">
+                                                <input type="text" class="form-control" name="poids" placeholder="Poids">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Bouton enregistrer -->
                         <div class="container">
-                            <div class="row">
-                                <div class="col-md-8 col-md-offset-2">
-                                    <div class="heading-section text-left animate-box">
-                                        <h3>Mensuration</h3>
-                                        <p>Remplissez que pour l'objectif minceur</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- 1ere colonne -->
-                            <div class="col-md-6 animate-box">
+                            <div class="col-md-12 animate-box">
                                 <div class="row">
-                                    <!-- Bras -->
-                                    <div class="col-md-3">
+                                    <div class="col-md-12">
                                         <div class="form-group">
-                                            <p>Bras :</p>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-9">
-                                        <div class="form-group">
-                                            <input type="text" name="bras" class="form-control" placeholder="Bras">
-                                        </div>
-                                    </div>
-                                    <!-- Poitrine -->
-                                    <div class="col-md-3">
-                                        <div class="form-group">
-                                            <p>Poitrine :</p>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-9">
-                                        <div class="form-group">
-                                            <input type="text" class="form-control" name="poitrine" placeholder="Poitrine">
-                                        </div>
-                                    </div>
-                                    <!-- Taille -->
-                                    <div class="col-md-3">
-                                        <div class="form-group">
-                                            <p>Taille :</p>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-9">
-                                        <div class="form-group">
-                                            <input type="text" class="form-control" name="taille" placeholder="Taille">
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- 2ere colonne -->
-                            <div class="col-md-6 animate-box">
-                                <div class="row">
-                                    <!-- Hanches -->
-                                    <div class="col-md-3">
-                                        <div class="form-group">
-                                            <p>Hanches :</p>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-9">
-                                        <div class="form-group">
-                                            <input type="text" class="form-control" name="hanches" placeholder="Hanches">
-                                        </div>
-                                    </div>
-                                    <!-- Cuisses -->
-                                    <div class="col-md-3">
-                                        <div class="form-group">
-                                            <p>Cuisses :</p>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-9">
-                                        <div class="form-group">
-                                            <input type="text" class="form-control" name="cuisses" placeholder="Cuisses">
-                                        </div>
-                                    </div>
-                                    <!-- Poids -->
-                                    <div class="col-md-3">
-                                        <div class="form-group">
-                                            <p>Poids :</p>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-9">
-                                        <div class="form-group">
-                                            <input type="text" class="form-control" name="poids" placeholder="Poids">
+                                            <p style="text-align: center;">
+                                                <input type="submit" value="Enregistrer" class="btn btn-primary">
+                                            </p>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
+                        </div>
+                    </form>
 
-                    <!-- Bouton enregistrer -->
-                    <div class="container">
-                        <div class="col-md-12 animate-box">
-                            <div class="row">
-                                <div class="col-md-12">
-                                    <div class="form-group">
-                                        <p style="text-align: center;">
-                                            <input type="submit" value="Enregistrer" class="btn btn-primary">
+
+                    <!-- fh5co-blog-section -->
+                    <footer>
+                        <div id="footer">
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col-md-4 animate-box">
+                                        <h3 class="section-title">About Us</h3>
+                                        <p>RHAW</p>
+                                    </div>
+
+                                    <div class="col-md-4 animate-box">
+                                        <h3 class="section-title">Our Address</h3>
+                                        <ul class="contact-info">
+                                            <li><i class="icon-map-marker"></i>2 Rue du Doyen-Gabriel-Marty 
+                                                31042 Toulouse Cedex 9</li>
+                                            <li><i class="icon-phone"></i>+ 1235 2355 98</li>
+                                            <li><i class="icon-envelope"></i><a href="#">rhaw@rhaw.com</a></li>
+                                            <li><i class="icon-globe2"></i><a href="#">https://jdcoaching.herokuapp.com/</a></li>
+                                        </ul>
+                                    </div>
+                                    <div class="col-md-4 animate-box">
+                                        <h3 class="section-title">Drop us a line</h3>
+                                        <form class="contact-form">
+                                            <div class="form-group">
+                                                <label for="name" class="sr-only">Name</label>
+                                                <input type="name" class="form-control" id="name" placeholder="Name">
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="email" class="sr-only">Email</label>
+                                                <input type="email" class="form-control" id="email" placeholder="Email">
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="message" class="sr-only">Message</label>
+                                                <textarea class="form-control" id="message" rows="7" placeholder="Message"></textarea>
+                                            </div>
+                                            <div class="form-group">
+                                                <input type="submit" id="btn-submit" class="btn btn-send-message btn-md" value="Send Message">
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                                <div class="row copy-right">
+                                    <div class="col-md-6 col-md-offset-3 text-center">
+                                        <p class="fh5co-social-icons">
+                                            <a href="#"><i class="icon-twitter2"></i></a>
+                                            <a href="#"><i class="icon-facebook2"></i></a>
+                                            <a href="#"><i class="icon-instagram"></i></a>
+                                            <a href="#"><i class="icon-dribbble2"></i></a>
+                                            <a href="#"><i class="icon-youtube"></i></a>
                                         </p>
+                                        <p>Copyright RHAW</p>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </footer>
+
+
             </div>
-        </form>
+            <!-- END fh5co-page -->
+
+        </div>
+        <!-- END fh5co-wrapper -->
+
+        <!-- jQuery -->
 
 
-        <!-- fh5co-blog-section -->
-        <footer>
-            <div id="footer">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-md-4 animate-box">
-                            <h3 class="section-title">About Us</h3>
-                            <p>RHAW</p>
-                        </div>
+        <script src="js/jquery.min.js"></script>
+        <!-- jQuery Easing -->
+        <script src="js/jquery.easing.1.3.js"></script>
+        <!-- Bootstrap -->
+        <script src="js/bootstrap.min.js"></script>
+        <!-- Waypoints -->
+        <script src="js/jquery.waypoints.min.js"></script>
+        <!-- Stellar -->
+        <script src="js/jquery.stellar.min.js"></script>
+        <!-- Superfish -->
+        <script src="js/hoverIntent.js"></script>
+        <script src="js/superfish.js"></script>
+        <!-- Google Map -->
+        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCefOgb1ZWqYtj7raVSmN4PL2WkTrc-KyA&sensor=false"></script>
+        <script src="js/google_map.js"></script>
 
-                        <div class="col-md-4 animate-box">
-                            <h3 class="section-title">Our Address</h3>
-                            <ul class="contact-info">
-                                <li><i class="icon-map-marker"></i>2 Rue du Doyen-Gabriel-Marty 
-                                    31042 Toulouse Cedex 9</li>
-                                <li><i class="icon-phone"></i>+ 1235 2355 98</li>
-                                <li><i class="icon-envelope"></i><a href="#">rhaw@rhaw.com</a></li>
-                                <li><i class="icon-globe2"></i><a href="#">https://jdcoaching.herokuapp.com/</a></li>
-                            </ul>
-                        </div>
-                        <div class="col-md-4 animate-box">
-                            <h3 class="section-title">Drop us a line</h3>
-                            <form class="contact-form">
-                                <div class="form-group">
-                                    <label for="name" class="sr-only">Name</label>
-                                    <input type="name" class="form-control" id="name" placeholder="Name">
-                                </div>
-                                <div class="form-group">
-                                    <label for="email" class="sr-only">Email</label>
-                                    <input type="email" class="form-control" id="email" placeholder="Email">
-                                </div>
-                                <div class="form-group">
-                                    <label for="message" class="sr-only">Message</label>
-                                    <textarea class="form-control" id="message" rows="7" placeholder="Message"></textarea>
-                                </div>
-                                <div class="form-group">
-                                    <input type="submit" id="btn-submit" class="btn btn-send-message btn-md" value="Send Message">
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-                    <div class="row copy-right">
-                        <div class="col-md-6 col-md-offset-3 text-center">
-                            <p class="fh5co-social-icons">
-                                <a href="#"><i class="icon-twitter2"></i></a>
-                                <a href="#"><i class="icon-facebook2"></i></a>
-                                <a href="#"><i class="icon-instagram"></i></a>
-                                <a href="#"><i class="icon-dribbble2"></i></a>
-                                <a href="#"><i class="icon-youtube"></i></a>
-                            </p>
-                            <p>Copyright RHAW</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </footer>
+        <!-- Main JS (Do not remove) -->
+        <script src="js/main.js"></script>
 
-
-    </div>
-    <!-- END fh5co-page -->
-
-</div>
-<!-- END fh5co-wrapper -->
-
-<!-- jQuery -->
-
-
-<script src="js/jquery.min.js"></script>
-<!-- jQuery Easing -->
-<script src="js/jquery.easing.1.3.js"></script>
-<!-- Bootstrap -->
-<script src="js/bootstrap.min.js"></script>
-<!-- Waypoints -->
-<script src="js/jquery.waypoints.min.js"></script>
-<!-- Stellar -->
-<script src="js/jquery.stellar.min.js"></script>
-<!-- Superfish -->
-<script src="js/hoverIntent.js"></script>
-<script src="js/superfish.js"></script>
-<!-- Google Map -->
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCefOgb1ZWqYtj7raVSmN4PL2WkTrc-KyA&sensor=false"></script>
-<script src="js/google_map.js"></script>
-
-<!-- Main JS (Do not remove) -->
-<script src="js/main.js"></script>
-
-</body>
+    </body>
 </html>
 

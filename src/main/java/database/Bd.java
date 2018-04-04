@@ -225,7 +225,7 @@ public class Bd {
         }
 
         String sqlinserer = "insert into exercice (LIBELLEE,DUREEE,LIENIMAGE,REPETE,DESCRIPTIONE) "
-                + "values('" + nome + "','" + tempsrepetition+"','"+lienimage + "','" + nbrepetition + "','" + description + "')";
+                + "values('" + nome + "','" + tempsrepetition + "','" + lienimage + "','" + nbrepetition + "','" + description + "')";
         try {
             statement.executeUpdate(sqlinserer);
             statement.close();
@@ -303,7 +303,7 @@ public class Bd {
                     + error.getMessage());
         }
 
-        String sqlcode = "SELECT CODEE FROM exercice WHERE CODEU='" + nome + "'";
+        String sqlcode = "SELECT CODEE FROM exercice WHERE LIBELLE='" + nome + "'";
         try {
             ResultSet rs = statement.executeQuery(sqlcode);
             while (rs.next()) {
@@ -401,8 +401,49 @@ public class Bd {
                 + bi.getCOMMENTAIRECOACHB() + "','"
                 + bi.getFCALLONGEE() + "','"
                 + bi.getFCFLEXIONS() + "','"
-                + bi.getFCREPOS() + "',"
-                + bi.getDateB() + ")";
+                + bi.getFCREPOS() + "','"
+                + bi.getDateB() + "')";
+        try {
+            statement.executeUpdate(sqlbilan);
+            statement.close();
+            cx.close();
+        } catch (SQLException ex) {
+            System.out.println("Problème avec récupération de la requête : "
+                    + ex.getMessage());
+        }
+    }
+
+    /**
+     * Inserer le relation attacher
+     *
+     * @param bi
+     * @throws Exception Exception
+     */
+    public static void insererAttacher(int codeb, int codee, String ordre, String maxtemps, String numrepetition) throws Exception {
+
+        if (Bd.cx == null) {
+            Bd.connexion();
+        }
+        // Statement to handle query
+        Statement statement;
+        //Ouverture de la connexion
+        try {
+            cx = DriverManager.getConnection(url);
+        } catch (SQLException ex) {
+            System.out.println("Erreur ouverture connexion" + ex.getMessage());
+        }
+        try {
+            statement = cx.createStatement();
+        } catch (SQLException error) {
+            throw new Exception("Problème avec création du statement : "
+                    + error.getMessage());
+        }
+
+        String sqlbilan = "insert into attacher values (" + codeb + ","
+                + codee + ",NOW(),'"
+                + ordre + "','"
+                + maxtemps + "','"
+                + numrepetition + "')";
         try {
             statement.executeUpdate(sqlbilan);
             statement.close();
@@ -502,13 +543,13 @@ public class Bd {
     }
 
     /**
-     * chercher le code de bilan
+     * chercher le code de  premierbilan
      *
      * @param libellee
      * @return
      * @throws Exception Exception
      */
-    public static int insererATTACHER(String libellee) throws Exception {
+    public static int chercherfirstbilan(String libellee, int codeu) throws Exception {
         int codee = 0;
 
         if (Bd.cx == null) {
@@ -529,7 +570,7 @@ public class Bd {
                     + error.getMessage());
         }
 
-        String sqlbilan = "select CODEE from bilan where LIBELLEE='" + libellee + "'";
+        String sqlbilan = "select CODEE from bilan where LIBELLEE= firstbilan and CODEU='"+codeu+"'";
         try {
             ResultSet rs = statement.executeQuery(sqlbilan);
             while (rs.next()) {
@@ -1091,6 +1132,7 @@ public class Bd {
 
     /**
      * Suppression d'un utilisateur.
+     *
      * @param codeu code utilisateur
      * @return Boolean
      * @throws Exception Exception
@@ -1407,9 +1449,9 @@ public class Bd {
     }
 
 // Request testing
-public static void main(String[] args)
-        throws ClassNotFoundException, SQLException, Exception {
-        
+    public static void main(String[] args)
+            throws ClassNotFoundException, SQLException, Exception {
+
         Bd.supprimerCommentaire(2);
-}
+    }
 }
