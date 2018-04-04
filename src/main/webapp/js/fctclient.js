@@ -329,7 +329,6 @@ function l_inscription_rapide()
     var v5 = document.getElementById("tel").value;
     var v6 = document.getElementById("password").value;
     var v7 = document.getElementById("objectif").options[document.getElementById("objectif").selectedIndex].value;
-    alert(v7);
     var xhr = getXMLHttpRequest();
 
     xhr.onreadystatechange = function ()

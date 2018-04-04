@@ -30,7 +30,7 @@ public class InscriptionServlet extends HttpServlet {
             reponse.setCharacterEncoding("UTF-8");
             PrintWriter out = reponse.getWriter();
             out.println("<?xml version=\"1.0\"?>");
-            String nom, prenom, datenaissance, mail, tel, password,objectif;
+            String nom, prenom, datenaissance, mail, tel, password, objectif;
             //RequestDispatcher rd;
             nom = requete.getParameter("nom");
             prenom = requete.getParameter("prenom");
@@ -38,18 +38,18 @@ public class InscriptionServlet extends HttpServlet {
             mail = requete.getParameter("mail");
             tel = requete.getParameter("tel");
             password = requete.getParameter("password");
-            objectif= requete.getParameter("objectif");
-            Bd b = new Bd(); 
+            objectif = requete.getParameter("objectif");
+            Bd b = new Bd();
             if (b.verifierMail(mail) == 0) {
                 Utilisateur m = new Utilisateur(0, nom, prenom, datenaissance, mail, tel, "En attente", password, "client",objectif);
                 b.saisirUtilisateur(m);
                 out.println("<message>yes</message>");
-            }else{
+            } else {
                 out.println("<message>Le mail déjà exist</message>");
             }
         } catch (Exception ex) {
-            Logger.getLogger(InscriptionServlet.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(InscriptionServlet
+                    .class.getName()).log(Level.SEVERE, null, ex);
         }
-        } 
-
+    } 
 }

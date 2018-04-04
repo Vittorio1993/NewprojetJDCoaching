@@ -90,31 +90,30 @@
 						<div class="row">
                                                     <br>
                                                     <p>Formulaire d'inscription : </p>
-                                                    <form method="GET">
                                                     <table style="border-collapse:separate; border-spacing:0px 10px;">
                                                         <tr>
                                                             <th>Nom : </th>
-                                                            <th><input id="nom" type="text" name="nom"  style="color:black;" required="required"></th>
+                                                            <th><input id="nom" type="text" name="nom"  style="color:black;" required></th>
                                                         </tr>
                                                         <tr>
                                                             <th>Prenom : </th>
-                                                            <th><input id="prenom" type="text" name="prenom" style="color:black;" required="required"></th>
+                                                            <th><input id="prenom" type="text" name="prenom" style="color:black;" required></th>
                                                         </tr>
                                                         <tr>
                                                             <th>Date de naissance : </th>
-                                                            <th><input id="date" type="date" name="date" style="color:black;" required="required"></th>
+                                                            <th><input id="date" type="date" name="date" style="color:black;" required></th>
                                                         </tr>
                                                         <tr>
                                                             <th>Email : </th>
-                                                            <th><input id="mail" type="mail" name="mail" style="color:black;" required="required"></th>
+                                                            <th><input id="mail" type="mail" name="mail" style="color:black;" required></th>
                                                         </tr>
                                                         <tr>
                                                             <th>Téléphone : </th>
-                                                            <th><input id="tel" type="text" name="tel" style="color:black;" required="required"></th>
+                                                            <th><input id="tel" type="text" name="tel" style="color:black;" required></th>
                                                         </tr>
                                                         <tr>
                                                             <th>Password : </th>
-                                                            <th><input id="password" type="password" name="password" style="color:black;" required="required"></th>
+                                                            <th><input id="password" type="password" name="password" style="color:black;" required></th>
                                                         </tr>
                                                         <tr>
                                                             <th>Objectif : </th>
@@ -125,8 +124,7 @@
                                                         </tr>
                                                     </table>
                                                     <br>
-                                                    <p><input class="btn btn-primary" type="submit" value="Inscrire" onclick="l_inscription_rapide()"></p>                                                                                       
-                                                    </form>  
+                                                    <p><input class="btn btn-primary" type="submit" value="Inscrire" onclick="l_inscription_rapide()"></p>
                                                     <br>        
                                                     <span><a href="pageadmin.jsp">Retour à la page d'administration</a></span>
 						</div>
