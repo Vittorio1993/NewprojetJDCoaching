@@ -67,7 +67,7 @@
                         <div class="container">
                             <div class="nav-header">
                                 <a href="#" class="js-fh5co-nav-toggle fh5co-nav-toggle"><i></i></a>
-                                <h1 id="fh5co-logo"><a href="index.html">Fit<span>ness</span></a></h1>
+                                <h1 id="fh5co-logo"><a href="index.html">JD<span>COACHING</span></a></h1>
                                 <!-- START #fh5co-menu-wrap -->
                                 <nav id="fh5co-menu-wrap" role="navigation">
                                     <ul class="sf-menu" id="fh5co-primary-menu">
@@ -199,9 +199,9 @@
                                         </div>
                                         <div class="col-md-8">
                                             <div class="form-group">
-                                                <img id="preview" />
-                                                <br />
-                                                <!--<input type="texet" id="lienimage" name="lienimage" onchange="imgPreview(this)" />-->
+                                                 <!--<img id="preview" />
+                                               <br />
+                                                <input type="texet" id="lienimage" name="lienimage" onchange="imgPreview(this)" />-->
                                                 <input type="text" id="lienimage" class="form-control" name="lienimage" >
                                             </div>
                                         </div>
