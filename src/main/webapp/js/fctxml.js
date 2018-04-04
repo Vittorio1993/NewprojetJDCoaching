@@ -214,5 +214,32 @@ function l_deleteexercice() {
 
 
 
+// function imgPreview(fileDom){
+//        //??????FileReader
+//        if (window.FileReader) {
+//            var reader = new FileReader();
+//        } else {
+//            alert("???????????????????????????");
+//        }
+//
+//        //????
+//        var file = fileDom.files[0];
+//        var imageType = /^image\//;
+//        //?????
+//        if (!imageType.test(file.type)) {
+//            alert("??????");
+//            return;
+//        }
+//        //????
+//        reader.onload = function(e) {
+//            //????dom
+//            var img = document.getElementById("preview");
+//            //????????????
+//            img.src = e.target.result;
+//        };
+//        reader.readAsDataURL(file);
+//
+// }
+
 
 

@@ -97,7 +97,7 @@
                                         <%
                                             out.print("<h2>Bienvenue <br><b>"+(String)session.getAttribute("mail")+"</b></h2>");
                                         %>
-                                        <span><a class="btn btn-primary" href="profil.jsp">Voir mon profil</a></span>
+                                        
                                     </div>
                                 </div>
                             </div>
