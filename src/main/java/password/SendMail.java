@@ -60,8 +60,8 @@ public class SendMail {
             msg.setFrom(new InternetAddress(username));
             msg.setRecipients(Message.RecipientType.TO,
                     InternetAddress.parse(mail));
-            msg.setSubject("Hello");
-            msg.setText("How are you");
+            msg.setSubject("Mot de pass");
+            msg.setText("Votre mot de passe est"+pass);
             msg.setSentDate(new Date());
             Transport.send(msg);
         } catch (AddressException e) {
