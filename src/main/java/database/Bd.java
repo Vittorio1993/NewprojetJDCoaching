@@ -18,7 +18,11 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+
+import model.Bilan;
+
 import model.Commentaire;
+import model.Exercice;
 
 /**
  *
@@ -84,7 +88,7 @@ public class Bd {
             throw new Exception("Problème avec création du statement : "
                     + error.getMessage());
         }
-        String sqlsaisir = "insert into utilisateur(CODEU,NOMU,PRENOMU,DATEDENAISSANCEU,EMAILU,TELU,STATUTS,PASSWORD,TYPE) values('"
+        String sqlsaisir = "insert into utilisateur(CODEU,NOMU,PRENOMU,DATEDENAISSANCEU,EMAILU,TELU,STATUTS,PASSWORD,TYPE,OBJECTIF) values('"
                 + u.getCodeu()
                 + "','"
                 + u.getNomu()
@@ -102,6 +106,8 @@ public class Bd {
                 + u.getPassword()
                 + "','"
                 + u.getType()
+                + "','"
+                + u.getObjectif()
                 + "')";
         try {
             statement.executeUpdate(sqlsaisir);
@@ -154,6 +160,424 @@ public class Bd {
     }
 
     /**
+     * mise à jour une exercice.
+     *
+     * @param u utilisateur
+     * @throws Exception Exception
+     */
+    public static void updateExercice(final String nome, final String description, final String tempsrepetition, final String nbrepetition, final String lienimage) throws Exception {
+
+        if (Bd.cx == null) {
+            Bd.connexion();
+        }
+        // Statement to handle query
+        Statement statement;
+        //Ouverture de la connexion
+        try {
+            cx = DriverManager.getConnection(url);
+        } catch (SQLException ex) {
+            System.out.println("Erreur ouverture connexion" + ex.getMessage());
+        }
+        try {
+            statement = cx.createStatement();
+        } catch (SQLException error) {
+            throw new Exception("Problème avec création du statement : "
+                    + error.getMessage());
+        }
+
+        String sqlupdate = "update exercice set DUREEE = '" + tempsrepetition + "', LIENIMAGE= '" + lienimage + "', "
+                + "REPETE='" + nbrepetition + "', DESCRIPTIONE='" + description + "' where LIBELLEE='" + nome + "'";
+        try {
+            statement.executeUpdate(sqlupdate);
+            statement.close();
+            cx.close();
+        } catch (SQLException ex) {
+            System.out.println("Problème avec récupération de la requête : "
+                    + ex.getMessage());
+        }
+
+    }
+
+    /**
+     * ajouter une exercice.
+     *
+     * @param u utilisateur
+     * @throws Exception Exception
+     */
+    public static void insererExercice(final String nome, final String description, final String tempsrepetition, final String nbrepetition, final String lienimage) throws Exception {
+
+        if (Bd.cx == null) {
+            Bd.connexion();
+        }
+        // Statement to handle query
+        Statement statement;
+        //Ouverture de la connexion
+        try {
+            cx = DriverManager.getConnection(url);
+        } catch (SQLException ex) {
+            System.out.println("Erreur ouverture connexion" + ex.getMessage());
+        }
+        try {
+            statement = cx.createStatement();
+        } catch (SQLException error) {
+            throw new Exception("Problème avec création du statement : "
+                    + error.getMessage());
+        }
+
+        String sqlinserer = "insert into exercice (LIBELLEE,DUREEE,LIENIMAGE,REPETE,DESCRIPTIONE) "
+                + "values('" + nome + "','" + tempsrepetition + "','" + lienimage + "','" + nbrepetition + "','" + description + "')";
+        try {
+            statement.executeUpdate(sqlinserer);
+            statement.close();
+            cx.close();
+        } catch (SQLException ex) {
+            System.out.println("Problème avec récupération de la requête : "
+                    + ex.getMessage());
+        }
+
+    }
+
+    /**
+     * supprimer une exercice.
+     *
+     * @param u utilisateur
+     * @throws Exception Exception
+     */
+    public static void deleteExercice(final String nome) throws Exception {
+
+        if (Bd.cx == null) {
+            Bd.connexion();
+        }
+        // Statement to handle query
+        Statement statement;
+        //Ouverture de la connexion
+        try {
+            cx = DriverManager.getConnection(url);
+        } catch (SQLException ex) {
+            System.out.println("Erreur ouverture connexion" + ex.getMessage());
+        }
+        try {
+            statement = cx.createStatement();
+        } catch (SQLException error) {
+            throw new Exception("Problème avec création du statement : "
+                    + error.getMessage());
+        }
+
+        String sqldelete = "delete from exercice where LIBELLEE='" + nome + "'";
+        try {
+            statement.executeUpdate(sqldelete);
+            statement.close();
+            cx.close();
+        } catch (SQLException ex) {
+            System.out.println("Problème avec récupération de la requête : "
+                    + ex.getMessage());
+        }
+
+    }
+
+    /**
+     * chercher le code d'exercise
+     *
+     * @param nome nom d'exercises
+     * @return
+     * @throws Exception Exception
+     */
+    public static int cherchecodeexercise(final String nome) throws Exception {
+        int codee = 0;
+
+        if (Bd.cx == null) {
+            Bd.connexion();
+        }
+        // Statement to handle query
+        Statement statement;
+        //Ouverture de la connexion
+        try {
+            cx = DriverManager.getConnection(url);
+        } catch (SQLException ex) {
+            System.out.println("Erreur ouverture connexion" + ex.getMessage());
+        }
+        try {
+            statement = cx.createStatement();
+        } catch (SQLException error) {
+            throw new Exception("Problème avec création du statement : "
+                    + error.getMessage());
+        }
+
+        String sqlcode = "SELECT CODEE FROM exercice WHERE LIBELLEE='" + nome + "'";
+        try {
+            ResultSet rs = statement.executeQuery(sqlcode);
+            while (rs.next()) {
+                codee = rs.getInt("CODEE");
+
+            }
+            rs.close();
+            statement.close();
+            cx.close();
+        } catch (SQLException ex) {
+            System.out.println("Problème avec récupération de la requête : "
+                    + ex.getMessage());
+        }
+        return codee;
+
+    }
+
+    /**
+     * chercher le code d'exercise
+     *
+     * @param nome nom d'exercises
+     * @return
+     * @throws Exception Exception
+     */
+    public ArrayList<String> nomexercise() throws Exception {
+        ArrayList<String> arrayex = new ArrayList<String>();
+
+        if (Bd.cx == null) {
+            Bd.connexion();
+        }
+        // Statement to handle query
+        Statement statement;
+        //Ouverture de la connexion
+        try {
+            cx = DriverManager.getConnection(url);
+        } catch (SQLException ex) {
+            System.out.println("Erreur ouverture connexion" + ex.getMessage());
+        }
+        try {
+            statement = cx.createStatement();
+        } catch (SQLException error) {
+            throw new Exception("Problème avec création du statement : "
+                    + error.getMessage());
+        }
+
+        String sqlnomexercice = "SELECT LIBELLEE FROM exercice";
+        try {
+            ResultSet rs = statement.executeQuery(sqlnomexercice);
+            while (rs.next()) {
+                arrayex.add(rs.getString("LIBELLEE"));
+
+            }
+            rs.close();
+            statement.close();
+            cx.close();
+        } catch (SQLException ex) {
+            System.out.println("Problème avec récupération de la requête : "
+                    + ex.getMessage());
+        }
+        return arrayex;
+
+    }
+
+    /**
+     * chercher le code d'exercise
+     *
+     * @param bi
+     * @throws Exception Exception
+     */
+    public static void insererBilan(int codeu, String libelle, String numsemaine, String commentaire, String fcallogee, String fcflexions, String fcrepos) throws Exception {
+
+        if (Bd.cx == null) {
+            Bd.connexion();
+        }
+        // Statement to handle query
+        Statement statement;
+        //Ouverture de la connexion
+        try {
+            cx = DriverManager.getConnection(url);
+        } catch (SQLException ex) {
+            System.out.println("Erreur ouverture connexion" + ex.getMessage());
+        }
+        try {
+            statement = cx.createStatement();
+        } catch (SQLException error) {
+            throw new Exception("Problème avec création du statement : "
+                    + error.getMessage());
+        }
+
+        String sqlbilan = "insert into bilan (CODEU, LIBELLEB, NUMSEMAINEB, COMMENTAIRECOACHB, FCALLONGEE, FCFLEXIONS, FCREPOS, DATEB) values ('" + codeu + "','" + libelle + "','" + numsemaine + "','" + commentaire + "','" + fcallogee + "','" + fcflexions + "','" + fcrepos + "',NOW())";
+        try {
+            statement.executeUpdate(sqlbilan);
+            statement.close();
+            cx.close();
+        } catch (SQLException ex) {
+            System.out.println("Problème avec récupération de la requête : "
+                    + ex.getMessage());
+        }
+    }
+
+    /**
+     * Inserer le relation attacher
+     *
+     * @param bi
+     * @throws Exception Exception
+     */
+    public static void insererAttacher(int codeb, int codee, String ordre, String maxtemps, String numrepetition) throws Exception {
+
+        if (Bd.cx == null) {
+            Bd.connexion();
+        }
+        // Statement to handle query
+        Statement statement;
+        //Ouverture de la connexion
+        try {
+            cx = DriverManager.getConnection(url);
+        } catch (SQLException ex) {
+            System.out.println("Erreur ouverture connexion" + ex.getMessage());
+        }
+        try {
+            statement = cx.createStatement();
+        } catch (SQLException error) {
+            throw new Exception("Problème avec création du statement : "
+                    + error.getMessage());
+        }
+
+        String sqlbilan = "insert into attacher values (" + codeb + ","
+                + codee + ",NOW(),'"
+                + ordre + "','"
+                + maxtemps + "','"
+                + numrepetition + "')";
+        try {
+            statement.executeUpdate(sqlbilan);
+            statement.close();
+            cx.close();
+        } catch (SQLException ex) {
+            System.out.println("Problème avec récupération de la requête : "
+                    + ex.getMessage());
+        }
+    }
+
+    /**
+     * chercher le code de bilan
+     *
+     * @param codeu
+     * @return
+     * @throws Exception Exception
+     */
+    public static int consulterBilan(int codeu) throws Exception {
+        int codeb = 0;
+
+        if (Bd.cx == null) {
+            Bd.connexion();
+        }
+        // Statement to handle query
+        Statement statement;
+        //Ouverture de la connexion
+        try {
+            cx = DriverManager.getConnection(url);
+        } catch (SQLException ex) {
+            System.out.println("Erreur ouverture connexion" + ex.getMessage());
+        }
+        try {
+            statement = cx.createStatement();
+        } catch (SQLException error) {
+            throw new Exception("Problème avec création du statement : "
+                    + error.getMessage());
+        }
+
+        String sqlbilan = "select CODEB from bilan where CODEU='" + codeu + "' and NUMSEMAINEB = '0'";
+        try {
+            ResultSet rs = statement.executeQuery(sqlbilan);
+            while (rs.next()) {
+                codeb = rs.getInt("CODEB");
+            }
+            rs.close();
+            statement.close();
+            cx.close();
+        } catch (SQLException ex) {
+            System.out.println("Problème avec récupération de la requête : "
+                    + ex.getMessage());
+        }
+        return codeb;
+    }
+
+    /**
+     * chercher le code d'exercice
+     *
+     * @param libellee
+     * @return
+     * @throws Exception Exception
+     */
+    public static int consulterexercice(String libellee) throws Exception {
+        int codee = 0;
+
+        if (Bd.cx == null) {
+            Bd.connexion();
+        }
+        // Statement to handle query
+        Statement statement;
+        //Ouverture de la connexion
+        try {
+            cx = DriverManager.getConnection(url);
+        } catch (SQLException ex) {
+            System.out.println("Erreur ouverture connexion" + ex.getMessage());
+        }
+        try {
+            statement = cx.createStatement();
+        } catch (SQLException error) {
+            throw new Exception("Problème avec création du statement : "
+                    + error.getMessage());
+        }
+
+        String sqlbilan = "select CODEE from bilan where LIBELLEE='" + libellee + "'";
+        try {
+            ResultSet rs = statement.executeQuery(sqlbilan);
+            while (rs.next()) {
+                codee = rs.getInt("CODEE");
+            }
+            rs.close();
+            statement.close();
+            cx.close();
+        } catch (SQLException ex) {
+            System.out.println("Problème avec récupération de la requête : "
+                    + ex.getMessage());
+        }
+        return codee;
+    }
+
+    /**
+     * chercher le code de premierbilan
+     *
+     * @param libellee
+     * @return
+     * @throws Exception Exception
+     */
+    public static int chercherfirstbilan(int codeu) throws Exception {
+        int codee = 0;
+
+        if (Bd.cx == null) {
+            Bd.connexion();
+        }
+        // Statement to handle query
+        Statement statement;
+        //Ouverture de la connexion
+        try {
+            cx = DriverManager.getConnection(url);
+        } catch (SQLException ex) {
+            System.out.println("Erreur ouverture connexion" + ex.getMessage());
+        }
+        try {
+            statement = cx.createStatement();
+        } catch (SQLException error) {
+            throw new Exception("Problème avec création du statement : "
+                    + error.getMessage());
+        }
+
+        String sqlbilan = "select CODEB from bilan where LIBELLEE= 'firstbilan' and CODEU='" + codeu + "'";
+        try {
+            ResultSet rs = statement.executeQuery(sqlbilan);
+            while (rs.next()) {
+                codee = rs.getInt("CODEE");
+            }
+            rs.close();
+            statement.close();
+            cx.close();
+        } catch (SQLException ex) {
+            System.out.println("Problème avec récupération de la requête : "
+                    + ex.getMessage());
+        }
+        return codee;
+    }
+
+    /**
      * mise à jour un utilisateur.
      *
      * @param u utilisateur
@@ -169,7 +593,7 @@ public class Bd {
         Statement statement;
         //Ouverture de la connexion
         try {
-            cx = DriverManager.getConnection(url);  
+            cx = DriverManager.getConnection(url);
         } catch (SQLException ex) {
             System.out.println("Erreur ouverture connexion" + ex.getMessage());
         }
@@ -179,8 +603,6 @@ public class Bd {
             throw new Exception("Problème avec création du statement : "
                     + error.getMessage());
         }
-        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss ");//
-        System.out.println(dateFormat.format(new Date()));
 
         String sqlmesuration = "insert into mesuration(DATEMESURE,LIBELLEM,POIDS,BRAS,POITRINE,TAILLE,HANCHES,CUISSES) values ( NOW(),'mesuration','"
                 + poids + "','" + bras + "','" + poitrine + "','" + taille + "','" + hanches + "','" + cuisses + "')";
@@ -350,20 +772,21 @@ public class Bd {
                 + "' "
                 + "WHERE TYPE='admin'";
 
-            try {
-                statement.executeUpdate(sqlupdateadmin);
-                requestOK = true;
-                statement.close();
-                cx.close();
-            } catch (SQLException ex) {
-                System.out.println("Erreur execution requête "
-                        + ex.getMessage());
-            }
+        try {
+            statement.executeUpdate(sqlupdateadmin);
+            requestOK = true;
+            statement.close();
+            cx.close();
+        } catch (SQLException ex) {
+            System.out.println("Erreur execution requête "
+                    + ex.getMessage());
+        }
         return requestOK;
     }
 
     /**
      * Changement de mail de coaching.
+     *
      * @param newmailcoach
      * @return booléen
      * @throws Exception Exception
@@ -397,16 +820,16 @@ public class Bd {
                 + "' "
                 + "WHERE TYPE='coach'";
 
-            /* Execution de la requête */
-            try {
-                statement.executeUpdate(sqlupdateadmin);
-                requestOK = true;
-                statement.close();
-                cx.close();
-            } catch (SQLException ex) {
-                System.out.println("Erreur execution requête "
-                        + ex.getMessage());
-            }
+        /* Execution de la requête */
+        try {
+            statement.executeUpdate(sqlupdateadmin);
+            requestOK = true;
+            statement.close();
+            cx.close();
+        } catch (SQLException ex) {
+            System.out.println("Erreur execution requête "
+                    + ex.getMessage());
+        }
         return requestOK;
     }
 
@@ -475,12 +898,14 @@ public class Bd {
         }
         return users;
     }
-/**
- * Passage d'un prospect en attente.
- * @param codeu code utilisateur
- * @return boolean
- * @throws Exception Exception
- */
+
+    /**
+     * Passage d'un prospect en attente.
+     *
+     * @param codeu code utilisateur
+     * @return boolean
+     * @throws Exception Exception
+     */
     public static boolean enAttente(final String codeu)
             throws Exception {
 
@@ -528,12 +953,13 @@ public class Bd {
         return requestOK;
     }
 
-/**
- * Passage à un statut validé.
- * @param codeu code utilisateur
- * @return boolean
- * @throws Exception Exception
- */
+    /**
+     * Passage à un statut validé.
+     *
+     * @param codeu code utilisateur
+     * @return boolean
+     * @throws Exception Exception
+     */
     public static boolean passageValide(final String codeu)
             throws Exception {
 
@@ -583,6 +1009,7 @@ public class Bd {
 
     /**
      * Ajout d'un commentaire sur un utilisateur.
+     *
      * @param codeu code utilisateur
      * @param com contenu du commentaire
      * @return Boolean
@@ -640,8 +1067,10 @@ public class Bd {
         }
         return requestOK;
     }
+
     /**
      * Suppression d'un commentaire sur un utilisateur.
+     *
      * @param codecom code utilisateur
      * @return Boolean
      * @throws Exception Exception
@@ -694,6 +1123,7 @@ public class Bd {
 
     /**
      * Suppression d'un utilisateur.
+     *
      * @param codeu code utilisateur
      * @return Boolean
      * @throws Exception Exception
@@ -746,18 +1176,19 @@ public class Bd {
 
     /**
      * Retourne tous les commentaires d'un utilisateur.
+     *
      * @param codeu code utilisateur
      * @return ArrayList
      * @throws Exception Zxception
      */
-public static ArrayList<Commentaire> getCommentaires(final String codeu)
+    public static ArrayList<Commentaire> getCommentaires(final String codeu)
             throws Exception {
 
         if (Bd.cx == null) {
             Bd.connexion();
         }
 
-       ArrayList<Commentaire> commentaires = new ArrayList();
+        ArrayList<Commentaire> commentaires = new ArrayList();
 
         // Statement pour effectuer la requête
         Statement statement;
@@ -775,10 +1206,10 @@ public static ArrayList<Commentaire> getCommentaires(final String codeu)
         }
 
         /* Requête */
-        String sqlgetinfopersos =
-                    "SELECT * FROM COMMENTAIRE WHERE CODEU='"
-                    + codeu
-                    + "' ";
+        String sqlgetinfopersos
+                = "SELECT * FROM COMMENTAIRE WHERE CODEU='"
+                + codeu
+                + "' ";
 
         try {
 
@@ -808,7 +1239,7 @@ public static ArrayList<Commentaire> getCommentaires(final String codeu)
     *pour vérifier le mot de passe correspondant à mail et récupérer statuts
      */
     public static String[] consulterUtilisateur(String mail) throws Exception {
-        String[] info = new String[2];
+        String[] info = new String[3];
         if (Bd.cx == null) {
             Bd.connexion();
         }
@@ -827,7 +1258,7 @@ public static ArrayList<Commentaire> getCommentaires(final String codeu)
                     + error.getMessage());
         }
 
-        String sqlpassword = "select PASSWORD,TYPE from utilisateur where EMAILU ='" + mail + "'";
+        String sqlpassword = "select PASSWORD,TYPE, CODEU from utilisateur where EMAILU ='" + mail + "'";
         try {
             Statement st = cx.createStatement();
             /* Execution de la requête */
@@ -836,9 +1267,10 @@ public static ArrayList<Commentaire> getCommentaires(final String codeu)
                 /* Adding messages to the ArrayList */
                 while (rs.next()) {
                     info[0] = rs.getString("PASSWORD");
-                    System.out.println(info[0]);
+                    //System.out.println(info[0]);
                     info[1] = rs.getString("TYPE");
-                    System.out.println(info[1]);
+                    info[2] = String.valueOf(rs.getInt("CODEU"));
+                    //System.out.println(info[1]);
                 }
                 rs.close();
                 st.close();
@@ -907,6 +1339,57 @@ public static ArrayList<Commentaire> getCommentaires(final String codeu)
     }
 
     /*
+    *pour récupérer les données d'une exercice
+     */
+    public static Exercice donneeExercice(final String nomexercice)
+            throws Exception {
+        Exercice e = new Exercice("", "", "", "", "");
+        if (Bd.cx == null) {
+            Bd.connexion();
+        }
+        // Statement pour effectuer la requête
+        Statement statement;
+        //Ouverture de la connexion
+        try {
+            cx = DriverManager.getConnection(url);
+        } catch (SQLException ex) {
+            System.out.println("Erreur ouverture connexion" + ex.getMessage());
+        }
+        try {
+            statement = cx.createStatement();
+        } catch (SQLException error) {
+            throw new Exception("Problème avec création du statement : "
+                    + error.getMessage());
+        }
+
+        String sqlutilisateur = "select * from exercice where LIBELLEE ='" + nomexercice + "'";
+
+        try {
+            Statement st = cx.createStatement();
+            /* Execution de la requête */
+            try {
+                ResultSet rs = st.executeQuery(sqlutilisateur);
+                /* Adding messages to the ArrayList */
+                while (rs.next()) {
+
+                    e = new Exercice(rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6));
+                }
+                rs.close();
+                st.close();
+                cx.close();
+            } catch (SQLException ex) {
+                System.out.println("Erreur execution requête "
+                        + ex.getMessage());
+            }
+        } catch (SQLException ex) {
+            System.out.println("Erreur de SQL statement "
+                    + ex.getMessage());
+        }
+        return e;
+
+    }
+
+    /*
     *pour vérifier le mail n'exist pas dans BD quand faire inscription
      */
     public static Integer verifierMail(final String mail) throws Exception {
@@ -957,9 +1440,9 @@ public static ArrayList<Commentaire> getCommentaires(final String codeu)
     }
 
 // Request testing
-public static void main(String[] args)
-        throws ClassNotFoundException, SQLException, Exception {
-        
+    public static void main(String[] args)
+            throws ClassNotFoundException, SQLException, Exception {
+
         Bd.supprimerCommentaire(2);
-}
+    }
 }

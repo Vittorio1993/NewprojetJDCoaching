@@ -22,7 +22,6 @@ import javax.mail.internet.MimeMessage;
 public class SendMail {
 
     public void mail(String mail, String pass) {
-
         final String username = "zhanghuakai1234@gmail.com";
         final String password = "zhk061785";
 

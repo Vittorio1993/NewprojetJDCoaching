@@ -64,16 +64,11 @@
                         <div class="container">
                             <div class="nav-header">
                                 <a href="#" class="js-fh5co-nav-toggle fh5co-nav-toggle"><i></i></a>
-                                <h1 id="fh5co-logo"><a href="index.html">Fit<span>ness</span></a></h1>
+                                <h1 id="fh5co-logo"><a href="index.html">JD<span>COACHING</span></a></h1>
                                 <!-- START #fh5co-menu-wrap -->
                                 <nav id="fh5co-menu-wrap" role="navigation">
                                     <ul class="sf-menu" id="fh5co-primary-menu">
-                                        <li><a href="index.html">Home</a></li>
-                                        <li><a href="profil.html">Mon profil</a></li>
-                                        <li><a href="schedule.html">Schedule</a></li>
-                                        <li><a href="trainer.html">Trainers</a></li>
-                                        <li><a href="about.html">About</a></li>
-                                        <li class="active"><a href="contact.html">Contact</a></li>
+                                        <li><a href="accueilclient.jsp">Home</a></li>
                                     </ul>
                                 </nav>
                             </div>
@@ -203,99 +198,115 @@
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                        </div>
-                      <!--测试用--></div>
- <input type="submit" value="Enregistrer" class="btn btn-primary">
-</form><!--测试用-->
 
-                        <!-- Profil sportif -->
-                        <div id="fh5co-contact">
-                            <div class="container">
+                            </div>
+
+                        </div>
+                        <p style="text-align: center;">
+                            <input type="submit" value="Enregistrer" class="btn btn-primary">
+                        </p>
+                        <!--测试用--></div>
+
+                </form><!--测试用-->
+
+
+
+
+
+                <form action="profilsportif"><!--- 测试用-->
+                    <!-- Profil sportif -->
+                    <div id="fh5co-contact">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-md-8 col-md-offset-2">
+                                    <div class="heading-section text-center animate-box">
+                                        <h2>Profil sportif</h2>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- 1ere colonne -->
+                            <div class="col-md-6 animate-box">
                                 <div class="row">
-                                    <div class="col-md-8 col-md-offset-2">
-                                        <div class="heading-section text-center animate-box">
-                                            <h2>Profil sportif</h2>
+                                    <!-- Age -->
+                                    <div class="col-md-3">
+                                        <div class="form-group">
+                                            <p>Age :</p>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-9">
+                                        <div class="form-group">
+                                            <% 
+                                                String birthday = u.getDatenaissanceu();
+                                                SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+                                                String cYear = sdf.format(new Date()).substring(0,4);
+                                                String birthYear = birthday .substring(0,4);
+                                                int age = Integer.parseInt(cYear) - Integer.parseInt(birthYear);
+                                                out.print("<input type='text' class='form-control' disabled placeholder="+age+">");
+                                            %>
+                                        </div>
+                                    </div>
+
+                                    <!-- fc après 30 flexions complètes en 45 sec -->
+                                    <div class="col-md-3">
+                                        <div class="form-group">
+                                            <p>fc après 30 flexions complètes en 45 sec :</p>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-9">
+                                        <div class="form-group">
+                                            <input type="text" class="form-control" name="fcflexions" placeholder="fc après 30 flexions complètes en 45 sec">
                                         </div>
                                     </div>
                                 </div>
-                                <!-- 1ere colonne -->
-                                <div class="col-md-6 animate-box">
-                                    <div class="row">
-                                        <!-- Age -->
-                                        <div class="col-md-3">
-                                            <div class="form-group">
-                                                <p>Age :</p>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-9">
-                                            <div class="form-group">
-                                                <% 
-                                                    String birthday = u.getDatenaissanceu();
-                                                    SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-                                                    String cYear = sdf.format(new Date()).substring(0,4);
-                                                    String birthYear = birthday .substring(0,4);
-                                                    int age = Integer.parseInt(cYear) - Integer.parseInt(birthYear);
-                                                    out.print("<input type='text' class='form-control' disabled placeholder="+age+">");
-                                                %>
-                                            </div>
-                                        </div>
-                   
-                                        <!-- fc après 30 flexions complètes en 45 sec -->
-                                        <div class="col-md-3">
-                                            <div class="form-group">
-                                                <p>fc après 30 flexions complètes en 45 sec :</p>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-9">
-                                            <div class="form-group">
-                                                <input type="text" class="form-control" name="fcflexions" placeholder="fc après 30 flexions complètes en 45 sec">
-                                            </div>
+                            </div>
+                            <!-- 2ere colonne -->
+                            <div class="col-md-6 animate-box">
+                                <div class="row">
+                                    <!-- Fréquence cardiaque au repos -->
+                                    <div class="col-md-7">
+                                        <div class="form-group">
+                                            <p>Fréquence cardiaque au repos :</p>
                                         </div>
                                     </div>
-                                </div>
-                                <!-- 2ere colonne -->
-                                <div class="col-md-6 animate-box">
-                                    <div class="row">
-                                        <!-- Fréquence cardiaque au repas -->
-                                        <div class="col-md-7">
-                                            <div class="form-group">
-                                                <p>Fréquence cardiaque au repos :</p>
-                                            </div>
+                                    <div class="col-md-5">
+                                        <div class="form-group">
+                                            <input type="text" class="form-control" name="fcrepos" placeholder="fréquence">
                                         </div>
-                                        <div class="col-md-5">
-                                            <div class="form-group">
-                                                <input type="text" class="form-control" name="fcrepos" placeholder="fréquence">
-                                            </div>
+                                    </div>
+                                    <!-- Fréquence cardiaque cible -->
+                                    <div class="col-md-7">
+                                        <div class="form-group">
+                                            <p>Fréquence cardiaque cible :</p>
                                         </div>
-                                        <!-- Fréquence cardiaque cible -->
-                                        <div class="col-md-7">
-                                            <div class="form-group">
-                                                <p>Fréquence cardiaque cible :</p>
-                                            </div>
+                                    </div>
+                                    <div class="col-md-5">
+                                        <div class="form-group">
+                                            <input type="text" class="form-control" disabled placeholder="fréquence">
                                         </div>
-                                        <div class="col-md-5">
-                                            <div class="form-group">
-                                                <input type="text" class="form-control" disabled placeholder="fréquence">
-                                            </div>
+                                    </div>
+                                    <!--fc 1 min après exercice allongée -->
+                                    <div class="col-md-3">
+                                        <div class="form-group">
+                                            <p>fc 1 min après exercice allongée :</p>
                                         </div>
-                                              <!--fc 1 min après exercice allongée -->
-                                        <div class="col-md-3">
-                                            <div class="form-group">
-                                                <p>fc 1 min après exercice allongée :</p>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-9">
-                                            <div class="form-group">
-                                                <input type="text" class="form-control" name="fcallogee" placeholder="fc après 30 flexions complètes en 45 sec">
-                                            </div>
+                                    </div>
+                                    <div class="col-md-9">
+                                        <div class="form-group">
+                                            <input type="text" class="form-control" name="fcallogee" placeholder="fc après 30 flexions complètes en 45 sec">
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
+                    </div>
+                    <p style="text-align: center;">
+                        <input type="submit" value="Enregistrer" class="btn btn-primary">
+                    </p>
+                    </from>
 
-                        <!-- Bilan de performance -->
+                    <!-- Bilan de performance -->
+                    <form action="profilsportif">
+
                         <div class="container">
                             <div class="row">
                                 <div class="col-md-8 col-md-offset-2">
@@ -426,12 +437,19 @@
                                             </div>
                                         </div>
                                     </div>
+                                    
                                 </div>
                             </div>
                         </div>
+                        <p style="text-align: center;">
+                                        <input type="submit" value="Enregistrer" class="btn btn-primary">
+                                    </p>
+                    </form>
 
-                        <!-- Mensuration -->
-                     <form action="profilsportif"><!--- 测试用-->
+
+
+                    <!-- Mensuration -->
+                    <form action="profilsportif"><!--- 测试用-->
                         <div id="fh5co-contact">
                             <div class="container">
                                 <div class="row">
@@ -535,68 +553,66 @@
                                 </div>
                             </div>
                         </div>
+                        </div>
+                    </form>
 
 
+                    <!-- fh5co-blog-section -->
+                    <footer>
+                        <div id="footer">
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col-md-4 animate-box">
+                                        <h3 class="section-title">About Us</h3>
+                                        <p>RHAW</p>
+                                    </div>
 
-                    </div>
-                </form>
-
-
-                <!-- END Profil de base -->
-                <footer>
-                    <div id="footer">
-                        <div class="container">
-                            <div class="row">
-                                <div class="col-md-4 animate-box">
-                                    <h3 class="section-title">About Us</h3>
-                                    <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics.</p>
+                                    <div class="col-md-4 animate-box">
+                                        <h3 class="section-title">Our Address</h3>
+                                        <ul class="contact-info">
+                                            <li><i class="icon-map-marker"></i>2 Rue du Doyen-Gabriel-Marty 
+                                                31042 Toulouse Cedex 9</li>
+                                            <li><i class="icon-phone"></i>+ 1235 2355 98</li>
+                                            <li><i class="icon-envelope"></i><a href="#">rhaw@rhaw.com</a></li>
+                                            <li><i class="icon-globe2"></i><a href="#">https://jdcoaching.herokuapp.com/</a></li>
+                                        </ul>
+                                    </div>
+                                    <div class="col-md-4 animate-box">
+                                        <h3 class="section-title">Drop us a line</h3>
+                                        <form class="contact-form">
+                                            <div class="form-group">
+                                                <label for="name" class="sr-only">Name</label>
+                                                <input type="name" class="form-control" id="name" placeholder="Name">
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="email" class="sr-only">Email</label>
+                                                <input type="email" class="form-control" id="email" placeholder="Email">
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="message" class="sr-only">Message</label>
+                                                <textarea class="form-control" id="message" rows="7" placeholder="Message"></textarea>
+                                            </div>
+                                            <div class="form-group">
+                                                <input type="submit" id="btn-submit" class="btn btn-send-message btn-md" value="Send Message">
+                                            </div>
+                                        </form>
+                                    </div>
                                 </div>
-
-                                <div class="col-md-4 animate-box">
-                                    <h3 class="section-title">Our Address</h3>
-                                    <ul class="contact-info">
-                                        <li><i class="icon-map-marker"></i>198 West 21th Street, Suite 721 New York NY 10016</li>
-                                        <li><i class="icon-phone"></i>+ 1235 2355 98</li>
-                                        <li><i class="icon-envelope"></i><a href="#">info@yoursite.com</a></li>
-                                        <li><i class="icon-globe2"></i><a href="#">www.yoursite.com</a></li>
-                                    </ul>
-                                </div>
-                                <div class="col-md-4 animate-box">
-                                    <h3 class="section-title">Drop us a line</h3>
-                                    <form class="contact-form">
-                                        <div class="form-group">
-                                            <label for="name" class="sr-only">Name</label>
-                                            <input type="name" class="form-control" id="name" placeholder="Name">
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="email" class="sr-only">Email</label>
-                                            <input type="email" class="form-control" id="email" placeholder="Email">
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="message" class="sr-only">Message</label>
-                                            <textarea class="form-control" id="message" rows="7" placeholder="Message"></textarea>
-                                        </div>
-                                        <div class="form-group">
-                                            <input type="submit" id="btn-submit" class="btn btn-send-message btn-md" value="Send Message">
-                                        </div>
-                                    </form>
-                                </div>
-                            </div>
-                            <div class="row copy-right">
-                                <div class="col-md-6 col-md-offset-3 text-center">
-                                    <p class="fh5co-social-icons">
-                                        <a href="#"><i class="icon-twitter2"></i></a>
-                                        <a href="#"><i class="icon-facebook2"></i></a>
-                                        <a href="#"><i class="icon-instagram"></i></a>
-                                        <a href="#"><i class="icon-dribbble2"></i></a>
-                                        <a href="#"><i class="icon-youtube"></i></a>
-                                    </p>
-                                    <p>Copyright 2016 Free Html5 <a href="#">Fitness</a>. All Rights Reserved. <br>Made with <i class="icon-heart3"></i> by <a href="#/" target="_blank">Freehtml5</a> / More Templates <a href="http://www.cssmoban.com/" target="_blank" title="模板之家">模板之家</a> - Collect from <a href="http://www.cssmoban.com/" title="网页模板" target="_blank">网页模板</a></p>
+                                <div class="row copy-right">
+                                    <div class="col-md-6 col-md-offset-3 text-center">
+                                        <p class="fh5co-social-icons">
+                                            <a href="#"><i class="icon-twitter2"></i></a>
+                                            <a href="#"><i class="icon-facebook2"></i></a>
+                                            <a href="#"><i class="icon-instagram"></i></a>
+                                            <a href="#"><i class="icon-dribbble2"></i></a>
+                                            <a href="#"><i class="icon-youtube"></i></a>
+                                        </p>
+                                        <p>Copyright RHAW</p>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                </footer>
+                    </footer>
 
 
             </div>
