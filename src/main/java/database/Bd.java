@@ -563,7 +563,7 @@ public class Bd {
                     + error.getMessage());
         }
 
-        String sqlbilan = "select CODEB from bilan where LIBELLEE= 'firstbilan' and CODEU='" + codeu + "'";
+        String sqlbilan = "select CODEB from bilan where LIBELLEEB= 'firstbilan' and CODEU='" + codeu + "'";
         try {
             ResultSet rs = statement.executeQuery(sqlbilan);
             while (rs.next()) {
@@ -1445,11 +1445,11 @@ public class Bd {
     /*
     *pour récupérer les données d'un mesuration
      */
-    public static String donneeBilanperformence(final int codebilan,final int codeexo)
+    public static String donneeBilanperformence(final int codebilan, final int codeexo)
             throws Exception {
-        String n=null;
-        String n1=null;
-       
+        String n = "  ";
+        String n1 = "  ";
+
         if (Bd.cx == null) {
             Bd.connexion();
         }
@@ -1468,9 +1468,7 @@ public class Bd {
                     + error.getMessage());
         }
 
-        String sqltemps = "select MAXTEMPS from attacher where CODEB ='" + codebilan + "' and CODEE='"+codeexo+"'";
-        String sqlnum = "select NUMREPETITION from attacher where CODEB ='" + codebilan + "' and CODEE='"+codeexo+"'";
-
+        String sqltemps = "select MAXTEMPS,NUMREPETITION from attacher where CODEB ='" + codebilan + "' and CODEE='" + codeexo + "'";
         try {
             Statement st = cx.createStatement();
             /* Execution de la requête */
@@ -1478,14 +1476,16 @@ public class Bd {
                 ResultSet rs = st.executeQuery(sqltemps);
                 /* Adding messages to the ArrayList */
                 while (rs.next()) {
-                            n=rs.getString("MAXTEMPS");
+                    n = rs.getString("MAXTEMPS");
+                    n1 = rs.getString("NUMREPETITION");
                 }
-                ResultSet rs1 = st.executeQuery(sqlnum);
-                /* Adding messages to the ArrayList */
-                while (rs1.next()) {
-                            n1=rs.getString("NUMREPETITION");
-                }
+//                ResultSet rs1 = st.executeQuery(sqlnum);
+//                /* Adding messages to the ArrayList */
+//                while (rs1.next()) {
+//                    
+//                }
                 rs.close();
+//                rs1.close();
                 st.close();
                 cx.close();
             } catch (SQLException ex) {
@@ -1496,7 +1496,18 @@ public class Bd {
             System.out.println("Erreur de SQL statement "
                     + ex.getMessage());
         }
-        return array;
+
+        System.out.println(codebilan);
+        System.out.println(codeexo);
+        System.out.println(n);
+        System.out.println(n.length());
+        System.out.println(n1);
+        System.out.println(n1.length());
+        if (n.equals("null")) {
+            return n1;
+        } else {
+            return n;
+        }
 
     }
 
