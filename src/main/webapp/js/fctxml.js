@@ -76,9 +76,6 @@ function l_inscription()
 
 }
 
-
-
-
 /**
  * Cette méthode "Ajax" affiche le message de connexion
  */

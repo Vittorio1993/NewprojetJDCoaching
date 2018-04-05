@@ -77,7 +77,7 @@ public class Utilisateur {
             final String prenom, final String datenaissance,
                 final String email, final String tel, final String statusu,
                 final String passwordu, final String typeu, final String objectifu) {
-        this.codeu=code;
+        this.codeu = code;
         this.nomu = nom;
         this.prenomu = prenom;
         this.datenaissanceu = datenaissance;
