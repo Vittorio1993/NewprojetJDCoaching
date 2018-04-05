@@ -303,7 +303,7 @@ public class Bd {
                     + error.getMessage());
         }
 
-        String sqlcode = "SELECT CODEE FROM exercice WHERE LIBELLE='" + nome + "'";
+        String sqlcode = "SELECT CODEE FROM exercice WHERE LIBELLEE='" + nome + "'";
         try {
             ResultSet rs = statement.executeQuery(sqlcode);
             while (rs.next()) {
@@ -373,7 +373,7 @@ public class Bd {
      * @param bi
      * @throws Exception Exception
      */
-    public static void insererBilan(Bilan bi) throws Exception {
+    public static void insererBilan(int codeu, String libelle, String numsemaine, String commentaire, String fcallogee, String fcflexions, String fcrepos) throws Exception {
 
         if (Bd.cx == null) {
             Bd.connexion();
@@ -393,16 +393,7 @@ public class Bd {
                     + error.getMessage());
         }
 
-        String sqlbilan = "insert into bilan values (" + bi.getCODEB() + ","
-                + bi.getCODEU() + ","
-                + bi.getCODEP() + ",'"
-                + bi.getLIBELLEB() + "','"
-                + bi.getNUMSEMAINEB() + "','"
-                + bi.getCOMMENTAIRECOACHB() + "','"
-                + bi.getFCALLONGEE() + "','"
-                + bi.getFCFLEXIONS() + "','"
-                + bi.getFCREPOS() + "','"
-                + bi.getDateB() + "')";
+        String sqlbilan = "insert into bilan (CODEU, LIBELLEB, NUMSEMAINEB, COMMENTAIRECOACHB, FCALLONGEE, FCFLEXIONS, FCREPOS, DATEB) values ('" + codeu + "','" + libelle + "','" + numsemaine + "','" + commentaire + "','" + fcallogee + "','" + fcflexions + "','" + fcrepos + "',NOW())";
         try {
             statement.executeUpdate(sqlbilan);
             statement.close();
@@ -461,7 +452,7 @@ public class Bd {
      * @return
      * @throws Exception Exception
      */
-    public static int consulterBilan(String codeu) throws Exception {
+    public static int consulterBilan(int codeu) throws Exception {
         int codeb = 0;
 
         if (Bd.cx == null) {
@@ -482,7 +473,7 @@ public class Bd {
                     + error.getMessage());
         }
 
-        String sqlbilan = "select CODEB from bilan where CODEU='" + codeu + "' and NUMSEMANIE = 0";
+        String sqlbilan = "select CODEB from bilan where CODEU='" + codeu + "' and NUMSEMAINEB = '0'";
         try {
             ResultSet rs = statement.executeQuery(sqlbilan);
             while (rs.next()) {
@@ -543,13 +534,13 @@ public class Bd {
     }
 
     /**
-     * chercher le code de  premierbilan
+     * chercher le code de premierbilan
      *
      * @param libellee
      * @return
      * @throws Exception Exception
      */
-    public static int chercherfirstbilan(String libellee, int codeu) throws Exception {
+    public static int chercherfirstbilan(int codeu) throws Exception {
         int codee = 0;
 
         if (Bd.cx == null) {
@@ -570,7 +561,7 @@ public class Bd {
                     + error.getMessage());
         }
 
-        String sqlbilan = "select CODEE from bilan where LIBELLEE= firstbilan and CODEU='"+codeu+"'";
+        String sqlbilan = "select CODEB from bilan where LIBELLEE= 'firstbilan' and CODEU='" + codeu + "'";
         try {
             ResultSet rs = statement.executeQuery(sqlbilan);
             while (rs.next()) {

@@ -298,141 +298,144 @@
                     </from>
 
                     <!-- Bilan de performance -->
+                    <form action="profilsportif">
 
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-md-8 col-md-offset-2">
-                                <div class="heading-section text-left animate-box">
-                                    <h3>Bilan de performance</h3>
-                                    <p>Efectuer le maximum de répétitions ou tenir le plus longtemps possibles pour chaque exercice</p>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- 1ere colonne -->
-                        <div class="col-md-6 animate-box">
+                        <div class="container">
                             <div class="row">
-                                <!-- Gainage -->
-                                <div class="row">
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <img src="images/gainage.png" alt="gainage" style="width: 100%;" />
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <p>Gainage :</p>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-5">
-                                        <div class="form-group">
-                                            <input type="text" class="form-control" name="gainage" placeholder="Gainage">
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- Fentes avant -->
-                                <div class="row">
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <img src="images/fentes_avant.png" alt="fentes avant" style="width: 100%;" />
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <p>Fentes avant :</p>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-5">
-                                        <div class="form-group">
-                                            <input type="text" class="form-control" name="jambegauche" placeholder="jambe gauche devant">
-                                        </div>
-                                    </div>
-                                    <div class="col-md-5">
-                                        <div class="form-group">
-                                            <input type="text" class="form-control" name="jambedroite" placeholder="jambe droite devant">
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- Crunch -->
-                                <div class="row">
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <img src="images/crunch.png" alt="crunch" style="width: 100%;" />
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <p>Crunch :</p>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-5">
-                                        <div class="form-group">
-                                            <input type="text" class="form-control" name="crunch" placeholder="Crunch">
-                                        </div>
+                                <div class="col-md-8 col-md-offset-2">
+                                    <div class="heading-section text-left animate-box">
+                                        <h3>Bilan de performance</h3>
+                                        <p>Efectuer le maximum de répétitions ou tenir le plus longtemps possibles pour chaque exercice</p>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        <!-- 2ere colonne -->
-                        <div class="col-md-6 animate-box">
-                            <div class="row">
-                                <!-- 1/2 pompes -->
+                            <!-- 1ere colonne -->
+                            <div class="col-md-6 animate-box">
                                 <div class="row">
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <img src="images/pompes.png" alt="pompes" style="width: 100%;" />
+                                    <!-- Gainage -->
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <img src="images/gainage.png" alt="gainage" style="width: 100%;" />
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <p>Gainage :</p>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-5">
+                                            <div class="form-group">
+                                                <input type="text" class="form-control" name="gainage" placeholder="Gainage">
+                                            </div>
                                         </div>
                                     </div>
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <p>1/2 pompes :</p>
+                                    <!-- Fentes avant -->
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <img src="images/fentes_avant.png" alt="fentes avant" style="width: 100%;" />
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <p>Fentes avant :</p>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-5">
+                                            <div class="form-group">
+                                                <input type="text" class="form-control" name="jambegauche" placeholder="jambe gauche devant">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-5">
+                                            <div class="form-group">
+                                                <input type="text" class="form-control" name="jambedroite" placeholder="jambe droite devant">
+                                            </div>
                                         </div>
                                     </div>
-                                    <div class="col-md-5">
-                                        <div class="form-group">
-                                            <input type="text" class="form-control" name="pompes" placeholder="1/2 pompes">
+                                    <!-- Crunch -->
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <img src="images/crunch.png" alt="crunch" style="width: 100%;" />
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <p>Crunch :</p>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-5">
+                                            <div class="form-group">
+                                                <input type="text" class="form-control" name="crunch" placeholder="Crunch">
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-                                <!-- 1/2 squat -->
+                            </div>
+                            <!-- 2ere colonne -->
+                            <div class="col-md-6 animate-box">
                                 <div class="row">
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <img src="images/squat.png" alt="squat" style="width: 100%;" />
+                                    <!-- 1/2 pompes -->
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <img src="images/pompes.png" alt="pompes" style="width: 100%;" />
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <p>1/2 pompes :</p>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-5">
+                                            <div class="form-group">
+                                                <input type="text" class="form-control" name="pompes" placeholder="1/2 pompes">
+                                            </div>
                                         </div>
                                     </div>
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <p>1/2 squat :</p>
+                                    <!-- 1/2 squat -->
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <img src="images/squat.png" alt="squat" style="width: 100%;" />
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <p>1/2 squat :</p>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-5">
+                                            <div class="form-group">
+                                                <input type="text" class="form-control" name="squat" placeholder="1/2 squat">
+                                            </div>
                                         </div>
                                     </div>
-                                    <div class="col-md-5">
-                                        <div class="form-group">
-                                            <input type="text" class="form-control" name="squat" placeholder="1/2 squat">
+                                    <!-- Dips -->
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <img src="images/dips.png" alt="dips" style="width: 100%;" />
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <p>Dips :</p>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-5">
+                                            <div class="form-group">
+                                                <input type="text" class="form-control" name="dips" placeholder="Dips">
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                                <!-- Dips -->
-                                <div class="row">
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <img src="images/dips.png" alt="dips" style="width: 100%;" />
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <p>Dips :</p>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-5">
-                                        <div class="form-group">
-                                            <input type="text" class="form-control" name="dips" placeholder="Dips">
-                                        </div>
-                                    </div>
-                                </div>
+                                    <input type="submit" value="Enregistrer" class="btn btn-primary">
 
+                                </div>
                             </div>
                         </div>
-                    </div>
+                    </form>
 
 
 

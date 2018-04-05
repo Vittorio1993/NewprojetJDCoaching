@@ -17,14 +17,14 @@ public class Bilan {
     private int CODEP;
     private int CODEU;
     private String LIBELLEB;
-    private int NUMSEMAINEB;
+    private String NUMSEMAINEB;
     private String COMMENTAIRECOACHB;
     private String FCALLONGEE;
     private String FCFLEXIONS;
     private String FCREPOS;
     private Date DateB;
 
-    public Bilan(int CODEB, int CODEP, int CODEU, String LIBELLEB, int NUMSEMAINEB, String COMMENTAIRECOACHB, String FCALLONGEE, String FCFLEXIONS, String FCREPOS, Date DateB) {
+    public Bilan(int CODEB, int CODEP, int CODEU, String LIBELLEB, String NUMSEMAINEB, String COMMENTAIRECOACHB, String FCALLONGEE, String FCFLEXIONS, String FCREPOS, Date DateB) {
         this.CODEB = CODEB;
         this.CODEP = CODEP;
         this.CODEU = CODEU;
@@ -53,7 +53,7 @@ public class Bilan {
         return LIBELLEB;
     }
 
-    public int getNUMSEMAINEB() {
+    public String getNUMSEMAINEB() {
         return NUMSEMAINEB;
     }
 
@@ -93,7 +93,7 @@ public class Bilan {
         this.LIBELLEB = LIBELLEB;
     }
 
-    public void setNUMSEMAINEB(int NUMSEMAINEB) {
+    public void setNUMSEMAINEB(String NUMSEMAINEB) {
         this.NUMSEMAINEB = NUMSEMAINEB;
     }
 
