@@ -84,7 +84,7 @@
                     </div>
                 </div><!-- end: fh5co-parallax -->
                 <!-- end:fh5co-hero -->
-                <form action="profildebase">
+                <form>
                     <div id="fh5co-contact">
                         <div class="container">
                             <!-- Profil de base -->
@@ -109,7 +109,7 @@
                                             </div>
                                             <div class="col-md-9">
                                                 <div class="form-group">
-                                                    <input type='text' class='form-control' name='nom' required>
+                                                    <input type='text' id="nom" class='form-control' name='nom' required>
                                                 </div>
                                             </div>
                                         </div>
@@ -122,7 +122,7 @@
                                         </div>
                                         <div class="col-md-9">
                                             <div class="form-group">
-                                                <input type='text' class='form-control' name='tel' required>
+                                                <input type='text' class='form-control' id="tel" name='tel' required>
                                             </div>
                                         </div>
                                     </div>
@@ -135,7 +135,7 @@
                                         </div>
                                         <div class="col-md-9">
                                             <div class="form-group">
-                                                <input type='mail'  class='form-control' name='mail' required>
+                                                <input type='mail' id="mail" class='form-control' name='mail' required>
                                             </div>
                                         </div>
                                     </div>                                       
@@ -168,7 +168,7 @@
                                         </div>
                                         <div class="col-md-9">
                                             <div class="form-group">
-                                                <input type='text' class='form-control' name='prenom' required>
+                                                <input type='text' class='form-control' id="prenom" name='prenom' required>
                                             </div>
                                         </div>
                                         <!-- Date de naissance -->
@@ -179,7 +179,7 @@
                                         </div>
                                         <div class="col-md-7">
                                             <div class="form-group">
-                                                <input type='date' class='form-control' name='date' required>
+                                                <input type='date' class='form-control' id="date" name='date' required>
                                             </div>
                                         </div>
                                         <!-- Mot de passe -->
@@ -190,7 +190,7 @@
                                         </div>
                                         <div class="col-md-8">
                                             <div class="form-group">
-                                                <input type='text' class='form-control' name='password' required>
+                                                <input type='password' class='form-control' id="password" name='password' required>
                                             </div>
                                         </div>
                                     </div>
@@ -200,7 +200,7 @@
                     </div>
                 </form>
 
-                <form action="profilcondition">
+                <form>
                     <!-- Profil condition -->
                     <div id="fh5co-contact">
                         <div class="container">
@@ -222,7 +222,7 @@
                                     </div>
                                     <div class="col-md-9">
                                         <div class="form-group">
-                                            <input type="text" class="form-control" name="fcflexions" placeholder="fc après 30 flexions complètes en 45 sec" required>
+                                            <input type="number" class="form-control" name="fcflexions" id="fcflexions" placeholder="fc après 30 flexions complètes en 45 sec" required>
                                         </div>
                                     </div>
                                 </div>
@@ -238,7 +238,7 @@
                                     </div>
                                     <div class="col-md-5">
                                         <div class="form-group">
-                                            <input type="text" class="form-control" name="fcrepos" placeholder="fréquence" required>
+                                            <input type="number" class="form-control" name="fcrepos" id="fcrepos" placeholder="fréquence" required>
                                         </div>
                                     </div>
                                     <!--fc 1 min après exercice allongée -->
@@ -249,18 +249,17 @@
                                     </div>
                                     <div class="col-md-9">
                                         <div class="form-group">
-                                            <input type="text" class="form-control" name="fcallogee" placeholder="fc après 30 flexions complètes en 45 sec" required>
+                                            <input type="number" class="form-control" name="fcallogee" id="fcallogee" placeholder="fc après 30 flexions complètes en 45 sec" required>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    </from>
+                    </form>
 
                     <!-- Bilan de performance -->
-                    <form action="bilanperformance">
-
+                    <form>
                         <div class="container">
                             <div class="row">
                                 <div class="col-md-8 col-md-offset-2">
@@ -286,7 +285,7 @@
                                         </div>
                                         <div class="col-md-5">
                                             <div class="form-group">
-                                                <input type="text" class="form-control" name="gainage" placeholder="Gainage" required>
+                                                <input type="number" class="form-control" id="gainage" name="gainage" placeholder="Gainage" required>
                                             </div>
                                         </div>
                                     </div>
@@ -304,12 +303,12 @@
                                         </div>
                                         <div class="col-md-5">
                                             <div class="form-group">
-                                                <input type="text" class="form-control" name="jambegauche" placeholder="jambe gauche devant" required>
+                                                <input type="number" class="form-control" id="jambegauche" name="jambegauche" placeholder="jambe gauche devant" required>
                                             </div>
                                         </div>
                                         <div class="col-md-5">
                                             <div class="form-group">
-                                                <input type="text" class="form-control" name="jambedroite" placeholder="jambe droite devant" required>
+                                                <input type="number" class="form-control" id="jambedroite" name="jambedroite" placeholder="jambe droite devant" required>
                                             </div>
                                         </div>
                                     </div>
@@ -327,7 +326,7 @@
                                         </div>
                                         <div class="col-md-5">
                                             <div class="form-group">
-                                                <input type="text" class="form-control" name="crunch" placeholder="Crunch" required>
+                                                <input type="number" class="form-control" id="crunch" name="crunch" placeholder="Crunch" required>
                                             </div>
                                         </div>
                                     </div>
@@ -340,7 +339,7 @@
                                     <div class="row">
                                         <div class="col-md-6">
                                             <div class="form-group">
-                                                <img src="images/pompes.png" alt="pompes" style="width: 100%;" />
+                                                <img src="images/pompes.png" alt="pompes"  style="width: 100%;" />
                                             </div>
                                         </div>
                                         <div class="col-md-6">
@@ -350,7 +349,7 @@
                                         </div>
                                         <div class="col-md-5">
                                             <div class="form-group">
-                                                <input type="text" class="form-control" name="pompes" placeholder="1/2 pompes" required>
+                                                <input type="number" class="form-control" id="pompes" name="pompes" placeholder="1/2 pompes" required>
                                             </div>
                                         </div>
                                     </div>
@@ -368,7 +367,7 @@
                                         </div>
                                         <div class="col-md-5">
                                             <div class="form-group">
-                                                <input type="text" class="form-control" name="squat" placeholder="1/2 squat" required>
+                                                <input type="number" class="form-control" name="squat" id="squat" placeholder="1/2 squat" required>
                                             </div>
                                         </div>
                                     </div>
@@ -386,7 +385,7 @@
                                         </div>
                                         <div class="col-md-5">
                                             <div class="form-group">
-                                                <input type="text" class="form-control" name="dips" placeholder="Dips" required>
+                                                <input type="number" class="form-control" name="dips" id="dips" placeholder="Dips" required>
                                             </div>
                                         </div>
                                     </div>
@@ -395,10 +394,8 @@
                         </div>
                     </form>
 
-
-
                     <!-- Mensuration -->
-                    <form action="mesuration">
+                    <form>
                         <div id="fh5co-contact">
                             <div class="container">
                                 <div class="row">
@@ -420,7 +417,7 @@
                                         </div>
                                         <div class="col-md-9">
                                             <div class="form-group">
-                                                <input type="text" name="bras" class="form-control" placeholder="Bras" required>
+                                                <input type="number" name="bras" id="bras" class="form-control" placeholder="Bras" required>
                                             </div>
                                         </div>
                                         <!-- Poitrine -->
@@ -431,7 +428,7 @@
                                         </div>
                                         <div class="col-md-9">
                                             <div class="form-group">
-                                                <input type="text" class="form-control" name="poitrine" placeholder="Poitrine" required>
+                                                <input type="number" id="poitrine" class="form-control" name="poitrine" placeholder="Poitrine" required>
                                             </div>
                                         </div>
                                         <!-- Taille -->
@@ -442,7 +439,7 @@
                                         </div>
                                         <div class="col-md-9">
                                             <div class="form-group">
-                                                <input type="text" class="form-control" name="taille" placeholder="Taille" required>
+                                                <input type="number" class="form-control" id="taille" name="taille" placeholder="Taille" required>
                                             </div>
                                         </div>
                                     </div>
@@ -458,7 +455,7 @@
                                         </div>
                                         <div class="col-md-9">
                                             <div class="form-group">
-                                                <input type="text" class="form-control" name="hanches" placeholder="Hanches" required>
+                                                <input type="number" class="form-control"  id="hanches" name="hanches" placeholder="Hanches" required>
                                             </div>
                                         </div>
                                         <!-- Cuisses -->
@@ -469,7 +466,7 @@
                                         </div>
                                         <div class="col-md-9">
                                             <div class="form-group">
-                                                <input type="text" class="form-control" name="cuisses" placeholder="Cuisses" required>
+                                                <input type="number" class="form-control" name="cuisses" id="cuisses" placeholder="Cuisses" required>
                                             </div>
                                         </div>
                                         <!-- Poids -->
@@ -480,14 +477,13 @@
                                         </div>
                                         <div class="col-md-9">
                                             <div class="form-group">
-                                                <input type="text" class="form-control" name="poids" placeholder="Poids" required>
+                                                <input type="number" class="form-control" name="poids" id="poids" placeholder="Poids" required>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-
                         <!-- Bouton enregistrer -->
                         <div class="container">
                             <div class="col-md-12 animate-box">
@@ -495,7 +491,7 @@
                                     <div class="col-md-12">
                                         <div class="form-group">
                                             <p style="text-align: center;">
-                                                <input type="submit" value="Enregistrer" class="btn btn-primary" onclick="l_inscription_rapide()">
+                                                <input value="Enregistrer" class="btn btn-primary" onclick="l_inscription_rapide()">
                                             </p>
                                         </div>
                                     </div>
