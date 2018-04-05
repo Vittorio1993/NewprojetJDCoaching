@@ -11,6 +11,7 @@ import java.io.PrintWriter;
 import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -49,8 +50,9 @@ public class CreerexerciceServlet extends HttpServlet {
 
             Bd b = new Bd();
             b.insererExercice(nome, tempsrepetition, lienimage, nbrepetition, description);
-///?????           b.insererMesuration(poids, bras, poitrine, taille, hanches, cuisses);
-
+            RequestDispatcher rd = requete
+                    .getRequestDispatcher("gestionexercice.jsp");
+            rd.forward(requete, reponse);
         } catch (Exception ex) {
             Logger.getLogger(InscriptionServlet.class.getName()).log(Level.SEVERE, null, ex);
         }

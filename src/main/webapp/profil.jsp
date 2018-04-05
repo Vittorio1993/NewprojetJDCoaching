@@ -90,7 +90,7 @@
                     </div>
                 </div><!-- end: fh5co-parallax -->
                 <!-- end:fh5co-hero -->
-                <form action="profilsportif">
+                <form action="profildebase">
                     <div id="fh5co-contact">
                         <div class="container">
                             <!-- Profil de base -->
@@ -213,14 +213,14 @@
 
 
 
-                <form action="profilsportif"><!--- 测试用-->
-                    <!-- Profil sportif -->
+                <form action="profilcondition"><!--- 测试用-->
+                    <!-- Profil condition -->
                     <div id="fh5co-contact">
                         <div class="container">
                             <div class="row">
                                 <div class="col-md-8 col-md-offset-2">
                                     <div class="heading-section text-center animate-box">
-                                        <h2>Profil sportif</h2>
+                                        <h2>Profil condition</h2>
                                     </div>
                                 </div>
                             </div>
@@ -305,7 +305,7 @@
                     </from>
 
                     <!-- Bilan de performance -->
-                    <form action="profilsportif">
+                    <form action="bilanperformance">
 
                         <div class="container">
                             <div class="row">
@@ -449,7 +449,7 @@
 
 
                     <!-- Mensuration -->
-                    <form action="profilsportif"><!--- 测试用-->
+                    <form action="mesuration"><!--- 测试用-->
                         <div id="fh5co-contact">
                             <div class="container">
                                 <div class="row">

@@ -11,6 +11,7 @@ import java.io.PrintWriter;
 import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -33,8 +34,6 @@ public class UpdateexerciceServlet extends HttpServlet {
         try {
             reponse.setContentType("application/xml;charset=UTF-8");
             reponse.setCharacterEncoding("UTF-8");
-//            PrintWriter out = reponse.getWriter();
-//            out.println("<?xml version=\"1.0\"?>");
 
             String nome, description, tempsrepetition, nbrepetition, lienimage;
             //RequestDispatcher rd;
@@ -49,7 +48,9 @@ public class UpdateexerciceServlet extends HttpServlet {
 
             Bd b = new Bd();
             b.updateExercice(nome, description, tempsrepetition, nbrepetition, lienimage);
-///?????           b.insererMesuration(poids, bras, poitrine, taille, hanches, cuisses);
+            RequestDispatcher rd = requete
+                    .getRequestDispatcher("gestionexercice.jsp");
+            rd.forward(requete, reponse);
 
         } catch (Exception ex) {
             Logger.getLogger(InscriptionServlet.class.getName()).log(Level.SEVERE, null, ex);

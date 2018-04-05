@@ -16,6 +16,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import password.Envoyer;
 import password.SendMail;
 
 /**
@@ -41,7 +42,9 @@ public class MotdepasseServlet extends HttpServlet {
             String motdepasse = info[0];
             SendMail s = new SendMail();
             s.mail(mail, motdepasse);
-            
+
+//            Envoyer s = new Envoyer();
+//            s.mail(mail, motdepasse);
             RequestDispatcher rd = requete
                     .getRequestDispatcher("connexion.html");
             rd.forward(requete, reponse);
