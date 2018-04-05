@@ -21,10 +21,12 @@ import java.util.logging.Logger;
 import model.Attacher;
 
 import model.Bilan;
+import model.Categorie;
 
 import model.Commentaire;
 import model.Exercice;
 import model.Mesuration;
+import model.ProgrammeType;
 
 /**
  *
@@ -1609,6 +1611,163 @@ public class Bd {
                     + ex.getMessage());
         }
         return num;
+
+    }
+
+    /*Method to add programm*/
+    public void AjouterProgrammeT(String nompt, String descrpt) throws Exception {
+        if (Bd.cx == null) {
+            Bd.connexion();
+        }
+        // Statement pour effectuer la requête
+        Statement statement;
+        //Ouverture de la connexion
+        try {
+            cx = DriverManager.getConnection(url);
+        } catch (SQLException ex) {
+            System.out.println("Erreur ouverture connexion" + ex.getMessage());
+        }
+        try {
+            statement = cx.createStatement();
+        } catch (SQLException error) {
+            throw new Exception("Problème avec création du statement : "
+                    + error.getMessage());
+        }
+        String sql = "insert into programmetype (NOMPT, DESCRIPTIONPT) values ('" + nompt + "', '" + descrpt + "')";
+
+        try {
+            statement.executeUpdate(sql);
+            statement.close();
+            cx.close();
+        } catch (SQLException ex) {
+            System.out.println("Problème avec récupération de la requête : "
+                    + ex.getMessage());
+        }
+
+    }
+
+    /*Method to get programm*/
+    public ArrayList<ProgrammeType> AfficherProgrammeT() throws SQLException, Exception {
+        ArrayList<ProgrammeType> l = new ArrayList<ProgrammeType>();
+        if (Bd.cx == null) {
+            Bd.connexion();
+        }
+        // Statement pour effectuer la requête
+        Statement statement;
+        //Ouverture de la connexion
+        try {
+            cx = DriverManager.getConnection(url);
+        } catch (SQLException ex) {
+            System.out.println("Erreur ouverture connexion" + ex.getMessage());
+        }
+        try {
+            statement = cx.createStatement();
+        } catch (SQLException error) {
+            throw new Exception("Problème avec création du statement : "
+                    + error.getMessage());
+        }
+
+        String sql = "select CODEPT, NOMPT, DESCRIPTIONPT from Programmetype";
+        try {
+            Statement st = cx.createStatement();
+            /* Execution de la requête */
+            try {
+                ResultSet rs = st.executeQuery(sql);
+                /* Adding messages to the ArrayList */
+                while (rs.next()) {
+
+                    l.add(new ProgrammeType(rs.getInt(1), rs.getString(2), rs.getString(3)));
+                }
+                rs.close();
+                st.close();
+                cx.close();
+            } catch (SQLException ex) {
+                System.out.println("Erreur execution requête "
+                        + ex.getMessage());
+            }
+        } catch (SQLException ex) {
+            System.out.println("Erreur de SQL statement "
+                    + ex.getMessage());
+        }
+        return l;
+    }
+
+    /*Method to get categorie*/
+    public ArrayList<Categorie> AfficherCategorie() throws Exception {
+        ArrayList<Categorie> list = new ArrayList<Categorie>();
+        if (Bd.cx == null) {
+            Bd.connexion();
+        }
+        // Statement pour effectuer la requête
+        Statement statement;
+        //Ouverture de la connexion
+        try {
+            cx = DriverManager.getConnection(url);
+        } catch (SQLException ex) {
+            System.out.println("Erreur ouverture connexion" + ex.getMessage());
+        }
+        try {
+            statement = cx.createStatement();
+        } catch (SQLException error) {
+            throw new Exception("Problème avec création du statement : "
+                    + error.getMessage());
+        }
+        String sql = "select CODECA, LIBELLECA from Categorie";
+
+        try {
+            Statement st = cx.createStatement();
+            /* Execution de la requête */
+            try {
+                ResultSet rs = st.executeQuery(sql);
+                /* Adding messages to the ArrayList */
+                while (rs.next()) {
+
+                    list.add(new Categorie(rs.getInt(1), rs.getString(2)));
+                }
+                rs.close();
+                st.close();
+                cx.close();
+            } catch (SQLException ex) {
+                System.out.println("Erreur execution requête "
+                        + ex.getMessage());
+            }
+        } catch (SQLException ex) {
+            System.out.println("Erreur de SQL statement "
+                    + ex.getMessage());
+        }
+
+        return list;
+    }
+
+    /*Method to add categorie*/
+    public void AjouterCategorie(String cat) throws Exception {
+        if (Bd.cx == null) {
+            Bd.connexion();
+        }
+        // Statement pour effectuer la requête
+        Statement statement;
+        //Ouverture de la connexion
+        try {
+            cx = DriverManager.getConnection(url);
+        } catch (SQLException ex) {
+            System.out.println("Erreur ouverture connexion" + ex.getMessage());
+        }
+        try {
+            statement = cx.createStatement();
+        } catch (SQLException error) {
+            throw new Exception("Problème avec création du statement : "
+                    + error.getMessage());
+        }
+        String sql = "insert into Categorie (LIBELLECA) values ('" + cat + "')";
+
+        try {
+            statement.executeUpdate(sql);
+            statement.close();
+            cx.close();
+        } catch (SQLException ex) {
+            System.out.println("Problème avec récupération de la requête : "
+                    + ex.getMessage());
+        }
 
     }
 
