@@ -11,6 +11,7 @@ import java.io.PrintWriter;
 import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -24,10 +25,10 @@ import model.Utilisateur;
  * @author zhanghuakai
  */
 @WebServlet(
-        name = "profilsportif",
-        urlPatterns = {"/profilsportif"}
+        name = "bilanperformance",
+        urlPatterns = {"/bilanperformance"}
 )
-public class ProfilsportifServlet extends HttpServlet {
+public class BilandeperformanceServlet extends HttpServlet {
 
     @Override
     public void doGet(HttpServletRequest requete, HttpServletResponse reponse) throws ServletException, IOException {
@@ -37,21 +38,18 @@ public class ProfilsportifServlet extends HttpServlet {
             PrintWriter out = reponse.getWriter();
             out.println("<?xml version=\"1.0\"?>");
 
-            String nom, prenom, datenaissance, tel, password, mail,
-                    fcrepos, fcflexions, fcallogee,
-                    gainage, jambegauche, jambedroite, crunch, pompes, squat, dips,
-                    poids, bras, hanches, poitrine, cuisses, taille;
-            //RequestDispatcher rd;
-            nom = requete.getParameter("nom");
-            prenom = requete.getParameter("prenom");
-            datenaissance = requete.getParameter("date");
-            tel = requete.getParameter("tel");
-            password = requete.getParameter("password");
-            mail = (String) requete.getSession().getAttribute("mail");
-
-            fcrepos = requete.getParameter("fcrepos");
-            fcflexions = requete.getParameter("fcflexions");
-            fcallogee = requete.getParameter("fcallogee");
+            String gainage, jambegauche, jambedroite, crunch, pompes, squat, dips;
+//            //RequestDispatcher rd;
+//            nom = requete.getParameter("nom");
+//            prenom = requete.getParameter("prenom");
+//            datenaissance = requete.getParameter("date");
+//            tel = requete.getParameter("tel");
+//            password = requete.getParameter("password");
+//            mail = (String) requete.getSession().getAttribute("mail");
+//
+//            fcrepos = requete.getParameter("fcrepos");
+//            fcflexions = requete.getParameter("fcflexions");
+//            fcallogee = requete.getParameter("fcallogee");
             gainage = requete.getParameter("gainage");
             jambegauche = requete.getParameter("jambegauche");
             jambedroite = requete.getParameter("jambedroite");
@@ -60,21 +58,21 @@ public class ProfilsportifServlet extends HttpServlet {
             squat = requete.getParameter("squat");
             dips = requete.getParameter("dips");
 
-            poids = requete.getParameter("poids");
-            bras = requete.getParameter("bras");
-            hanches = requete.getParameter("hanches");
-            poitrine = requete.getParameter("poitrine");
-            cuisses = requete.getParameter("cuisses");
-            taille = requete.getParameter("taille");
+//            poids = requete.getParameter("poids");
+//            bras = requete.getParameter("bras");
+//            hanches = requete.getParameter("hanches");
+//            poitrine = requete.getParameter("poitrine");
+//            cuisses = requete.getParameter("cuisses");
+//            taille = requete.getParameter("taille");
 
             Bd b = new Bd();
-            b.updateUtilisateur(nom, prenom, datenaissance, mail, tel, password);
-            b.insererMesuration(poids, bras, poitrine, taille, hanches, cuisses);
+//            b.updateUtilisateur(nom, prenom, datenaissance, mail, tel, password);
+//            b.insererMesuration(poids, bras, poitrine, taille, hanches, cuisses);
             //Integer i = null;
             Integer codeu = Integer.parseInt(requete.getSession().getAttribute("codeu").toString());
             //System.out.println("AAA" + codeu);
 
-            b.insererBilan(codeu, "firstbilan", "0", " ", fcallogee, fcflexions, fcrepos);
+//            b.insererBilan(codeu, "firstbilan", "0", " ", fcallogee, fcflexions, fcrepos);
             int codegainage = b.cherchecodeexercise("gainage");
             int codepompes = b.cherchecodeexercise("pompes");
             int codejambegauchedevant = b.cherchecodeexercise("jambe gauche devant");
@@ -95,7 +93,9 @@ public class ProfilsportifServlet extends HttpServlet {
             b.insererAttacher(codeb, codesquat, "5", null, squat);
             b.insererAttacher(codeb, codecrunch, "6", crunch, null);
             b.insererAttacher(codeb, codedips, "7", dips, null);
-            out.println("<message>yes</message>");
+             RequestDispatcher rd = requete
+                    .getRequestDispatcher("accueilclient.jsp");
+            rd.forward(requete, reponse);
 
         } catch (Exception ex) {
             Logger.getLogger(InscriptionServlet.class.getName()).log(Level.SEVERE, null, ex);
