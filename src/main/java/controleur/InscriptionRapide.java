@@ -35,7 +35,6 @@ public class InscriptionRapide extends HttpServlet {
             reponse.setCharacterEncoding("UTF-8");
             PrintWriter out = reponse.getWriter();
             out.println("<?xml version=\"1.0\"?>");
-
             String nom, prenom, datenaissance, tel, password, mail,
                     fcrepos, fcflexions, fcallogee,
                     gainage, jambegauche, jambedroite, crunch, pompes,
@@ -48,12 +47,14 @@ public class InscriptionRapide extends HttpServlet {
             tel = requete.getParameter("tel");
             password = requete.getParameter("password");
             objectif = requete.getParameter("objectif");
+
             poids = requete.getParameter("poids");
             bras = requete.getParameter("bras");
             hanches = requete.getParameter("hanches");
             poitrine = requete.getParameter("poitrine");
             cuisses = requete.getParameter("cuisses");
             taille = requete.getParameter("taille");
+
             fcrepos = requete.getParameter("fcrepos");
             fcflexions = requete.getParameter("fcflexions");
             fcallogee = requete.getParameter("fcallogee");
@@ -70,6 +71,7 @@ public class InscriptionRapide extends HttpServlet {
                 Utilisateur m = new Utilisateur(0, nom, prenom,
                         datenaissance, mail, tel, "Valide",
                         password, "client", objectif);
+
                 b.saisirUtilisateur(m);
                 String[] infos;
                 infos = b.consulterUtilisateur(mail);

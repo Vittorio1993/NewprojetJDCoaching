@@ -66,11 +66,16 @@ public class MesurationServlet extends HttpServlet {
             taille = requete.getParameter("taille");
 
             Bd b = new Bd();
-            Integer codeu = Integer.parseInt(requete.getSession().getAttribute("codeu").toString());
-//            b.updateUtilisateur(nom, prenom, datenaissance, mail, tel, password);
-            b.insererMesuration(codeu,poids, bras, poitrine, taille, hanches, cuisses);
-            //Integer i = null;
            
+//            b.updateUtilisateur(nom, prenom, datenaissance, mail, tel, password);
+
+           
+
+            Integer codeu = Integer.parseInt(requete.getSession().getAttribute("codeu").toString());
+            b.insererMesuration(codeu, poids, bras, poitrine, taille, hanches, cuisses);
+            //Integer i = null;
+            
+
             //System.out.println("AAA" + codeu);
 
 //            b.insererBilan(codeu, "firstbilan", "0", " ", fcallogee, fcflexions, fcrepos);

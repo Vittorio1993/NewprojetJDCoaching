@@ -985,7 +985,7 @@ public class Bd {
         boolean requestOK = false;
 
         /* Requête */
-        String sqlupdateValide = "UPDATE UTILISATEUR SET STATUTS ='Validé'"
+        String sqlupdateValide = "UPDATE UTILISATEUR SET STATUTS ='Valide'"
                 + "WHERE CODEU='"
                 + codeu
                 + "' ";

@@ -67,7 +67,7 @@ public class BilandeperformanceServlet extends HttpServlet {
 
             Bd b = new Bd();
 //            b.updateUtilisateur(nom, prenom, datenaissance, mail, tel, password);
-//            b.insererMesuration(poids, bras, poitrine, taille, hanches, cuisses);
+//            b.insererMesuration(codeu, poids, bras, poitrine, taille, hanches, cuisses);
             //Integer i = null;
             Integer codeu = Integer.parseInt(requete.getSession().getAttribute("codeu").toString());
             //System.out.println("AAA" + codeu);
