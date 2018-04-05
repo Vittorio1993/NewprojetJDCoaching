@@ -89,6 +89,12 @@ public class ProfilsportifServlet extends HttpServlet {
             System.out.println(codeb1 + "BB");
 
             b.insererAttacher(codeb, codegainage, "1", gainage, null);
+            b.insererAttacher(codeb, codepompes, "2", null, pompes);
+            b.insererAttacher(codeb, codejambegauchedevant, "3", null, jambegauche);
+            b.insererAttacher(codeb, codejambedroitedevant, "4", null, jambedroite);
+            b.insererAttacher(codeb, codesquat, "5", null, squat);
+            b.insererAttacher(codeb, codecrunch, "6", crunch, null);
+            b.insererAttacher(codeb, codedips, "7", dips, null);
             out.println("<message>yes</message>");
 
         } catch (Exception ex) {
