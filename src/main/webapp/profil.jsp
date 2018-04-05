@@ -198,10 +198,15 @@
                                         </div>
                                     </div>
                                 </div>
+
                             </div>
+
                         </div>
+                        <p style="text-align: center;">
+                            <input type="submit" value="Enregistrer" class="btn btn-primary">
+                        </p>
                         <!--测试用--></div>
-                    <input type="submit" value="Enregistrer" class="btn btn-primary">
+
                 </form><!--测试用-->
 
 
@@ -294,7 +299,9 @@
                             </div>
                         </div>
                     </div>
-                    <input type="submit" value="Enregistrer" class="btn btn-primary">
+                    <p style="text-align: center;">
+                        <input type="submit" value="Enregistrer" class="btn btn-primary">
+                    </p>
                     </from>
 
                     <!-- Bilan de performance -->
@@ -430,11 +437,13 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <input type="submit" value="Enregistrer" class="btn btn-primary">
-
+                                    
                                 </div>
                             </div>
                         </div>
+                        <p style="text-align: center;">
+                                        <input type="submit" value="Enregistrer" class="btn btn-primary">
+                                    </p>
                     </form>
 
 
