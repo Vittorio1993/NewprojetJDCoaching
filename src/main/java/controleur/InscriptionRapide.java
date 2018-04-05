@@ -34,8 +34,8 @@ public class InscriptionRapide extends HttpServlet {
             reponse.setCharacterEncoding("UTF-8");
             PrintWriter out = reponse.getWriter();
             out.println("<?xml version=\"1.0\"?>");
-            String nom, prenom, datenaissance, mail, tel, password, objectif;
-            //RequestDispatcher rd;
+            String nom, prenom, datenaissance, mail, tel, password, objectif
+                    , poids, bras, hanches, poitrine, cuisses, taille;
             nom = requete.getParameter("nom");
             prenom = requete.getParameter("prenom");
             datenaissance = requete.getParameter("date");
@@ -43,13 +43,21 @@ public class InscriptionRapide extends HttpServlet {
             tel = requete.getParameter("tel");
             password = requete.getParameter("password");
             objectif = requete.getParameter("objectif");
-            System.out.println(objectif);
-            Bd b = new Bd();
-            if (b.verifierMail(mail) == 0) {
+            poids = requete.getParameter("poids");
+            bras = requete.getParameter("bras");
+            hanches = requete.getParameter("hanches");
+            poitrine = requete.getParameter("poitrine");
+            cuisses = requete.getParameter("cuisses");
+            taille = requete.getParameter("taille");
+            Bd bd = new Bd();
+            if (bd.verifierMail(mail) == 0) {
                 Utilisateur m = new Utilisateur(0, nom, prenom,
                             datenaissance, mail, tel, "Validé",
-                                password, "client",objectif);
-                b.saisirUtilisateur(m);
+                                password, "client", objectif);
+                bd.saisirUtilisateur(m);
+                //Ajout des mensurations de l'utilisateur
+                bd.insererMesuration(poids, bras, poitrine, taille,
+                        hanches, cuisses);
                 RequestDispatcher rd = requete
                         .getRequestDispatcher("GestionClient");
                 rd.forward(requete, reponse);

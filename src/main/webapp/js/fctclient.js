@@ -329,6 +329,13 @@ function l_inscription_rapide()
     var v5 = document.getElementById("tel").value;
     var v6 = document.getElementById("password").value;
     var v7 = document.getElementById("objectif").options[document.getElementById("objectif").selectedIndex].value;
+    var v8 = document.getElementById("bras").value;
+    var v9 = document.getElementById("poitrine").value;
+    var v10 = document.getElementById("taille").value;
+    var v11 = document.getElementById("hanches").value;
+    var v12 = document.getElementById("cuisses").value;
+    var v13 = document.getElementById("poids").value;
+    
     var xhr = getXMLHttpRequest();
 
     xhr.onreadystatechange = function ()
@@ -342,7 +349,12 @@ function l_inscription_rapide()
     };
 
     // Requête au serveur avec les paramètres éventuels.
-    xhr.open("GET", "InscriptionRapide?nom=" + v1 + "&prenom=" + v2 + "&date=" + v3 + "&mail=" + v4 + "&tel=" + v5 + "&password=" + v6 + "&objectif=" + v7, true);
+    xhr.open("GET", "InscriptionRapide?nom=" + v1 + "&prenom=" + v2 + "&date=" + v3
+                + "&mail=" + v4 + "&tel=" + v5 + "&password="
+                + v6 + "&objectif=" + v7 + "&bras=" + v8
+                + "&poitrine=" + v9 + "&taille=" + v10
+                + "&hanches=" + v11 + "&cuisses=" + v12
+                + "&poids=" + v13, true);
     xhr.send(null);
 
 }
