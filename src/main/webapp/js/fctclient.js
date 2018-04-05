@@ -347,7 +347,7 @@ function l_inscription_rapide()
     var v21 = document.getElementById("pompes").value;
     var v22 = document.getElementById("squat").value;
     var v23 = document.getElementById("dips").value;
-     
+
     var xhr = getXMLHttpRequest();
 
     xhr.onreadystatechange = function ()
@@ -356,7 +356,7 @@ function l_inscription_rapide()
         // Si l'on a tout reçu et que la requête http s'est bien passée.
         if (xhr.readyState === 4 && xhr.status === 200)
         {
-            window.location.href = "pageadmin.jsp";
+            window.location.href = "GestionClient";
         }
     };
 
