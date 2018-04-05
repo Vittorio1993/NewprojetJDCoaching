@@ -82,8 +82,8 @@ public class ProfilconditionServlet extends HttpServlet {
 
             int codeb = b.consulterBilan(codeu);
             System.out.println(codeb + "AA");
-            int codeb1 = b.chercherfirstbilan(codeu);
-            System.out.println(codeb1 + "BB");
+//            int codeb1 = b.chercherfirstbilan(codeu);
+//            System.out.println(codeb1 + "BB");
 
             b.insererAttacher(codeb, codegainage, "1", gainage, null);
             b.insererAttacher(codeb, codepompes, "2", null, pompes);
