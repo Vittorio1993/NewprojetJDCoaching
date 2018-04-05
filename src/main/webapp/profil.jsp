@@ -437,13 +437,13 @@
                                             </div>
                                         </div>
                                     </div>
-                                    
+
                                 </div>
                             </div>
                         </div>
                         <p style="text-align: center;">
-                                        <input type="submit" value="Enregistrer" class="btn btn-primary">
-                                    </p>
+                            <input type="submit" value="Enregistrer" class="btn btn-primary">
+                        </p>
                     </form>
 
 
