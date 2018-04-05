@@ -329,13 +329,25 @@ function l_inscription_rapide()
     var v5 = document.getElementById("tel").value;
     var v6 = document.getElementById("password").value;
     var v7 = document.getElementById("objectif").options[document.getElementById("objectif").selectedIndex].value;
+
     var v8 = document.getElementById("bras").value;
     var v9 = document.getElementById("poitrine").value;
     var v10 = document.getElementById("taille").value;
     var v11 = document.getElementById("hanches").value;
     var v12 = document.getElementById("cuisses").value;
     var v13 = document.getElementById("poids").value;
-    
+
+    var v14 = document.getElementById("fcrepos").value;
+    var v15 = document.getElementById("fcflexions").value;
+    var v16 = document.getElementById("fcallogee").value;
+    var v17 = document.getElementById("gainage").value;
+    var v18 = document.getElementById("jambegauche").value;
+    var v19 = document.getElementById("jambedroite").value;
+    var v20 = document.getElementById("crunch").value;
+    var v21 = document.getElementById("pompes").value;
+    var v22 = document.getElementById("squat").value;
+    var v23 = document.getElementById("dips").value;
+     
     var xhr = getXMLHttpRequest();
 
     xhr.onreadystatechange = function ()
@@ -354,7 +366,16 @@ function l_inscription_rapide()
                 + v6 + "&objectif=" + v7 + "&bras=" + v8
                 + "&poitrine=" + v9 + "&taille=" + v10
                 + "&hanches=" + v11 + "&cuisses=" + v12
-                + "&poids=" + v13, true);
+                + "&poids=" + v13 + "&fcrepos=" + v14
+                + "&fcflexions=" + v15
+                + "&fcallogee=" + v16
+                + "&gainage=" + v17
+                + "&jambegauche=" + v18
+                + "&jambedroite=" + v19
+                + "&crunch=" + v20
+                + "&pompes=" + v21
+                + "&squat=" + v22
+                + "&dips=" + v23, true);
     xhr.send(null);
 
 }

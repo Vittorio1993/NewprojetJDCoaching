@@ -54,7 +54,7 @@ public class GestionClient extends HttpServlet {
             for (Utilisateur utilisateur :users) {
                     //Ajout en fonction du status
                     if ("Abonné".equals(utilisateur.getStatus())
-                            || "Validé".equals(utilisateur.getStatus())) {
+                            || "Valide".equals(utilisateur.getStatus())) {
                         valides.add(utilisateur);
                     } else if ("En attente".equals(utilisateur.getStatus())) {
                         enattente.add(utilisateur);

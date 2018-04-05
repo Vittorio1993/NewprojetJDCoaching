@@ -583,7 +583,7 @@ public class Bd {
      * @param u utilisateur
      * @throws Exception Exception
      */
-    public static void insererMesuration(final String poids, final String bras,
+    public static void insererMesuration(final int codeu, final String poids, final String bras,
             final String poitrine, final String taille, final String hanches, final String cuisses) throws Exception {
 
         if (Bd.cx == null) {
@@ -604,8 +604,8 @@ public class Bd {
                     + error.getMessage());
         }
 
-        String sqlmesuration = "insert into mesuration(DATEMESURE,LIBELLEM,POIDS,BRAS,POITRINE,TAILLE,HANCHES,CUISSES) values ( NOW(),'mesuration','"
-                + poids + "','" + bras + "','" + poitrine + "','" + taille + "','" + hanches + "','" + cuisses + "')";
+        String sqlmesuration = "insert into mesuration(DATEMESURE,LIBELLEM,POIDS,BRAS,POITRINE,TAILLE,HANCHES,CUISSES,CODEU) values ( NOW(),'mesuration','"
+                + poids + "','" + bras + "','" + poitrine + "','" + taille + "','" + hanches + "','" + cuisses + "','" + codeu + "')";
         try {
             statement.executeUpdate(sqlmesuration);
             statement.close();
@@ -983,7 +983,7 @@ public class Bd {
         boolean requestOK = false;
 
         /* Requête */
-        String sqlupdateValide = "UPDATE UTILISATEUR SET STATUTS ='Validé'"
+        String sqlupdateValide = "UPDATE UTILISATEUR SET STATUTS ='Valide'"
                 + "WHERE CODEU='"
                 + codeu
                 + "' ";

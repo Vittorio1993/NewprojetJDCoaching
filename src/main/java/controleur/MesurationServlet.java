@@ -67,9 +67,10 @@ public class MesurationServlet extends HttpServlet {
 
             Bd b = new Bd();
 //            b.updateUtilisateur(nom, prenom, datenaissance, mail, tel, password);
-            b.insererMesuration(poids, bras, poitrine, taille, hanches, cuisses);
+            Integer codeu = Integer.parseInt(requete.getSession().getAttribute("codeu").toString());
+            b.insererMesuration(codeu, poids, bras, poitrine, taille, hanches, cuisses);
             //Integer i = null;
-//            Integer codeu = Integer.parseInt(requete.getSession().getAttribute("codeu").toString());
+            
             //System.out.println("AAA" + codeu);
 
 //            b.insererBilan(codeu, "firstbilan", "0", " ", fcallogee, fcflexions, fcrepos);

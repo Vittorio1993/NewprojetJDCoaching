@@ -157,7 +157,7 @@
                                                 <select id="lvalides" style="color:black;" onclick="affichage_infos(this.id)">
                                                 <%
                                                     for(Utilisateur u : valides) {
-                                                        if("Validé".equals(u.getStatus())) {
+                                                        if("Valide".equals(u.getStatus())) {
                                                             out.println("<option value=" + u.getCodeu() + " style=\"background-color: green;\">" + u.getNomu() + "--" + u.getPrenomu() + "--" + u.getEmailu() + "</option>");
                                                         } else {
                                                             out.println("<option value=" + u.getCodeu() + " style=\"background-color: grey;\">" + u.getNomu() + "--" + u.getPrenomu() + "--" + u.getEmailu() + "</option>");
