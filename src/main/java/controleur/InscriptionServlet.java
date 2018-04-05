@@ -37,8 +37,8 @@ public class InscriptionServlet extends HttpServlet {
             datenaissance = requete.getParameter("date");
             mail = requete.getParameter("mail");
             tel = requete.getParameter("tel");
-            password = requete.getParameter("password");           
-            objectif = requete.getParameter("objectif");
+            password = requete.getParameter("password");
+            objectif= requete.getParameter("objectif");
             //System.out.println(objectif);
             Bd b = new Bd();
             if (b.verifierMail(mail) == 0) {
