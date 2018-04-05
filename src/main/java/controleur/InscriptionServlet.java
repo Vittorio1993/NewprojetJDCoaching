@@ -48,7 +48,7 @@ public class InscriptionServlet extends HttpServlet {
                 b.saisirUtilisateur(m);
                 out.println("<message>yes</message>");
             } else {
-                out.println("<message>Le mail d√©j√† exist</message>");
+                out.println("<message>Le mail dÈj‡ exist</message>");
             }
         } catch (Exception ex) {
             Logger.getLogger(InscriptionServlet

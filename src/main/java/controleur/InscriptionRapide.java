@@ -22,6 +22,7 @@ public class InscriptionRapide extends HttpServlet {
 
     /**
      * Servlet.
+     *
      * @param requete requete
      * @param reponse reponse
      * @throws ServletException
@@ -68,8 +69,9 @@ public class InscriptionRapide extends HttpServlet {
             Bd b = new Bd();
             if (b.verifierMail(mail) == 0) {
                 Utilisateur m = new Utilisateur(0, nom, prenom,
-                            datenaissance, mail, tel, "Valide",
-                                password, "client", objectif);
+                        datenaissance, mail, tel, "Valide",
+                        password, "client", objectif);
+
                 b.saisirUtilisateur(m);
                 String[] infos;
                 infos = b.consulterUtilisateur(mail);
@@ -107,8 +109,7 @@ public class InscriptionRapide extends HttpServlet {
                 rd.forward(requete, reponse);
             }
         } catch (Exception ex) {
-            Logger.getLogger(InscriptionServlet
-                    .class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(InscriptionServlet.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 }

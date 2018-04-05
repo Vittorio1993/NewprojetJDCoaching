@@ -2,7 +2,11 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@page import="database.Bd"%>
 <%@page import="model.Utilisateur"%>
+<%@page import="model.Mesuration"%>
+<%@page import="model.Bilan"%>
+<%@page import="model.Attacher"%>
 <%@page import="java.util.Date"%>
+<%@page import="java.util.ArrayList"%>
 <%@page import="java.text.SimpleDateFormat"%>
 <!DOCTYPE html>
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
@@ -212,7 +216,13 @@
 
 
 
-
+                <%
+                        
+                       int codeu = Integer.parseInt(session.getAttribute("codeu").toString());
+                       Bilan bi = b.donneeBilancondition(codeu);
+                       int codebilan=bi.getCODEB();
+                       //System.out.println(u.getNomu()); 
+                %>
                 <form action="profilcondition"><!--- 测试用-->
                     <!-- Profil condition -->
                     <div id="fh5co-contact">
@@ -254,7 +264,7 @@
                                     </div>
                                     <div class="col-md-9">
                                         <div class="form-group">
-                                            <input type="text" class="form-control" name="fcflexions" placeholder="fc après 30 flexions complètes en 45 sec">
+                                            <% out.print("<input type='text' class='form-control' name='fcflexions' value="+bi.getFCFLEXIONS()+">");%>
                                         </div>
                                     </div>
                                 </div>
@@ -270,7 +280,7 @@
                                     </div>
                                     <div class="col-md-5">
                                         <div class="form-group">
-                                            <input type="text" class="form-control" name="fcrepos" placeholder="fréquence">
+                                            <% out.print("<input type='text' class='form-control' name='fcrepos' value="+bi.getFCREPOS()+">");%>
                                         </div>
                                     </div>
                                     <!-- Fréquence cardiaque cible -->
@@ -292,7 +302,7 @@
                                     </div>
                                     <div class="col-md-9">
                                         <div class="form-group">
-                                            <input type="text" class="form-control" name="fcallogee" placeholder="fc après 30 flexions complètes en 45 sec">
+                                            <% out.print("<input type='text' class='form-control' name='fcallogee' value="+bi.getFCALLONGEE()+">");%>                                         
                                         </div>
                                     </div>
                                 </div>
@@ -303,7 +313,15 @@
                         <input type="submit" value="Enregistrer" class="btn btn-primary">
                     </p>
                     </from>
-
+                    <%
+                       
+                            ArrayList<Attacher> a = b.donneeBilanperformence(codebilan);
+                            for(Attacher ai : a) {
+                                 System.out.println(ai.getMAXTEMPS()+"AAAAA");
+                                                                }
+                            
+                            //System.out.println(u.getNomu()); 
+                    %>
                     <!-- Bilan de performance -->
                     <form action="bilanperformance">
 
@@ -333,7 +351,8 @@
                                         </div>
                                         <div class="col-md-5">
                                             <div class="form-group">
-                                                <input type="text" class="form-control" name="gainage" placeholder="Gainage">
+                                                <% out.print("<input type='text' class='form-control' name='gainage' value="+a.get(0).getMAXTEMPS()+">");%>   
+
                                             </div>
                                         </div>
                                     </div>
@@ -351,12 +370,13 @@
                                         </div>
                                         <div class="col-md-5">
                                             <div class="form-group">
-                                                <input type="text" class="form-control" name="jambegauche" placeholder="jambe gauche devant">
+                                                <% out.print("<input type='text' class='form-control' name='gainage' value="+a.get(2).getNUMREPETITION()+">");%>  
+
                                             </div>
                                         </div>
                                         <div class="col-md-5">
                                             <div class="form-group">
-                                                <input type="text" class="form-control" name="jambedroite" placeholder="jambe droite devant">
+                                                <% out.print("<input type='text' class='form-control' name='gainage' value="+a.get(3).getNUMREPETITION()+">");%>  
                                             </div>
                                         </div>
                                     </div>
@@ -374,7 +394,8 @@
                                         </div>
                                         <div class="col-md-5">
                                             <div class="form-group">
-                                                <input type="text" class="form-control" name="crunch" placeholder="Crunch">
+                                                <% out.print("<input type='text' class='form-control' name='crunch' value="+a.get(5).getMAXTEMPS()+">");%>  
+
                                             </div>
                                         </div>
                                     </div>
@@ -397,7 +418,8 @@
                                         </div>
                                         <div class="col-md-5">
                                             <div class="form-group">
-                                                <input type="text" class="form-control" name="pompes" placeholder="1/2 pompes">
+                                                <% out.print("<input type='text' class='form-control' name='pompes' value="+a.get(1).getNUMREPETITION()+">");%>  
+
                                             </div>
                                         </div>
                                     </div>
@@ -415,7 +437,8 @@
                                         </div>
                                         <div class="col-md-5">
                                             <div class="form-group">
-                                                <input type="text" class="form-control" name="squat" placeholder="1/2 squat">
+                                                <% out.print("<input type='text' class='form-control' name='squat' value="+a.get(4).getNUMREPETITION()+">");%> 
+
                                             </div>
                                         </div>
                                     </div>
@@ -433,7 +456,8 @@
                                         </div>
                                         <div class="col-md-5">
                                             <div class="form-group">
-                                                <input type="text" class="form-control" name="dips" placeholder="Dips">
+                                                <% out.print("<input type='text' class='form-control' name='dips' value="+a.get(6).getMAXTEMPS()+">");%> 
+
                                             </div>
                                         </div>
                                     </div>
@@ -449,6 +473,11 @@
 
 
                     <!-- Mensuration -->
+                    <%
+                       
+        Mesuration m = b.donneeMesuration(codeu);
+        //System.out.println(u.getNomu()); 
+                    %>
                     <form action="mesuration"><!--- 测试用-->
                         <div id="fh5co-contact">
                             <div class="container">
@@ -471,7 +500,7 @@
                                         </div>
                                         <div class="col-md-9">
                                             <div class="form-group">
-                                                <input type="text" name="bras" class="form-control" placeholder="Bras">
+                                                <% out.print("<input type='text' class='form-control' name='bras' value="+m.getBRAS()+">");%>
                                             </div>
                                         </div>
                                         <!-- Poitrine -->
@@ -482,7 +511,8 @@
                                         </div>
                                         <div class="col-md-9">
                                             <div class="form-group">
-                                                <input type="text" class="form-control" name="poitrine" placeholder="Poitrine">
+                                                <% out.print("<input type='text' class='form-control' name='poitrine' value="+m.getPOITRINE()+">");%>
+
                                             </div>
                                         </div>
                                         <!-- Taille -->
@@ -493,7 +523,7 @@
                                         </div>
                                         <div class="col-md-9">
                                             <div class="form-group">
-                                                <input type="text" class="form-control" name="taille" placeholder="Taille">
+                                                <% out.print("<input type='text' class='form-control' name='taille' value="+m.getTAILLE()+">");%>                                            
                                             </div>
                                         </div>
                                     </div>
@@ -509,7 +539,7 @@
                                         </div>
                                         <div class="col-md-9">
                                             <div class="form-group">
-                                                <input type="text" class="form-control" name="hanches" placeholder="Hanches">
+                                                <% out.print("<input type='text' class='form-control' name='hanches' value="+m.getHANCHES()+">");%>
                                             </div>
                                         </div>
                                         <!-- Cuisses -->
@@ -520,7 +550,7 @@
                                         </div>
                                         <div class="col-md-9">
                                             <div class="form-group">
-                                                <input type="text" class="form-control" name="cuisses" placeholder="Cuisses">
+                                                <% out.print("<input type='text' class='form-control' name='cuisses' value="+m.getCUISSES()+">");%>                                               
                                             </div>
                                         </div>
                                         <!-- Poids -->
@@ -531,7 +561,7 @@
                                         </div>
                                         <div class="col-md-9">
                                             <div class="form-group">
-                                                <input type="text" class="form-control" name="poids" placeholder="Poids">
+                                                <% out.print("<input type='text' class='form-control' name='poids' value="+m.getPOIDS()+">");%>                                              
                                             </div>
                                         </div>
                                     </div>

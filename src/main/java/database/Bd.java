@@ -18,11 +18,13 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import model.Attacher;
 
 import model.Bilan;
 
 import model.Commentaire;
 import model.Exercice;
+import model.Mesuration;
 
 /**
  *
@@ -1335,6 +1337,166 @@ public class Bd {
                     + ex.getMessage());
         }
         return u;
+
+    }
+
+    /*
+    *pour récupérer les données d'un mesuration
+     */
+    public static Mesuration donneeMesuration(final int codeu)
+            throws Exception {
+        Mesuration u = new Mesuration(-1, null, "", "", "", "", "", "", "", -1);
+        if (Bd.cx == null) {
+            Bd.connexion();
+        }
+        // Statement pour effectuer la requête
+        Statement statement;
+        //Ouverture de la connexion
+        try {
+            cx = DriverManager.getConnection(url);
+        } catch (SQLException ex) {
+            System.out.println("Erreur ouverture connexion" + ex.getMessage());
+        }
+        try {
+            statement = cx.createStatement();
+        } catch (SQLException error) {
+            throw new Exception("Problème avec création du statement : "
+                    + error.getMessage());
+        }
+
+        String sqlutilisateur = "select * from mesuration where CODEU ='" + codeu + "' and DATEMESURE in (select MAX(DATEMESURE) from mesuration)";
+
+        try {
+            Statement st = cx.createStatement();
+            /* Execution de la requête */
+            try {
+                ResultSet rs = st.executeQuery(sqlutilisateur);
+                /* Adding messages to the ArrayList */
+                while (rs.next()) {
+
+                    u = new Mesuration(rs.getInt(1), rs.getDate(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6), rs.getString(7), rs.getString(8), rs.getString(9), rs.getInt(10));
+                }
+                rs.close();
+                st.close();
+                cx.close();
+            } catch (SQLException ex) {
+                System.out.println("Erreur execution requête "
+                        + ex.getMessage());
+            }
+        } catch (SQLException ex) {
+            System.out.println("Erreur de SQL statement "
+                    + ex.getMessage());
+        }
+        return u;
+
+    }
+
+    /*
+    *pour récupérer les données d'un mesuration
+     */
+    public static Bilan donneeBilancondition(final int codeu)
+            throws Exception {
+        Bilan u = new Bilan(-1, -1, -1, "", "", "", "", "", "", null);
+        if (Bd.cx == null) {
+            Bd.connexion();
+        }
+        // Statement pour effectuer la requête
+        Statement statement;
+        //Ouverture de la connexion
+        try {
+            cx = DriverManager.getConnection(url);
+        } catch (SQLException ex) {
+            System.out.println("Erreur ouverture connexion" + ex.getMessage());
+        }
+        try {
+            statement = cx.createStatement();
+        } catch (SQLException error) {
+            throw new Exception("Problème avec création du statement : "
+                    + error.getMessage());
+        }
+
+        String sqlutilisateur = "select * from bilan where CODEU ='" + codeu + "' and DATEB in (select MAX(DATEB) from bilan)";
+
+        try {
+            Statement st = cx.createStatement();
+            /* Execution de la requête */
+            try {
+                ResultSet rs = st.executeQuery(sqlutilisateur);
+                /* Adding messages to the ArrayList */
+                while (rs.next()) {
+
+                    u = new Bilan(rs.getInt(1), rs.getInt(2), rs.getInt(3), rs.getString(4), rs.getString(5), rs.getString(6), rs.getString(7), rs.getString(8), rs.getString(9), rs.getDate(10));
+                }
+                rs.close();
+                st.close();
+                cx.close();
+            } catch (SQLException ex) {
+                System.out.println("Erreur execution requête "
+                        + ex.getMessage());
+            }
+        } catch (SQLException ex) {
+            System.out.println("Erreur de SQL statement "
+                    + ex.getMessage());
+        }
+        return u;
+
+    }
+
+    /*
+    *pour récupérer les données d'un mesuration
+     */
+    public static String donneeBilanperformence(final int codebilan,final int codeexo)
+            throws Exception {
+        String n=null;
+        String n1=null;
+       
+        if (Bd.cx == null) {
+            Bd.connexion();
+        }
+        // Statement pour effectuer la requête
+        Statement statement;
+        //Ouverture de la connexion
+        try {
+            cx = DriverManager.getConnection(url);
+        } catch (SQLException ex) {
+            System.out.println("Erreur ouverture connexion" + ex.getMessage());
+        }
+        try {
+            statement = cx.createStatement();
+        } catch (SQLException error) {
+            throw new Exception("Problème avec création du statement : "
+                    + error.getMessage());
+        }
+
+        String sqltemps = "select MAXTEMPS from attacher where CODEB ='" + codebilan + "' and CODEE='"+codeexo+"'";
+        String sqlnum = "select NUMREPETITION from attacher where CODEB ='" + codebilan + "' and CODEE='"+codeexo+"'";
+
+        try {
+            Statement st = cx.createStatement();
+            /* Execution de la requête */
+            try {
+                ResultSet rs = st.executeQuery(sqltemps);
+                /* Adding messages to the ArrayList */
+                while (rs.next()) {
+                            n=rs.getString("MAXTEMPS");
+                }
+                ResultSet rs1 = st.executeQuery(sqlnum);
+                /* Adding messages to the ArrayList */
+                while (rs1.next()) {
+                            n1=rs.getString("NUMREPETITION");
+                }
+                rs.close();
+                st.close();
+                cx.close();
+            } catch (SQLException ex) {
+                System.out.println("Erreur execution requête "
+                        + ex.getMessage());
+            }
+        } catch (SQLException ex) {
+            System.out.println("Erreur de SQL statement "
+                    + ex.getMessage());
+        }
+        return array;
 
     }
 
