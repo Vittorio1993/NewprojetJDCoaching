@@ -310,20 +310,25 @@
                         </div>
                     </div>
                     <p style="text-align: center;">
-                        <input type="submit" value="Enregistrer" class="btn btn-primary">
+                        <!--<input type="submit" value="Enregistrer" class="btn btn-primary">-->
                     </p>
                     </from>
                     <%
                        
-                            ArrayList<Attacher> a = b.donneeBilanperformence(codebilan);
-                            for(Attacher ai : a) {
-                                 System.out.println(ai.getMAXTEMPS()+"AAAAA");
-                                                                }
+                            String gainage = b.donneeBilanperformence(codebilan,4);
+                             String pompes = b.donneeBilanperformence(codebilan,5);
+                              String jambegauche = b.donneeBilanperformence(codebilan,6);
+                               String jambedroite = b.donneeBilanperformence(codebilan,7);
+                                String squat = b.donneeBilanperformence(codebilan,8);
+                                 String crunch = b.donneeBilanperformence(codebilan,9);
+                                  String dips = b.donneeBilanperformence(codebilan,10);
+                           
+                                                                
                             
                             //System.out.println(u.getNomu()); 
                     %>
                     <!-- Bilan de performance -->
-                    <form action="bilanperformance">
+                    <!--<form action="bilanperformance">-->
 
                         <div class="container">
                             <div class="row">
@@ -351,7 +356,7 @@
                                         </div>
                                         <div class="col-md-5">
                                             <div class="form-group">
-                                                <% out.print("<input type='text' class='form-control' name='gainage' value="+a.get(0).getMAXTEMPS()+">");%>   
+                                                <% out.print("<input type='text' class='form-control' name='gainage' value="+gainage+">");%>   
 
                                             </div>
                                         </div>
@@ -370,13 +375,13 @@
                                         </div>
                                         <div class="col-md-5">
                                             <div class="form-group">
-                                                <% out.print("<input type='text' class='form-control' name='gainage' value="+a.get(2).getNUMREPETITION()+">");%>  
+                                                <% out.print("<input type='text' class='form-control' name='jambegauche' value="+jambegauche+">");%>  
 
                                             </div>
                                         </div>
                                         <div class="col-md-5">
                                             <div class="form-group">
-                                                <% out.print("<input type='text' class='form-control' name='gainage' value="+a.get(3).getNUMREPETITION()+">");%>  
+                                                <% out.print("<input type='text' class='form-control' name='jambedroite' value="+jambedroite+">");%>  
                                             </div>
                                         </div>
                                     </div>
@@ -394,7 +399,7 @@
                                         </div>
                                         <div class="col-md-5">
                                             <div class="form-group">
-                                                <% out.print("<input type='text' class='form-control' name='crunch' value="+a.get(5).getMAXTEMPS()+">");%>  
+                                                <% out.print("<input type='text' class='form-control' name='crunch' value="+crunch+">");%>  
 
                                             </div>
                                         </div>
@@ -418,7 +423,7 @@
                                         </div>
                                         <div class="col-md-5">
                                             <div class="form-group">
-                                                <% out.print("<input type='text' class='form-control' name='pompes' value="+a.get(1).getNUMREPETITION()+">");%>  
+                                                <% out.print("<input type='text' class='form-control' name='pompes' value="+pompes+">");%>  
 
                                             </div>
                                         </div>
@@ -437,7 +442,7 @@
                                         </div>
                                         <div class="col-md-5">
                                             <div class="form-group">
-                                                <% out.print("<input type='text' class='form-control' name='squat' value="+a.get(4).getNUMREPETITION()+">");%> 
+                                                <% out.print("<input type='text' class='form-control' name='squat' value="+squat+">");%> 
 
                                             </div>
                                         </div>
@@ -456,7 +461,7 @@
                                         </div>
                                         <div class="col-md-5">
                                             <div class="form-group">
-                                                <% out.print("<input type='text' class='form-control' name='dips' value="+a.get(6).getMAXTEMPS()+">");%> 
+                                                <% out.print("<input type='text' class='form-control' name='dips' value="+dips+">");%> 
 
                                             </div>
                                         </div>
