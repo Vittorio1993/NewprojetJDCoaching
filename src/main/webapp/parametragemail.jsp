@@ -64,6 +64,7 @@
             } else {
                 mail = (String) request.getAttribute("emailadmin");
                 session.setAttribute("mail",mail);
+                mail = (String) session.getAttribute("mail");
             }
             ArrayList<Utilisateur> coachs = new ArrayList();
             if(request.getAttribute("ListeCoachs") != null) { 
