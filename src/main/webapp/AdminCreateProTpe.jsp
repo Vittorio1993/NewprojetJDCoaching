@@ -65,7 +65,7 @@
                 <div class="container">
                     <div class="nav-header">
                         <a href="#" class="js-fh5co-nav-toggle fh5co-nav-toggle"><i></i></a>
-                        <h1 id="fh5co-logo"><a href="index.html">JD<span>COACHING</span></a></h1>
+                        <h1 id="fh5co-logo"><a href="pageadmin.jsp">JD<span>COACHING</span></a></h1>
                         <!-- START #fh5co-menu-wrap -->
                        
                     </div>
