@@ -35,7 +35,7 @@ public class ServletPr extends HttpServlet {
             Logger.getLogger(ServletPr.class.getName()).log(Level.SEVERE, null, ex);
         }
         
-        rd=requete.getRequestDispatcher("AdminCreateProTpe.jsp");
+        rd=requete.getRequestDispatcher("pageadmin.jsp");
         rd.forward(requete, reponse);
         
     }
