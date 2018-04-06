@@ -63,27 +63,36 @@
             }
             %>
             <div id="fh5co-wrapper">
-		<div id="fh5co-page">
-		<div id="fh5co-header">
-			<header id="fh5co-header-section">
-				<div class="container">
-                            <div class="nav-header">
-                                <a href="#" class="js-fh5co-nav-toggle fh5co-nav-toggle"><i></i></a>
-                                <h1 id="fh5co-logo"><a href="index.html">JD<span>Coaching</span></a></h1>
-                                <!-- START #fh5co-menu-wrap -->
-                                <nav id="fh5co-menu-wrap" role="navigation">
-                                    <ul class="sf-menu" id="fh5co-primary-menu">
-                                        <li><a class="btn btn-primary" href="parametragemail.jsp">Paramétrage des mails</a></li>
-                                        <li><a class="btn btn-primary" href="GestionClient">Gérer Clients</a></li>
-                                        <li><a class="btn btn-primary" href="inscriptionrapide.jsp">Inscrire Client</a></li>
-                                    </ul>
-                                </nav>
+                <div id="fh5co-page">
+                    <div id="fh5co-header">
+
+                        <header id="fh5co-header-section">
+                            <div class="container">
+                                <div class="nav-header">
+                                    <a href="#" class="js-fh5co-nav-toggle fh5co-nav-toggle"><i></i></a>
+                                    <h1 id="fh5co-logo"><a href="index.html">JD<span>Coaching</span></a></h1>
+                                    <!-- START #fh5co-menu-wrap -->
+                                    <nav id="fh5co-menu-wrap" role="navigation">
+                                        <ul class="sf-menu" id="fh5co-primary-menu">
+                                            <li><a href="parametragemail.jsp">Paramétrage des mails</a></li>
+                                            <li><a  href="GestionClient">Gérer Clients</a></li>
+                                            <li><a  href="inscriptionrapide.jsp">Inscrire Client</a></li>
+                                            <li><a  href="AdminCreateCat.jsp">Ajouter catégorie</a></li>
+                                            <li><a href="AdminCreateProTpe.jsp">Ajouter Programme</a></li>
+                                            <li>
+                                            <a class="fh5co-sub-ddown">Déconnecter</a>
+                                            <ul class="fh5co-sub-menu">
+                                                <li><a href="index.jsp">Déconnecter</a></li>
+                                            </ul>
+                                        </li>
+                                        </ul>
+                                    </nav>
+                                </div>
                             </div>
-                        </div>
-			</header>		
-		</div>
-		<!-- end:fh5co-header -->
-		<div class="fh5co-hero">
+                        </header>		
+                    </div>
+                    <!-- end:fh5co-header -->
+                    <div class="fh5co-hero">
                         <div class="fh5co-parallax" style="background-image: url(images/home-image-3.jpg);" data-stellar-background-ratio="0.5">
                             <div class="overlay"></div>
                             <div class="container">
@@ -96,35 +105,35 @@
                                 </div>
                             </div>
                         </div>
-			<div class="fh5co-contact">
+                        <div class="fh5co-contact">
                             <div class="desc animate-box">
-					<div class="container">
-						<div class="row">
-							<div class="col-md-7">
-                                                            <span><a><%=changementmail%></a></span>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
+                                <div class="container">
+                                    <div class="row">
+                                        <div class="col-md-7">
+                                            <span><a><%=changementmail%></a></span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-        </div>
-        <script src="js/jquery.min.js"></script>
-	<!-- jQuery Easing -->
-	<script src="js/jquery.easing.1.3.js"></script>
-	<!-- Bootstrap -->
-	<script src="js/bootstrap.min.js"></script>
-	<!-- Waypoints -->
-	<script src="js/jquery.waypoints.min.js"></script>
-	<!-- Stellar -->
-	<script src="js/jquery.stellar.min.js"></script>
-	<!-- Superfish -->
-	<script src="js/hoverIntent.js"></script>
-	<script src="js/superfish.js"></script>
+            <script src="js/jquery.min.js"></script>
+            <!-- jQuery Easing -->
+            <script src="js/jquery.easing.1.3.js"></script>
+            <!-- Bootstrap -->
+            <script src="js/bootstrap.min.js"></script>
+            <!-- Waypoints -->
+            <script src="js/jquery.waypoints.min.js"></script>
+            <!-- Stellar -->
+            <script src="js/jquery.stellar.min.js"></script>
+            <!-- Superfish -->
+            <script src="js/hoverIntent.js"></script>
+            <script src="js/superfish.js"></script>
 
-	<!-- Main JS (Do not remove) -->
-	<script src="js/main.js"></script>  
+            <!-- Main JS (Do not remove) -->
+            <script src="js/main.js"></script>  
         </body>
     </html>
 </f:view>

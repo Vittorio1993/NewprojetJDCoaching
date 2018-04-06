@@ -3,6 +3,8 @@ package controleur;
 import database.Bd;
 import model.ProgrammeType;
 import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -27,9 +29,13 @@ public class ServletPr extends HttpServlet {
         
         
         Bd mabd=new Bd();
-        mabd.AjouterProgrammeT(nompt, descpt);
+        try {
+            mabd.AjouterProgrammeT(nompt, descpt);
+        } catch (Exception ex) {
+            Logger.getLogger(ServletPr.class.getName()).log(Level.SEVERE, null, ex);
+        }
         
-        rd=requete.getRequestDispatcher("Confirmation.jsp");
+        rd=requete.getRequestDispatcher("AdminCreateProTpe.jsp");
         rd.forward(requete, reponse);
         
     }

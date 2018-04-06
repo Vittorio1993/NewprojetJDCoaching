@@ -3,6 +3,8 @@ package controleur;
 import database.Bd;
 import model.Categorie;
 import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -25,9 +27,13 @@ public class ServletCat extends HttpServlet {
 
        
         Bd mabd=new Bd();
-        mabd.AjouterCategorie(libellecat);
+        try {
+            mabd.AjouterCategorie(libellecat);
+        } catch (Exception ex) {
+            Logger.getLogger(ServletCat.class.getName()).log(Level.SEVERE, null, ex);
+        }
         
-        rd=requete.getRequestDispatcher("Confirmation.jsp");
+        rd=requete.getRequestDispatcher("AdminCreateCat.jsp");
         rd.forward(requete, reponse);
         
                 

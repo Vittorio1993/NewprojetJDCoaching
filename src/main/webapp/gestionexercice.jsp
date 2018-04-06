@@ -154,7 +154,7 @@
                                         <!-- Description -->
                                         <div class="col-md-5">
                                             <div class="form-group">
-                                                <p>Description :</p>
+                                                <p>Temps de répetition :</p>
                                             </div>
                                         </div>
                                         <div class="col-md-7">
@@ -167,7 +167,7 @@
                                         <!-- Temps de répetition -->
                                         <div class="col-md-4">
                                             <div class="form-group">
-                                                <p>Temps de répetition :</p>
+                                                <p>Lien image :</p>
                                             </div>
                                         </div>
                                         <div class="col-md-8">
@@ -194,7 +194,7 @@
                                         <!-- Nombre de répetition  -->
                                         <div class="col-md-4">
                                             <div class="form-group">
-                                                <p>Lien image :</p>
+                                                <p>Description :</p>
                                             </div>
                                         </div>
                                         <div class="col-md-8">

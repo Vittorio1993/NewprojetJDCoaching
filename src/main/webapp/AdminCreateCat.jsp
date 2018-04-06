@@ -65,23 +65,9 @@
                 <div class="container">
                     <div class="nav-header">
                         <a href="#" class="js-fh5co-nav-toggle fh5co-nav-toggle"><i></i></a>
-                        <h1 id="fh5co-logo"><a href="index.html">Fit<span>ness</span></a></h1>
+                        <h1 id="fh5co-logo"><a href="index.html">JD<span>COACHING</span></a></h1>
                         <!-- START #fh5co-menu-wrap -->
-                        <nav id="fh5co-menu-wrap" role="navigation">
-                            <ul class="sf-menu" id="fh5co-primary-menu">
-                                <li><a href="index.html">Home</a></li>
-                                <li><a href="profil.html">Gérer Clients</a></li>
-                                <li>
-                                    <a href="#" class="fh5co-sub-ddown">Modèle Type</a>
-                                    <ul class="fh5co-sub-menu">
-                                        <li><a href="AdminCreateProTpe.jsp">Gestion programme ype</a></li>
-                                        <li><a href="AdminCteateCat.jsp">Gestion catégorie</a></li>
-                                    </ul>
-                                </li>
-                                <li><a href="trainer.html">Paramétrer Emails</a></li>
-                                <li><a href="about.html">Connexion/Déconnexion</a></li>
-                            </ul>
-                        </nav>
+                       
                     </div>
                 </div>
             </header>		
