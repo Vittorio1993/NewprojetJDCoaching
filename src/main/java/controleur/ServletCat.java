@@ -33,7 +33,7 @@ public class ServletCat extends HttpServlet {
             Logger.getLogger(ServletCat.class.getName()).log(Level.SEVERE, null, ex);
         }
         
-        rd=requete.getRequestDispatcher("AdminCreateCat.jsp");
+        rd=requete.getRequestDispatcher("pageadmin.jsp");
         rd.forward(requete, reponse);
         
                 
